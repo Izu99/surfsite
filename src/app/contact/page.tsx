@@ -197,7 +197,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-oswald text-3xl text-darker font-black uppercase mb-4 tracking-tight">Message Received!</h3>
                   <p className="text-gray text-lg font-medium max-w-sm">
-                    One of our team members will get back to you within 24 hours. Aloha! 🤙
+                    One of our team members will get back to you within 24 hours.
                   </p>
                 </div>
                 <motion.button

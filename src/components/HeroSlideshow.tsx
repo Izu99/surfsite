@@ -7,21 +7,33 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HERO_SLIDES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import WaveDivider from "@/components/WaveDivider";
 
 export default function HeroSlideshow() {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const goSlide = useCallback((n: number) => {
     setCurrent((n + HERO_SLIDES.length) % HERO_SLIDES.length);
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => goSlide(current + 1), 7000);
+    if (paused) return;
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % HERO_SLIDES.length);
+    }, 7000);
     return () => clearInterval(timer);
-  }, [current, goSlide]);
+  }, [paused]);
 
   return (
-    <section className="relative h-screen overflow-hidden flex items-center bg-deep" id="home">
+    <section
+      className="relative h-[100svh] overflow-hidden flex items-center bg-deep"
+      id="home"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -54,26 +66,11 @@ export default function HeroSlideshow() {
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-deep to-transparent z-10" />
       
-      {/* PROFESSIONAL SEA WAVE ANIMATION - Fixed to be transparent and fill correctly */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-30 pointer-events-none">
-        <svg className="relative block w-[200%] h-[60px] md:h-[100px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          {/* Wave 1 - Back Layer */}
-          <path d="M0,120V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120Z" fill="#3b82f6" fillOpacity="0.3">
-            <animateTransform attributeName="transform" type="translate" from="0" to="-600" dur="20s" repeatCount="indefinite" />
-          </path>
-          {/* Wave 2 - Middle Layer */}
-          <path d="M0,120V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V120Z" fill="#60a5fa" fillOpacity="0.5">
-            <animateTransform attributeName="transform" type="translate" from="-600" to="0" dur="15s" repeatCount="indefinite" />
-          </path>
-          {/* Wave 3 - Front Layer - Now Blue Tinted and Transparent */}
-          <path d="M0,120V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V120Z" fill="#2563eb" fillOpacity="0.4">
-            <animateTransform attributeName="transform" type="translate" from="0" to="-600" dur="10s" repeatCount="indefinite" />
-          </path>
-        </svg>
-      </div>
+      {/* Lightweight wave divider (CSS-based) */}
+      <WaveDivider />
 
       {/* Hero content */}
-      <div className="relative z-20 pl-8 md:pl-[120px] max-w-[800px]">
+      <div className="relative z-20 px-6 md:px-[120px] max-w-[800px] pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -121,13 +118,14 @@ export default function HeroSlideshow() {
       </div>
 
       {/* Navigation Indicators */}
-      <div className="absolute bottom-24 left-8 md:left-[120px] flex items-end gap-12 z-20">
+      <div className="absolute bottom-24 left-6 md:left-[120px] flex items-end gap-12 z-20">
         <div className="flex gap-3">
           {HERO_SLIDES.map((_, i) => (
             <button
               key={i}
               onClick={() => goSlide(i)}
               className="group relative py-4"
+              aria-label={`Go to slide ${i + 1}`}
             >
               <div className={cn(
                 "h-[3px] transition-all duration-500 rounded-full",
@@ -148,6 +146,7 @@ export default function HeroSlideshow() {
           whileTap={{ scale: 0.9 }}
           onClick={() => goSlide(current - 1)}
           className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white backdrop-blur-sm transition-colors duration-300"
+          aria-label="Previous slide"
         >
           <ChevronLeft size={24} />
         </motion.button>
@@ -156,6 +155,7 @@ export default function HeroSlideshow() {
           whileTap={{ scale: 0.9 }}
           onClick={() => goSlide(current + 1)}
           className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white backdrop-blur-sm transition-colors duration-300"
+          aria-label="Next slide"
         >
           <ChevronRight size={24} />
         </motion.button>

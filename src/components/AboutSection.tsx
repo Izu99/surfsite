@@ -1,13 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import LazyYouTube from "@/components/LazyYouTube";
 
 export default function AboutSection() {
   const videoId = "GJc4Ir78KdE";
   const videoParams = `?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0`;
+  const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { amount: 0.25, once: false });
 
   return (
     <section
+      ref={sectionRef}
       className="py-32 px-6 md:px-[80px] lg:px-[120px] grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center bg-white relative overflow-hidden"
       id="about"
     >
@@ -52,11 +58,12 @@ export default function AboutSection() {
       >
         {/* Main Video Frame */}
         <div className="relative aspect-video rounded-[32px] overflow-hidden shadow-[0_50px_100px_rgba(30,58,138,0.3)] border-4 border-white ring-1 ring-primary/10">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}${videoParams}`}
+          <LazyYouTube
+            videoId={videoId}
             title="WaveX Kite Surfing Cinematic"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[115%] scale-[1.2] pointer-events-none"
-            allow="autoplay; encrypted-media"
+            params={videoParams}
+            autoStart={true}
+            className="absolute inset-0"
           />
           
           {/* Theme Gradient Overlay */}
@@ -65,13 +72,13 @@ export default function AboutSection() {
 
         {/* Decorative Floating Elements */}
         <motion.div 
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          animate={prefersReducedMotion || !inView ? { y: 0 } : { y: [0, -20, 0] }}
+          transition={prefersReducedMotion || !inView ? { duration: 0 } : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-10 -right-10 w-32 h-32 bg-accent/10 rounded-full blur-2xl -z-10" 
         />
         <motion.div 
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          animate={prefersReducedMotion || !inView ? { y: 0 } : { y: [0, 20, 0] }}
+          transition={prefersReducedMotion || !inView ? { duration: 0 } : { duration: 5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl -z-10" 
         />
       </motion.div>

@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+import { fileURLToPath } from "url";
+
+const projectRoot = fileURLToPath(new URL(".", import.meta.url));
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -11,6 +15,9 @@ const nextConfig = {
         hostname: "randomuser.me",
       },
     ],
+  },
+  turbopack: {
+    root: projectRoot,
   },
 };
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { GALLERY_IMAGES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import { Play, ZoomIn } from "lucide-react";
 
 export default function GallerySection() {
@@ -90,9 +91,4 @@ export default function GallerySection() {
       </div>
     </section>
   );
-}
-
-// Utility for conditional classes since I'm using it here
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
 }

@@ -55,7 +55,7 @@ export default function CTABanner() {
               >
                 <CheckCircle2 size={48} className="text-accent" />
                 <div>
-                  <div className="font-oswald text-2xl font-bold uppercase tracking-wider">🤙 You&apos;re in!</div>
+                  <div className="font-oswald text-2xl font-bold uppercase tracking-wider">You&apos;re in!</div>
                   <p className="text-white/60 mt-1">Check your inbox for the welcome gift.</p>
                 </div>
               </motion.div>
