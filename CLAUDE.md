@@ -73,7 +73,7 @@ Defined in `app/globals.css` `@theme {}`:
 ## Brand
 
 - Name: WavePeak Surf School
-- Location: Hikkaduwa Beach, Sri Lanka
+- Location: Hirikatiya Beach, Sri Lanka
 - Phone: +94 77 123 4567
 - Email: info@wavepeaksurf.lk
 - Hours: Daily 6am–6pm

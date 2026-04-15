@@ -106,7 +106,7 @@ export default function HeroSlideshow() {
               Book A Lesson
             </Link>
             <p className="text-[#7dd3fc] font-bold uppercase tracking-[0.18em] text-lg md:text-2xl mb-1">
-              HIKKADUWA, SRI LANKA
+              HIRIKATIYA, SRI LANKA
             </p>
           </div>
         </div>
