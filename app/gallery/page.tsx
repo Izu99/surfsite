@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Browse photos of surf lessons, Hikkaduwa Beach, and the WavePeak Surf School experience in Sri Lanka.',
+    'Browse photos of surf lessons, Hirikatiya Beach, and the Noah Surf School experience in Sri Lanka.',
 }
 
 type Photo = {
@@ -20,7 +20,7 @@ type Photo = {
 const photos: Photo[] = [
   {
     src: 'https://images.unsplash.com/photo-1502933691298-84fc14542831?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Surfer at Hikkaduwa Beach',
+    alt: 'Surfer at Hirikatiya Beach',
     tag: 'Action',
     wide: true,
   },
@@ -32,12 +32,12 @@ const photos: Photo[] = [
   },
   {
     src: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfing at Hikkaduwa',
+    alt: 'Surfing at Hirikatiya',
     tag: 'Action',
   },
   {
     src: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Hikkaduwa Beach Sri Lanka',
+    alt: 'Hirikatiya Beach Sri Lanka',
     tag: 'Beach',
   },
   {
@@ -53,7 +53,7 @@ const photos: Photo[] = [
   },
   {
     src: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfing waves at Hikkaduwa',
+    alt: 'Surfing waves at Hirikatiya',
     tag: 'Beach',
     tall: true,
   },
@@ -69,7 +69,7 @@ const photos: Photo[] = [
   },
   {
     src: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Wave breaking at Hikkaduwa',
+    alt: 'Wave breaking at Hirikatiya',
     tag: 'Action',
     wide: true,
   },
@@ -107,7 +107,7 @@ export default function GalleryPage() {
             Our Photos &amp; Videos
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
-            Moments from the water, the beach, and the community at Hikkaduwa —
+            Moments from the water, the beach, and the community at Hirikatiya —
             Sri Lanka&apos;s surf capital.
           </p>
         </div>

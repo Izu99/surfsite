@@ -8,19 +8,19 @@ import { cn } from '@/lib/utils'
 const slides = [
   {
     src: 'https://plus.unsplash.com/premium_photo-1673783807734-3dd0ffbf6784?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Surfing action at Hikkaduwa Beach',
+    alt: 'Surfing action at Hirikatiya Beach',
   },
   {
     src: 'https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf action at Hikkaduwa Beach',
+    alt: 'Surf action at Hirikatiya Beach',
   },
   {
     src: 'https://plus.unsplash.com/premium_photo-1672510000383-8f46f7b157b0?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfing at Hikkaduwa Sri Lanka',
+    alt: 'Surfing at Hirikatiya Sri Lanka',
   },
   {
     src: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Waves at Hikkaduwa Beach',
+    alt: 'Waves at Hirikatiya Beach',
   },
 ]
 

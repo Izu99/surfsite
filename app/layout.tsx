@@ -14,22 +14,22 @@ const firaSansCondensed = Fira_Sans_Condensed({
 
 export const metadata: Metadata = {
   title: {
-    default: 'WavePeak Surf School | Hikkaduwa Beach, Sri Lanka',
-    template: '%s | WavePeak Surf School',
+    default: 'Noah Surf School | Hirikatiya Beach, Sri Lanka',
+    template: '%s | Noah Surf School',
   },
   description:
-    'Learn to surf with certified instructors at Hikkaduwa Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, and surf camps.',
+    'Learn to surf with certified instructors at Hirikatiya Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, and surf camps.',
   keywords: [
     'surf school',
-    'Hikkaduwa',
+    'Hirikatiya',
     'Sri Lanka',
     'surf lessons',
     'surfing',
     'learn to surf',
-    'WavePeak',
+    'Noah',
   ],
   openGraph: {
-    siteName: 'WavePeak Surf School',
+    siteName: 'Noah Surf School',
     locale: 'en_US',
     type: 'website',
   },

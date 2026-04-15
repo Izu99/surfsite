@@ -6,9 +6,9 @@ import HeroSlideshow from '@/components/HeroSlideshow'
 import ServicesSlider from '@/components/ServicesSlider'
 
 export const metadata: Metadata = {
-  title: 'WavePeak Surf School | Hikkaduwa Beach, Sri Lanka',
+  title: 'Noah Surf School | Hirikatiya Beach, Sri Lanka',
   description:
-    'Learn to surf with certified instructors at Hikkaduwa Beach, Sri Lanka.',
+    'Learn to surf with certified instructors at Hirikatiya Beach, Sri Lanka.',
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -40,13 +40,13 @@ const services = [
     description:
       'One-on-one professional coaching tailored to your level. Technique, paddle power, and wave timing.',
     image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf coaching at Hikkaduwa',
+    alt: 'Surf coaching at Hirikatiya',
     icon: '/icons/icons8-surf-96.png',
   },
   {
     title: 'Board Rentals',
     description:
-      'Longboards, shortboards, and foam boards — suited for any condition at Hikkaduwa Beach.',
+      'Longboards, shortboards, and foam boards — suited for any condition at Hirikatiya Beach.',
     image: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
     alt: 'Surfboard rentals',
     icon: '/icons/icons8-holiday-50.png',
@@ -56,7 +56,7 @@ const services = [
     description:
       'Multi-day immersive camps combining lessons, yoga, and Sri Lanka cultural tours.',
     image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    alt: 'WavePeak surf camp',
+    alt: 'Noah surf camp',
     icon: '/icons/icons8-location-50.png',
   },
   {
@@ -76,7 +76,7 @@ const pricingPlans = [
     featured: false,
     image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
     features: [
-      { text: 'Transport to Hikkaduwa', included: true },
+      { text: 'Transport to Hirikatiya', included: true },
       { text: 'Course with certified instructors', included: true },
       { text: '3 nights accommodation', included: false },
       { text: 'Surf certificate', included: false },
@@ -88,7 +88,7 @@ const pricingPlans = [
     featured: true,
     image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
     features: [
-      { text: 'Transport to Hikkaduwa', included: true },
+      { text: 'Transport to Hirikatiya', included: true },
       { text: 'Course with certified instructors', included: true },
       { text: '3 nights accommodation', included: true },
       { text: 'Surf certificate', included: false },
@@ -100,7 +100,7 @@ const pricingPlans = [
     featured: false,
     image: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
     features: [
-      { text: 'Transport to Hikkaduwa', included: true },
+      { text: 'Transport to Hirikatiya', included: true },
       { text: 'Course with certified instructors', included: true },
       { text: '3 nights accommodation', included: true },
       { text: 'Surf certificate', included: true },
@@ -113,7 +113,7 @@ const testimonials = [
     name: 'Sarah M.',
     location: 'United Kingdom',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
-    quote: 'WavePeak gave me the confidence to ride my first wave. The instructors are patient, professional, and genuinely passionate about surfing.',
+    quote: 'Noah gave me the confidence to ride my first wave. The instructors are patient, professional, and genuinely passionate about surfing.',
   },
   {
     name: 'James K.',
@@ -131,7 +131,7 @@ const testimonials = [
     name: 'Marco D.',
     location: 'Italy',
     image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop',
-    quote: 'Fantastic experience at Hikkaduwa. Perfect waves for learning, and the instructors know exactly how to help you progress fast.',
+    quote: 'Fantastic experience at Hirikatiya. Perfect waves for learning, and the instructors know exactly how to help you progress fast.',
   },
 ]
 
@@ -182,10 +182,10 @@ export default function HomePage() {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   We specialize in private surfing lessons, semi-private surfing
                   lessons, and we are proud to offer group sessions and surf camps
-                  right here in Hikkaduwa, Sri Lanka!
+                  right here in Hirikatiya, Sri Lanka!
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  We teach surfing at our beautiful beach in Hikkaduwa — a
+                  We teach surfing at our beautiful beach in Hirikatiya — a
                   world-class surf destination with consistent warm Indian Ocean
                   waves and vibrant tropical culture.
                 </p>
@@ -249,7 +249,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop"
-                alt="Hikkaduwa Beach"
+                alt="Hirikatiya Beach"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -327,7 +327,7 @@ export default function HomePage() {
               <div className="relative overflow-hidden flex-1 group">
                 <Image
                   src="https://plus.unsplash.com/premium_photo-1661813583584-bbb3ac4ade09?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Surf at Hikkaduwa"
+                  alt="Surf at Hirikatiya"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 25vw"
@@ -337,7 +337,7 @@ export default function HomePage() {
                 <div className="relative overflow-hidden flex-1 group">
                   <Image
                     src="https://images.unsplash.com/photo-1559627755-42212e5c5fdf?q=80&w=2070&auto=format&fit=crop"
-                    alt="Ocean at Hikkaduwa"
+                    alt="Ocean at Hirikatiya"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 50vw, 25vw"
@@ -346,7 +346,7 @@ export default function HomePage() {
                 <div className="relative overflow-hidden flex-1 group">
                   <Image
                     src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop"
-                    alt="Surfing in Hikkaduwa"
+                    alt="Surfing in Hirikatiya"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 50vw, 25vw"
@@ -657,7 +657,7 @@ export default function HomePage() {
             Ready to Catch Your First Wave?
           </h2>
           <p className="text-blue-200 text-sm md:text-base max-w-md mx-auto mb-8">
-            Join our daily sessions on Hikkaduwa Beach. All equipment provided —
+            Join our daily sessions on Hirikatiya Beach. All equipment provided —
             no experience necessary.
           </p>
           <Link

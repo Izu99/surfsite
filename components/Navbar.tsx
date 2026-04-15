@@ -26,7 +26,7 @@ export default function Navbar() {
           <Link href="/" className="shrink-0 flex items-center">
             <Image
               src="/logo.png"
-              alt="WavePeak Surf School"
+              alt="Noah Surf School"
               width={56}
               height={56}
               className="h-11 w-auto object-contain"

@@ -48,7 +48,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center mb-4">
               <Image
                 src="/logo.png"
-                alt="WavePeak Surf School"
+                alt="Noah Surf School"
                 width={52}
                 height={52}
                 className="h-11 w-auto object-contain brightness-200"
@@ -56,7 +56,7 @@ export default function Footer() {
             </Link>
             <p className="text-sm leading-relaxed mt-3">
               Sri Lanka&apos;s premier surf school on the beautiful shores of
-              Hikkaduwa Beach. Learn to surf with certified instructors in warm
+              Hirikatiya Beach. Learn to surf with certified instructors in warm
               tropical waters.
             </p>
             <div className="mt-5 flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function Footer() {
               <li className="flex gap-3">
                 <MapPin className="h-4 w-4 text-[#1d4ed8] shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">
-                  Hikkaduwa Beach, Southern Province, Sri Lanka
+                  Hirikatiya Beach, Southern Province, Sri Lanka
                 </span>
               </li>
               <li className="flex gap-3">
@@ -148,8 +148,8 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <p>&copy; {new Date().getFullYear()} WavePeak Surf School. All rights reserved.</p>
-          <p>Hikkaduwa Beach, Sri Lanka</p>
+          <p>&copy; {new Date().getFullYear()} Noah Surf School. All rights reserved.</p>
+          <p>Hirikatiya Beach, Sri Lanka</p>
         </div>
       </div>
     </footer>

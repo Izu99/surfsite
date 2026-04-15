@@ -5,14 +5,14 @@ import ContactForm from '@/components/ContactForm'
 export const metadata: Metadata = {
   title: 'Contact & Book',
   description:
-    'Book a surf lesson or get in touch with WavePeak Surf School at Hikkaduwa Beach, Sri Lanka.',
+    'Book a surf lesson or get in touch with Noah Surf School at Hirikatiya Beach, Sri Lanka.',
 }
 
 const contactInfo = [
   {
     icon: MapPin,
     label: 'Address',
-    lines: ['Hikkaduwa Beach', 'Southern Province, Sri Lanka'],
+    lines: ['Hirikatiya Beach', 'Southern Province, Sri Lanka'],
   },
   {
     icon: Phone,
@@ -55,8 +55,8 @@ const faqs = [
     a: 'Group lessons have a maximum of 6 students per instructor to ensure personalised attention.',
   },
   {
-    q: "Is Hikkaduwa safe for beginners?",
-    a: "Hikkaduwa's inner reef breaks produce mellow, consistent waves — ideal for learning all year round.",
+    q: "Is Hirikatiya safe for beginners?",
+    a: "Hirikatiya's inner reef breaks produce mellow, consistent waves — ideal for learning all year round.",
   },
 ]
 
@@ -154,7 +154,7 @@ export default function ContactPage() {
 
               {/* Get directions */}
               <a
-                href="https://maps.google.com/?q=Hikkaduwa+Beach+Sri+Lanka"
+                href="https://maps.google.com/?q=Hirikatiya+Beach+Sri+Lanka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 border-2 border-gray-800 py-3 text-sm font-bold uppercase tracking-wide text-gray-800 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
@@ -172,8 +172,8 @@ export default function ContactPage() {
         <div className="container-site">
           <div className="overflow-hidden border border-gray-200 aspect-[21/9] min-h-[300px] md:min-h-[450px]">
             <iframe
-              title="Hikkaduwa Beach location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31717.37!2d80.0809!3d6.1395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae173e1e25d6c3b%3A0x4b31dcf4c52cba13!2sHikkaduwa%20Beach!5e0!3m2!1sen!2slk!4v1699900000000!5m2!1sen!2slk"
+              title="Hirikatiya Beach location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31717.37!2d80.0809!3d6.1395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae173e1e25d6c3b%3A0x4b31dcf4c52cba13!2sHirikatiya%20Beach!5e0!3m2!1sen!2slk!4v1699900000000!5m2!1sen!2slk"
               width="100%"
               height="100%"
               style={{ border: 0 }}

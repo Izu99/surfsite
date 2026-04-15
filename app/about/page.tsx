@@ -6,7 +6,7 @@ import { Play } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn more about WavePeak Surf School at Hikkaduwa Beach, Sri Lanka. Our history, our team, and our values.',
+    'Learn more about Noah Surf School at Hirikatiya Beach, Sri Lanka. Our history, our team, and our values.',
 }
 
 const values = [
@@ -31,7 +31,7 @@ const team = [
     name: 'Dinesh Jayawardena',
     role: 'Head Instructor & Founder',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop',
-    bio: 'ILS Level 3 certified with 14 years of surf instruction experience. Dinesh founded WavePeak to share his love of Hikkaduwa\'s waves with the world.',
+    bio: 'ILS Level 3 certified with 14 years of surf instruction experience. Dinesh founded Noah to share his love of Hirikatiya\'s waves with the world.',
   },
   {
     name: 'Kasun Perera',
@@ -60,11 +60,11 @@ export default function AboutPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our WavePeak Story
+            Our Noah Story
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Since 2010, we&apos;ve been more than just a school. We&apos;re a
-            community dedicated to sharing the soul of surfing at Hikkaduwa Beach,
+            community dedicated to sharing the soul of surfing at Hirikatiya Beach,
             Sri Lanka.
           </p>
         </div>
@@ -90,16 +90,16 @@ export default function AboutPage() {
               </p>
               <div className="border-l-4 border-[#1d4ed8] pl-5 space-y-4 mb-8">
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  WavePeak Surf School was founded in 2010 by Dinesh Jayawardena,
+                  Noah Surf School was founded in 2010 by Dinesh Jayawardena,
                   a lifelong surfer and ILS-certified instructor who grew up riding
-                  the waves of Hikkaduwa Beach. What started as informal lessons
+                  the waves of Hirikatiya Beach. What started as informal lessons
                   for visiting tourists quickly grew into Sri Lanka&apos;s most
                   trusted surf school.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Today we offer private lessons, semi-private sessions, group
                   classes, and immersive multi-day surf camps — all in the warm,
-                  consistent swells of the Indian Ocean right here in Hikkaduwa.
+                  consistent swells of the Indian Ocean right here in Hirikatiya.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -123,7 +123,7 @@ export default function AboutPage() {
           <div className="relative min-h-[380px]">
             <Image
               src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop"
-              alt="Surf lesson at Hikkaduwa"
+              alt="Surf lesson at Hirikatiya"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -195,7 +195,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1616449973117-0e1d99c56ed3?q=80&w=2070&auto=format&fit=crop"
-                alt="Surf coaching at WavePeak"
+                alt="Surf coaching at Noah"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
