@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter } from 'lucide
 const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
 ]

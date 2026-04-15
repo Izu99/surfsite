@@ -73,7 +73,7 @@ export default function ContactPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Book a Lesson
+            Book a <span className="text-[#1d4ed8]">Lesson</span>
           </h1>
           <p className="text-gray-500 max-w-md text-sm leading-relaxed">
             Ready to hit the waves? Fill in the form and we&apos;ll confirm your

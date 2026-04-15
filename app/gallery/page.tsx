@@ -104,7 +104,7 @@ export default function GalleryPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Photos &amp; Videos
+            Our Photos &amp; <span className="text-[#1d4ed8]">Videos</span>
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Moments from the water, the beach, and the community at Hirikatiya —

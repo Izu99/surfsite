@@ -3,6 +3,7 @@ import { Fira_Sans_Condensed } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Providers } from '@/components/Providers'
 
 const firaSansCondensed = Fira_Sans_Condensed({
   subsets: ['latin'],
@@ -43,9 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={firaSansCondensed.variable}>
       <body className="min-h-screen flex flex-col antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

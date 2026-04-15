@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Play, Check, X, Star, Facebook, Twitter, Linkedin } from 'lucide-react'
+import { Play, Check, Star, Facebook, Twitter, Linkedin, Clock, Users, Gift, X } from 'lucide-react'
 import HeroSlideshow from '@/components/HeroSlideshow'
 import ServicesSlider from '@/components/ServicesSlider'
+import { homepagePackages, INCLUDED_IN_ALL } from '@/data/packages'
 
 export const metadata: Metadata = {
   title: 'Noah Surf School | Hirikatiya Beach, Sri Lanka',
@@ -69,44 +70,6 @@ const services = [
   },
 ]
 
-const pricingPlans = [
-  {
-    name: 'Private',
-    price: '45',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
-    features: [
-      { text: 'Transport to Hirikatiya', included: true },
-      { text: 'Course with certified instructors', included: true },
-      { text: '3 nights accommodation', included: false },
-      { text: 'Surf certificate', included: false },
-    ],
-  },
-  {
-    name: 'Semi Private',
-    price: '52',
-    featured: true,
-    image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    features: [
-      { text: 'Transport to Hirikatiya', included: true },
-      { text: 'Course with certified instructors', included: true },
-      { text: '3 nights accommodation', included: true },
-      { text: 'Surf certificate', included: false },
-    ],
-  },
-  {
-    name: 'Group',
-    price: '73',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
-    features: [
-      { text: 'Transport to Hirikatiya', included: true },
-      { text: 'Course with certified instructors', included: true },
-      { text: '3 nights accommodation', included: true },
-      { text: 'Surf certificate', included: true },
-    ],
-  },
-]
 
 const testimonials = [
   {
@@ -381,21 +344,21 @@ export default function HomePage() {
               Surf School Programs
             </h2>
             <p className="text-gray-500 text-sm mt-3 max-w-md">
-              We want our clients to feel awesome and unique.
+              Every session includes boards, rash guard, sunscreen, water &amp; first aid. No hidden fees.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {pricingPlans.map((plan) => (
+            {homepagePackages.map((plan) => (
               <div
-                key={plan.name}
-                className={`flex flex-col border transition-all duration-300 ${
-                  plan.featured 
-                    ? 'border-[#1d4ed8] shadow-2xl shadow-blue-200/60 md:scale-105 z-10 bg-white relative' 
-                    : 'border-gray-200 hover:border-gray-300'
+                key={plan.id}
+                className={`flex flex-col transition-all duration-300 ${
+                  plan.featured
+                    ? 'border border-[#1d4ed8] shadow-2xl shadow-blue-200/60 md:scale-105 z-10 bg-white relative'
+                    : 'border border-gray-200 hover:border-gray-300 bg-white'
                 }`}
               >
-                {/* Header: image with subtle gradient */}
+                {/* Image */}
                 <div className="relative h-52 overflow-hidden">
                   <Image
                     src={plan.image}
@@ -404,59 +367,84 @@ export default function HomePage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
                   {plan.featured && (
-                    <span className="absolute top-0 left-0 text-[10px] font-bold uppercase tracking-[0.2em] bg-[#1d4ed8] text-white px-4 py-2">
+                    <span className="absolute top-0 left-0 text-[10px] font-bold uppercase tracking-widest bg-[#1d4ed8] text-white px-3 py-1.5">
                       Most Popular
                     </span>
                   )}
-                  <div className="absolute bottom-4 left-5">
-                    <p className="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Plan</p>
-                    <p className="text-white text-lg font-bold">{plan.name}</p>
-                  </div>
-                </div>
-                {/* Price */}
-                <div className={`px-6 py-4 border-b border-gray-100 ${plan.featured ? 'bg-[#1d4ed8]' : 'bg-white'}`}>
-                  <div className="flex items-start leading-none gap-0.5">
-                    <span className={`text-lg font-bold mt-1 ${plan.featured ? 'text-blue-200' : 'text-gray-400'}`}>$</span>
-                    <span className={`text-5xl font-extrabold ${plan.featured ? 'text-white' : 'text-gray-900'}`}>{plan.price}</span>
-                    <span className={`text-xs self-end mb-1 ml-1.5 ${plan.featured ? 'text-blue-200' : 'text-gray-400'}`}>/ session</span>
+                  <div className="absolute bottom-3 left-4">
+                    <p className="text-white font-bold text-base">{plan.name}</p>
+                    <p className="text-white/70 text-xs">{plan.level}</p>
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="flex-1 bg-white p-6">
-                  <ul className="divide-y divide-gray-100">
-                    {plan.features.map((f) => (
-                      <li key={f.text} className="flex items-center gap-3 py-3 text-sm">
-                        {f.included ? (
-                          <Check className="h-4 w-4 text-[#1d4ed8] shrink-0" />
-                        ) : (
-                          <X className="h-4 w-4 text-gray-300 shrink-0" />
-                        )}
-                        <span className={f.included ? 'text-[#1d4ed8]' : 'text-gray-400'}>
-                          {f.text}
-                        </span>
+                {/* Price */}
+                <div className={`px-6 py-4 border-b border-gray-100 ${plan.featured ? 'bg-[#1d4ed8]' : 'bg-white'}`}>
+                  <div className="flex items-baseline gap-0.5">
+                    <span className={`text-base font-bold ${plan.featured ? 'text-blue-200' : 'text-gray-400'}`}>$</span>
+                    <span className={`text-5xl font-extrabold leading-none ${plan.featured ? 'text-white' : 'text-gray-900'}`}>
+                      {plan.price}
+                    </span>
+                    <span className={`text-xs ml-1.5 ${plan.featured ? 'text-blue-200' : 'text-gray-400'}`}>
+                      / {plan.priceNote}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="flex-1 bg-white p-6 space-y-4">
+                  <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5 text-[#1d4ed8]" />
+                      {plan.duration}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Users className="h-3.5 w-3.5 text-[#1d4ed8]" />
+                      {plan.format}
+                    </span>
+                    {plan.souvenir && (
+                      <span className="flex items-center gap-1.5 text-amber-600 font-medium text-xs">
+                        <Gift className="h-3.5 w-3.5" />
+                        Souvenir included
+                      </span>
+                    )}
+                  </div>
+                  <ul className="space-y-2">
+                    {INCLUDED_IN_ALL.map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
+                        <Check className="h-3.5 w-3.5 text-[#1d4ed8] shrink-0" />
+                        {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Footer */}
-                <div className="p-6 bg-white border-t border-gray-100 text-center">
+                {/* CTA */}
+                <div className="bg-white p-6 border-t border-gray-100 text-center">
                   <Link
-                    href="/contact"
+                    href={`/contact?package=${encodeURIComponent(plan.name)}`}
                     className={`inline-block px-10 py-3 text-sm font-bold uppercase tracking-wide transition-colors ${
                       plan.featured
                         ? 'bg-[#1d4ed8] text-white hover:bg-[#1e40af]'
                         : 'border-2 border-gray-800 text-gray-800 hover:border-[#1d4ed8] hover:text-[#1d4ed8]'
                     }`}
                   >
-                    Book A Lesson
+                    Book Now
                   </Link>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/packages"
+              className="inline-flex items-center gap-2 bg-gray-900 text-white px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-[#1d4ed8] transition-all group"
+            >
+              View All Packages
+              <Play className="w-3 h-3 fill-current transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>

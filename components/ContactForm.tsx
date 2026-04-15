@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Send, CheckCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -9,6 +10,7 @@ type FormState = {
   email: string
   phone: string
   date: string
+  package: string
   level: string
   message: string
 }
@@ -18,15 +20,24 @@ const initialState: FormState = {
   email: '',
   phone: '',
   date: '',
+  package: '',
   level: '',
   message: '',
 }
 
-export default function ContactForm() {
+function ContactFormInner() {
+  const searchParams = useSearchParams()
   const [form, setForm] = useState<FormState>(initialState)
   const [errors, setErrors] = useState<Partial<FormState>>({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    const pkg = searchParams.get('package')
+    if (pkg) {
+      setForm((prev) => ({ ...prev, package: pkg }))
+    }
+  }, [searchParams])
 
   const validate = (): boolean => {
     const e: Partial<FormState> = {}
@@ -137,6 +148,23 @@ export default function ContactForm() {
         </Field>
       </div>
 
+      {/* Package Selection */}
+      <Field label="Select Package" error={errors.package}>
+        <select
+          name="package"
+          value={form.package}
+          onChange={handleChange}
+          className={cn(inputClass(!!errors.package), 'cursor-pointer')}
+        >
+          <option value="">Select a package (Optional)</option>
+          <option value="private">Private Lesson — $45</option>
+          <option value="semi-private">Semi-Private Lesson — $52</option>
+          <option value="group">Group Session — $73</option>
+          <option value="first-aid">First Aid Workshop — $35</option>
+          <option value="surf-yoga">Surf & Yoga Retreat — $150</option>
+        </select>
+      </Field>
+
       {/* Skill Level */}
       <Field label="Skill Level" error={errors.level} required>
         <select
@@ -186,6 +214,14 @@ export default function ContactForm() {
         )}
       </button>
     </form>
+  )
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense fallback={<div className="py-20 text-center text-gray-400">Loading form...</div>}>
+      <ContactFormInner />
+    </Suspense>
   )
 }
 

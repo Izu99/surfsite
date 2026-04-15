@@ -60,7 +60,7 @@ export default function AboutPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Noah Story
+            Our Noah <span className="text-[#1d4ed8]">Story</span>
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Since 2010, we&apos;ve been more than just a school. We&apos;re a
