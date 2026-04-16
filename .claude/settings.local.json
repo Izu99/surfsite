@@ -1,8 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(netstat -ano)",
-      "Bash(findstr \":3000\")"
+      "Bash(cat C:/Users/isuru/Desktop/surfsite/client/app/blog/[slug]/page.tsx)",
+      "Bash(cat C:/Users/isuru/Desktop/surfsite/client/app/admin/blog/edit/[id]/page.tsx)",
+      "Bash(npm install *)",
+      "Bash(grep *)",
+      "Bash(npx tsc *)",
+      "Bash(xargs ls *)",
+      "Bash(npm run *)"
     ]
   }
 }
