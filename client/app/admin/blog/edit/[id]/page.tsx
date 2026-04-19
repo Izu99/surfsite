@@ -30,8 +30,8 @@ function ConfirmModal({
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onCancel} />
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 space-y-4">
         <div className="flex items-start gap-3">
-          <div className="mt-0.5 flex-shrink-0 p-2 rounded-full bg-blue-100">
-            <AlertCircle className="h-5 w-5 text-[#1d4ed8]" />
+          <div className="mt-0.5 flex-shrink-0 p-2 rounded-full bg-primary-100">
+            <AlertCircle className="h-5 w-5 text-primary" />
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-base">{title}</h3>
@@ -47,7 +47,7 @@ function ConfirmModal({
           </button>
           <button
             onClick={onConfirm}
-            className="px-5 py-2 rounded-xl text-sm font-bold text-white bg-[#1d4ed8] hover:bg-[#1e40af] transition-colors"
+            className="px-5 py-2 rounded-xl text-sm font-bold text-white bg-primary hover:bg-primary-dark transition-colors"
           >
             {confirmLabel}
           </button>
@@ -165,7 +165,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
     return (
       <div className="pt-[calc(72px+4rem)] text-center container-site">
         <p className="text-gray-500 mb-4">Post not found.</p>
-        <Link href="/admin/blog" className="text-[#1d4ed8] underline text-sm">Back to admin</Link>
+        <Link href="/admin/blog" className="text-primary underline text-sm">Back to admin</Link>
       </div>
     )
   }
@@ -186,7 +186,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
 
       <div className="bg-[#1a2e4a] border-b border-white/10">
         <div className="container-site py-6 flex items-center gap-4">
-          <LayoutDashboard className="h-5 w-5 text-[#1d4ed8]" />
+          <LayoutDashboard className="h-5 w-5 text-primary" />
           <div>
             <div className="flex items-center gap-1.5 text-xs text-gray-400">
               <Link href="/admin/blog" className="hover:text-white transition-colors">Blog Management</Link>
@@ -198,7 +198,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
         </div>
       </div>
 
-      <section className="section-padding bg-[#f0f4f8]">
+      <section className="section-padding bg-primary-50">
         <div className="container-site max-w-4xl">
           {apiError && (
             <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-6">
@@ -277,7 +277,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
               </div>
               <div className="flex flex-wrap gap-2">
                 {form.tags.map((tag) => (
-                  <span key={tag} className="flex items-center gap-1 bg-blue-50 text-[#1d4ed8] text-xs font-medium px-3 py-1.5 rounded-full">
+                  <span key={tag} className="flex items-center gap-1 bg-primary-50 text-primary text-xs font-medium px-3 py-1.5 rounded-full">
                     {tag}
                     <button type="button" onClick={() => removeTag(tag)} className="hover:text-red-500 transition-colors"><X className="h-3 w-3" /></button>
                   </span>
@@ -300,7 +300,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
                 disabled={saved || submitting}
                 className={cn(
                   'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all',
-                  saved ? 'bg-green-600 text-white' : 'bg-[#1d4ed8] hover:bg-[#1e40af] text-white disabled:opacity-60',
+                  saved ? 'bg-green-600 text-white' : 'bg-primary hover:bg-primary-dark text-white disabled:opacity-60',
                 )}
               >
                 {saved ? (
@@ -322,7 +322,7 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
 function inputCls(hasError: boolean) {
   return cn(
     'w-full rounded-xl border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 transition',
-    hasError ? 'border-red-300 focus:ring-red-200 focus:border-red-400' : 'border-gray-200 focus:ring-[#1d4ed8]/20 focus:border-[#1d4ed8]',
+    hasError ? 'border-red-300 focus:ring-red-200 focus:border-red-400' : 'border-gray-200 focus:ring-primary/20 focus:border-primary',
   )
 }
 
@@ -346,7 +346,7 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
         <p className="text-sm font-semibold text-gray-900">{label}</p>
         <p className="text-xs text-gray-400">{description}</p>
       </div>
-      <div onClick={() => onChange(!checked)} className={cn('relative w-11 h-6 rounded-full transition-colors', checked ? 'bg-[#1d4ed8]' : 'bg-gray-200')}>
+      <div onClick={() => onChange(!checked)} className={cn('relative w-11 h-6 rounded-full transition-colors', checked ? 'bg-primary' : 'bg-gray-200')}>
         <span className={cn('absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform', checked && 'translate-x-5')} />
       </div>
     </label>

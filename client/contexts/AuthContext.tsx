@@ -12,7 +12,6 @@ import { authApi, type AdminUser } from '@/lib/api'
 
 type AuthState = {
   admin: AdminUser | null
-  token: string | null
   loading: boolean
   login: (identifier: string, password: string) => Promise<void>
   logout: () => Promise<void>
@@ -23,31 +22,20 @@ const AuthContext = createContext<AuthState | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [admin, setAdmin] = useState<AdminUser | null>(null)
-  const [token, setToken] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
-  // Restore session from localStorage on mount
+  // Restore session via httpOnly cookie — no localStorage
   useEffect(() => {
-    const stored = localStorage.getItem('admin_token')
-    if (stored) {
-      setToken(stored)
-      authApi
-        .me()
-        .then((res) => setAdmin(res.admin))
-        .catch(() => {
-          localStorage.removeItem('admin_token')
-          setToken(null)
-        })
-        .finally(() => setLoading(false))
-    } else {
-      setLoading(false)
-    }
+    authApi
+      .me()
+      .then((res) => setAdmin(res.admin))
+      .catch(() => setAdmin(null))
+      .finally(() => setLoading(false))
   }, [])
 
   const login = useCallback(async (identifier: string, password: string) => {
     const res = await authApi.login(identifier, password)
-    localStorage.setItem('admin_token', res.token)
-    setToken(res.token)
+    // Token is set as httpOnly cookie by the server — do not store in localStorage
     setAdmin(res.admin)
   }, [])
 
@@ -57,14 +45,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore network errors on logout
     }
-    localStorage.removeItem('admin_token')
-    setToken(null)
     setAdmin(null)
   }, [])
 
   return (
     <AuthContext.Provider
-      value={{ admin, token, loading, login, logout, isAuthenticated: !!admin }}
+      value={{ admin, loading, login, logout, isAuthenticated: !!admin }}
     >
       {children}
     </AuthContext.Provider>

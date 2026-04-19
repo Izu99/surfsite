@@ -19,10 +19,12 @@ import { useBlogs } from '@/lib/blog-store'
 import DOMPurify from 'dompurify'
 
 function BlogContent({ html }: { html: string }) {
+  // During SSR typeof window === 'undefined' — render nothing rather than
+  // passing raw unsanitised HTML. DOMPurify runs after hydration on the client.
   const clean =
     typeof window !== 'undefined'
       ? DOMPurify.sanitize(html, { USE_PROFILES: { html: true } })
-      : html
+      : ''
 
   return (
     <div
@@ -39,11 +41,11 @@ function BlogContent({ html }: { html: string }) {
         '[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1',
         '[&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-1',
         '[&_li]:leading-relaxed',
-        '[&_blockquote]:border-l-4 [&_blockquote]:border-[#1d4ed8] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-gray-600 [&_blockquote]:my-6',
-        '[&_code]:bg-gray-100 [&_code]:text-[#1d4ed8] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono',
+        '[&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-gray-600 [&_blockquote]:my-6',
+        '[&_code]:bg-gray-100 [&_code]:text-primary [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono',
         '[&_pre]:bg-gray-900 [&_pre]:text-gray-100 [&_pre]:p-4 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:my-6',
         '[&_pre_code]:bg-transparent [&_pre_code]:text-gray-100 [&_pre_code]:p-0',
-        '[&_a]:text-[#1d4ed8] [&_a]:underline [&_a]:hover:text-[#1e40af]',
+        '[&_a]:text-primary [&_a]:underline [&_a]:hover:text-[#1e40af]',
         '[&_hr]:border-gray-200 [&_hr]:my-8',
         '[&_mark]:px-0.5 [&_mark]:rounded-sm',
         '[&_img]:rounded-xl [&_img]:max-w-full [&_img]:my-6',
@@ -106,7 +108,7 @@ export default function BlogDetailClient({
             <ChevronLeft className="h-3.5 w-3.5" />
             Back to Blog
           </Link>
-          <span className="inline-block bg-[#1d4ed8] text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+          <span className="inline-block bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
             {post.category}
           </span>
           <h1 className="text-3xl md:text-5xl font-bold text-white max-w-3xl leading-tight">
@@ -120,15 +122,15 @@ export default function BlogDetailClient({
         <div className="container-site py-4 flex flex-wrap gap-4 items-center justify-between">
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
             <span className="flex items-center gap-1.5">
-              <User className="h-4 w-4 text-[#1d4ed8]" />
+              <User className="h-4 w-4 text-primary" />
               {post.author}
             </span>
             <span className="flex items-center gap-1.5">
-              <Calendar className="h-4 w-4 text-[#1d4ed8]" />
+              <Calendar className="h-4 w-4 text-primary" />
               {post.date}
             </span>
             <span className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-[#1d4ed8]" />
+              <Clock className="h-4 w-4 text-primary" />
               {post.readTime}
             </span>
           </div>
@@ -139,7 +141,7 @@ export default function BlogDetailClient({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Share on Facebook"
-              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-colors"
             >
               <Facebook className="h-3.5 w-3.5" />
             </a>
@@ -148,7 +150,7 @@ export default function BlogDetailClient({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Share on Twitter"
-              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-colors"
             >
               <Twitter className="h-3.5 w-3.5" />
             </a>
@@ -157,7 +159,7 @@ export default function BlogDetailClient({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Share on LinkedIn"
-              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+              className="h-8 w-8 border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-colors"
             >
               <Linkedin className="h-3.5 w-3.5" />
             </a>
@@ -169,7 +171,7 @@ export default function BlogDetailClient({
       <section className="section-padding bg-white">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600 leading-relaxed mb-8 font-medium border-l-4 border-[#1d4ed8] pl-5">
+            <p className="text-lg text-gray-600 leading-relaxed mb-8 font-medium border-l-4 border-primary pl-5">
               {post.description}
             </p>
             <BlogContent html={post.content} />
@@ -195,8 +197,8 @@ export default function BlogDetailClient({
         <section className="section-padding bg-[#f0f4f8] border-t border-gray-200">
           <div className="container-site">
             <div className="flex items-center gap-3 mb-8">
-              <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+              <span className="w-8 h-px bg-primary block shrink-0" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 More to Read
               </span>
             </div>
@@ -218,13 +220,13 @@ export default function BlogDetailClient({
                     />
                   </div>
                   <div className="p-5">
-                    <span className="text-xs font-bold text-[#1d4ed8] uppercase tracking-widest">
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest">
                       {r.category}
                     </span>
-                    <h3 className="font-bold text-gray-900 text-sm mt-1.5 mb-2 leading-snug group-hover:text-[#1d4ed8] transition-colors line-clamp-2">
+                    <h3 className="font-bold text-gray-900 text-sm mt-1.5 mb-2 leading-snug group-hover:text-primary transition-colors line-clamp-2">
                       {r.title}
                     </h3>
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-[#1d4ed8]">
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
                       Read <ChevronRight className="h-3 w-3" />
                     </span>
                   </div>

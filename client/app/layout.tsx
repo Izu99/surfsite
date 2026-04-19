@@ -3,6 +3,7 @@ import { Fira_Sans_Condensed } from 'next/font/google'
 import './globals.css'
 import SiteShell from '@/components/SiteShell'
 import { Providers } from '@/components/Providers'
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 
 const firaSansCondensed = Fira_Sans_Condensed({
   subsets: ['latin'],
@@ -19,18 +20,39 @@ export const metadata: Metadata = {
     template: '%s | Noah Surf School',
   },
   description:
-    'Learn to surf with certified ILS instructors at Hirikatiya Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, surf camps, and yoga retreats. Open daily 6am–6pm.',
+    'Learn to surf with certified ILS instructors at Hirikatiya Beach, Sri Lanka. Group and private lessons, surf camps, board rentals. Open daily 6am–6pm.',
   keywords: [
-    'surf school',
-    'Hirikatiya',
-    'Sri Lanka',
-    'surf lessons',
-    'surfing',
-    'learn to surf',
-    'Noah',
-    'ILS certified',
+    // Brand
+    'Noah Surf School',
+    'Noah Surf School Hiriketiya',
+    'Noah Surf Sri Lanka',
+    'Hiriketiya Noah Surfing School',
+    // Location
+    'surf school Hiriketiya',
+    'surf lessons Matara',
+    'surfing Galle',
+    'Dickwella surf school',
+    'South Coast Sri Lanka surfing',
+    'Hiriketiya Beach surfing',
+    // Services
+    'beginner surf lessons',
+    'intermediate surf coaching',
+    'private surf instructor Sri Lanka',
     'surf camp Sri Lanka',
-    'Hirikatiya Beach surfing',
+    'surfboard rental Hiriketiya',
+    // Beginner intent
+    'learn to surf Sri Lanka',
+    'first time surfing Hiriketiya',
+    'safe surf lessons for beginners',
+    'kids surf lessons Sri Lanka',
+    // Advanced intent
+    'surf guiding Matara',
+    'advanced surfing Hiriketiya reef',
+    'surf photography Sri Lanka',
+    // Vibe
+    'local surf instructors Hiriketiya',
+    'authentic Sri Lankan surf experience',
+    'eco-friendly surf camp Sri Lanka',
   ],
   openGraph: {
     siteName: 'Noah Surf School',
@@ -60,6 +82,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
           <SiteShell>{children}</SiteShell>
+          <FloatingWhatsApp />
         </Providers>
       </body>
     </html>

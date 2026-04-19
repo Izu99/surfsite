@@ -7,7 +7,16 @@
       "Bash(grep *)",
       "Bash(npx tsc *)",
       "Bash(xargs ls *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(curl -s -o /tmp/r.json -w '%{http_code} %{time_total}' http://localhost:5000/health)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /tmp/login.json -w '%{http_code} %{time_total}' -X POST http://localhost:5000/api/auth/login -H 'Content-Type: application/json' -d '{\"identifier\":\"admin\",\"password\":\"wrongpassword\"}')",
+      "Bash(curl -s -D /tmp/headers.txt -o /tmp/body.json http://localhost:5000/api/auth/login -X POST -H 'Content-Type: application/json' -d '{\"identifier\":\"x\",\"password\":\"y\"}')",
+      "Bash(curl -s -o /tmp/r.json -w '%{http_code} %{time_total}' http://localhost:5000/api/auth/me)",
+      "Bash(curl -s -o /tmp/r.json -w '%{http_code} %{time_total}' -X POST http://localhost:5000/api/auth/login -H 'Content-Type: application/json' -d '{}')",
+      "Bash(curl -s -o /tmp/blogs.json -w '%{http_code} %{time_total}' http://localhost:5000/api/blogs)",
+      "Bash(curl -s 'http://localhost:5000/api/blogs?page=1&limit=5')",
+      "Bash(curl -s -o /tmp/r.json -w '%{http_code} %{time_total}' http://localhost:5000/api/blogs/this-is-a-sample-post)"
     ]
   }
 }

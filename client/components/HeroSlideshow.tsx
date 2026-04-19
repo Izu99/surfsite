@@ -71,7 +71,7 @@ export default function HeroSlideshow() {
             onClick={() => setCurrent(i)}
             className={cn(
               'text-sm font-bold tabular-nums text-left transition-colors tracking-wide',
-              i === current ? 'text-[#3b82f6]' : 'text-white/40 hover:text-white/60'
+              i === current ? 'text-primary-light' : 'text-white/40 hover:text-white/60'
             )}
           >
             .{String(i + 1).padStart(2, '0')}
@@ -94,6 +94,7 @@ export default function HeroSlideshow() {
               style={{ fontSize: 'clamp(3.5rem, 13vw, 10rem)' }}
             >
               SURF SCHOOL
+              <span className="sr-only"> — Noah Surf School Hiriketiya, Sri Lanka</span>
             </h1>
           </div>
 
@@ -101,11 +102,11 @@ export default function HeroSlideshow() {
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mt-6 md:mt-10 gap-4 sm:gap-0">
             <Link
               href="/contact"
-              className="ml-8 md:ml-12 lg:ml-16 inline-block bg-[#1d4ed8] text-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-[#2563eb] transition-colors"
+              className="ml-8 md:ml-12 lg:ml-16 inline-block bg-primary text-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-colors"
             >
               Book A Lesson
             </Link>
-            <p className="text-[#7dd3fc] font-bold uppercase tracking-[0.18em] text-lg md:text-2xl mb-1">
+            <p className="text-primary-light font-bold uppercase tracking-[0.18em] text-lg md:text-2xl mb-1">
               HIRIKATIYA, SRI LANKA
             </p>
           </div>

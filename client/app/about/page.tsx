@@ -1,16 +1,18 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Play } from 'lucide-react'
+import { Play, Instagram, Facebook, Youtube } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
   description:
-    'Discover the story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ILS-certified instructors, explore our values, and learn why surfers from 60+ countries trust us.',
+    'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ILS-certified instructors and learn why surfers from over 60 countries choose us.',
+  alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka',
     description:
-      'Meet our ILS-certified instructors and discover why surfers from 60+ countries choose Noah Surf School at Hirikatiya Beach, Sri Lanka.',
+      'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ILS-certified instructors and learn why surfers from over 60 countries choose us.',
+    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
   },
 }
 
@@ -31,12 +33,36 @@ const stats = [
   { icon: '/icons/icons8-star-50.png', number: '4.9', label: 'Student Rating', sub: 'Based on 800+ reviews' },
 ]
 
+const socials = [
+  {
+    label: 'Instagram',
+    handle: '@noahsurfschool',
+    href: 'https://instagram.com/noahsurfschool',
+    Icon: Instagram,
+    bg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
+  },
+  {
+    label: 'Facebook',
+    handle: 'Noah Surf School',
+    href: 'https://facebook.com/noahsurfschool',
+    Icon: Facebook,
+    bg: 'bg-[#1877F2]',
+  },
+  {
+    label: 'YouTube',
+    handle: 'Noah Surf School',
+    href: 'https://youtube.com/@noahsurfschool',
+    Icon: Youtube,
+    bg: 'bg-[#FF0000]',
+  },
+]
+
 const team = [
   {
-    name: 'Dinesh Jayawardena',
+    name: 'Noah',
     role: 'Head Instructor & Founder',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop',
-    bio: 'ILS Level 3 certified with 14 years of surf instruction experience. Dinesh founded Noah to share his love of Hirikatiya\'s waves with the world.',
+    bio: 'ILS certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya\'s waves with visitors from around the world.',
   },
   {
     name: 'Kasun Perera',
@@ -56,16 +82,16 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="bg-[#f0f4f8] border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
+      <section className="bg-primary-50 border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
         <div className="container-site">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               About Us
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Noah <span className="text-[#1d4ed8]">Story</span>
+            Our Noah <span className="text-primary">Story</span>
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Since 2010, we&apos;ve been more than just a school. We&apos;re a
@@ -82,8 +108,8 @@ export default function AboutPage() {
           <div className="flex items-center py-16 md:py-20 px-6 md:px-12 lg:px-10 xl:px-16 lg:max-w-[680px] lg:ml-auto w-full">
             <div className="w-full">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+                <span className="w-8 h-px bg-primary block shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                   Our History
                 </span>
               </div>
@@ -93,13 +119,13 @@ export default function AboutPage() {
               <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
                 We want our clients to feel awesome and unique.
               </p>
-              <div className="border-l-4 border-[#1d4ed8] pl-5 space-y-4 mb-8">
+              <div className="border-l-4 border-primary pl-5 space-y-4 mb-8">
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Noah Surf School was founded in 2010 by Dinesh Jayawardena,
-                  a lifelong surfer and ILS-certified instructor who grew up riding
-                  the waves of Hirikatiya Beach. What started as informal lessons
-                  for visiting tourists quickly grew into Sri Lanka&apos;s most
-                  trusted surf school.
+                  Noah Surf School was founded by Noah, a lifelong surfer and
+                  ILS-certified instructor who grew up riding the waves of
+                  Hiriketiya Beach. What started as informal lessons for visiting
+                  tourists quickly grew into one of Sri Lanka&apos;s most trusted
+                  surf schools.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Today we offer private lessons, semi-private sessions, group
@@ -110,13 +136,13 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="inline-block bg-[#1d4ed8] text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[#1e40af] transition-colors"
+                  className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
                 >
                   Book A Lesson
                 </Link>
                 <Link
                   href="/gallery"
-                  className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 text-sm font-bold uppercase tracking-wide hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+                  className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors"
                 >
                   View Gallery
                 </Link>
@@ -147,14 +173,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Stats (With FIXED background image) ── */}
-      <section 
+      <section
         className="relative py-24 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ 
-          backgroundImage: "url('https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop')" 
+        style={{
+          backgroundImage: "url('https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop')"
         }}
       >
         <div className="absolute inset-0 bg-[#0d1b2a]/40 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-blue-600/10" />
+        <div className="absolute inset-0 bg-primary/10" />
         <div className="relative container-site">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
             {stats.map(({ icon, number, label, sub }) => (
@@ -163,8 +189,8 @@ export default function AboutPage() {
                   <Image src={icon} alt={label} width={48} height={48} className="object-contain brightness-0 invert" />
                 </div>
                 <p className="text-4xl font-extrabold text-white mb-1">{number}</p>
-                <p className="text-sm font-semibold text-blue-100">{label}</p>
-                <p className="text-xs text-blue-200/80 mt-1">{sub}</p>
+                <p className="text-sm font-semibold text-primary-100">{label}</p>
+                <p className="text-xs text-primary-200/80 mt-1">{sub}</p>
               </div>
             ))}
           </div>
@@ -177,8 +203,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+                <span className="w-8 h-px bg-primary block shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                   Advantages
                 </span>
               </div>
@@ -211,15 +237,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team ── */}
-      <section className="section-padding bg-[#f0f4f8]">
+      <section className="section-padding bg-primary-50">
         <div className="container-site">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+              <span className="w-8 h-px bg-primary block shrink-0" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Our Team
               </span>
-              <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
+              <span className="w-8 h-px bg-primary block shrink-0" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Meet the Instructors
@@ -239,7 +265,7 @@ export default function AboutPage() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-base font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-xs font-semibold text-[#1d4ed8] uppercase tracking-wide mt-1 mb-3">
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1 mb-3">
                     {member.role}
                   </p>
                   <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
@@ -250,15 +276,96 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── A Day in the Life ── */}
+      <section className="section-padding bg-white border-t border-gray-100">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-px bg-primary block shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                  Behind the Scenes
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+                A Day in the Life<br />at Hirikatiya
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                Wake up to the sound of waves, grab a board, and spend the day doing
+                what you love. Watch what a typical day looks like at Noah Surf School
+                — from morning sessions to sunset walks on the beach.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
+              >
+                Book Your Day
+              </Link>
+            </div>
+            {/* YouTube embed */}
+            <div className="relative w-full aspect-video overflow-hidden border border-gray-200 shadow-[var(--shadow-card)]">
+              <iframe
+                src="https://www.youtube.com/embed/o1tj2zJ2Wvg?rel=0&modestbranding=1"
+                title="A day in the life at Noah Surf School — Hirikatiya Beach, Sri Lanka"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Follow Us ── */}
+      <section className="section-padding bg-[#f0f4f8] border-t border-gray-200">
+        <div className="container-site">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-8 h-px bg-primary block shrink-0" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                Follow Us
+              </span>
+              <span className="w-8 h-px bg-primary block shrink-0" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Stay in the Loop
+            </h2>
+            <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed">
+              Follow our daily surf sessions, behind-the-scenes moments, and Hirikatiya
+              life on social media.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            {socials.map(({ label, handle, href, Icon, bg }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center text-center p-8 bg-white border border-gray-100 shadow-[var(--shadow-card)] hover:-translate-y-1 transition-all group"
+              >
+                <div
+                  className={`h-14 w-14 rounded-full ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                >
+                  <Icon className="h-6 w-6 text-white" />
+                </div>
+                <p className="text-sm font-bold text-gray-900">{label}</p>
+                <p className="text-xs text-gray-400 mt-1">{handle}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="section-padding bg-white border-t border-gray-100">
         <div className="container-site text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               Get Started
             </span>
-            <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
+            <span className="w-8 h-px bg-primary block shrink-0" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Ready to Hit the Waves?
@@ -268,7 +375,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-[#1d4ed8] text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-[#1e40af] transition-colors"
+            className="inline-block bg-primary text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-colors"
           >
             Book A Lesson
           </Link>

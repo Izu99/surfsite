@@ -11,8 +11,20 @@ export async function listAll(
   next: NextFunction,
 ): Promise<void> {
   try {
-    const packages = await Package.find().sort({ order: 1, createdAt: -1 }).lean()
-    res.json({ success: true, data: packages })
+    const page = Math.max(1, parseInt(String(req.query.page ?? '1')))
+    const limit = Math.min(50, Math.max(1, parseInt(String(req.query.limit ?? '20'))))
+    const skip = (page - 1) * limit
+
+    const [packages, total] = await Promise.all([
+      Package.find().sort({ order: 1, createdAt: -1 }).skip(skip).limit(limit).lean(),
+      Package.countDocuments(),
+    ])
+
+    res.json({
+      success: true,
+      data: packages,
+      pagination: { total, page, limit, totalPages: Math.ceil(total / limit) },
+    })
   } catch (err) {
     next(err)
   }
@@ -33,7 +45,18 @@ export async function create(
   }
 
   try {
-    const pkg = await Package.create(req.body)
+    const {
+      name, level, format, duration, price, priceNote,
+      souvenir, featured, published, order, image,
+    } = req.body as {
+      name: string; level: string; format: string; duration: string
+      price: number; priceNote: string; souvenir?: boolean
+      featured?: boolean; published?: boolean; order?: number; image: string
+    }
+    const pkg = await Package.create({
+      name, level, format, duration, price, priceNote,
+      souvenir, featured, published, order, image,
+    })
     res.status(201).json({ success: true, data: pkg })
   } catch (err) {
     next(err)
@@ -55,9 +78,17 @@ export async function update(
   }
 
   try {
+    const {
+      name, level, format, duration, price, priceNote,
+      souvenir, featured, published, order, image,
+    } = req.body as Partial<{
+      name: string; level: string; format: string; duration: string
+      price: number; priceNote: string; souvenir: boolean
+      featured: boolean; published: boolean; order: number; image: string
+    }>
     const pkg = await Package.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { name, level, format, duration, price, priceNote, souvenir, featured, published, order, image },
       { new: true, runValidators: true },
     )
     if (!pkg) {

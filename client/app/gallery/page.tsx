@@ -7,10 +7,12 @@ export const metadata: Metadata = {
   title: { absolute: 'Surf Photo Gallery | Noah Surf School Sri Lanka' },
   description:
     'Browse photos of surf lessons, Hirikatiya Beach waves, and the full Noah Surf School experience in Sri Lanka. Students of all levels riding the Indian Ocean.',
+  alternates: { canonical: '/gallery' },
   openGraph: {
     title: 'Surf Photo Gallery | Noah Surf School Sri Lanka',
     description:
       'Photos of surf lessons, Hirikatiya Beach, and the Noah Surf School experience in Sri Lanka.',
+    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
   },
 }
 
@@ -91,7 +93,7 @@ const photos: Photo[] = [
 ]
 
 const tagColors: Record<string, string> = {
-  Action: 'bg-[#1d4ed8] text-white',
+  Action: 'bg-primary text-white',
   Lessons: 'bg-emerald-600 text-white',
   Beach: 'bg-amber-500 text-white',
 }
@@ -103,13 +105,13 @@ export default function GalleryPage() {
       <section className="bg-[#f0f4f8] border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
         <div className="container-site">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               Gallery
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Photos &amp; <span className="text-[#1d4ed8]">Videos</span>
+            Our Photos &amp; <span className="text-primary">Videos</span>
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Moments from the water, the beach, and the community at Hirikatiya —
@@ -166,8 +168,8 @@ export default function GalleryPage() {
       <section className="bg-[#f0f4f8] py-16 md:py-20 border-t border-gray-200">
         <div className="container-site">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               Get Involved
             </span>
           </div>
@@ -179,7 +181,7 @@ export default function GalleryPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-[#1d4ed8] text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[#1e40af] transition-colors"
+            className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[#1e40af] transition-colors"
           >
             Book A Lesson
           </Link>

@@ -44,14 +44,14 @@ export default function ServicesSlider({ services }: { services: Service[] }) {
   }, [scroll])
 
   return (
-    <section className="section-padding bg-[#f0f4f8] overflow-hidden">
+    <section className="section-padding bg-primary-50 overflow-hidden">
       <div className="container-site">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-md">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#1d4ed8] block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1d4ed8]">
+              <span className="w-8 h-px bg-primary block shrink-0" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Services
               </span>
             </div>
@@ -67,14 +67,14 @@ export default function ServicesSlider({ services }: { services: Service[] }) {
             <button
               onClick={() => scroll('prev')}
               aria-label="Previous"
-              className="h-11 w-11 border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+              className="h-11 w-11 border border-gray-300 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={() => scroll('next')}
               aria-label="Next"
-              className="h-11 w-11 border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#1d4ed8] hover:text-[#1d4ed8] transition-colors"
+              className="h-11 w-11 border border-gray-300 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -108,7 +108,7 @@ export default function ServicesSlider({ services }: { services: Service[] }) {
                   {service.icon && (
                     <Image src={service.icon} alt="" width={32} height={32} className="object-contain shrink-0" />
                   )}
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#1d4ed8]">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
                     Services
                   </span>
                 </div>
@@ -116,7 +116,7 @@ export default function ServicesSlider({ services }: { services: Service[] }) {
                 <p className="text-sm text-gray-500 leading-relaxed flex-1">{service.description}</p>
                 <Link
                   href="/contact"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gray-800 uppercase tracking-wide hover:text-[#1d4ed8] transition-colors"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gray-800 uppercase tracking-wide hover:text-primary transition-colors"
                 >
                   Booking a lesson
                   <span className="h-6 w-6 border border-current flex items-center justify-center shrink-0">

@@ -97,7 +97,7 @@ export default function NewPackagePage() {
     <>
       <div className="bg-[#1a2e4a] border-b border-white/10">
         <div className="container-site py-6 flex items-center gap-4">
-          <LayoutDashboard className="h-5 w-5 text-[#1d4ed8]" />
+          <LayoutDashboard className="h-5 w-5 text-primary" />
           <div>
             <div className="flex items-center gap-1.5 text-xs text-gray-400">
               <Link href="/admin/packages" className="hover:text-white transition-colors">
@@ -111,7 +111,7 @@ export default function NewPackagePage() {
         </div>
       </div>
 
-      <section className="section-padding bg-[#f0f4f8]">
+      <section className="section-padding bg-primary-50">
         <div className="container-site max-w-3xl">
           {apiError && (
             <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-6">
@@ -247,7 +247,7 @@ export default function NewPackagePage() {
                 disabled={saved || submitting}
                 className={cn(
                   'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all',
-                  saved ? 'bg-green-600 text-white' : 'bg-[#1d4ed8] hover:bg-[#1e40af] text-white disabled:opacity-60',
+                  saved ? 'bg-green-600 text-white' : 'bg-primary hover:bg-primary-dark text-white disabled:opacity-60',
                 )}
               >
                 {saved ? (
@@ -271,7 +271,7 @@ function inputCls(hasError: boolean) {
     'w-full rounded-xl border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 transition',
     hasError
       ? 'border-red-300 focus:ring-red-200 focus:border-red-400'
-      : 'border-gray-200 focus:ring-[#1d4ed8]/20 focus:border-[#1d4ed8]',
+      : 'border-gray-200 focus:ring-primary/20 focus:border-primary',
   )
 }
 
@@ -297,7 +297,7 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
       </div>
       <div
         onClick={() => onChange(!checked)}
-        className={cn('relative w-11 h-6 rounded-full transition-colors', checked ? 'bg-[#1d4ed8]' : 'bg-gray-200')}
+        className={cn('relative w-11 h-6 rounded-full transition-colors', checked ? 'bg-primary' : 'bg-gray-200')}
       >
         <span className={cn('absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform', checked && 'translate-x-5')} />
       </div>

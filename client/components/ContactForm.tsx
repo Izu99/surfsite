@@ -90,7 +90,7 @@ function ContactFormInner() {
             setForm(initialState)
             setSubmitted(false)
           }}
-          className="mt-2 text-sm text-[#1d4ed8] font-semibold hover:underline"
+          className="mt-2 text-sm text-primary font-semibold hover:underline"
         >
           Send another message
         </button>
@@ -199,7 +199,7 @@ function ContactFormInner() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full flex items-center justify-center gap-2 bg-[#1d4ed8] px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-[#1e40af] disabled:opacity-70 disabled:cursor-not-allowed transition-colors"
+        className="w-full flex items-center justify-center gap-2 bg-primary px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-primary-dark disabled:opacity-70 disabled:cursor-not-allowed transition-colors"
       >
         {loading ? (
           <>
@@ -228,7 +228,7 @@ export default function ContactForm() {
 function inputClass(hasError: boolean) {
   return cn(
     'w-full border bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400',
-    'focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/30 focus:border-[#1d4ed8]',
+    'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary',
     'transition-colors',
     hasError ? 'border-red-400' : 'border-gray-200'
   )
@@ -249,7 +249,7 @@ function Field({
     <div className="flex flex-col gap-1.5">
       <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
         {label}
-        {required && <span className="text-[#1d4ed8] ml-0.5">*</span>}
+        {required && <span className="text-primary ml-0.5">*</span>}
       </label>
       {children}
       {error && <p className="text-xs text-red-500 mt-0.5">{error}</p>}

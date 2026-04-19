@@ -45,7 +45,7 @@ const apiLimiter = rateLimit({
 
 // ── Request parsing ──────────────────────────────────────────────
 app.use(express.json({ limit: '2mb' }))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true, limit: '1mb' }))
 app.use(cookieParser())
 
 // ── Logging ──────────────────────────────────────────────────────
@@ -73,6 +73,10 @@ app.use(errorHandler)
 const PORT = parseInt(process.env.PORT || '5000')
 
 async function bootstrap() {
+  if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
+    console.error('❌  JWT_SECRET is missing or too short (min 32 chars). Exiting.')
+    process.exit(1)
+  }
   await connectDB()
   app.listen(PORT, () => {
     console.log(`🚀  API running at http://localhost:${PORT}`)

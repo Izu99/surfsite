@@ -10,16 +10,8 @@ export const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Attach JWT token to every request if present
-api.interceptors.request.use((config) => {
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('admin_token')
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-  }
-  return config
-})
+// Credentials (httpOnly cookie) are sent automatically via withCredentials: true above.
+// Do NOT attach tokens from localStorage — that exposes them to XSS.
 
 // Normalise error messages
 api.interceptors.response.use(
@@ -87,9 +79,14 @@ export const packageApi = {
   },
 }
 
+type PaginationMeta = { total: number; page: number; limit: number; totalPages: number }
+
 export const adminPackageApi = {
-  list: async () => {
-    const { data } = await api.get<{ success: boolean; data: SurfPackage[] }>('/api/admin/packages')
+  list: async (params?: { page?: number; limit?: number }) => {
+    const { data } = await api.get<{ success: boolean; data: SurfPackage[]; pagination: PaginationMeta }>(
+      '/api/admin/packages',
+      { params },
+    )
     return data
   },
   create: async (input: PackageInput) => {
@@ -171,9 +168,28 @@ export type BlogInput = {
   featured?: boolean
 }
 
+// ── Booking Types ─────────────────────────────────────────────────
+export type Booking = {
+  _id: string
+  name: string
+  email: string
+  phone: string
+  packageName: string
+  sessionDate: string
+  sessionTime: string
+  groupSize: number
+  notes: string
+  status: 'pending' | 'confirmed' | 'cancelled' | 'completed'
+  source: 'form' | 'whatsapp' | 'walk-in'
+  createdAt: string
+}
+
 export const adminBlogApi = {
-  list: async () => {
-    const { data } = await api.get<{ success: boolean; data: BlogPost[] }>('/api/admin/blogs')
+  list: async (params?: { page?: number; limit?: number }) => {
+    const { data } = await api.get<{ success: boolean; data: BlogPost[]; pagination: PaginationMeta }>(
+      '/api/admin/blogs',
+      { params },
+    )
     return data
   },
   create: async (input: BlogInput) => {

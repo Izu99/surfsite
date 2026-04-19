@@ -12,9 +12,13 @@ import {
   LayoutDashboard,
   AlertCircle,
   Check,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import { adminPackageApi, type SurfPackage } from '@/lib/api'
 import { cn } from '@/lib/utils'
+
+const PAGE_SIZE = 20
 
 function Toast({ message, type }: { message: string; type: 'success' | 'error' }) {
   return (
@@ -50,8 +54,8 @@ function ConfirmModal({
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onCancel} />
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 space-y-4">
         <div className="flex items-start gap-3">
-          <div className={cn('mt-0.5 flex-shrink-0 p-2 rounded-full', danger ? 'bg-red-100' : 'bg-blue-100')}>
-            <AlertCircle className={cn('h-5 w-5', danger ? 'text-red-600' : 'text-[#1d4ed8]')} />
+          <div className={cn('mt-0.5 flex-shrink-0 p-2 rounded-full', danger ? 'bg-red-100' : 'bg-primary-100')}>
+            <AlertCircle className={cn('h-5 w-5', danger ? 'text-red-600' : 'text-primary')} />
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-base">{title}</h3>
@@ -69,7 +73,7 @@ function ConfirmModal({
             onClick={onConfirm}
             className={cn(
               'px-5 py-2 rounded-xl text-sm font-bold text-white transition-colors',
-              danger ? 'bg-red-600 hover:bg-red-700' : 'bg-[#1d4ed8] hover:bg-[#1e40af]',
+              danger ? 'bg-red-600 hover:bg-red-700' : 'bg-primary hover:bg-primary-dark',
             )}
           >
             {confirmLabel}
@@ -84,6 +88,9 @@ export default function AdminPackagesPage() {
   const router = useRouter()
   const [packages, setPackages] = useState<SurfPackage[]>([])
   const [mounted, setMounted] = useState(false)
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [total, setTotal] = useState(0)
   const [deleteTarget, setDeleteTarget] = useState<SurfPackage | null>(null)
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
@@ -92,10 +99,13 @@ export default function AdminPackagesPage() {
     setTimeout(() => setToast(null), 3000)
   }
 
-  const fetchPackages = useCallback(async () => {
+  const fetchPackages = useCallback(async (p: number) => {
+    setMounted(false)
     try {
-      const res = await adminPackageApi.list()
+      const res = await adminPackageApi.list({ page: p, limit: PAGE_SIZE })
       setPackages(res.data)
+      setTotalPages(res.pagination.totalPages)
+      setTotal(res.pagination.total)
     } catch {
       showToast('Failed to load packages.', 'error')
     } finally {
@@ -104,16 +114,18 @@ export default function AdminPackagesPage() {
   }, [])
 
   useEffect(() => {
-    fetchPackages()
-  }, [fetchPackages])
+    fetchPackages(page)
+  }, [fetchPackages, page])
 
   const handleDelete = async () => {
     if (!deleteTarget) return
     try {
       await adminPackageApi.delete(deleteTarget._id)
-      setPackages((prev) => prev.filter((p) => p._id !== deleteTarget._id))
       setDeleteTarget(null)
       showToast('Package deleted.')
+      const newPage = packages.length === 1 && page > 1 ? page - 1 : page
+      setPage(newPage)
+      fetchPackages(newPage)
     } catch {
       showToast('Failed to delete package.', 'error')
     }
@@ -135,7 +147,7 @@ export default function AdminPackagesPage() {
       <div className="bg-[#1a2e4a] border-b border-white/10">
         <div className="container-site py-6 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <LayoutDashboard className="h-5 w-5 text-[#1d4ed8]" />
+            <LayoutDashboard className="h-5 w-5 text-primary" />
             <div>
               <p className="text-xs text-gray-400 uppercase tracking-widest">Admin Panel</p>
               <h1 className="text-white font-bold text-lg">Package Management</h1>
@@ -143,7 +155,7 @@ export default function AdminPackagesPage() {
           </div>
           <Link
             href="/admin/packages/new"
-            className="flex items-center gap-2 bg-[#1d4ed8] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-xl text-sm font-bold transition-colors"
+            className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2.5 rounded-xl text-sm font-bold transition-colors"
           >
             <Plus className="h-4 w-4" />
             New Package
@@ -152,7 +164,7 @@ export default function AdminPackagesPage() {
       </div>
 
       {/* ── Table ── */}
-      <section className="section-padding bg-[#f0f4f8]">
+      <section className="section-padding bg-primary-50">
         <div className="container-site">
           {!mounted ? (
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] overflow-hidden animate-pulse">
@@ -169,7 +181,7 @@ export default function AdminPackagesPage() {
               <p className="text-gray-400 mb-4">No packages yet.</p>
               <Link
                 href="/admin/packages/new"
-                className="inline-flex items-center gap-2 bg-[#1d4ed8] text-white px-5 py-2.5 rounded-xl text-sm font-bold"
+                className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold"
               >
                 <Plus className="h-4 w-4" />
                 Create your first package
@@ -191,23 +203,31 @@ export default function AdminPackagesPage() {
                 <div
                   key={pkg._id}
                   className={cn(
-                    'grid md:grid-cols-[1fr_130px_80px_110px_100px_130px] gap-4 items-center px-6 py-4 transition-colors hover:bg-gray-50',
+                    'flex items-center justify-between gap-4 px-4 md:px-6 py-4 transition-colors hover:bg-gray-50 md:grid md:grid-cols-[1fr_130px_80px_110px_100px_130px]',
                     idx !== packages.length - 1 && 'border-b border-gray-100',
                   )}
                 >
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm truncate max-w-xs md:max-w-none">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-gray-900 text-sm truncate">
                       {pkg.name}
                     </p>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {pkg.duration} · {pkg.priceNote}
+                    <p className="text-xs text-gray-400 mt-0.5 flex flex-wrap gap-x-1.5 items-center">
+                      <span>{pkg.duration} · {pkg.priceNote}</span>
                       {pkg.featured && (
-                        <span className="ml-2 text-[#1d4ed8] font-semibold">★ Featured</span>
+                        <span className="text-primary font-semibold">★ Featured</span>
                       )}
+                      <span
+                        className={cn(
+                          'md:hidden inline-flex items-center text-xs font-bold px-2 py-0.5 rounded-full',
+                          pkg.published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700',
+                        )}
+                      >
+                        {pkg.published ? 'Published' : 'Draft'}
+                      </span>
                     </p>
                   </div>
 
-                  <span className="hidden md:inline-flex text-xs font-medium bg-blue-50 text-[#1d4ed8] px-2.5 py-1 rounded-full w-fit">
+                  <span className="hidden md:inline-flex text-xs font-medium bg-primary-50 text-primary px-2.5 py-1 rounded-full w-fit">
                     {pkg.level}
                   </span>
 
@@ -232,18 +252,18 @@ export default function AdminPackagesPage() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-1 md:justify-end">
+                  <div className="flex items-center gap-1 shrink-0 md:justify-end">
                     <button
                       onClick={() => handleTogglePublish(pkg._id)}
                       title={pkg.published ? 'Move to Draft' : 'Publish'}
-                      className="p-2 rounded-lg text-gray-400 hover:text-[#1d4ed8] hover:bg-blue-50 transition-colors"
+                      className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-primary-50 transition-colors"
                     >
                       {pkg.published ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
                     <button
                       onClick={() => router.push(`/admin/packages/edit/${pkg._id}`)}
                       title="Edit"
-                      className="p-2 rounded-lg text-gray-400 hover:text-[#1d4ed8] hover:bg-blue-50 transition-colors"
+                      className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-primary-50 transition-colors"
                     >
                       <Pencil className="h-4 w-4" />
                     </button>
@@ -260,9 +280,46 @@ export default function AdminPackagesPage() {
             </div>
           )}
 
-          <p className="text-xs text-gray-400 mt-4 text-right">
-            {packages.length} package{packages.length !== 1 ? 's' : ''} total
-          </p>
+
+          {/* Pagination */}
+          <div className="flex items-center justify-between mt-4">
+            <p className="text-xs text-gray-400">
+              {total} package{total !== 1 ? 's' : ''} total
+              {totalPages > 1 && ` · Page ${page} of ${totalPages}`}
+            </p>
+            {totalPages > 1 && (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                  <button
+                    key={p}
+                    onClick={() => setPage(p)}
+                    className={cn(
+                      'h-8 w-8 rounded-lg text-xs font-bold transition-colors',
+                      p === page
+                        ? 'bg-primary text-white'
+                        : 'border border-gray-200 text-gray-500 hover:border-primary hover:text-primary',
+                    )}
+                  >
+                    {p}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 

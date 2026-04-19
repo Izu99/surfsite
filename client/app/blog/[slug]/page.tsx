@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: post.description,
         images: [post.image],
       },
+      alternates: { canonical: `/blog/${slug}` },
     }
   } catch {
     return {}

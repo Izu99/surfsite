@@ -43,8 +43,8 @@ interface RichTextEditorProps {
 const COLORS = [
   '#000000', '#374151', '#6b7280', '#9ca3af',
   '#ef4444', '#f97316', '#eab308', '#22c55e',
-  '#3b82f6', '#8b5cf6', '#ec4899', '#14b8a6',
-  '#1d4ed8', '#dc2626', '#16a34a', '#ca8a04',
+  '#608c96', '#266d81', '#90a2a5', '#d9c4ae',
+  '#4a747d', '#dc2626', '#16a34a', '#ca8a04',
 ]
 
 function ToolbarDivider() {
@@ -73,7 +73,7 @@ function ToolBtn({
       className={cn(
         'p-1.5 rounded-lg transition-colors shrink-0',
         active
-          ? 'bg-[#1d4ed8] text-white'
+          ? 'bg-primary text-white'
           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
         disabled && 'opacity-40 cursor-not-allowed',
       )}
@@ -107,7 +107,7 @@ export default function RichTextEditor({
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Link.configure({
         openOnClick: false,
-        HTMLAttributes: { class: 'text-[#1d4ed8] underline cursor-pointer' },
+        HTMLAttributes: { class: 'text-primary underline cursor-pointer' },
       }),
     ],
     content: value || '',
@@ -124,8 +124,8 @@ export default function RichTextEditor({
           '[&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-2',
           '[&_code]:bg-gray-100 [&_code]:px-1 [&_code]:rounded [&_code]:text-xs [&_code]:font-mono',
           '[&_pre]:bg-gray-900 [&_pre]:text-gray-100 [&_pre]:p-3 [&_pre]:rounded-lg [&_pre]:mb-3',
-          '[&_blockquote]:border-l-4 [&_blockquote]:border-[#1d4ed8] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600',
-          '[&_a]:text-[#1d4ed8] [&_a]:underline',
+          '[&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600',
+          '[&_a]:text-primary [&_a]:underline',
           '[&_hr]:border-gray-200 [&_hr]:my-4',
         ),
       },
@@ -170,7 +170,7 @@ export default function RichTextEditor({
         'rounded-xl border overflow-hidden bg-white transition',
         hasError
           ? 'border-red-300 ring-1 ring-red-200'
-          : 'border-gray-200 focus-within:border-[#1d4ed8] focus-within:ring-2 focus-within:ring-[#1d4ed8]/20',
+          : 'border-gray-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20',
       )}
     >
       {/* ── Toolbar ── */}

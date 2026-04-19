@@ -5,9 +5,11 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter } from 'lucide
 const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/packages', label: 'Packages' },
   { href: '/blog', label: 'Blog' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
+  { href: '/terms', label: 'Terms & Conditions' },
 ]
 
 const services = [
@@ -20,21 +22,21 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a2e4a] text-gray-400">
+    <footer className="bg-primary-dark text-gray-300">
       {/* CTA band */}
-      <div className="bg-[#1d4ed8]">
+      <div className="bg-primary">
         <div className="container-site py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h2 className="text-white text-xl font-bold">
               Ready to ride your first wave?
             </h2>
-            <p className="text-blue-200 text-sm mt-1">
+            <p className="text-primary-200 text-sm mt-1">
               Join hundreds of surfers who started their journey with us.
             </p>
           </div>
           <Link
             href="/contact"
-            className="shrink-0 bg-white px-8 py-3 text-sm font-bold uppercase tracking-wide text-[#1d4ed8] hover:bg-blue-50 transition-colors"
+            className="shrink-0 bg-white px-8 py-3 text-sm font-bold uppercase tracking-wide text-primary hover:bg-primary-50 transition-colors"
           >
             Book a Lesson Today
           </Link>
@@ -64,21 +66,21 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-[#1d4ed8] hover:bg-[#1d4ed8] transition-colors"
+                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
               >
                 <Facebook className="h-4 w-4" />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-[#1d4ed8] hover:bg-[#1d4ed8] transition-colors"
+                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
               >
                 <Instagram className="h-4 w-4" />
               </a>
               <a
                 href="#"
                 aria-label="Twitter"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-[#1d4ed8] hover:bg-[#1d4ed8] transition-colors"
+                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
               >
                 <Twitter className="h-4 w-4" />
               </a>
@@ -120,25 +122,25 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3.5">
               <li className="flex gap-3">
-                <MapPin className="h-4 w-4 text-[#1d4ed8] shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">
                   Hirikatiya Beach, Southern Province, Sri Lanka
                 </span>
               </li>
               <li className="flex gap-3">
-                <Phone className="h-4 w-4 text-[#1d4ed8] shrink-0" />
+                <Phone className="h-4 w-4 text-primary shrink-0" />
                 <a href="tel:+94771234567" className="text-sm hover:text-white transition-colors">
                   +94 77 123 4567
                 </a>
               </li>
               <li className="flex gap-3">
-                <Mail className="h-4 w-4 text-[#1d4ed8] shrink-0" />
+                <Mail className="h-4 w-4 text-primary shrink-0" />
                 <a href="mailto:info@wavepeaksurf.lk" className="text-sm hover:text-white transition-colors">
                   info@wavepeaksurf.lk
                 </a>
               </li>
               <li className="flex gap-3">
-                <Clock className="h-4 w-4 text-[#1d4ed8] shrink-0" />
+                <Clock className="h-4 w-4 text-primary shrink-0" />
                 <span className="text-sm">Daily 6:00 am – 6:00 pm</span>
               </li>
             </ul>
@@ -150,7 +152,11 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <p>&copy; {new Date().getFullYear()} Noah Surf School. All rights reserved.</p>
-          <p>Hirikatiya Beach, Sri Lanka</p>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
+            <span className="text-white/20">·</span>
+            <p>Hirikatiya Beach, Sri Lanka</p>
+          </div>
         </div>
       </div>
     </footer>

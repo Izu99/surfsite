@@ -26,8 +26,20 @@ export async function listAll(
   next: NextFunction,
 ): Promise<void> {
   try {
-    const blogs = await Blog.find().sort({ createdAt: -1 }).lean()
-    res.json({ success: true, data: blogs })
+    const page = Math.max(1, parseInt(String(req.query.page ?? '1')))
+    const limit = Math.min(50, Math.max(1, parseInt(String(req.query.limit ?? '20'))))
+    const skip = (page - 1) * limit
+
+    const [blogs, total] = await Promise.all([
+      Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+      Blog.countDocuments(),
+    ])
+
+    res.json({
+      success: true,
+      data: blogs,
+      pagination: { total, page, limit, totalPages: Math.ceil(total / limit) },
+    })
   } catch (err) {
     next(err)
   }

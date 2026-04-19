@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0f1a2e]">
-        <div className="w-8 h-8 border-2 border-[#1d4ed8] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo / Brand */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-12 h-12 bg-[#1d4ed8] rounded-2xl flex items-center justify-center mb-4">
+          <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center mb-4">
             <Waves className="h-6 w-6 text-white" />
           </div>
           <h1 className="text-white font-bold text-xl">Noah Surf School</h1>
@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
                 placeholder="admin or admin@example.com"
                 className={cn(
                   'w-full bg-[#0f1a2e] border rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600',
-                  'focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/50 focus:border-[#1d4ed8] transition',
+                  'focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition',
                   'border-white/10',
                 )}
               />
@@ -103,7 +103,7 @@ export default function AdminLoginPage() {
                   placeholder="••••••••"
                   className={cn(
                     'w-full bg-[#0f1a2e] border rounded-xl px-4 py-2.5 pr-11 text-sm text-white placeholder-gray-600',
-                    'focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/50 focus:border-[#1d4ed8] transition',
+                    'focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition',
                     'border-white/10',
                   )}
                 />
@@ -123,8 +123,8 @@ export default function AdminLoginPage() {
               className={cn(
                 'w-full py-2.5 rounded-xl text-sm font-bold transition-all mt-2',
                 submitting
-                  ? 'bg-[#1d4ed8]/50 text-white/50 cursor-not-allowed'
-                  : 'bg-[#1d4ed8] hover:bg-[#1e40af] text-white',
+                  ? 'bg-primary/50 text-white/50 cursor-not-allowed'
+                  : 'bg-primary hover:bg-primary-dark text-white',
               )}
             >
               {submitting ? (

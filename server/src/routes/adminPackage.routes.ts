@@ -25,7 +25,12 @@ const packageValidation = [
   body('duration').trim().notEmpty().withMessage('Duration is required'),
   body('price').isNumeric().withMessage('Price must be a number').isFloat({ min: 0 }),
   body('priceNote').trim().notEmpty().withMessage('Price note is required'),
-  body('image').trim().notEmpty().withMessage('Image URL is required'),
+  body('image')
+    .trim()
+    .notEmpty()
+    .withMessage('Image URL is required')
+    .isURL({ protocols: ['http', 'https'], require_protocol: true })
+    .withMessage('Image must be a valid HTTP(S) URL'),
 ]
 
 router.get('/', listAll)

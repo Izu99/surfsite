@@ -1,0 +1,283 @@
+{
+  "info": {
+    "name": "Noah Surf School API",
+    "_postman_id": "noah-surf-api-v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "blogId", "value": "" },
+    { "key": "packageId", "value": "" },
+    { "key": "blogSlug", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\":\"testadmin\",\"email\":\"admin@noahsurf.lk\",\"password\":\"TestPass123!\"}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"identifier\":\"testadmin\",\"password\":\"TestPass123!\"}"
+            }
+          }
+        },
+        {
+          "name": "Get Me (authenticated)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/auth/me"
+          }
+        },
+        {
+          "name": "Get Me (no auth)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/auth/me"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public — Blogs",
+      "item": [
+        {
+          "name": "List Published Blogs",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs" }
+        },
+        {
+          "name": "List Blogs with pagination",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs?page=1&limit=5" }
+        },
+        {
+          "name": "List Blogs with category filter",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs?category=Surf Tips" }
+        },
+        {
+          "name": "List Blogs with search",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs?search=hiriketiya" }
+        },
+        {
+          "name": "Get Blog by Slug",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs/{{blogSlug}}" }
+        },
+        {
+          "name": "Get Blog — invalid slug",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/blogs/this-slug-does-not-exist" }
+        }
+      ]
+    },
+    {
+      "name": "Public — Packages",
+      "item": [
+        {
+          "name": "List Published Packages",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/packages" }
+        }
+      ]
+    },
+    {
+      "name": "Admin — Blogs",
+      "item": [
+        {
+          "name": "List All Blogs (authenticated)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/blogs"
+          }
+        },
+        {
+          "name": "List All Blogs (no auth)",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/admin/blogs" }
+        },
+        {
+          "name": "Create Blog Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/blogs",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\":\"QA Test Post\",\"description\":\"A test blog post created during API QA audit\",\"content\":\"<p>Test content for QA purposes.</p>\",\"image\":\"https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070\",\"category\":\"Surf Tips\",\"tags\":[\"qa\",\"test\"],\"author\":\"QA Bot\",\"published\":false}"
+            }
+          }
+        },
+        {
+          "name": "Create Blog — invalid category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/blogs",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\":\"Bad Category Post\",\"description\":\"desc\",\"content\":\"<p>x</p>\",\"image\":\"https://example.com/img.jpg\",\"category\":\"HackedCategory\"}"
+            }
+          }
+        },
+        {
+          "name": "Create Blog — missing required fields",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/blogs",
+            "body": { "mode": "raw", "raw": "{\"title\":\"Incomplete\"}" }
+          }
+        },
+        {
+          "name": "Update Blog Post",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/blogs/{{blogId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\":\"QA Test Post (Updated)\",\"description\":\"Updated description\",\"content\":\"<p>Updated content.</p>\",\"image\":\"https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070\",\"category\":\"Surf Tips\"}"
+            }
+          }
+        },
+        {
+          "name": "Toggle Publish",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/blogs/{{blogId}}/toggle-publish"
+          }
+        },
+        {
+          "name": "Delete Blog Post",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/blogs/{{blogId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin — Packages",
+      "item": [
+        {
+          "name": "List All Packages (authenticated)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/packages"
+          }
+        },
+        {
+          "name": "List All Packages (no auth)",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/admin/packages" }
+        },
+        {
+          "name": "Create Package",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/packages",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"QA Test Package\",\"level\":\"Beginner\",\"format\":\"Group (max 6)\",\"duration\":\"90 mins\",\"price\":45,\"priceNote\":\"per session\",\"image\":\"https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070\",\"published\":false}"
+            }
+          }
+        },
+        {
+          "name": "Create Package — invalid level",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/packages",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Bad Package\",\"level\":\"Expert\",\"format\":\"Solo\",\"duration\":\"60 mins\",\"price\":100,\"priceNote\":\"pp\",\"image\":\"https://example.com/img.jpg\"}"
+            }
+          }
+        },
+        {
+          "name": "Update Package",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/api/admin/packages/{{packageId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"QA Test Package (Updated)\",\"level\":\"Intermediate\",\"format\":\"Private\",\"duration\":\"60 mins\",\"price\":55,\"priceNote\":\"per session\",\"image\":\"https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070\"}"
+            }
+          }
+        },
+        {
+          "name": "Toggle Package Publish",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/packages/{{packageId}}/toggle-publish"
+          }
+        },
+        {
+          "name": "Delete Package",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/admin/packages/{{packageId}}"
+          }
+        }
+      ]
+    }
+  ]
+}
