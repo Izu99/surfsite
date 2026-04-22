@@ -114,28 +114,45 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
-                Our Little History
+                Our Story: Born from the<br />Waves of Hiriketiya
               </h2>
               <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
-                We want our clients to feel awesome and unique.
+                A Childhood in the Salt Air
               </p>
-              <div className="border-l-4 border-primary pl-5 space-y-4 mb-8">
+              <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Noah was born and raised in Hiriketiya — long before it became
-                  a global destination. By age six he was already living in
-                  harmony with the tides, learning the ways of the ocean from
-                  local fishermen. His first glimpse of surfing at age eight
-                  sparked a lifelong passion, and through persistence and
-                  determination he taught himself to ride the waves.
+                  I was born and raised where the jungle meets the sand in
+                  Hiriketiya, a small village on the southern coast of Sri
+                  Lanka. Long before it became a global destination, Hiriketiya
+                  was my playground. By the age of six, I was already living in
+                  harmony with the tides — playing in the surf, watching the sea
+                  turtles, and learning the ways of the ocean from our local
+                  fishermen. To me, the sound of the crashing waves wasn&apos;t
+                  just noise; it was the heartbeat of my home.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
+                  I remember being eight years old when I saw something that
+                  changed my life: a traveler gliding across the water on a
+                  board. My friends and I watched in awe from the shore. Though
+                  I lacked the money to buy equipment, I began by borrowing
+                  boards from travelers for just a few minutes at a time. Through
+                  persistence and passion, I taught myself — progressing from a
+                  beginner to an expert.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Today, known simply as &ldquo;Noah&rdquo; to students from
-                  around the world, he leads a team of ISA-certified instructors
-                  offering private lessons, semi-private sessions, group classes,
-                  and immersive multi-day surf camps — all on the warm,
-                  consistent swells of the Indian Ocean.
+                  around the world, I share the magic of the Indian Ocean with
+                  visitors from the UK, US, Australia, and beyond. I don&apos;t
+                  just teach you how to stand on a board — I teach you how to
+                  breathe with the waves, respect the nature of the south coast,
+                  and truly live in rhythm with the sea.
                 </p>
               </div>
+              <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
+                &ldquo;My journey started on these very sands, and I invite you
+                to begin yours with me. See you in the water — Noah.&rdquo;
+              </blockquote>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
@@ -170,6 +187,61 @@ export default function AboutPage() {
               >
                 <Play className="h-6 w-6 text-white fill-white ml-0.5" />
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Surf History ── */}
+      <section className="section-padding bg-[#f0f4f8] border-t border-gray-200">
+        <div className="container-site">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+              Surf History
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight max-w-2xl">
+            The Evolution of Surf: A History of Waves in Sri Lanka
+          </h2>
+          <p className="text-base font-semibold text-gray-700 mb-10 max-w-xl leading-snug">
+            From ancient coasts to a global surf haven — the story of how Sri Lanka found its place on the world&apos;s surfing map.
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            {/* Left column */}
+            <div className="space-y-8">
+              <div className="border-l-4 border-primary pl-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">From Ancient Coasts to Global Surf Haven</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Sri Lanka&apos;s relationship with the ocean spans thousands of years, rooted in the traditions of our resilient fishing communities. However, the story of surfing in Sri Lanka truly began in the 1960s and 70s. During this era, intrepid travelers from Australia and Europe began exploring our southern and eastern shores, discovering what we locals always knew: our coastline holds some of the most consistent waves in the Indian Ocean.
+                </p>
+              </div>
+              <div className="border-l-4 border-primary pl-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">The Discovery of Hikkaduwa and Arugam Bay</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  The first surf hubs emerged in Hikkaduwa on the southwest coast and Arugam Bay on the east. These pioneers brought the first fiberglass boards to our shores, sparking a curiosity among local village kids. What started as watching from the sand turned into a local movement. Sri Lankans began borrowing boards — much like Noah did in Hiriketiya — and teaching themselves to dance with the waves.
+                </p>
+              </div>
+            </div>
+
+            {/* Right column */}
+            <div className="space-y-8">
+              <div className="border-l-4 border-primary pl-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">The Rise of the South Coast &amp; Hiriketiya</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  While Hikkaduwa was the birthplace, the &ldquo;Golden Era&rdquo; of the south coast — including Mirissa, Weligama, and Ahangama — followed shortly after. For a long time, Hiriketiya Beach remained a hidden secret, known only to locals and a few lucky travelers.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mt-3">
+                  It wasn&apos;t until the last decade that the world woke up to the &ldquo;Horseshoe Bay.&rdquo; Today, Sri Lanka is recognized globally not just for its beauty, but as a premier surfing destination. The culture has shifted from simply watching the waves to producing ISA-certified local instructors who lead the industry with a blend of professional technique and deep, ancestral knowledge of the sea.
+                </p>
+              </div>
+              <div className="border-l-4 border-primary pl-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Surfing Today: A Way of Life</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Surfing is no longer just a tourist activity in Sri Lanka; it is a vital part of our coastal identity. From the early days of wooden planks and borrowed boards to the high-performance coaching available today at Noah&apos;s Surf School, the spirit remains the same: a profound respect for the ocean and the pure joy of the ride.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -311,7 +383,7 @@ export default function AboutPage() {
             {/* YouTube embed */}
             <div className="relative w-full aspect-video overflow-hidden border border-gray-200 shadow-[var(--shadow-card)]">
               <iframe
-                src="https://www.youtube.com/embed/o1tj2zJ2Wvg?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/LwU4zxolXoY?rel=0&modestbranding=1"
                 title="A day in the life at Noah Surf School — Hirikatiya Beach, Sri Lanka"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
