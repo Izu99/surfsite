@@ -8,7 +8,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { cn } from '@/lib/utils'
 
 const NAV = [
-  { label: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
+  // { label: 'Bookings', href: '/admin/bookings', icon: CalendarCheck }, // hidden — uncomment to restore
   { label: 'Blog Posts', href: '/admin/blog', icon: FileText },
   { label: 'Packages', href: '/admin/packages', icon: Package },
 ]
