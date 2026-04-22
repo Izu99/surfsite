@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Check, Clock, Users, Gift, Shield, LifeBuoy } from 'lucide-react'
-import { PACKAGE_LEVELS, INCLUDED_IN_ALL } from '@/data/packages'
+import { PACKAGE_LEVELS, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import { cn } from '@/lib/utils'
 
@@ -104,7 +104,8 @@ export default function PackagesListClient() {
   useEffect(() => {
     packageApi
       .list()
-      .then((res) => setPackages(res.data))
+      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data]))
+      .catch(() => setPackages(HARDCODED_PACKAGES))
       .finally(() => setMounted(true))
   }, [])
 

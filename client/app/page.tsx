@@ -7,9 +7,9 @@ import ServicesSlider from '@/components/ServicesSlider'
 import HomepagePackages from '@/components/HomepagePackages'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Noah Surf School | Best Surf Lessons in Hiriketiya & South Coast Sri Lanka' },
+  title: { absolute: 'Best Surf School in Hiriketiya | Top South Coast Surfing Sri Lanka' },
   description:
-    'Join Noah Surf School for professional surf lessons in Hiriketiya, Matara and the South Coast. Perfect for beginners to intermediates. Open daily 6am–6pm.',
+    'Hiriketiya Beach is a world-class surfing destination with a perfect horseshoe bay and consistent waves. Expert coaching for beginners to intermediates. Open daily 6am–6pm.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Noah Surf School | Best Surf Lessons in Hiriketiya & South Coast Sri Lanka',
@@ -244,9 +244,9 @@ export default function HomePage() {
                   right here in Hirikatiya, Sri Lanka!
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  We teach surfing at our beautiful beach in Hirikatiya — a
-                  world-class surf destination with consistent warm Indian Ocean
-                  waves and vibrant tropical culture.
+                  Whether you are a beginner catching your first wave or an
+                  intermediate surfer looking for the perfect point break, our
+                  surf school provides expert coaching in the heart of paradise.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -324,7 +324,9 @@ export default function HomePage() {
                 Why Learn to Surf<br />With Us?
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-10">
-                We want our clients to feel awesome and unique.
+                Learn to surf with confidence at the best south coast surf
+                destination. Safety and technique come first — our ISA-certified
+                team is dedicated to helping you progress quickly and safely.
               </p>
               <div className="grid grid-cols-3 gap-6">
                 {stats.map(({ icon, number, label, sub }) => (
@@ -505,9 +507,10 @@ export default function HomePage() {
                 The Hirikatiya<br />Experience
               </h2>
               <p className="text-white/70 text-sm leading-relaxed mb-8 max-w-md">
-                Hirikatiya Beach is Sri Lanka&apos;s hidden gem — a horseshoe bay with warm
-                Indian Ocean swells, a laid-back village, and the most welcoming surf
-                community you&apos;ll ever find. Every session feels like the best one yet.
+                Hiriketiya Beach has emerged as a world-class surfing hidden gem.
+                Recognized globally for its perfect horseshoe bay and consistent waves,
+                Hiriketiya is no longer just a local favorite — it is one of the most
+                popular surf beaches in the world.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {hirikatiryaFacts.map(({ label, value }) => (

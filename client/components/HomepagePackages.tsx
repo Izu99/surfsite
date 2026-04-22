@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Check, Clock, Users, Gift, Play } from 'lucide-react'
 import { packageApi, type SurfPackage } from '@/lib/api'
-import { INCLUDED_IN_ALL } from '@/data/packages'
+import { INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 
 export default function HomepagePackages() {
   const [packages, setPackages] = useState<SurfPackage[]>([])
@@ -14,7 +14,8 @@ export default function HomepagePackages() {
   useEffect(() => {
     packageApi
       .list()
-      .then((res) => setPackages(res.data.slice(0, 3)))
+      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data].slice(0, 3)))
+      .catch(() => setPackages(HARDCODED_PACKAGES.slice(0, 3)))
       .finally(() => setMounted(true))
   }, [])
 

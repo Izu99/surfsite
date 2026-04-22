@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { blogApi, type BlogPost } from '@/lib/api'
+import { HARDCODED_BLOGS } from '@/data/blogs'
 
 type PublicBlogStore = {
   blogs: BlogPost[]
@@ -25,8 +26,8 @@ export function BlogProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     blogApi
       .list({ limit: 100 })
-      .then((res) => setBlogs(res.data))
-      .catch(() => setBlogs([]))
+      .then((res) => setBlogs([...HARDCODED_BLOGS, ...res.data]))
+      .catch(() => setBlogs(HARDCODED_BLOGS))
       .finally(() => setMounted(true))
   }, [])
 

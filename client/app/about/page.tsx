@@ -121,16 +121,19 @@ export default function AboutPage() {
               </p>
               <div className="border-l-4 border-primary pl-5 space-y-4 mb-8">
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Noah Surf School was founded by Noah, a lifelong surfer and
-                  ILS-certified instructor who grew up riding the waves of
-                  Hiriketiya Beach. What started as informal lessons for visiting
-                  tourists quickly grew into one of Sri Lanka&apos;s most trusted
-                  surf schools.
+                  Noah was born and raised in Hiriketiya — long before it became
+                  a global destination. By age six he was already living in
+                  harmony with the tides, learning the ways of the ocean from
+                  local fishermen. His first glimpse of surfing at age eight
+                  sparked a lifelong passion, and through persistence and
+                  determination he taught himself to ride the waves.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Today we offer private lessons, semi-private sessions, group
-                  classes, and immersive multi-day surf camps — all in the warm,
-                  consistent swells of the Indian Ocean right here in Hirikatiya.
+                  Today, known simply as &ldquo;Noah&rdquo; to students from
+                  around the world, he leads a team of ISA-certified instructors
+                  offering private lessons, semi-private sessions, group classes,
+                  and immersive multi-day surf camps — all on the warm,
+                  consistent swells of the Indian Ocean.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -212,7 +215,10 @@ export default function AboutPage() {
                 Why Learn to Surf<br />With Us?
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                We want our clients to feel awesome and unique.
+                Learn to surf with confidence at the best south coast surf
+                destination. Safety and technique come first — our team, led by
+                Noah, consists of ISA-certified professionals dedicated to
+                helping you progress quickly and safely.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {values.map(({ text, icon }) => (
