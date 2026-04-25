@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | Noah Surf School',
   },
   description:
-    'Learn to surf with certified ILS instructors at Hirikatiya Beach, Sri Lanka. Group and private lessons, surf camps, board rentals. Open daily 6am–6pm.',
+    'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Group and private lessons, surf camps, board rentals. Open daily 6am–6pm.',
   keywords: [
     // Brand
     'Noah Surf School',
@@ -60,14 +60,14 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'Noah Surf School | Surf Lessons at Hirikatiya Beach, Sri Lanka',
     description:
-      'Learn to surf with certified ILS instructors at Hirikatiya Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, surf camps, and yoga retreats.',
+      'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, surf camps, and yoga retreats.',
     images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Noah Surf School | Surf Lessons at Hirikatiya Beach, Sri Lanka',
     description:
-      'Learn to surf with certified ILS instructors at Hirikatiya Beach, Sri Lanka. Open daily 6am–6pm.',
+      'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Open daily 6am–6pm.',
     images: ['/logo.png'],
   },
 }

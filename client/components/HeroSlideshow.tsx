@@ -84,8 +84,8 @@ export default function HeroSlideshow() {
         <div className="container-site pl-32 md:pl-48 lg:pl-64">
           <div className="ml-8 md:ml-12 lg:ml-16">
             {/* Tagline */}
-            <p className="text-white/90 text-sm md:text-base font-semibold uppercase tracking-[0.25em] mb-1 md:mb-2">
-              WAVES, OCEAN, LIFESTYLE.
+            <p className="text-white/90 text-xl md:text-md font-semibold uppercase tracking-[0.25em] mb-1 md:mb-2">
+              HIRIKATIYA
             </p>
 
             {/* Massive heading */}
@@ -93,7 +93,7 @@ export default function HeroSlideshow() {
               className="text-white font-extrabold uppercase leading-none -ml-1"
               style={{ fontSize: 'clamp(3.5rem, 13vw, 10rem)' }}
             >
-              SURF SCHOOL
+               NOAH SURF SCHOOL
               <span className="sr-only"> — Noah Surf School Hiriketiya, Sri Lanka</span>
             </h1>
           </div>

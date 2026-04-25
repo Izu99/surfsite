@@ -168,6 +168,35 @@ export type BlogInput = {
   featured?: boolean
 }
 
+// ── Surf Conditions ───────────────────────────────────────────────
+export type SurfConditions = {
+  _id?: string
+  waveHeight: string
+  wind: string
+  waterTemp: string
+  airTemp: string
+  conditions: string
+  updatedAt?: string
+}
+
+export const conditionsApi = {
+  get: async () => {
+    const { data } = await api.get<{ success: boolean; data: SurfConditions }>('/api/conditions')
+    return data
+  },
+}
+
+export const adminConditionsApi = {
+  get: async () => {
+    const { data } = await api.get<{ success: boolean; data: SurfConditions | null }>('/api/admin/conditions')
+    return data
+  },
+  update: async (input: Omit<SurfConditions, '_id' | 'updatedAt'>) => {
+    const { data } = await api.put<{ success: boolean; data: SurfConditions }>('/api/admin/conditions', input)
+    return data
+  },
+}
+
 // ── Booking Types ─────────────────────────────────────────────────
 export type Booking = {
   _id: string

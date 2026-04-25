@@ -3,14 +3,15 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-import { Waves, FileText, Package, LogOut, CalendarCheck, Menu, X } from 'lucide-react'
+import { Waves, FileText, Package, LogOut, CalendarCheck, Menu, X, Wind } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { cn } from '@/lib/utils'
 
 const NAV = [
   // { label: 'Bookings', href: '/admin/bookings', icon: CalendarCheck }, // hidden — uncomment to restore
-  { label: 'Blog Posts', href: '/admin/blog', icon: FileText },
-  { label: 'Packages', href: '/admin/packages', icon: Package },
+  { label: 'Blog Posts',  href: '/admin/blog',        icon: FileText },
+  { label: 'Packages',    href: '/admin/packages',    icon: Package  },
+  { label: 'Conditions',  href: '/admin/conditions',  icon: Wind     },
 ]
 
 function AdminSidebar({ onClose }: { onClose?: () => void }) {

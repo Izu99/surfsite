@@ -1,30 +1,30 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Play, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Instagram, Facebook, Youtube } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
   description:
-    'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ILS-certified instructors and learn why surfers from over 60 countries choose us.',
+    'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ISA-certified instructors and learn why surfers from over 60 countries choose us.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka',
     description:
-      'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ILS-certified instructors and learn why surfers from over 60 countries choose us.',
+      'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ISA-certified instructors and learn why surfers from over 60 countries choose us.',
     images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
   },
 }
 
 const values = [
-  { text: 'Certified ILS surf instructors on every session', icon: '/icons/icons8-certificate-50.png' },
+  { text: 'Certified ISA surf instructors on every session', icon: '/icons/icons8-certificate-50.png' },
   { text: 'Small student-to-instructor ratios (max 6 per group)', icon: '/icons/icons8-conference-50.png' },
   { text: 'All equipment provided — boards, leashes, rash guards', icon: '/icons/icons8-surf-96.png' },
   { text: 'Suitable for all ages from 7 years and up', icon: '/icons/icons8-user-50.png' },
   { text: 'Warm, consistent Indian Ocean swells year-round', icon: '/icons/icons8-sun-50.png' },
   { text: 'Flexible scheduling — daily 6:00 am to 6:00 pm', icon: '/icons/icons8-alarm-clock-50.png' },
-  { text: 'Free cancellation up to 24 hours before your lesson', icon: '/icons/icons8-calendar-64.png' },
-  { text: 'Lessons in English, Sinhala, and Tamil', icon: '/icons/icons8-globe-50.png' },
+  // { text: 'Free cancellation up to 24 hours before your lesson', icon: '/icons/icons8-calendar-64.png' },
+  { text: 'Lessons in English', icon: '/icons/icons8-globe-50.png' },
 ]
 
 const stats = [
@@ -61,20 +61,20 @@ const team = [
   {
     name: 'Noah',
     role: 'Head Instructor & Founder',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop',
-    bio: 'ILS certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya\'s waves with visitors from around the world.',
+    image: '/noah-portrait.png',
+    bio: 'ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya\'s waves with visitors from around the world.',
   },
   {
     name: 'Kasun Perera',
     role: 'Senior Surf Instructor',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop',
-    bio: 'ILS Level 2 certified. Kasun specialises in beginner lessons and junior programs, with a patient and encouraging teaching style.',
+    bio: 'ISA Level 2 certified. Kasun specialises in beginner lessons and junior programs, with a patient and encouraging teaching style.',
   },
   {
     name: 'Amara Silva',
     role: 'Surf Instructor & Camp Coordinator',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop',
-    bio: 'ILS Level 2 certified. Amara coordinates our surf camp programs and brings energy and enthusiasm to every session she leads.',
+    bio: 'ISA Level 2 certified. Amara coordinates our surf camp programs and brings energy and enthusiasm to every session she leads.',
   },
 ]
 
@@ -91,17 +91,15 @@ export default function AboutPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Noah <span className="text-primary">Story</span>
+            Noah <span className="text-primary">Story</span>
           </h1>
           <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
-            Since 2010, we&apos;ve been more than just a school. We&apos;re a
-            community dedicated to sharing the soul of surfing at Hirikatiya Beach,
-            Sri Lanka.
+           Hello, I'm Noah
           </p>
         </div>
       </section>
 
-      {/* ── Our History ── */}
+      {/* ── NOAH'S STORY ── */}
       <section className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
           {/* Left text */}
@@ -110,7 +108,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-px bg-primary block shrink-0" />
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  Our History
+                  NOAH'S STORY
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
@@ -171,23 +169,14 @@ export default function AboutPage() {
           </div>
 
           {/* Right image */}
-          <div className="relative min-h-[380px]">
+          <div className="flex items-center justify-center bg-[#f0f4f8] min-h-[380px] p-4">
             <Image
-              src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop"
-              alt="Surf lesson at Hirikatiya"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              src="/unnamed (21).webp"
+              alt="Noah — founder at Hirikatiya Beach"
+              width={480}
+              height={600}
+              className="object-contain max-w-full max-h-[560px]"
             />
-            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0d1b2a]/70 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button
-                className="h-16 w-16 rounded-full border-2 border-white/80 bg-black/25 flex items-center justify-center hover:bg-black/40 transition-colors"
-                aria-label="Play video"
-              >
-                <Play className="h-6 w-6 text-white fill-white ml-0.5" />
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -431,6 +420,33 @@ export default function AboutPage() {
                 <p className="text-xs text-gray-400 mt-1">{handle}</p>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Map ── */}
+      <section className="bg-white pb-0 border-t border-gray-200">
+        <div className="container-site py-16 md:py-20">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-primary block shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+              Find Us
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Hirikatiya Beach, Sri Lanka
+          </h2>
+          <div className="overflow-hidden border border-gray-200 aspect-[21/9] min-h-[300px] md:min-h-[420px]">
+            <iframe
+              title="Hiriketiya Noah Surfing School location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.505071691863!2d80.70676637386983!3d5.9624342109168165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1370012226f0f%3A0xaf6fc116b43ab5a1!2sHiriketiya%20Noah%20Surfing%20School!5e1!3m2!1sen!2slk!4v1776399349914!5m2!1sen!2slk"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

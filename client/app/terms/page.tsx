@@ -51,7 +51,7 @@ const sections = [
       },
       {
         heading: '7. Cancellation by Client',
-        body: `Cancellations made more than 24 hours before the scheduled session start time will receive a full refund or session credit. Cancellations within 24 hours of the session start time are non-refundable. No-shows are non-refundable. To cancel, contact us via WhatsApp at +94 77 123 4567 or email info@wavepeaksurf.lk.`,
+        body: `Cancellations made more than 24 hours before the scheduled session start time will receive a full refund or session credit. Cancellations within 24 hours of the session start time are non-refundable. No-shows are non-refundable. To cancel, contact us via WhatsApp at +94 71 042 7241 or email info@wavepeaksurf.lk.`,
       },
       {
         heading: '8. Cancellation by Noah Surf School',
@@ -207,8 +207,8 @@ export default function TermsPage() {
                     info@wavepeaksurf.lk
                   </a>{' '}
                   or{' '}
-                  <a href="tel:+94771234567" className="text-primary hover:underline">
-                    +94 77 123 4567
+                  <a href="tel:+94710427241" className="text-primary hover:underline">
+                    +94 71 042 7241
                   </a>
                   .
                 </p>

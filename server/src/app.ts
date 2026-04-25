@@ -12,6 +12,8 @@ import blogRoutes from './routes/blog.routes'
 import adminBlogRoutes from './routes/adminBlog.routes'
 import packageRoutes from './routes/package.routes'
 import adminPackageRoutes from './routes/adminPackage.routes'
+import conditionsRoutes from './routes/conditions.routes'
+import adminConditionsRoutes from './routes/adminConditions.routes'
 import { errorHandler, notFound } from './middleware/errorHandler'
 
 const app = express()
@@ -64,6 +66,8 @@ app.use('/api/blogs', apiLimiter, blogRoutes)
 app.use('/api/admin/blogs', apiLimiter, adminBlogRoutes)
 app.use('/api/packages', apiLimiter, packageRoutes)
 app.use('/api/admin/packages', apiLimiter, adminPackageRoutes)
+app.use('/api/conditions', apiLimiter, conditionsRoutes)
+app.use('/api/admin/conditions', apiLimiter, adminConditionsRoutes)
 
 // ── Error handling ───────────────────────────────────────────────
 app.use(notFound)

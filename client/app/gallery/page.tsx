@@ -26,6 +26,61 @@ type Photo = {
 
 const photos: Photo[] = [
   {
+    src: '/2024-09-14.webp',
+    alt: 'Noah at Hirikatiya Beach',
+    tag: 'People',
+    wide: true,
+  },
+  {
+    src: '/2024-09-14 (1).webp',
+    alt: 'Noah surf school owner',
+    tag: 'People',
+    tall: true,
+  },
+  {
+    src: '/unnamed.webp',
+    alt: 'Surf school at Hirikatiya Beach',
+    tag: 'Lessons',
+    wide: true,
+  },
+  {
+    src: '/unnamed (1).webp',
+    alt: 'Surfing at Hirikatiya',
+    tag: 'Action',
+  },
+  {
+    src: '/unnamed (2).webp',
+    alt: 'Hirikatiya Beach Sri Lanka',
+    tag: 'Beach',
+  },
+  {
+    src: '/unnamed (3).webp',
+    alt: 'Surf lesson session',
+    tag: 'Lessons',
+  },
+  {
+    src: '/unnamed (4).webp',
+    alt: 'Surfing waves at Hirikatiya',
+    tag: 'Action',
+    tall: true,
+  },
+  {
+    src: '/unnamed (5).webp',
+    alt: 'Noah surf school beach',
+    tag: 'Beach',
+  },
+  {
+    src: '/unnamed (6).webp',
+    alt: 'Surf coaching Hirikatiya',
+    tag: 'Lessons',
+  },
+  {
+    src: '/unnamed (7).webp',
+    alt: 'Surfing at sunset Hirikatiya',
+    tag: 'Action',
+    wide: true,
+  },
+  {
     src: 'https://images.unsplash.com/photo-1502933691298-84fc14542831?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     alt: 'Surfer at Hirikatiya Beach',
     tag: 'Action',
@@ -96,6 +151,7 @@ const tagColors: Record<string, string> = {
   Action: 'bg-primary text-white',
   Lessons: 'bg-emerald-600 text-white',
   Beach: 'bg-amber-500 text-white',
+  People: 'bg-violet-600 text-white',
 }
 
 export default function GalleryPage() {

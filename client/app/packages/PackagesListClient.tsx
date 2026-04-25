@@ -209,7 +209,7 @@ export default function PackagesListClient() {
                     <Shield className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1">ILS Certified Instructors</h4>
+                    <h4 className="font-bold text-gray-900 mb-1">ISA Certified Instructors</h4>
                     <p className="text-gray-500 text-sm leading-relaxed">
                       All instructors hold International Life Saving Federation certification.
                     </p>
