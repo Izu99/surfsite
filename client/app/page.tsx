@@ -443,68 +443,6 @@ export default function HomePage() {
       {/* ── Pricing ── */}
       <HomepagePackages />
 
-      {/* ── Shop ── */}
-      <section className="section-padding bg-primary-50">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-primary block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  Shop
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
-                Looking For New<br />Equipment?
-              </h2>
-              <p className="text-gray-500 text-sm mb-7 leading-relaxed">
-                We want our clients to feel awesome and unique.
-              </p>
-              <Link
-                href="#"
-                className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
-              >
-                View All
-              </Link>
-            </div>
-
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {shopProducts.map((product) => (
-                <div key={product.name} className="bg-white">
-                  <div className="relative h-80 bg-gray-50 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.alt}
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-bold text-gray-900 mb-2">{product.name}</h3>
-                    <div className="flex gap-0.5 mb-2">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-3.5 w-3.5 ${i < product.rating
-                            ? 'text-amber-400 fill-amber-400'
-                            : 'text-gray-200 fill-gray-200'
-                            }`}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-primary font-bold text-sm mb-4">{product.price}</p>
-                    <button className="w-full border border-gray-300 py-2.5 text-sm font-bold uppercase tracking-wide text-gray-800 hover:border-primary hover:text-primary transition-colors">
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Google Reviews ── */}
       <section className="section-padding bg-primary-50 border-t border-gray-100">
         <div className="container-site">

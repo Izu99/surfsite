@@ -43,7 +43,7 @@ export default function BlogListClient() {
     if (activeCategory !== 'All') result = result.filter((b) => b.category === activeCategory)
     if (search) {
       const q = search.toLowerCase()
-      result = published.filter(
+      result = result.filter(
         (b) =>
           b.title.toLowerCase().includes(q) ||
           b.description.toLowerCase().includes(q) ||
@@ -52,6 +52,21 @@ export default function BlogListClient() {
     }
     return result
   }, [published, activeCategory, search])
+
+  const topTags = ['Hirikatiya', 'Sri Lanka', 'Beach']
+  const otherTags = useMemo(() => {
+    const tags = new Set<string>()
+    published.forEach((b) => {
+      b.tags.forEach((t) => {
+        if (!topTags.some((top) => top.toLowerCase() === t.toLowerCase())) {
+          tags.add(t)
+        }
+      })
+    })
+    return Array.from(tags).sort()
+  }, [published])
+
+  const allDisplayTags = [...topTags, ...otherTags]
 
   const paginated = filtered.slice(0, page * PAGE_SIZE)
   const hasMore = paginated.length < filtered.length
@@ -128,36 +143,63 @@ export default function BlogListClient() {
           )}
 
           {/* ── Search + filter ── */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-              <input
-                type="search"
-                placeholder="Search articles…"
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value)
-                  setPage(1)
-                }}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-              />
+          <div className="space-y-6 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+                <input
+                  type="search"
+                  placeholder="Search articles…"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value)
+                    setPage(1)
+                  }}
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                />
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                {['All', ...CATEGORIES].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => {
+                      setActiveCategory(cat)
+                      setPage(1)
+                    }}
+                    className={cn(
+                      'px-4 py-2 text-sm font-medium transition-all',
+                      activeCategory === cat
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                    )}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex gap-2 flex-wrap">
-              {['All', ...CATEGORIES].map((cat) => (
+
+            {/* ── Tags display ── */}
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mr-2">
+                Popular Tags:
+              </span>
+              {allDisplayTags.map((tag) => (
                 <button
-                  key={cat}
+                  key={tag}
                   onClick={() => {
-                    setActiveCategory(cat)
+                    setSearch(tag)
                     setPage(1)
                   }}
                   className={cn(
-                    'px-4 py-2 text-sm font-medium transition-all',
-                    activeCategory === cat
-                      ? 'bg-primary text-white shadow-sm'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                    'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all border',
+                    search.toLowerCase() === tag.toLowerCase()
+                      ? 'bg-primary border-primary text-white'
+                      : 'bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary',
                   )}
                 >
-                  {cat}
+                  <Tag className="h-3 w-3" />
+                  {tag}
                 </button>
               ))}
             </div>

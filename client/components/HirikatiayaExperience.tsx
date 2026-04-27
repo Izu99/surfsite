@@ -3,6 +3,16 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
+const highlights = [
+  { bold: 'Hiriketiya Beach:', text: ' The Ultimate Tropical Escape' },
+  { bold: 'Surfing', text: ' for All Levels' },
+  { bold: 'Swim with Sea Turtles', text: '' },
+  { bold: 'Yoga and Wellness', text: '' },
+  { bold: 'Cafe Hopping & Digital Nomad Life', text: '' },
+  { bold: 'Sunset at Dickwella Beach', text: '' },
+  { bold: 'Nightlife & Live Music', text: '' },
+]
+
 const facts = [
   { label: 'Year-round swell consistency', value: '95%' },
   { label: 'Average water temperature', value: '27°C' },
@@ -75,20 +85,31 @@ export default function HirikatiayaExperience() {
         The Hirikatiya<br />Experience
       </h2>
 
-      <p className="text-white/70 text-base leading-relaxed mb-8 max-w-md" style={item(200)}>
-        Hiriketiya Beach has emerged as a world-class surfing hidden gem.
-        Recognized globally for its perfect horseshoe bay and consistent waves,
-        Hiriketiya is no longer just a local favorite — it is one of the most
-        popular surf beaches in the world.
+      <p className="text-white/70 text-base leading-relaxed mb-8 max-w-xl" style={item(200)}>
+        Hiriketiya Beach (often called &quot;Hiri&quot;) is a stunning horseshoe-shaped bay located on the southern coast of Sri Lanka. Known for where the lush jungle meets the turquoise Indian Ocean, it has transformed from a hidden gem into a vibrant hub for surfers, digital nomads, and wellness seekers. The bay’s unique geography creates a calm, protected area perfect for swimming, while providing world-class waves that roll in for nearly ten months of the year.
       </p>
 
+      {/* Highlights List */}
+      <ul className="space-y-3 mb-10" style={item(300)}>
+        {highlights.map((itemObj, i) => (
+          <li key={i} className="flex items-start gap-3 text-white/80" style={item(400 + i * 50)}>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-light mt-2 shrink-0" />
+            <span className="text-base">
+              <strong className="text-white font-bold">{itemObj.bold}</strong>
+              {itemObj.text}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Stat Cards */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         {facts.map(({ label, value }, i) => (
-          <StatCard key={label} label={label} value={value} delay={300 + i * 100} />
+          <StatCard key={label} label={label} value={value} delay={800 + i * 100} />
         ))}
       </div>
 
-      <div style={item(700)}>
+      <div style={item(1200)}>
         <Link
           href="/contact"
           className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
