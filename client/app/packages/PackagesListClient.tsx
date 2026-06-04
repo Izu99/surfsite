@@ -53,6 +53,9 @@ function PackageCard({ pkg }: { pkg: SurfPackage }) {
       </div>
 
       <div className="flex-1 bg-white p-6 space-y-4">
+        {pkg.description && (
+          <p className="text-sm text-gray-500 leading-relaxed">{pkg.description}</p>
+        )}
         <div className="flex flex-wrap gap-3 text-sm text-gray-600">
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5 text-primary" />
@@ -70,7 +73,7 @@ function PackageCard({ pkg }: { pkg: SurfPackage }) {
           )}
         </div>
         <ul className="divide-y divide-gray-100">
-          {INCLUDED_IN_ALL.map((item) => (
+          {(pkg.includes?.length ? pkg.includes : INCLUDED_IN_ALL).map((item) => (
             <li key={item} className="flex items-center gap-3 py-2.5 text-sm">
               <Check className="h-4 w-4 text-primary shrink-0" />
               <span className="text-primary">{item}</span>

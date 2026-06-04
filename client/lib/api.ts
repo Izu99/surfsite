@@ -49,6 +49,8 @@ export type SurfPackage = {
   duration: string
   price: number
   priceNote: string
+  description: string
+  includes: string[]
   souvenir: boolean
   featured: boolean
   published: boolean
@@ -65,6 +67,8 @@ export type PackageInput = {
   duration: string
   price: number
   priceNote: string
+  description?: string
+  includes?: string[]
   souvenir?: boolean
   featured?: boolean
   published?: boolean

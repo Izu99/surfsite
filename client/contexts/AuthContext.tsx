@@ -20,12 +20,25 @@ type AuthState = {
 
 const AuthContext = createContext<AuthState | null>(null)
 
+// ⚠️ TEMP DEV BYPASS — set back to false before deploying / once backend is live.
+// When true, the admin UI is unlocked without logging in (no real session).
+const BYPASS_AUTH = true
+
+const MOCK_ADMIN: AdminUser = {
+  id: 'dev',
+  username: 'dev-admin',
+  email: 'dev@local',
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [admin, setAdmin] = useState<AdminUser | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [admin, setAdmin] = useState<AdminUser | null>(
+    BYPASS_AUTH ? MOCK_ADMIN : null,
+  )
+  const [loading, setLoading] = useState(!BYPASS_AUTH)
 
   // Restore session via httpOnly cookie — no localStorage
   useEffect(() => {
+    if (BYPASS_AUTH) return
     authApi
       .me()
       .then((res) => setAdmin(res.admin))

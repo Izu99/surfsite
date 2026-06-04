@@ -16,6 +16,8 @@ type FormData = {
   duration: string
   price: string
   priceNote: string
+  description: string
+  includes: string
   image: string
   souvenir: boolean
   featured: boolean
@@ -93,6 +95,8 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
           duration: pkg.duration,
           price: String(pkg.price),
           priceNote: pkg.priceNote,
+          description: pkg.description ?? '',
+          includes: (pkg.includes ?? []).join('\n'),
           image: pkg.image,
           souvenir: pkg.souvenir,
           featured: pkg.featured,
@@ -141,6 +145,8 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
         duration: form.duration.trim(),
         price: Number(form.price),
         priceNote: form.priceNote.trim(),
+        description: form.description.trim(),
+        includes: form.includes.split('\n').map((s) => s.trim()).filter(Boolean),
         image: form.image.trim(),
         souvenir: form.souvenir,
         featured: form.featured,
@@ -271,6 +277,24 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
                   />
                 </Field>
               </div>
+
+              <Field label="Description" hint="shown under the price on the card">
+                <textarea
+                  rows={2}
+                  value={form.description}
+                  onChange={(e) => set('description', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
+
+              <Field label="What's Included" hint="one bullet per line">
+                <textarea
+                  rows={5}
+                  value={form.includes}
+                  onChange={(e) => set('includes', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
             </div>
 
             {/* Pricing */}

@@ -16,6 +16,8 @@ type FormData = {
   duration: string
   price: string
   priceNote: string
+  description: string
+  includes: string
   image: string
   souvenir: boolean
   featured: boolean
@@ -30,6 +32,8 @@ const EMPTY: FormData = {
   duration: '90 mins',
   price: '',
   priceNote: 'per session',
+  description: '',
+  includes: 'Good quality surf boards\nRash guard\nZinc & sunscreen\nWater bottle\nFirst aid on standby',
   image: '',
   souvenir: false,
   featured: false,
@@ -77,6 +81,8 @@ export default function NewPackagePage() {
         duration: form.duration.trim(),
         price: Number(form.price),
         priceNote: form.priceNote.trim(),
+        description: form.description.trim(),
+        includes: form.includes.split('\n').map((s) => s.trim()).filter(Boolean),
         image: form.image.trim(),
         souvenir: form.souvenir,
         featured: form.featured,
@@ -178,6 +184,26 @@ export default function NewPackagePage() {
                   />
                 </Field>
               </div>
+
+              <Field label="Description" hint="shown under the price on the card">
+                <textarea
+                  rows={2}
+                  placeholder="e.g. Perfect intro session for first-time surfers in small groups."
+                  value={form.description}
+                  onChange={(e) => set('description', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
+
+              <Field label="What's Included" hint="one bullet per line">
+                <textarea
+                  rows={5}
+                  placeholder={'Good quality surf boards\nRash guard\nZinc & sunscreen'}
+                  value={form.includes}
+                  onChange={(e) => set('includes', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
             </div>
 
             {/* Pricing */}

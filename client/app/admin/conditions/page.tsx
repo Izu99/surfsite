@@ -5,13 +5,29 @@ import { Waves, Save, AlertCircle, Check, Clock } from 'lucide-react'
 import { adminConditionsApi, type SurfConditions } from '@/lib/api'
 import { cn } from '@/lib/utils'
 
-const FIELDS: { key: keyof Omit<SurfConditions, '_id' | 'updatedAt'>; label: string; placeholder: string }[] = [
-  { key: 'waveHeight', label: 'Wave Height',  placeholder: 'e.g. 0.8 – 1.2 m'   },
-  { key: 'wind',       label: 'Wind',          placeholder: 'e.g. 12 km/h SW'     },
-  { key: 'waterTemp',  label: 'Water Temp',    placeholder: 'e.g. 27°C'           },
-  { key: 'airTemp',    label: 'Air Temp',      placeholder: 'e.g. 31°C'           },
-  { key: 'conditions', label: 'Conditions',    placeholder: 'e.g. Mellow Peaks'   },
+type FieldKey = keyof Omit<SurfConditions, '_id' | 'updatedAt'>
+
+const FIELDS: { key: FieldKey; label: string; placeholder: string; unit?: string }[] = [
+  { key: 'waveHeight', label: 'Wave Height',  placeholder: '0.8 – 1.2',    unit: 'm'    },
+  { key: 'wind',       label: 'Wind',          placeholder: '12 SW',        unit: 'km/h' },
+  { key: 'waterTemp',  label: 'Water Temp',    placeholder: '27',           unit: '°C'   },
+  { key: 'airTemp',    label: 'Air Temp',      placeholder: '31',           unit: '°C'   },
+  { key: 'conditions', label: 'Conditions',    placeholder: 'e.g. Mellow Peaks'          },
 ]
+
+// Strip a trailing unit (e.g. "0.8 – 1.2 m" -> "0.8 – 1.2") so the input shows only the number.
+const stripUnit = (value: string, unit?: string): string => {
+  if (!unit) return value
+  const trimmed = value.trim()
+  return trimmed.endsWith(unit) ? trimmed.slice(0, -unit.length).trim() : trimmed
+}
+
+// Re-attach the fixed unit on save (e.g. "0.8 – 1.2" -> "0.8 – 1.2 m").
+const withUnit = (value: string, unit?: string): string => {
+  const trimmed = value.trim()
+  if (!unit || !trimmed) return trimmed
+  return `${trimmed} ${unit}`
+}
 
 function Toast({ message, type }: { message: string; type: 'success' | 'error' }) {
   return (
@@ -50,10 +66,10 @@ export default function AdminConditionsPage() {
       .then((res) => {
         if (res.data) {
           setForm({
-            waveHeight: res.data.waveHeight,
-            wind:       res.data.wind,
-            waterTemp:  res.data.waterTemp,
-            airTemp:    res.data.airTemp,
+            waveHeight: stripUnit(res.data.waveHeight, 'm'),
+            wind:       stripUnit(res.data.wind, 'km/h'),
+            waterTemp:  stripUnit(res.data.waterTemp, '°C'),
+            airTemp:    stripUnit(res.data.airTemp, '°C'),
             conditions: res.data.conditions,
           })
           if (res.data.updatedAt) setLastUpdated(res.data.updatedAt)
@@ -76,7 +92,14 @@ export default function AdminConditionsPage() {
     }
     setSaving(true)
     try {
-      const res = await adminConditionsApi.update(form)
+      const payload = {
+        waveHeight: withUnit(form.waveHeight, 'm'),
+        wind:       withUnit(form.wind, 'km/h'),
+        waterTemp:  withUnit(form.waterTemp, '°C'),
+        airTemp:    withUnit(form.airTemp, '°C'),
+        conditions: form.conditions.trim(),
+      }
+      const res = await adminConditionsApi.update(payload)
       if (res.data.updatedAt) setLastUpdated(res.data.updatedAt)
       showToast('Conditions updated — homepage will reflect the new values.')
     } catch {
@@ -129,13 +152,13 @@ export default function AdminConditionsPage() {
                 </span>
               </div>
               <div className="flex flex-wrap gap-5">
-                {FIELDS.map(({ key, label }) => (
+                {FIELDS.map(({ key, label, unit }) => (
                   <div key={key}>
                     <p className="text-[9px] text-white/40 uppercase tracking-wider leading-none mb-0.5">
                       {label}
                     </p>
                     <p className="text-xs font-bold text-white">
-                      {form[key] || <span className="text-white/30 italic">empty</span>}
+                      {form[key] ? withUnit(form[key], unit) : <span className="text-white/30 italic">empty</span>}
                     </p>
                   </div>
                 ))}
@@ -151,18 +174,29 @@ export default function AdminConditionsPage() {
                   ))}
                 </div>
               ) : (
-                FIELDS.map(({ key, label, placeholder }) => (
+                FIELDS.map(({ key, label, placeholder, unit }) => (
                   <div key={key}>
                     <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                       {label}
+                      {unit && <span className="ml-1.5 font-medium text-gray-400 normal-case tracking-normal">— in {unit}</span>}
                     </label>
-                    <input
-                      type="text"
-                      value={form[key]}
-                      onChange={(e) => handleChange(key, e.target.value)}
-                      placeholder={placeholder}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={form[key]}
+                        onChange={(e) => handleChange(key, e.target.value)}
+                        placeholder={placeholder}
+                        className={cn(
+                          'w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition',
+                          unit && 'pr-14',
+                        )}
+                      />
+                      {unit && (
+                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-gray-400">
+                          {unit}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 ))
               )}
