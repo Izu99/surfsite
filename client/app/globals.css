@@ -13,7 +13,12 @@
   --color-primary-800: #266d81;
   --color-primary-900: #1c4e5c;
 
-  --font-sans: 'Fira Sans Condensed', system-ui, -apple-system, sans-serif;
+  --color-sand: #fdf6e9;
+  --color-cream: #f0ece4;
+  --color-ocean: #0d1b2a;
+
+  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-display: 'Caveat', cursive;
 
   --shadow-card: 0 4px 24px 0 rgb(0 0 0 / 0.08);
   --shadow-nav: 0 1px 0 0 rgb(0 0 0 / 0.06);
@@ -29,6 +34,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   --animate-fade-up: fade-up 0.65s ease both;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+  }
+  --animate-float: float 6s ease-in-out infinite;
 }
 
 @layer base {
@@ -50,7 +61,6 @@
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 0.01em;
   }
 }
 
@@ -72,5 +82,9 @@
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
+  }
+
+  .font-display {
+    font-family: var(--font-display);
   }
 }

@@ -22,12 +22,19 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-gray-300">
+    <footer className="bg-[#0d1b2a] text-gray-300">
+      {/* Wave top */}
+      <div className="bg-white">
+        <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '56px', display: 'block' }}>
+          <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,8 1200,28 C1320,42 1400,18 1440,22 L1440,56 L0,56 Z" fill="#0d1b2a" />
+        </svg>
+      </div>
+
       {/* CTA band */}
       <div className="bg-primary">
         <div className="container-site py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="text-white text-xl font-bold">
+            <h2 className="font-display text-white text-2xl md:text-3xl">
               Ready to ride your first wave?
             </h2>
             <p className="text-primary-200 text-sm mt-1">
@@ -36,7 +43,7 @@ export default function Footer() {
           </div>
           <Link
             href="/contact"
-            className="shrink-0 bg-white px-8 py-3 text-sm font-bold uppercase tracking-wide text-primary hover:bg-primary-50 transition-colors"
+            className="shrink-0 bg-white px-8 py-3 rounded-full text-sm font-bold text-primary hover:bg-primary-50 transition-colors duration-200 cursor-pointer"
           >
             Book a Lesson Today
           </Link>
@@ -48,7 +55,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center mb-4">
+            <Link href="/" className="inline-flex items-center mb-4 cursor-pointer">
               <Image
                 src="/logo.png"
                 alt="Noah Surf School"
@@ -57,30 +64,31 @@ export default function Footer() {
                 className="h-11 w-auto object-contain brightness-200"
               />
             </Link>
-            <p className="text-sm leading-relaxed mt-3">
-              Sri Lanka&apos;s premier surf school on the beautiful shores of
-              Hirikatiya Beach. Learn to surf with certified instructors in warm
-              tropical waters.
+            <p className="font-display text-xl text-white/80 mt-2 leading-snug">
+              Sri Lanka&apos;s surf school in paradise 🌴
+            </p>
+            <p className="text-sm leading-relaxed mt-2 text-gray-400">
+              Hirikatiya Beach, open daily 6am–6pm.
             </p>
             <div className="mt-5 flex items-center gap-3">
               <a
                 href="#"
                 aria-label="Facebook"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
+                className="h-9 w-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors duration-200 cursor-pointer"
               >
                 <Facebook className="h-4 w-4" />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
+                className="h-9 w-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors duration-200 cursor-pointer"
               >
                 <Instagram className="h-4 w-4" />
               </a>
               <a
                 href="#"
                 aria-label="Twitter"
-                className="h-9 w-9 border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors"
+                className="h-9 w-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors duration-200 cursor-pointer"
               >
                 <Twitter className="h-4 w-4" />
               </a>
@@ -95,7 +103,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="text-sm hover:text-white transition-colors">
+                  <Link href={href} className="text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                     {label}
                   </Link>
                 </li>
@@ -129,7 +137,7 @@ export default function Footer() {
               </li>
               <li className="flex gap-3">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <a href="tel:+94710427241" className="text-sm hover:text-white transition-colors">
+                <a href="tel:+94710427241" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                   +94 71 042 7241
                 </a>
               </li>
@@ -137,7 +145,7 @@ export default function Footer() {
                 <svg className="h-4 w-4 text-primary shrink-0 fill-current" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-2.578l-.361-.214-3.741.982 1.003-3.647-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
-                <a href="https://wa.me/94710427241" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">
+                <a href="https://wa.me/94710427241" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                   WhatsApp Us
                 </a>
               </li>
@@ -155,7 +163,9 @@ export default function Footer() {
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <p>&copy; {new Date().getFullYear()} Noah Surf School. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link href="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
+            <Link href="/terms" className="hover:text-white transition-colors duration-200 cursor-pointer">
+              Terms &amp; Conditions
+            </Link>
             <span className="text-white/20">·</span>
             <p>Hirikatiya Beach, Sri Lanka</p>
           </div>

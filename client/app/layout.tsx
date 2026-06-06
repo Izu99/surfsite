@@ -1,15 +1,21 @@
 import type { Metadata } from 'next'
-import { Fira_Sans_Condensed } from 'next/font/google'
+import { Poppins, Caveat } from 'next/font/google'
 import './globals.css'
 import SiteShell from '@/components/SiteShell'
 import { Providers } from '@/components/Providers'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 
-const firaSansCondensed = Fira_Sans_Condensed({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-sans',
+  display: 'swap',
+})
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
   display: 'swap',
 })
 
@@ -78,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={firaSansCondensed.variable}>
+    <html lang="en" className={`${poppins.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
           <SiteShell>{children}</SiteShell>

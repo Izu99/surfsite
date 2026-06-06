@@ -60,17 +60,22 @@ export default function HeroSlideshow() {
         </div>
       ))}
 
-      {/* Gradient overlay — transparent top so image shows under navbar */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/65" />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/75" />
 
-      {/* Left column: slide indicators */}
+      {/* Floating surfboard decoration — top right */}
+      <div className="absolute top-24 right-6 md:right-16 z-10 pointer-events-none opacity-30 hidden sm:block animate-[float_7s_ease-in-out_infinite]">
+        <Image src="/surfboard.png" alt="" width={48} height={140} className="object-contain rotate-[-12deg]" aria-hidden />
+      </div>
+
+      {/* Slide indicators — left */}
       <div className="absolute left-5 md:left-8 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             className={cn(
-              'text-sm font-bold tabular-nums text-left transition-colors tracking-wide',
+              'text-sm font-bold tabular-nums text-left transition-colors tracking-wide cursor-pointer',
               i === current ? 'text-primary-light' : 'text-white/40 hover:text-white/60'
             )}
           >
@@ -81,58 +86,75 @@ export default function HeroSlideshow() {
 
       {/* Main hero content */}
       <div className="absolute top-[72px] inset-x-0 bottom-0 flex flex-col justify-center z-10">
-        <div className="container-site pl-32 md:pl-48 lg:pl-64">
-          <div className="ml-8 md:ml-12 lg:ml-16">
-            {/* Tagline */}
-            <p className="text-white/90 text-xl md:text-md font-semibold uppercase tracking-[0.25em] mb-1 md:mb-2">
-              HIRIKATIYA
+        <div className="container-site pl-20 md:pl-32 lg:pl-48">
+          <div className="ml-6 md:ml-10 lg:ml-14">
+            {/* Handwritten tagline */}
+            <p className="font-display text-primary-light text-2xl md:text-3xl mb-1">
+              Hirikatiya Beach, Sri Lanka
             </p>
 
-            {/* Massive heading */}
+            {/* Main heading */}
             <h1
               className="text-white font-extrabold uppercase leading-none -ml-1"
-              style={{ fontSize: 'clamp(3.5rem, 13vw, 10rem)' }}
+              style={{ fontSize: 'clamp(3rem, 11vw, 9rem)' }}
             >
-               NOAH SURF SCHOOL
-              <span className="sr-only"> — Noah Surf School Hiriketiya, Sri Lanka</span>
+              NOAH SURF
+              <br />
+              SCHOOL
+              <span className="sr-only"> — Surf Lessons Hiriketiya Sri Lanka</span>
             </h1>
+
+            {/* Sub tagline */}
+            <p className="font-display text-white/80 text-xl md:text-2xl mt-3">
+              Catch your first wave. Feel the freedom. 🏄
+            </p>
           </div>
 
-          {/* Bottom row: CTA + location */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mt-6 md:mt-10 gap-4 sm:gap-0">
+          {/* CTA row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-8 md:mt-12 ml-6 md:ml-10 lg:ml-14">
             <Link
               href="/contact"
-              className="ml-8 md:ml-12 lg:ml-16 inline-block bg-primary text-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-colors"
+              className="inline-block bg-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary-dark transition-colors duration-200 cursor-pointer shadow-lg"
             >
               Book A Lesson
             </Link>
-            <p className="text-primary-light font-bold uppercase tracking-[0.18em] text-lg md:text-2xl mb-1">
-              HIRIKATIYA, SRI LANKA
-            </p>
+            <Link
+              href="/packages"
+              className="inline-block border-2 border-white/60 text-white px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+            >
+              View Packages
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Navigation buttons: bottom right */}
-      <div className="absolute bottom-8 md:bottom-12 right-8 md:right-12 flex gap-3 z-20">
+      {/* Prev / Next */}
+      <div className="absolute bottom-8 md:bottom-14 right-8 md:right-12 flex gap-3 z-20">
         <button
           onClick={prev}
-          className="w-12 h-12 flex items-center justify-center border border-white/20 text-white hover:bg-white/10 transition-colors"
+          className="w-11 h-11 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/15 transition-colors duration-200 cursor-pointer"
           aria-label="Previous slide"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button
           onClick={next}
-          className="w-12 h-12 flex items-center justify-center border border-white/20 text-white hover:bg-white/10 transition-colors"
+          className="w-11 h-11 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/15 transition-colors duration-200 cursor-pointer"
           aria-label="Next slide"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
+      </div>
+
+      {/* Wave bottom — transitions into ConditionsBar dark */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
+        <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '56px' }}>
+          <path d="M0,28 C180,56 360,0 540,28 C720,56 900,5 1080,28 C1260,50 1380,18 1440,28 L1440,56 L0,56 Z" fill="#0d1b2a" />
+        </svg>
       </div>
     </section>
   )

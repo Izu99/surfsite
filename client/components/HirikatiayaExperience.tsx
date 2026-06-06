@@ -81,7 +81,7 @@ export default function HirikatiayaExperience() {
         </span>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight" style={item(100)}>
+      <h2 className="font-display text-4xl md:text-5xl text-white mb-5 leading-tight" style={item(100)}>
         The Hirikatiya<br />Experience
       </h2>
 

@@ -20,7 +20,7 @@ export default function HomepagePackages() {
   }, [])
 
   return (
-    <section className="section-padding bg-primary-50">
+    <section className="section-padding bg-[#fdf6e9]">
       <div className="container-site">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-3">
@@ -29,7 +29,7 @@ export default function HomepagePackages() {
               Pricing
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="font-display text-4xl md:text-5xl text-gray-900">
             Surf School Programs
           </h2>
           <p className="text-gray-500 text-sm mt-3 max-w-md">
