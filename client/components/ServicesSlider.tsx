@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, ArrowRight, GraduationCap, Waves, Tent, Users } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight, GraduationCap, Waves, Tent, Users, User, Star } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 type Service = {
@@ -16,32 +16,46 @@ type Service = {
 
 const services: Service[] = [
   {
-    title: 'Surf Coaching',
-    description: 'One-on-one coaching for your level.',
+    title: 'Beginner Lessons',
+    description: 'Stand up & ride your first wave.',
     image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf coaching at Hirikatiya',
+    alt: 'Beginner surf lesson',
     icon: GraduationCap,
   },
   {
-    title: 'Board Rentals',
-    description: 'Longboards, shortboards & foam boards.',
-    image: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfboard rentals',
-    icon: Waves,
-  },
-  {
-    title: 'Surf Camps',
-    description: 'Multi-day lessons + yoga + local tours.',
-    image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Noah surf camp',
-    icon: Tent,
-  },
-  {
     title: 'Group Lessons',
-    description: 'Fun social groups, max 6 per instructor.',
+    description: 'Max 6 students. Great energy.',
     image: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
     alt: 'Group surf lesson',
     icon: Users,
+  },
+  {
+    title: 'Private Coaching',
+    description: '100% focus on your progress.',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Private surf coaching',
+    icon: User,
+  },
+  {
+    title: 'Kids Surf School',
+    description: 'Safe, fun & made for ages 6+.',
+    image: 'https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Kids surf school',
+    icon: Star,
+  },
+  {
+    title: 'Surf Camps',
+    description: 'Multi-day lessons + yoga + tours.',
+    image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Surf camp',
+    icon: Tent,
+  },
+  {
+    title: 'Board Rentals',
+    description: 'Foam, longboard & shortboard.',
+    image: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Surfboard rentals',
+    icon: Waves,
   },
 ]
 
