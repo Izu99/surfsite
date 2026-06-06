@@ -53,9 +53,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Noah Surf School"
-                width={52}
-                height={52}
-                className="h-11 w-auto object-contain brightness-200"
+                width={80}
+                height={80}
+                className="h-14 w-auto object-contain"
               />
             </Link>
             <p className="font-display text-xl text-white/80 mt-2 leading-snug">
