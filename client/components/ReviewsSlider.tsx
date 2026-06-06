@@ -15,21 +15,12 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
   return (
     <div
       className="relative overflow-hidden"
-      style={{ maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)' }}
+      style={{
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+        maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+      }}
     >
-      <div
-        className="flex gap-5"
-        style={{
-          animation: 'reviews-scroll 28s linear infinite',
-          width: 'max-content',
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.animationPlayState = 'paused'
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLDivElement).style.animationPlayState = 'running'
-        }}
-      >
+      <div className="flex gap-5 w-max animate-marquee hover:[animation-play-state:paused]">
         {doubled.map((review, i) => (
           <div
             key={`${review.name}-${i}`}

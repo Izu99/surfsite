@@ -41,10 +41,6 @@
   }
   --animate-float: float 6s ease-in-out infinite;
 
-  @keyframes reviews-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
 }
 
 @layer base {
@@ -69,7 +65,16 @@
   }
 }
 
+@keyframes reviews-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 @layer utilities {
+  .animate-marquee {
+    animation: reviews-scroll 28s linear infinite;
+  }
+
   .container-site {
     width: 100%;
     max-width: 1280px;
