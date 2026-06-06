@@ -4,7 +4,6 @@ import Link from 'next/link'
 import {
   Star, Award, Users, Globe, Clock,
   ShieldCheck, Camera, Sun, User, MapPin,
-  Waves, Heart, Lightbulb, BadgeCheck, GraduationCap,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import HeroSlideshow from '@/components/HeroSlideshow'
@@ -120,25 +119,20 @@ export default function HomePage() {
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
-                <MapPin className="w-4 h-4" />
-                About Hirikatiya
-              </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 The Hirikatiya<br />Experience
               </h2>
               <HirikatiayaExperience />
             </div>
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-sm aspect-[3/4] overflow-hidden rounded-3xl rotate-[1deg] shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1601387269718-2b104a09daf4?q=80&w=870&auto=format&fit=crop"
-                  alt="Surfing at Hirikatiya Beach"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-              </div>
+            <div>
+              <Image
+                src="/hirikatiya-bay.png"
+                alt="Hirikatiya Beach"
+                width={2528}
+                height={1684}
+                className="w-full h-auto rounded-3xl shadow-2xl"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>
@@ -231,10 +225,6 @@ export default function HomePage() {
       <section className="bg-white pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              <Star className="w-4 h-4" />
-              Google Reviews
-            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
               Rated 4.9 on Google
             </h2>
@@ -263,40 +253,81 @@ export default function HomePage() {
       <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
 
       {/* 7 ── Why Learn With Us ── */}
-      <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-4">
+      <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-16">
         <div className="container-site">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              <Award className="w-4 h-4" />
-              Why Learn With Us
-            </span>
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
               The Noah Difference
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: Waves,        title: 'New Surfboards',       desc: 'We use only brand-new, well-maintained boards suited to every level — foam, longboard & shortboard.' },
-              { icon: ShieldCheck,  title: 'Ocean Safety First',   desc: 'Every session starts with a full safety briefing. Our instructors are trained in water rescue and first aid.' },
-              { icon: Heart,        title: 'True Hospitality',     desc: 'From pick-up to pack-down, we treat every student like family. Warm smiles, cold water, good vibes.' },
-              { icon: Lightbulb,    title: 'Innovative Teaching',  desc: 'Our methods blend video feedback, dryland drills, and in-water coaching for the fastest progress.' },
-              { icon: BadgeCheck,   title: 'NDA Certified',        desc: 'Our school meets national surf coaching standards — quality you can trust, instructors you can rely on.' },
-              { icon: GraduationCap, title: 'Teach Anyone',        desc: 'Kids, adults, beginners, intermediates — we adapt every lesson so everyone catches waves on day one.' },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-3xl p-8 shadow-sm flex flex-col items-start gap-5">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <Icon className="w-8 h-8 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-1">{title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-                </div>
+              {
+                title: 'New Surfboards',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <path d="M24 5C31 5 43 12 43 24C43 36 31 43 24 43C17 43 5 36 5 24C5 12 17 5 24 5Z"/>
+                    <path d="M24 38L22 44M24 38L26 44"/>
+                    <path d="M20 24C20 21.8 21.8 20 24 20C26.2 20 28 21.8 28 24"/>
+                  </svg>
+                ),
+              },
+              {
+                title: 'Ocean Safety First',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <path d="M24 4L8 10V24C8 33 15 40 24 44C33 40 40 33 40 24V10L24 4Z"/>
+                    <path d="M17 24L22 29L31 19"/>
+                  </svg>
+                ),
+              },
+              {
+                title: 'True Hospitality',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <path d="M24 40C24 40 7 30 7 18C7 13 11 9 16 9C19.5 9 22.5 11 24 14C25.5 11 28.5 9 32 9C37 9 41 13 41 18C41 30 24 40 24 40Z"/>
+                  </svg>
+                ),
+              },
+              {
+                title: 'Innovative Teaching',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <path d="M24 7C18 7 13 12 13 18C13 22 15 25.5 18 27.5V32H30V27.5C33 25.5 35 22 35 18C35 12 30 7 24 7Z"/>
+                    <path d="M18 36H30M20 40H28"/>
+                    <path d="M24 14V22M20 18H28"/>
+                  </svg>
+                ),
+              },
+              {
+                title: 'ISA Certified',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <circle cx="24" cy="20" r="12"/>
+                    <path d="M24 8L26.5 15H34L28 19.5L30.5 26.5L24 22L17.5 26.5L20 19.5L14 15H21.5L24 8Z"/>
+                    <path d="M18 32L15 44M30 32L33 44M15 44H33"/>
+                  </svg>
+                ),
+              },
+              {
+                title: 'Teach Anyone',
+                svg: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                    <circle cx="24" cy="11" r="6"/>
+                    <path d="M12 44V34C12 28 16 24 24 24C32 24 36 28 36 34V44"/>
+                    <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
+                    <path d="M40 36C40 36 44 33 44 29C44 26 42 24 40 24"/>
+                  </svg>
+                ),
+              },
+            ].map(({ svg, title }) => (
+              <div key={title} className="bg-white rounded-2xl px-7 py-6 shadow-sm flex items-center gap-6">
+                <div className="text-gray-900 shrink-0">{svg}</div>
+                <h3 className="font-bold text-gray-900 text-xl leading-snug">{title}</h3>
               </div>
             ))}
           </div>
-        </div>
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[45%] pointer-events-none hidden xl:block opacity-10 select-none">
-          <Image src="/surfboard.png" alt="" width={280} height={840} className="rotate-[-5deg]" aria-hidden />
         </div>
       </section>
 
@@ -306,12 +337,6 @@ export default function HomePage() {
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
-              <Camera className="w-4 h-4" />
-              Gallery
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             Photos &amp; Vibes
           </h2>
@@ -334,14 +359,10 @@ export default function HomePage() {
       {/* ── CTA Banner ── */}
       <section className="bg-white py-24 md:py-32">
         <div className="container-site text-center">
-          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-            <Sun className="w-4 h-4" />
-            Start Today
-          </span>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
           </h2>
-          <p className="font-display text-white/80 text-2xl md:text-3xl max-w-md mx-auto mb-10 text-gray-500">
+          <p className="font-display text-2xl md:text-3xl text-gray-500 max-w-md mx-auto">
             Every day, 6am – 6pm. All gear included.
           </p>
         </div>
