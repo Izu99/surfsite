@@ -8,6 +8,7 @@ import HomepagePackages from '@/components/HomepagePackages'
 import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
 import ReviewsSlider from '@/components/ReviewsSlider'
+import GallerySlideshow from '@/components/GallerySlideshow'
 import { Scatter } from '@/components/SurfDecor'
 
 export const metadata: Metadata = {
@@ -393,57 +394,7 @@ export default function HomePage() {
           </h2>
           <p className="text-gray-500 text-sm mb-8">Real moments from the water</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[280px] sm:h-[360px] md:h-[440px]">
-            <div className="relative overflow-hidden rounded-2xl group">
-              <Image
-                src="/unnamed (4).webp"
-                alt="Surf at Hirikatiya Beach"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            <div className="flex flex-col gap-3 h-full">
-              <div className="relative overflow-hidden rounded-2xl flex-1 group">
-                <Image
-                  src="/unnamed (5).webp"
-                  alt="Surf lesson at Hirikatiya"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                />
-              </div>
-              <div className="flex gap-3 flex-1">
-                <div className="relative overflow-hidden rounded-2xl flex-1 group">
-                  <Image
-                    src="/unnamed (6).webp"
-                    alt="Surfing at Hirikatiya"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="relative overflow-hidden rounded-2xl flex-1 group">
-                  <Image
-                    src="/unnamed (7).webp"
-                    alt="Hirikatiya Beach Sri Lanka"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href="/gallery"
-              className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
-            >
-              View All Photos
-            </Link>
-          </div>
+          <GallerySlideshow />
         </div>
       </section>
 
