@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 
 const slides = [
   { src: '/unnamed (4).webp',  alt: 'Riding the waves at Hirikatiya' },
@@ -19,162 +19,73 @@ const slides = [
 const INTERVAL = 5000
 
 export default function GallerySlideshow() {
-  const [current, setCurrent]     = useState(0)
-  const [paused, setPaused]       = useState(false)
-  const [progressKey, setProgressKey] = useState(0)
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused]   = useState(false)
+  const [dir, setDir]         = useState<'next' | 'prev'>('next')
+  const [animating, setAnimating] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const n = slides.length
 
-  const go = useCallback((idx: number) => {
-    setCurrent(((idx % n) + n) % n)
-    setProgressKey(k => k + 1)
-  }, [n])
+  const go = useCallback((idx: number, direction: 'next' | 'prev' = 'next') => {
+    if (animating) return
+    setDir(direction)
+    setAnimating(true)
+    setTimeout(() => {
+      setCurrent(((idx % n) + n) % n)
+      setAnimating(false)
+    }, 400)
+  }, [animating, n])
 
   useEffect(() => {
     if (paused) return
-    timerRef.current = setInterval(() => go(current + 1), INTERVAL)
+    timerRef.current = setInterval(() => go(current + 1, 'next'), INTERVAL)
     return () => { if (timerRef.current) clearInterval(timerRef.current) }
   }, [current, paused, go])
 
-  const thumbRef = useRef<HTMLDivElement>(null)
+  const next = () => { if (timerRef.current) clearInterval(timerRef.current); go(current + 1, 'next') }
+  const prev = () => { if (timerRef.current) clearInterval(timerRef.current); go(current - 1, 'prev') }
 
-  // scroll active thumbnail into view within the strip only (not the page)
-  useEffect(() => {
-    const strip = thumbRef.current
-    const el = strip?.children[current] as HTMLElement | undefined
-    if (!strip || !el) return
-    const stripLeft = strip.scrollLeft
-    const stripRight = stripLeft + strip.clientWidth
-    const elLeft = el.offsetLeft
-    const elRight = elLeft + el.offsetWidth
-    if (elLeft < stripLeft) {
-      strip.scrollTo({ left: elLeft - 8, behavior: 'smooth' })
-    } else if (elRight > stripRight) {
-      strip.scrollTo({ left: elRight - strip.clientWidth + 8, behavior: 'smooth' })
-    }
-  }, [current])
+  const slideAnim = animating
+    ? dir === 'next'
+      ? 'opacity-0 -translate-x-6'
+      : 'opacity-0 translate-x-6'
+    : 'opacity-100 translate-x-0'
 
   return (
     <div
-      className="flex flex-col gap-4"
+      className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-0 rounded-3xl overflow-hidden min-h-[440px] lg:min-h-[520px] bg-gray-900"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* ── Main stage ── */}
-      <div className="relative h-[55vw] min-h-[280px] max-h-[620px] rounded-3xl overflow-hidden bg-gray-900">
-        {slides.map((slide, i) => (
-          <div
-            key={slide.src}
-            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-            style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
-            aria-hidden={i !== current}
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className={`object-cover transition-transform ease-out ${
-                i === current
-                  ? 'scale-[1.06] duration-[7000ms]'
-                  : 'scale-100 duration-700'
-              }`}
-              sizes="100vw"
-              priority={i === 0}
-            />
-          </div>
-        ))}
-
-        {/* Gradient — heavier at bottom for legibility */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-
-        {/* Slide counter — top right */}
-        <div className="absolute top-5 right-5 z-20 leading-none select-none">
-          <span className="text-primary-light text-2xl font-bold">
+      {/* ── Left panel: controls ── */}
+      <div className="flex flex-col justify-between p-8 md:p-10 bg-[#f0ece4] text-gray-900 order-2 lg:order-1">
+        {/* Counter */}
+        <div className="flex items-end gap-1 select-none">
+          <span className="text-5xl font-extrabold text-primary leading-none">
             {String(current + 1).padStart(2, '0')}
           </span>
-          <span className="text-white/35 text-lg mx-1">/</span>
-          <span className="text-white/50 text-lg">
+          <span className="text-gray-300 text-2xl mb-1 mx-1">/</span>
+          <span className="text-gray-400 text-2xl mb-1">
             {String(n).padStart(2, '0')}
           </span>
         </div>
 
-        {/* Caption — bottom left */}
-        <div className="absolute bottom-6 left-6 z-20">
-          <p className="text-white text-base font-medium drop-shadow-md">
+        {/* Caption */}
+        <div className="flex-1 flex items-center py-8">
+          <p
+            className={`text-gray-800 text-xl md:text-2xl font-semibold leading-snug transition-all duration-[400ms] ${slideAnim}`}
+          >
             {slides[current].alt}
           </p>
         </div>
 
-        {/* Prev arrow */}
-        <button
-          onClick={() => go(current - 1)}
-          aria-label="Previous photo"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 md:h-13 md:w-13 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-colors duration-200 cursor-pointer"
-        >
-          <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
-        </button>
-
-        {/* Next arrow */}
-        <button
-          onClick={() => go(current + 1)}
-          aria-label="Next photo"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 md:h-13 md:w-13 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-colors duration-200 cursor-pointer"
-        >
-          <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
-        </button>
-      </div>
-
-      {/* ── Progress bar ── */}
-      <div className="h-[3px] rounded-full bg-gray-200 overflow-hidden">
-        <div
-          key={progressKey}
-          className="h-full bg-primary rounded-full origin-left"
-          style={{
-            animation: paused ? 'none' : `gallery-progress ${INTERVAL}ms linear forwards`,
-          }}
-        />
-      </div>
-
-      {/* ── Thumbnail strip ── */}
-      <div
-        ref={thumbRef}
-        className="flex gap-2.5 overflow-x-auto pb-1 scrollbar-hide snap-x snap-mandatory"
-        style={{ scrollbarWidth: 'none' }}
-      >
-        {slides.map((slide, i) => (
-          <button
-            key={slide.src}
-            onClick={() => go(i)}
-            aria-label={slide.alt}
-            className={`
-              relative shrink-0 rounded-xl overflow-hidden cursor-pointer snap-start
-              transition-all duration-300
-              ${i === current
-                ? 'w-20 h-14 md:w-24 md:h-16 ring-2 ring-primary ring-offset-2 opacity-100 scale-[1.04]'
-                : 'w-16 h-12 md:w-20 md:h-14 opacity-50 hover:opacity-80'
-              }
-            `}
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className="object-cover"
-              sizes="96px"
-            />
-          </button>
-        ))}
-      </div>
-
-      {/* ── View All link ── */}
-      <div className="flex items-center justify-between">
         {/* Dot indicators */}
-        <div className="flex gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mb-6">
           {slides.map((_, i) => (
             <button
               key={i}
-              onClick={() => go(i)}
-              aria-label={`Go to photo ${i + 1}`}
+              onClick={() => go(i, i > current ? 'next' : 'prev')}
+              aria-label={`Photo ${i + 1}`}
               className={`rounded-full transition-all duration-300 cursor-pointer ${
                 i === current
                   ? 'w-6 h-2 bg-primary'
@@ -184,13 +95,64 @@ export default function GallerySlideshow() {
           ))}
         </div>
 
-        <Link
-          href="/gallery"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors duration-200 cursor-pointer group"
-        >
-          View all photos
-          <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        {/* Arrows + View all */}
+        <div className="flex items-center justify-between">
+          <div className="flex gap-3">
+            <button
+              onClick={prev}
+              aria-label="Previous"
+              className="h-11 w-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 hover:border-primary hover:bg-primary hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="h-11 w-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 hover:border-primary hover:bg-primary hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          <Link
+            href="/gallery"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors duration-200 cursor-pointer group"
+          >
+            View all
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
+
+      {/* ── Right panel: image ── */}
+      <div className="relative h-72 lg:h-auto overflow-hidden order-1 lg:order-2">
+        {slides.map((slide, i) => (
+          <div
+            key={slide.src}
+            className="absolute inset-0 transition-opacity duration-500"
+            style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className={`object-cover transition-transform ease-out ${
+                i === current ? 'scale-[1.05] duration-[6000ms]' : 'scale-100 duration-500'
+              }`}
+              sizes="(max-width: 1024px) 100vw, 62vw"
+              priority={i === 0}
+            />
+          </div>
+        ))}
+
+        {/* Progress bar at bottom of image */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 h-[3px] bg-white/20">
+          <div
+            key={current}
+            className="h-full bg-primary origin-left"
+            style={{ animation: paused ? 'none' : `gallery-progress ${INTERVAL}ms linear forwards` }}
+          />
+        </div>
       </div>
     </div>
   )

@@ -24,7 +24,7 @@ export default function HomepagePackages() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Surf School Programs
           </h2>
-          <p className="text-gray-500 text-sm mt-3 max-w-md">
+          <p className="font-display text-xl text-gray-500 mt-3 max-w-md">
             Every session includes boards, rash guard, sunscreen, water &amp; first aid. No hidden fees.
           </p>
         </div>
