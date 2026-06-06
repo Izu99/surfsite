@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Phone, Clock, Facebook, Instagram, Twitter } from 'lucide-react'
+import { MapPin, Phone, Clock, Facebook, Instagram, Twitter, Mail } from 'lucide-react'
 
 const quickLinks = [
   { href: '/', label: 'Home' },
@@ -13,11 +13,7 @@ const quickLinks = [
 ]
 
 const services = [
-  'Beginner Lessons',
-  'Advanced Coaching',
-  'Group Sessions',
-  'Board Rentals',
-  'Surf Camps',
+  { label: 'Beginner Lessons', href: '/packages' },
 ]
 
 export default function Footer() {
@@ -26,27 +22,19 @@ export default function Footer() {
 
       {/* CTA band */}
       <div className="bg-primary">
-        <div className="container-site py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="font-display text-white text-3xl md:text-4xl">
-              Ready to ride your first wave?
-            </h2>
-            <p className="text-primary-200 text-sm mt-1">
-              Join hundreds of surfers who started their journey with us.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="shrink-0 bg-white px-8 py-3 rounded-full text-sm font-bold text-primary hover:bg-primary-50 transition-colors duration-200 cursor-pointer"
-          >
-            Book a Lesson Today
-          </Link>
+        <div className="container-site py-10">
+          <h2 className="font-display text-white text-3xl md:text-4xl">
+            Ready to ride your first wave?
+          </h2>
+          <p className="text-primary-200 text-sm mt-1">
+            Join hundreds of surfers who started their journey with us.
+          </p>
         </div>
       </div>
 
       {/* Main footer */}
       <div className="container-site py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-4 cursor-pointer">
@@ -108,11 +96,15 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-5">
-              Services
+              Lessons
             </h3>
             <ul className="space-y-2.5">
-              {services.map((s) => (
-                <li key={s} className="text-sm">{s}</li>
+              {services.map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="text-sm hover:text-white transition-colors duration-200 cursor-pointer">
+                    {label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -146,6 +138,30 @@ export default function Footer() {
               <li className="flex gap-3">
                 <Clock className="h-4 w-4 text-primary shrink-0" />
                 <span className="text-sm">Daily 6:00 am – 6:00 pm</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* For Agencies */}
+          <div>
+            <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-5">
+              For Agencies
+            </h3>
+            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+              Are you a travel agency or hotel? We offer group packages and partnerships for your guests.
+            </p>
+            <ul className="space-y-3.5">
+              <li className="flex gap-3">
+                <Mail className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <a href="mailto:partnerships@noahsurfschool.lk" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer break-all">
+                  partnerships@noahsurfschool.lk
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <a href="tel:+94710427241" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer">
+                  +94 71 042 7241
+                </a>
               </li>
             </ul>
           </div>
