@@ -17,7 +17,8 @@ export default function HeroSlideshow() {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/80" />
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-black/90" />
 
       {/* Floating surfboard decoration */}
       <div className="absolute top-24 right-6 md:right-16 z-10 pointer-events-none opacity-25 hidden sm:block animate-[float_7s_ease-in-out_infinite]">
@@ -28,6 +29,18 @@ export default function HeroSlideshow() {
       <div className="absolute top-[72px] inset-x-0 bottom-0 flex flex-col justify-center z-10">
         <div className="container-site">
           <div className="max-w-3xl">
+            {/* Logo */}
+            <div className="mb-5">
+              <Image
+                src="/logo.png"
+                alt="Noah Surf School"
+                width={90}
+                height={90}
+                className="h-16 md:h-20 w-auto object-contain"
+                priority
+              />
+            </div>
+
             {/* Handwritten location tag */}
             <p className="font-display text-primary-light text-2xl md:text-3xl mb-2">
               Hirikatiya Beach, Sri Lanka

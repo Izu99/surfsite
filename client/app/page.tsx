@@ -8,6 +8,7 @@ import HomepagePackages from '@/components/HomepagePackages'
 import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
 import ReviewsSlider from '@/components/ReviewsSlider'
+import { Scatter } from '@/components/SurfDecor'
 
 export const metadata: Metadata = {
   title: { absolute: 'Best Surf School in Hiriketiya | Top South Coast Surfing Sri Lanka' },
@@ -189,6 +190,10 @@ export default function HomePage() {
         <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
         </div>
+        {/* Scattered decor */}
+        <Scatter icon="wave"   className="top-6 left-6"                      size="w-24"   rotate="-rotate-[15deg]" opacity="opacity-20" />
+        <Scatter icon="flower" className="bottom-10 left-[15%] hidden md:block" size="w-12"   rotate="rotate-[20deg]"  opacity="opacity-25" />
+        <Scatter icon="line"   className="top-16 right-[20%] hidden lg:block"  size="w-20"   rotate="-rotate-[8deg]"  opacity="opacity-20" />
 
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -286,6 +291,8 @@ export default function HomePage() {
 
       {/* 6 ── Ratings / Reviews ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
+        <Scatter icon="line"  className="top-6 left-4 hidden sm:block"          size="w-24"   rotate="rotate-[5deg]"   opacity="opacity-20" />
+        <Scatter icon="board" className="top-8 right-8 hidden lg:block"         size="w-7 h-20" rotate="-rotate-[15deg]" opacity="opacity-20" />
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
@@ -328,6 +335,10 @@ export default function HomePage() {
 
       {/* 7 ── Why Learn With Us / Stats ── */}
       <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-4">
+        <Scatter icon="palm"   className="left-4 bottom-10 hidden md:block"     size="w-20"   rotate="rotate-[5deg]"   opacity="opacity-20" />
+        <Scatter icon="curl"   className="right-6 top-10 hidden lg:block"       size="w-28"   rotate="-rotate-[10deg]" opacity="opacity-20" />
+        <Scatter icon="board"  className="left-[42%] top-4 hidden xl:block"     size="w-8 h-24" rotate="rotate-[20deg]"  opacity="opacity-20" />
+
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
@@ -368,6 +379,8 @@ export default function HomePage() {
 
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
+        <Scatter icon="wave"  className="top-4 right-10 hidden md:block"       size="w-20"   rotate="rotate-[8deg]"   opacity="opacity-20" />
+        <Scatter icon="flower" className="bottom-14 right-4 hidden lg:block"   size="w-10"   rotate="-rotate-[5deg]"  opacity="opacity-20" />
         <div className="container-site">
           <div className="flex items-center gap-3 mb-3">
             <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
@@ -380,7 +393,7 @@ export default function HomePage() {
           </h2>
           <p className="text-gray-500 text-sm mb-8">Real moments from the water</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[440px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[280px] sm:h-[360px] md:h-[440px]">
             <div className="relative overflow-hidden rounded-2xl group">
               <Image
                 src="/unnamed (4).webp"
