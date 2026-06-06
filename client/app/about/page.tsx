@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Instagram, Facebook, Youtube } from 'lucide-react'
+import { Instagram, Facebook, Youtube, ShieldCheck, Users, Star, Award, Sun, Clock, Globe, type LucideIcon } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
@@ -16,21 +16,20 @@ export const metadata: Metadata = {
   },
 }
 
-const values = [
-  { text: 'Certified ISA surf instructors on every session', icon: '/icons/icons8-certificate-50.png' },
-  { text: 'Small student-to-instructor ratios (max 6 per group)', icon: '/icons/icons8-conference-50.png' },
-  { text: 'All equipment provided — boards, leashes, rash guards', icon: '/icons/icons8-surf-96.png' },
-  { text: 'Suitable for all ages from 7 years and up', icon: '/icons/icons8-user-50.png' },
-  { text: 'Warm, consistent Indian Ocean swells year-round', icon: '/icons/icons8-sun-50.png' },
-  { text: 'Flexible scheduling — daily 6:00 am to 6:00 pm', icon: '/icons/icons8-alarm-clock-50.png' },
-  // { text: 'Free cancellation up to 24 hours before your lesson', icon: '/icons/icons8-calendar-64.png' },
-  { text: 'Lessons in English', icon: '/icons/icons8-globe-50.png' },
+const values: { text: string; icon: LucideIcon }[] = [
+  { text: 'Certified ISA surf instructors on every session', icon: ShieldCheck },
+  { text: 'Small student-to-instructor ratios (max 6 per group)', icon: Users },
+  { text: 'All equipment provided — boards, leashes, rash guards', icon: Award },
+  { text: 'Suitable for all ages from 7 years and up', icon: Users },
+  { text: 'Warm, consistent Indian Ocean swells year-round', icon: Sun },
+  { text: 'Flexible scheduling — daily 6:00 am to 6:00 pm', icon: Clock },
+  { text: 'Lessons in English', icon: Globe },
 ]
 
-const stats = [
-  { icon: '/icons/icons8-group-50.png', number: '2,500+', label: 'Surfers Trained', sub: 'Students from 60+ countries' },
-  { icon: '/icons/icons8-award-50.png', number: '14', label: 'Years Experience', sub: 'Operating since 2010' },
-  { icon: '/icons/icons8-star-50.png', number: '4.9', label: 'Student Rating', sub: 'Based on 800+ reviews' },
+const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] = [
+  { icon: Users, number: '2,500+', label: 'Surfers Trained', sub: 'Students from 60+ countries' },
+  { icon: Award, number: '14', label: 'Years Experience', sub: 'Operating since 2010' },
+  { icon: Star, number: '4.9', label: 'Student Rating', sub: 'Based on 800+ reviews' },
 ]
 
 const socials = [
@@ -247,10 +246,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-primary/10" />
         <div className="relative container-site">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
-            {stats.map(({ icon, number, label, sub }) => (
+            {stats.map(({ icon: Icon, number, label, sub }) => (
               <div key={label} className="flex flex-col items-center text-center px-8 py-8 sm:py-4">
                 <div className="h-14 w-14 flex items-center justify-center mb-4">
-                  <Image src={icon} alt={label} width={48} height={48} className="object-contain brightness-0 invert" />
+                  <Icon className="w-9 h-9 text-white" />
                 </div>
                 <p className="text-4xl font-extrabold text-white mb-1">{number}</p>
                 <p className="text-sm font-semibold text-primary-100">{label}</p>
@@ -282,9 +281,9 @@ export default function AboutPage() {
                 helping you progress quickly and safely.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {values.map(({ text, icon }) => (
+                {values.map(({ text, icon: Icon }) => (
                   <li key={text} className="flex items-start gap-3 text-sm text-gray-700">
-                    <Image src={icon} alt="" width={28} height={28} className="shrink-0 object-contain mt-0.5" />
+                    <Icon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     {text}
                   </li>
                 ))}

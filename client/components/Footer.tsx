@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="bg-primary">
         <div className="container-site py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="font-display text-white text-2xl md:text-3xl">
+            <h2 className="font-bold text-white text-2xl md:text-3xl">
               Ready to ride your first wave?
             </h2>
             <p className="text-primary-200 text-sm mt-1">
@@ -58,8 +58,8 @@ export default function Footer() {
                 className="h-14 w-auto object-contain"
               />
             </Link>
-            <p className="font-display text-xl text-white/80 mt-2 leading-snug">
-              Sri Lanka&apos;s surf school in paradise 🌴
+            <p className="text-base text-white/80 mt-2 leading-snug">
+              Sri Lanka&apos;s surf school in paradise
             </p>
             <p className="text-sm leading-relaxed mt-2 text-gray-400">
               Hirikatiya Beach, open daily 6am–6pm.

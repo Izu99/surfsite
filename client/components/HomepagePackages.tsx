@@ -27,7 +27,7 @@ export default function HomepagePackages() {
               Pricing
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Surf School Programs
           </h2>
           <p className="text-gray-500 text-sm mt-3 max-w-md">

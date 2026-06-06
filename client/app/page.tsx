@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Star } from 'lucide-react'
+import {
+  Star, Award, Users, Globe, Clock,
+  ShieldCheck, Camera, Sun, User,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import HeroSlideshow from '@/components/HeroSlideshow'
 import ServicesSlider from '@/components/ServicesSlider'
 import HomepagePackages from '@/components/HomepagePackages'
@@ -9,7 +13,6 @@ import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
 import ReviewsSlider from '@/components/ReviewsSlider'
 import GallerySlideshow from '@/components/GallerySlideshow'
-import { Scatter } from '@/components/SurfDecor'
 
 export const metadata: Metadata = {
   title: { absolute: 'Best Surf School in Hiriketiya | Top South Coast Surfing Sri Lanka' },
@@ -26,52 +29,21 @@ export const metadata: Metadata = {
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const services = [
+const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] = [
   {
-    title: 'Surf Coaching',
-    description: 'One-on-one coaching for your level.',
-    image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf coaching at Hirikatiya',
-    icon: '/icons/icons8-surf-96.png',
-  },
-  {
-    title: 'Board Rentals',
-    description: 'Longboards, shortboards & foam boards.',
-    image: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfboard rentals',
-    icon: '/icons/icons8-holiday-50.png',
-  },
-  {
-    title: 'Surf Camps',
-    description: 'Multi-day lessons + yoga + local tours.',
-    image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Noah surf camp',
-    icon: '/icons/icons8-location-50.png',
-  },
-  {
-    title: 'Group Lessons',
-    description: 'Fun social groups, max 6 per instructor.',
-    image: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Group surf lesson',
-    icon: '/icons/icons8-conference-50.png',
-  },
-]
-
-const stats = [
-  {
-    icon: '/icons/icons8-ocean-wave-100.png',
+    icon: Users,
     number: '2,500+',
     label: 'Surfers Trained',
     sub: '60+ countries',
   },
   {
-    icon: '/icons/icons8-surf-96.png',
+    icon: Award,
     number: '14',
     label: 'Years Experience',
     sub: 'ISA certified',
   },
   {
-    icon: '/icons/icons8-star-50.png',
+    icon: Star,
     number: '4.9★',
     label: 'Student Rating',
     sub: '800+ reviews',
@@ -191,10 +163,6 @@ export default function HomePage() {
         <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
         </div>
-        {/* Scattered decor */}
-        <Scatter icon="wave"   className="top-6 left-6"                      size="w-24"   rotate="-rotate-[15deg]" opacity="opacity-20" />
-        <Scatter icon="flower" className="bottom-10 left-[15%] hidden md:block" size="w-12"   rotate="rotate-[20deg]"  opacity="opacity-25" />
-        <Scatter icon="line"   className="top-16 right-[20%] hidden lg:block"  size="w-20"   rotate="-rotate-[8deg]"  opacity="opacity-20" />
 
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -212,13 +180,13 @@ export default function HomePage() {
                 </div>
                 {/* Years badge */}
                 <div className="absolute -bottom-5 -right-4 bg-primary text-white rounded-2xl px-5 py-3 shadow-xl rotate-[2.5deg]">
-                  <p className="font-display text-3xl font-bold leading-none">14</p>
+                  <p className="text-3xl font-bold leading-none">14</p>
                   <p className="text-xs font-semibold text-primary-100">years surfing</p>
                 </div>
                 {/* ISA badge */}
                 <div className="absolute -top-3 -left-4 bg-white rounded-2xl px-4 py-2.5 shadow-lg rotate-[-2deg]">
                   <div className="flex items-center gap-2">
-                    <Image src="/icons/icons8-certificate-50.png" alt="" width={20} height={20} />
+                    <ShieldCheck className="w-4 h-4 text-primary" />
                     <p className="font-bold text-xs text-gray-800">ISA Certified</p>
                   </div>
                 </div>
@@ -228,38 +196,37 @@ export default function HomePage() {
             {/* Noah's personal handwritten message */}
             <div className="order-1 lg:order-2">
               <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                <Image src="/icons/icons8-user-50.png" alt="" width={16} height={16} />
+                <User className="w-4 h-4" />
                 About Noah
               </span>
 
-              {/* Written-by-Noah style — all in Caveat */}
-              <div className="font-display space-y-3 mb-8">
-                <p className="text-4xl md:text-5xl text-gray-900 leading-tight">
-                  Hey! I&apos;m Noah 👋
+              <div className="space-y-3 mb-8">
+                <p className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                  Hey! I&apos;m Noah
                 </p>
-                <p className="text-2xl md:text-3xl text-gray-700 leading-snug">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   I&apos;ve been riding these beautiful waves at Hirikatiya for over 14 years.
                 </p>
-                <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
+                <p className="text-base text-gray-600 leading-relaxed">
                   My mission? Share the joy of surfing with anyone who wants to try — beginner, intermediate, kid or adult.
                 </p>
-                <p className="text-2xl md:text-3xl text-primary font-bold">
-                  The ocean is waiting for you! 🌊
+                <p className="text-lg text-primary font-semibold">
+                  The ocean is waiting for you.
                 </p>
               </div>
 
               {/* Quick fact badges */}
               <div className="flex flex-wrap gap-3 mb-8">
                 <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Image src="/icons/icons8-globe-50.png" alt="" width={24} height={24} />
+                  <Globe className="w-5 h-5 text-primary" />
                   <span className="text-sm font-semibold text-gray-700">60+ Countries</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Image src="/icons/icons8-group-50.png" alt="" width={24} height={24} />
+                  <Users className="w-5 h-5 text-primary" />
                   <span className="text-sm font-semibold text-gray-700">2,500+ Surfers</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Image src="/icons/icons8-alarm-clock-50.png" alt="" width={24} height={24} />
+                  <Clock className="w-5 h-5 text-primary" />
                   <span className="text-sm font-semibold text-gray-700">Daily 6am – 6pm</span>
                 </div>
               </div>
@@ -279,7 +246,7 @@ export default function HomePage() {
       <WaveDivider fromColor="#fdf6e9" toColor="#f0ece4" />
 
       {/* 5 ── Lessons / Services ── */}
-      <ServicesSlider services={services} />
+      <ServicesSlider />
 
       {/* Wave: cream → sandy */}
       <WaveDivider fromColor="#f0ece4" toColor="#fdf6e9" />
@@ -292,15 +259,13 @@ export default function HomePage() {
 
       {/* 6 ── Ratings / Reviews ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
-        <Scatter icon="line"  className="top-6 left-4 hidden sm:block"          size="w-24"   rotate="rotate-[5deg]"   opacity="opacity-20" />
-        <Scatter icon="board" className="top-8 right-8 hidden lg:block"         size="w-7 h-20" rotate="-rotate-[15deg]" opacity="opacity-20" />
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              <Image src="/icons/icons8-star-50.png" alt="" width={16} height={16} />
+              <Star className="w-4 h-4" />
               Google Reviews
             </span>
-            <h2 className="font-display text-4xl md:text-5xl text-gray-900 mb-2">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
               Rated 4.9 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
@@ -325,10 +290,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Decorative wave icon */}
-        <div className="absolute bottom-8 right-8 pointer-events-none hidden lg:block select-none">
-          <Image src="/icons/icons8-ocean-wave-100.png" alt="" width={90} height={90} className="rotate-[10deg] opacity-10" aria-hidden />
-        </div>
       </section>
 
       {/* Wave: white → sandy */}
@@ -336,32 +297,29 @@ export default function HomePage() {
 
       {/* 7 ── Why Learn With Us / Stats ── */}
       <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-4">
-        <Scatter icon="palm"   className="left-4 bottom-10 hidden md:block"     size="w-20"   rotate="rotate-[5deg]"   opacity="opacity-20" />
-        <Scatter icon="curl"   className="right-6 top-10 hidden lg:block"       size="w-28"   rotate="-rotate-[10deg]" opacity="opacity-20" />
-        <Scatter icon="board"  className="left-[42%] top-4 hidden xl:block"     size="w-8 h-24" rotate="rotate-[20deg]"  opacity="opacity-20" />
 
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              <Image src="/icons/icons8-award-50.png" alt="" width={16} height={16} />
+              <Award className="w-4 h-4" />
               Why Choose Us
             </span>
-            <h2 className="font-display text-4xl md:text-5xl text-gray-900">
-              The numbers speak!
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              The numbers speak
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
-            {stats.map(({ icon, number, label, sub }, i) => (
+            {stats.map(({ icon: Icon, number, label, sub }, i) => (
               <div
                 key={label}
                 className="flex flex-col items-center text-center p-8 bg-white rounded-3xl shadow-sm"
                 style={{ rotate: i === 1 ? '0.5deg' : i === 0 ? '-0.8deg' : '0.8deg' }}
               >
                 <div className="w-20 h-20 rounded-full bg-[#fdf6e9] shadow-md flex items-center justify-center mb-5 shrink-0">
-                  <Image src={icon} alt={label} width={44} height={44} className="object-contain" />
+                  <Icon className="w-9 h-9 text-primary" />
                 </div>
-                <p className="font-display text-5xl md:text-6xl text-primary font-bold leading-none">{number}</p>
+                <p className="text-5xl md:text-6xl text-primary font-bold leading-none">{number}</p>
                 <p className="font-semibold text-gray-800 mt-2 text-base">{label}</p>
                 <p className="text-sm text-gray-400 mt-1">{sub}</p>
               </div>
@@ -380,21 +338,19 @@ export default function HomePage() {
 
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
-        <Scatter icon="wave"  className="top-4 right-10 hidden md:block"       size="w-20"   rotate="rotate-[8deg]"   opacity="opacity-20" />
-        <Scatter icon="flower" className="bottom-14 right-4 hidden lg:block"   size="w-10"   rotate="-rotate-[5deg]"  opacity="opacity-20" />
         <div className="container-site">
           <div className="flex items-center gap-3 mb-3">
             <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
-              <Image src="/icons/icons8-holiday-50.png" alt="" width={16} height={16} />
+              <Camera className="w-4 h-4" />
               Gallery
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-gray-900 mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             Photos &amp; Vibes
           </h2>
           <p className="text-gray-500 text-sm mb-8">Real moments from the water</p>
 
-          <GallerySlideshow />
+          {/* <GallerySlideshow /> */}
         </div>
       </section>
 
@@ -415,13 +371,13 @@ export default function HomePage() {
 
         <div className="relative container-site text-center">
           <span className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-            <Image src="/icons/icons8-sun-50.png" alt="" width={16} height={16} className="brightness-200" />
+            <Sun className="w-4 h-4" />
             Start Today
           </span>
-          <h2 className="font-display text-4xl md:text-6xl text-white mb-4 max-w-2xl mx-auto leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
           </h2>
-          <p className="font-display text-white/80 text-xl md:text-2xl max-w-md mx-auto mb-10">
+          <p className="text-white/80 text-lg md:text-xl max-w-md mx-auto mb-10">
             Every day, 6am – 6pm. All gear included.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

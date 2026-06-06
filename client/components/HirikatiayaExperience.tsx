@@ -1,15 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
+import { Waves, Fish, Sun, MapPin, Clock, Wifi, type LucideIcon } from 'lucide-react'
 
-const highlights = [
-  { icon: '/icons/icons8-surf-96.png',        bold: 'Surfing',              text: ' for all levels' },
-  { icon: '/icons/icons8-ocean-wave-100.png', bold: 'Sea Turtles',          text: ' — swim with them!' },
-  { icon: '/icons/icons8-sun-50.png',         bold: 'Yoga & Wellness',      text: '' },
-  { icon: '/icons/icons8-location-50.png',    bold: 'Hiriketiya Beach',     text: ' — the ultimate escape' },
-  { icon: '/icons/icons8-alarm-clock-50.png', bold: 'Sunsets',              text: ' at Dickwella Beach' },
-  { icon: '/icons/icons8-globe-50.png',       bold: 'Digital Nomad Hub',    text: ' — cafes & co-work' },
+type Highlight = { icon: LucideIcon; bold: string; text: string }
+
+const highlights: Highlight[] = [
+  { icon: Waves,  bold: 'Surfing',           text: ' for all levels' },
+  { icon: Fish,   bold: 'Sea Turtles',        text: ' — swim with them!' },
+  { icon: Sun,    bold: 'Yoga & Wellness',    text: '' },
+  { icon: MapPin, bold: 'Hiriketiya Beach',   text: ' — the ultimate escape' },
+  { icon: Clock,  bold: 'Sunsets',            text: ' at Dickwella Beach' },
+  { icon: Wifi,   bold: 'Digital Nomad Hub',  text: ' — cafes & co-work' },
 ]
 
 const facts = [
@@ -23,11 +25,11 @@ export default function HirikatiayaExperience() {
   return (
     <div>
       <span className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
-        <Image src="/icons/icons8-location-50.png" alt="" width={16} height={16} className="brightness-200" />
+        <MapPin className="w-4 h-4" />
         About Hirikatiya
       </span>
 
-      <h2 className="font-display text-4xl md:text-5xl text-white mb-4 leading-tight">
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
         The Hirikatiya<br />Experience
       </h2>
 
@@ -37,10 +39,10 @@ export default function HirikatiayaExperience() {
 
       {/* Icon highlights */}
       <ul className="space-y-3 mb-8">
-        {highlights.map(({ icon, bold, text }) => (
+        {highlights.map(({ icon: Icon, bold, text }) => (
           <li key={bold} className="flex items-center gap-3 text-white/85">
             <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-              <Image src={icon} alt="" width={18} height={18} className="brightness-200 object-contain" />
+              <Icon className="w-4 h-4 text-white" />
             </div>
             <span className="text-sm">
               <strong className="text-white font-semibold">{bold}</strong>
@@ -54,7 +56,7 @@ export default function HirikatiayaExperience() {
       <div className="grid grid-cols-2 gap-3 mb-8">
         {facts.map(({ label, value }) => (
           <div key={label} className="border border-white/20 rounded-2xl p-4">
-            <p className="font-display text-3xl text-primary-light font-bold leading-none">{value}</p>
+            <p className="text-3xl text-primary-light font-bold leading-none">{value}</p>
             <p className="text-white/55 text-xs mt-1">{label}</p>
           </div>
         ))}

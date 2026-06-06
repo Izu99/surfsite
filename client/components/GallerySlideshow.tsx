@@ -38,10 +38,20 @@ export default function GallerySlideshow() {
 
   const thumbRef = useRef<HTMLDivElement>(null)
 
-  // scroll active thumbnail into view
+  // scroll active thumbnail into view within the strip only (not the page)
   useEffect(() => {
-    const el = thumbRef.current?.children[current] as HTMLElement | undefined
-    el?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+    const strip = thumbRef.current
+    const el = strip?.children[current] as HTMLElement | undefined
+    if (!strip || !el) return
+    const stripLeft = strip.scrollLeft
+    const stripRight = stripLeft + strip.clientWidth
+    const elLeft = el.offsetLeft
+    const elRight = elLeft + el.offsetWidth
+    if (elLeft < stripLeft) {
+      strip.scrollTo({ left: elLeft - 8, behavior: 'smooth' })
+    } else if (elRight > stripRight) {
+      strip.scrollTo({ left: elRight - strip.clientWidth + 8, behavior: 'smooth' })
+    }
   }, [current])
 
   return (
@@ -77,20 +87,20 @@ export default function GallerySlideshow() {
         {/* Gradient — heavier at bottom for legibility */}
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
-        {/* Slide counter — Caveat font, top right */}
-        <div className="absolute top-5 right-5 z-20 font-display leading-none select-none">
-          <span className="text-primary-light text-3xl md:text-4xl font-bold">
+        {/* Slide counter — top right */}
+        <div className="absolute top-5 right-5 z-20 leading-none select-none">
+          <span className="text-primary-light text-2xl font-bold">
             {String(current + 1).padStart(2, '0')}
           </span>
-          <span className="text-white/35 text-xl mx-1">/</span>
-          <span className="text-white/50 text-xl">
+          <span className="text-white/35 text-lg mx-1">/</span>
+          <span className="text-white/50 text-lg">
             {String(n).padStart(2, '0')}
           </span>
         </div>
 
         {/* Caption — bottom left */}
         <div className="absolute bottom-6 left-6 z-20">
-          <p className="font-display text-white text-xl md:text-2xl drop-shadow-md">
+          <p className="text-white text-base font-medium drop-shadow-md">
             {slides[current].alt}
           </p>
         </div>
