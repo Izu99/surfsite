@@ -46,6 +46,7 @@ const GoogleIcon = () => (
 
 export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
   const doubled = [...reviews, ...reviews]
+  const [paused, setPaused] = useState(false)
 
   return (
     <div
@@ -54,8 +55,13 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
         WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
         maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
       }}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
     >
-      <div className="flex gap-5 w-max animate-marquee hover:[animation-play-state:paused]">
+      <div
+        className="flex gap-5 w-max animate-marquee hover:[animation-play-state:paused]"
+        style={{ animationPlayState: paused ? 'paused' : undefined }}
+      >
         {doubled.map((review, i) => (
           <div
             key={`${review.name}-${i}`}

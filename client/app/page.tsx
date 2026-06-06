@@ -228,8 +228,8 @@ export default function HomePage() {
 
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: beach image */}
-            <div>
+            {/* Left: beach image — below text on mobile, left on desktop */}
+            <div className="order-2 lg:order-1">
               <Image
                 src="/hirikatiya-bay.png"
                 alt="Man and child at Hirikatiya Beach"
@@ -240,8 +240,8 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Right: text */}
-            <div className="space-y-3">
+            {/* Right: text — first on mobile, right on desktop */}
+            <div className="order-1 lg:order-2 space-y-3">
               <p className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
                 Hey! I&apos;m Noah 👋
               </p>
@@ -336,7 +336,7 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               The Noah Difference
             </h2>
-            <p className="text-gray-500 text-sm mt-3 max-w-md">
+            <p className="font-display text-xl text-gray-500 mt-3 max-w-md">
               Six reasons why surfers from 60+ countries choose Noah Surf School.
             </p>
           </div>
@@ -430,7 +430,7 @@ export default function HomePage() {
             Photos &amp; Vibes
           </h2>
           <p className="font-display text-xl text-gray-500 mb-8">Real moments from the water</p>
-          {/* <GallerySlideshow /> */}
+          <GallerySlideshow />
         </div>
       </section>
 
