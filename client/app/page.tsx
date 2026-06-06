@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  Star, Award, Users, Globe, Clock,
-  ShieldCheck, Camera, Sun, User, MapPin,
+  Star, Award, Users,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import HeroSlideshow from '@/components/HeroSlideshow'
@@ -52,46 +51,124 @@ const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] 
 
 const googleReviews = [
   {
-    name: 'Olivia R.',
-    rating: 5,
-    date: '2 weeks ago',
-    review: 'Absolutely incredible! Noah and his team are world class. I went from zero to riding waves in 3 days.',
-    rotate: '-rotate-[0.8deg]',
-  },
-  {
-    name: 'Lucas W.',
-    rating: 5,
-    date: '1 month ago',
-    review: 'Best surf school in Sri Lanka. Small groups = real attention. Improved so much in three days!',
-    rotate: 'rotate-[0.5deg]',
-  },
-  {
-    name: 'Chloe M.',
-    rating: 5,
-    date: '3 weeks ago',
-    review: 'The instructors made me feel safe and confident. Equipment was top-notch. 10/10!',
-    rotate: '-rotate-[0.4deg]',
-  },
-  {
-    name: 'Sophie L.',
-    rating: 5,
-    date: '1 week ago',
-    review: 'My kids (8 & 12) absolutely loved it. We booked a second session the very next day!',
-    rotate: 'rotate-[0.7deg]',
-  },
-  {
-    name: 'Arjun P.',
+    name: 'Ollie Yeates',
     rating: 5,
     date: '3 months ago',
-    review: 'Outstanding coaching. Clear instructions, patient teachers. Best guides at Hirikatiya.',
-    rotate: '-rotate-[0.6deg]',
+    review: "For sure the best surf instructor we've had. Noah's such a great guy and teaches you everything you need to know from the safety side of surfing to catching great waves. His attention to detail on every wave means by the end of each lesson you feel like you've learnt so much. Book with Noah and you won't be disappointed!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKVk_2d6PuXAy7lVK8z_80njfRDnRI6dZF-YQN2AiuOhTcC-w=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/Ri0jmOdX3WZCiZmyA',
   },
   {
-    name: 'Ines B.',
+    name: 'Mikko',
+    rating: 5,
+    date: '4 months ago',
+    review: 'Had a few amazing surf lessons in Hiriketiya with Noah. He has a very calm and patient way of teaching and explains things in a way even a complete beginner can understand. He paid attention to small details, helped me improve quickly, and even encouraged me to try some slightly bigger waves. Highly recommend him to anyone looking for surf lessons here!',
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjXwma06cGu9OLnlGbhbOnR3YTmeZDyMKWrOODMD5l08wvUX0gI=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/0bZQp8uWnzT56SUtV',
+  },
+  {
+    name: 'Peter Zelenay',
+    rating: 5,
+    date: 'a year ago',
+    review: "My 4-year-old daughter had her first-ever surf lesson with Noah, and he was amazing. He was super kind, patient, and made her feel comfortable while introducing her to the basics. The pricing was more than fair, especially considering her age, attention span, and the course length. Fully recommend!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKRXfZ-E6Jl29GzZ5AALRphay9rVmDPcauhgzRCs2HgfC-4jhA=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/RA3qdbdyPj0QARe28',
+  },
+  {
+    name: 'Fabienne B.',
+    rating: 5,
+    date: 'a year ago',
+    review: "My best surf lessons so far: absolute recommendation! Noah speaks very good English and is great at explaining things. He knows exactly where to start and teaches you the really important things so that you get better and better and can eventually catch your own waves. What's more, he's just a very cool and relaxed guy who immediately makes you feel at ease. Thank you Noah!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocI3NSZmg43ujHczBSK2_i-ixesc0H4TnxWLLT6h0kdpxpk2Yg=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/BnR2ncWQ3m3OjHIw6',
+  },
+  {
+    name: 'Michal Vachler',
+    rating: 5,
+    date: 'a year ago',
+    review: "One of the best activities we did in Sri Lanka. What makes this experience unique is Noah. A friendly, easygoing, funny, professional surfer who helped us surf our first wave. Noah takes care of safety. We did stretching together before the lesson. I really enjoyed the theory about the bay, how water flows, what kinds of waves there are. The lesson is long enough for a good price. Noah tried really hard to help us surf the first wave and it worked :) Thank you!",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjUj8JTnYLGmx_EaRMcHr3suAzZD7q5CaOChXUz7ss5l7ooQMpu7=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/AjmA7LVPabo6X8iF5',
+  },
+  {
+    name: 'Nina Thornton',
+    rating: 5,
+    date: '8 months ago',
+    review: "Best surf school ever! It was my first time surfing but my boyfriend already surfed a few times in different countries and he also said he had never experienced such good teachers. They take safety very seriously, take you to a beach where the waves are not as rough but still great for surfing, especially for beginners. They really give you one-on-one guidance even when you're with a whole group. Amazing feedback that's really helpful!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocJ6T7einuvwtQKvbHlp0sf-IpPZ7mLsdaEtpB-GaspC3oHFLpc=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/HqMaFIWAU00h5P4X8',
+  },
+  {
+    name: 'Hasanthi De Silva',
+    rating: 5,
+    date: '9 months ago',
+    review: "Noah and his assistant were fantastic instructors! They patiently taught the technique on land first, then guided the kids into the water. They even chose a quieter beach with gentler waves, perfect for young learners. The kids picked up surfing on their very first try! A wonderful experience — highly recommend for a safe, personalized, and fun surfing lesson.",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjUD3jEPX-qDFlnpqhXSaBvu-9rcBgKrd7E-qBzmjeur5SAIbuil=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/5Lf6plIWRLW99HWpt',
+  },
+  {
+    name: 'Andrea Sodero',
+    rating: 5,
+    date: '9 months ago',
+    review: "Epic Experience! 5 stars are not enough 🤙 3 awesome surf coaches for just 4 of us! Always safety first, but still all the fun. They took us to a perfect beginner-friendly beach near Hiri and it was just amazing. Hands down, best surf lesson ever! Thanks to Noah and the crew — you guys rock 🌊🏄‍♂️🔥",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKxCeaaUCo1dN8HbeDBUlt5WGtIiIf0UEoFcYs073GzpGWhig=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/eCe7qMoNx4tufKTc8',
+  },
+  {
+    name: 'Wendy Schippers',
+    rating: 5,
+    date: '2 weeks ago',
+    review: "Best Surf teacher! I took two surf lessons with Noah, and I felt so incredibly supported — he is such a great instructor. Noah speaks English at a good level and is one of the more experienced surfers and instructors. He focuses on safety, a step-by-step approach, and gives great explanations. And once you are on the board, you know what it means to catch a wave — it's unreal!",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjW9b15-jt9FhHfN7w0TPx24l-YG4cNCVqcQ-kQBSo8VUKFhhayN=w36-h36-p-rp-mo-ba4-br100',
+    link: 'https://share.google/nAzpyaHUnrnUaj2di',
+  },
+  {
+    name: 'Samuel Durrance',
+    rating: 5,
+    date: '5 months ago',
+    review: "We first observed Noah delivering a lesson whilst having our own lesson with another surf school. Switching schools was the best decision we made. Noah was incredibly attentive to all the finer details — patient, informative and an incredibly good instructor which made our lesson both enjoyable and successful. We couldn't recommend Noah highly enough for those wanting to get into surfing in Hiriketiya!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocId5e99bS98G22ZwK6pj_1zgkrbDoPwOkP7laCGe6yD8LTMlQ=w36-h36-p-rp-mo-ba2-br100',
+    link: 'https://share.google/eBLuVzljpX5FO5e9p',
+  },
+  {
+    name: 'Karl Krauss',
+    rating: 5,
+    date: '3 months ago',
+    review: "First surf teacher I ever encountered who skipped lessons in bad wave conditions instead of just taking money. Very honest and friendly person. Helped me catch my first waves at the point break in Hiri. I highly recommend him for intermediate surfers — and he'll be great for beginners too!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocIT1Mp2YpLE0OE8-H3uZCDIoN5tC2qVQtt3VT4wMcqRgW2arQ=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/BFDReTy6fF3C7uVP8',
+  },
+  {
+    name: 'Ashmead Road',
+    rating: 5,
+    date: '5 months ago',
+    review: "Noah is a magician. I wanted to try the point break on Hiriketiya beach but as an intermediate surfer, I was nervous. I booked Noah and had one of the best surfs of my life. He is kind, patient and a very skilled instructor. He helped me navigate the reef and catch some fantastic waves. I couldn't recommend him enough for a one-on-one session.",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKT9rwkKyOf8Y3nBhhdACaMx0AIrCSobTQWhU_8ovDV_uWCKQ=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/Lyd6gKKraV4QDEKCS',
+  },
+  {
+    name: 'Jozef',
+    rating: 5,
+    date: '8 months ago',
+    review: "I normally don't write reviews on my trips, but this one deserves it. Noah and his friends are awesome surf teachers. They cover the fundamentals: safety, surf rules and of course the surfing itself. I've taken surf lessons all over the world, but their quality of teaching really surprised me. 100% recommend, 10/10. You won't be disappointed! ✌🏽",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjWVO1sGuoLd0vUAvRV_snLCI0YQ9D1Lv3qPgPi-xAn1bY071oI=w36-h36-p-rp-mo-br100',
+    link: 'https://share.google/fACN8BmdmJOjlCNJY',
+  },
+  {
+    name: 'mightyshroom',
     rating: 5,
     date: '2 months ago',
-    review: 'Came for a weekend, stayed for a week. Already planning to come back next season!',
-    rotate: 'rotate-[0.4deg]',
+    review: "Noah has been by far the best instructor I've ever had. He took the time to explain not only the technique, but also ocean safety. He has a great eye for spotting what you're doing wrong — follow his advice and you will pop up in no time. His lessons are structured and systematic, almost like he's found the recipe for success. I truly felt like I was in good hands!",
+    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKNuOE-bznQlMP6h3NV4fMlbkqWjzIyY7J8n7l1fbiPlQHTGQ=w36-h36-p-rp-mo-ba2-br100',
+    link: 'https://share.google/5zLKrNAHK2MapANnc',
+  },
+  {
+    name: 'you sef',
+    rating: 5,
+    date: '2 months ago',
+    review: "Noah is an amazing guy. He took great attention to all details, from surfing etiquette in the water to safety. He took time with each mistake I made, explaining it until I understood and corrected it. Just go ahead and give it a try — you will see progress after the first hour together, guaranteed. Noah, keep it up, you're doing a pretty damn good job ❤️",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjU6Tq57xbTd0ND_TmzoTRXbrQ1IFLid1qMhp8m8-lLpZyyROurq=w36-h36-p-rp-mo-ba12-br100',
+    link: 'https://share.google/tVbQjy1eHF2Gz99Uy',
   },
 ]
 
@@ -118,20 +195,21 @@ export default function HomePage() {
       <section className="bg-white py-20 md:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left: title + stats */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 The Hirikatiya<br />Experience
               </h2>
               <HirikatiayaExperience />
             </div>
-            <div>
-              <Image
-                src="/hirikatiya-bay.png"
-                alt="Hirikatiya Beach"
-                width={2528}
-                height={1684}
-                className="w-full h-auto rounded-3xl shadow-2xl"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+            {/* Right: video */}
+            <div className="relative w-full aspect-video overflow-hidden rounded-3xl shadow-2xl">
+              <iframe
+                src="https://www.youtube.com/embed/LwU4zxolXoY?autoplay=1&mute=1&loop=1&playlist=LwU4zxolXoY&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1"
+                title="Noah Surf School — Hirikatiya Beach, Sri Lanka"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
               />
             </div>
           </div>
@@ -142,7 +220,7 @@ export default function HomePage() {
       <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
-      <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-28 pt-4">
+      <section className="bg-[#fdf6e9] relative overflow-hidden py-20 md:py-28">
         {/* Floating surfboard */}
         <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
@@ -150,107 +228,68 @@ export default function HomePage() {
 
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Noah portrait */}
-            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-              <div className="relative">
-                <div className="relative w-64 md:w-72 aspect-[3/4] overflow-hidden rounded-3xl rotate-[-1.5deg] shadow-2xl">
-                  <Image
-                    src="/noah-portrait.png"
-                    alt="Noah — Founder of Noah Surf School"
-                    fill
-                    className="object-cover object-top"
-                    sizes="300px"
-                  />
-                </div>
-                {/* Years badge */}
-                <div className="absolute -bottom-5 -right-4 bg-primary text-white rounded-2xl px-5 py-3 shadow-xl rotate-[2.5deg]">
-                  <p className="text-3xl font-bold leading-none">14</p>
-                  <p className="text-xs font-semibold text-primary-100">years surfing</p>
-                </div>
-                {/* ISA badge */}
-                <div className="absolute -top-3 -left-4 bg-white rounded-2xl px-4 py-2.5 shadow-lg rotate-[-2deg]">
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-primary" />
-                    <p className="font-bold text-xs text-gray-800">ISA Certified</p>
-                  </div>
-                </div>
-              </div>
+            {/* Left: beach image */}
+            <div>
+              <Image
+                src="/hirikatiya-bay.png"
+                alt="Man and child at Hirikatiya Beach"
+                width={2528}
+                height={1684}
+                className="w-full h-auto rounded-3xl shadow-2xl"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
-            {/* Noah's personal handwritten message */}
-            <div className="order-1 lg:order-2">
-              <div className="space-y-3 mb-8">
-                <p className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
-                  Hey! I&apos;m Noah 👋
-                </p>
-                <p className="font-display text-2xl md:text-3xl text-gray-700 leading-snug">
-                  I&apos;ve been riding these beautiful waves at Hirikatiya for over 14 years.
-                </p>
-                <blockquote className="border-l-2 border-primary pl-4 my-2">
-                  <p className="text-base text-gray-600 leading-relaxed italic">
-                    &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
-                  </p>
-                </blockquote>
-                <p className="font-display text-2xl md:text-3xl text-primary">
-                  The ocean is waiting for you! 🌊
-                </p>
-              </div>
-
-              {/* Quick fact badges */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Globe className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-semibold text-gray-700">60+ Countries</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Users className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-semibold text-gray-700">2,500+ Surfers</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-3 shadow-sm">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-semibold text-gray-700">Daily 6am – 6pm</span>
-                </div>
-              </div>
-
-              <Link
-                href="/about"
-                className="relative inline-flex items-center justify-center cursor-pointer group select-none"
-                style={{ width: 210, height: 68 }}
-              >
-                <svg
-                  className="absolute inset-0 w-full h-full overflow-visible"
-                  viewBox="0 0 210 68"
-                  fill="none"
-                  aria-hidden="true"
+            {/* Right: text */}
+            <div className="space-y-3">
+              <p className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
+                Hey! I&apos;m Noah 👋
+              </p>
+              <p className="font-display text-2xl md:text-3xl text-gray-700 leading-snug">
+                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+              </p>
+              <p className="font-display text-2xl md:text-3xl text-primary">
+                The ocean is waiting for you! 🌊
+              </p>
+              <div className="pt-4">
+                <Link
+                  href="/about"
+                  className="relative inline-flex items-center justify-center cursor-pointer group select-none"
+                  style={{ width: 210, height: 68 }}
                 >
-                  <defs>
-                    <filter id="brushstroke-fill" x="-12%" y="-35%" width="124%" height="170%">
-                      <feTurbulence type="fractalNoise" baseFrequency="0.022 0.028" numOctaves="4" seed="3" result="noise" />
-                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
-                    </filter>
-                  </defs>
-                  {/* Main brushstroke fill */}
-                  <rect
-                    x="10" y="10" width="190" height="48" rx="8"
-                    fill="#3AAEE0"
-                    filter="url(#brushstroke-fill)"
-                    className="group-hover:fill-sky-400 transition-colors duration-300"
-                  />
-                  {/* Inner highlight for paint texture */}
-                  <rect
-                    x="20" y="14" width="130" height="18" rx="6"
-                    fill="white"
-                    opacity="0.12"
-                    filter="url(#brushstroke-fill)"
-                  />
-                </svg>
-                <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
-                  Read My Story
-                  <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
-                    <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+                  <svg
+                    className="absolute inset-0 w-full h-full overflow-visible"
+                    viewBox="0 0 210 68"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <defs>
+                      <filter id="brushstroke-fill" x="-12%" y="-35%" width="124%" height="170%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.022 0.028" numOctaves="4" seed="3" result="noise" />
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                      </filter>
+                    </defs>
+                    <rect
+                      x="10" y="10" width="190" height="48" rx="8"
+                      fill="#3AAEE0"
+                      filter="url(#brushstroke-fill)"
+                      className="group-hover:fill-sky-400 transition-colors duration-300"
+                    />
+                    <rect
+                      x="20" y="14" width="130" height="18" rx="6"
+                      fill="white"
+                      opacity="0.12"
+                      filter="url(#brushstroke-fill)"
+                    />
                   </svg>
-                </span>
-              </Link>
+                  <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
+                    Read My Story
+                    <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
+                      <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -260,7 +299,7 @@ export default function HomePage() {
       <section className="bg-white pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Rated 4.9 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
@@ -294,7 +333,7 @@ export default function HomePage() {
         </div>
         <div className="container-site">
           <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               The Noah Difference
             </h2>
             <p className="text-gray-500 text-sm mt-3 max-w-md">
@@ -387,7 +426,7 @@ export default function HomePage() {
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Photos &amp; Vibes
           </h2>
           <p className="font-display text-xl text-gray-500 mb-8">Real moments from the water</p>
@@ -409,7 +448,7 @@ export default function HomePage() {
       {/* ── CTA Banner ── */}
       <section className="bg-white py-24 md:py-32">
         <div className="container-site text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
           </h2>
           <p className="font-display text-2xl md:text-3xl text-gray-500 max-w-md mx-auto">
