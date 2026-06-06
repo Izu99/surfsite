@@ -1,6 +1,3 @@
-'use client'
-
-import Link from 'next/link'
 import { Waves, Fish, Sun, MapPin, Clock, Wifi, type LucideIcon } from 'lucide-react'
 
 type Highlight = { icon: LucideIcon; bold: string; text: string }
@@ -24,28 +21,19 @@ const facts = [
 export default function HirikatiayaExperience() {
   return (
     <div>
-      <span className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
-        <MapPin className="w-4 h-4" />
-        About Hirikatiya
-      </span>
-
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-        The Hirikatiya<br />Experience
-      </h2>
-
-      <p className="text-white/75 text-sm leading-relaxed mb-8 max-w-xl">
+      <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-xl">
         A stunning horseshoe-shaped bay on Sri Lanka&apos;s south coast — where jungle meets turquoise ocean. World-class waves, warm waters, and endless good vibes.
       </p>
 
       {/* Icon highlights */}
       <ul className="space-y-3 mb-8">
         {highlights.map(({ icon: Icon, bold, text }) => (
-          <li key={bold} className="flex items-center gap-3 text-white/85">
-            <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-              <Icon className="w-4 h-4 text-white" />
+          <li key={bold} className="flex items-center gap-3 text-gray-700">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Icon className="w-4 h-4 text-primary" />
             </div>
             <span className="text-sm">
-              <strong className="text-white font-semibold">{bold}</strong>
+              <strong className="text-gray-900 font-semibold">{bold}</strong>
               {text}
             </span>
           </li>
@@ -53,21 +41,14 @@ export default function HirikatiayaExperience() {
       </ul>
 
       {/* Stat grid */}
-      <div className="grid grid-cols-2 gap-3 mb-8">
+      <div className="grid grid-cols-2 gap-3">
         {facts.map(({ label, value }) => (
-          <div key={label} className="border border-white/20 rounded-2xl p-4">
-            <p className="text-3xl text-primary-light font-bold leading-none">{value}</p>
-            <p className="text-white/55 text-xs mt-1">{label}</p>
+          <div key={label} className="border border-gray-200 rounded-2xl p-4 bg-gray-50">
+            <p className="font-display text-3xl text-primary font-bold leading-none">{value}</p>
+            <p className="text-gray-500 text-xs mt-1">{label}</p>
           </div>
         ))}
       </div>
-
-      <Link
-        href="/contact"
-        className="inline-block bg-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-colors duration-200 cursor-pointer shadow-md"
-      >
-        Book Your Experience
-      </Link>
     </div>
   )
 }

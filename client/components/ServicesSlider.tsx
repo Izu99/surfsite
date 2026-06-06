@@ -85,7 +85,7 @@ export default function ServicesSlider() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">
               What we offer
             </h2>
-            <p className="text-gray-500 text-sm">Pick your adventure — we&apos;ll do the rest!</p>
+            <p className="font-display text-xl text-gray-500">Pick your adventure — we&apos;ll do the rest!</p>
           </div>
           {/* Arrows */}
           <div className="flex items-center gap-3 shrink-0">

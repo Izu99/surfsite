@@ -45,9 +45,9 @@ export default function HeroSlideshow() {
         </p>
         <Link
           href="/contact"
-          className="inline-block bg-primary text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary-dark transition-colors duration-200 cursor-pointer shadow-xl"
+          className="inline-block bg-primary text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary-dark hover:scale-105 hover:shadow-2xl active:scale-95 transition-all duration-200 cursor-pointer shadow-xl"
         >
-          Book A Lesson
+          Book Now
         </Link>
       </div>
 
@@ -91,9 +91,9 @@ export default function HeroSlideshow() {
             {/* Single CTA */}
             <Link
               href="/contact"
-              className="inline-block bg-primary text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary-dark transition-colors duration-200 cursor-pointer shadow-lg"
+              className="inline-block bg-primary text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary-dark hover:scale-105 hover:shadow-2xl active:scale-95 transition-all duration-200 cursor-pointer shadow-lg"
             >
-              Book A Lesson
+              Book Now
             </Link>
           </div>
         </div>

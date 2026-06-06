@@ -111,9 +111,9 @@ export default function HomepagePackages() {
                 <div className="bg-white p-6 border-t border-gray-100 text-center">
                   <Link
                     href={`/contact?package=${encodeURIComponent(plan.name)}`}
-                    className={`inline-block px-10 py-3 text-sm font-bold uppercase tracking-wide transition-colors ${
+                    className={`inline-block px-10 py-3 rounded-full text-sm font-semibold uppercase tracking-wide transition-colors duration-200 cursor-pointer ${
                       plan.featured
-                        ? 'bg-primary text-white hover:bg-primary-dark'
+                        ? 'bg-primary text-white hover:bg-primary-dark shadow-lg'
                         : 'border-2 border-gray-800 text-gray-800 hover:border-primary hover:text-primary'
                     }`}
                   >
@@ -127,7 +127,7 @@ export default function HomepagePackages() {
         <div className="mt-12 text-center">
           <Link
             href="/packages"
-            className="inline-flex items-center gap-2 bg-gray-900 text-white px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-primary transition-all group"
+            className="inline-flex items-center gap-2 bg-gray-900 text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary transition-colors duration-200 cursor-pointer shadow-md group"
           >
             View All Packages
             <Play className="w-3 h-3 fill-current transition-transform group-hover:translate-x-1" />

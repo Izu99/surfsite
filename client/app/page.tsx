@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   Star, Award, Users, Globe, Clock,
-  ShieldCheck, Camera, Sun, User,
+  ShieldCheck, Camera, Sun, User, MapPin,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import HeroSlideshow from '@/components/HeroSlideshow'
@@ -97,22 +97,9 @@ const googleReviews = [
 
 // ─── Wave divider ─────────────────────────────────────────────────────────────
 
-function WaveDivider({ fromColor, toColor }: { fromColor: string; toColor: string }) {
+function SectionDivider({ fromColor, toColor }: { fromColor: string; toColor: string }) {
   return (
-    <div style={{ background: fromColor }}>
-      <svg
-        viewBox="0 0 1440 56"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        className="w-full block"
-        style={{ height: '56px', display: 'block' }}
-      >
-        <path
-          d="M0,28 C200,56 400,0 600,28 C800,56 1000,8 1200,28 C1320,42 1400,18 1440,22 L1440,56 L0,56 Z"
-          fill={toColor}
-        />
-      </svg>
-    </div>
+    <div style={{ background: `linear-gradient(to bottom, ${fromColor}, ${toColor})`, height: '40px' }} />
   )
 }
 
@@ -128,17 +115,19 @@ export default function HomePage() {
       <ConditionsBar />
 
       {/* 3 ── About Hirikatiya ── */}
-      <section
-        className="relative overflow-hidden py-24 md:py-32 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop')",
-        }}
-      >
-        <div className="absolute inset-0 bg-[#0d1b2a]/68" />
-        <div className="relative container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <HirikatiayaExperience />
+      <section className="bg-white py-20 md:py-24">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+                <MapPin className="w-4 h-4" />
+                About Hirikatiya
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                The Hirikatiya<br />Experience
+              </h2>
+              <HirikatiayaExperience />
+            </div>
             <div className="flex justify-center">
               <div className="relative w-full max-w-sm aspect-[3/4] overflow-hidden rounded-3xl rotate-[1deg] shadow-2xl">
                 <Image
@@ -154,8 +143,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Wave: dark → sandy */}
-      <WaveDivider fromColor="#0d1b2a" toColor="#fdf6e9" />
+      {/* Wave: white → sandy */}
+      <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
       <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-28 pt-4">
@@ -195,23 +184,18 @@ export default function HomePage() {
 
             {/* Noah's personal handwritten message */}
             <div className="order-1 lg:order-2">
-              <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                <User className="w-4 h-4" />
-                About Noah
-              </span>
-
               <div className="space-y-3 mb-8">
-                <p className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                  Hey! I&apos;m Noah
+                <p className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
+                  Hey! I&apos;m Noah 👋
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="font-display text-2xl md:text-3xl text-gray-700 leading-snug">
                   I&apos;ve been riding these beautiful waves at Hirikatiya for over 14 years.
                 </p>
                 <p className="text-base text-gray-600 leading-relaxed">
                   My mission? Share the joy of surfing with anyone who wants to try — beginner, intermediate, kid or adult.
                 </p>
-                <p className="text-lg text-primary font-semibold">
-                  The ocean is waiting for you.
+                <p className="font-display text-2xl md:text-3xl text-primary">
+                  The ocean is waiting for you! 🌊
                 </p>
               </div>
 
@@ -243,22 +227,16 @@ export default function HomePage() {
       </section>
 
       {/* Wave: sandy → cream */}
-      <WaveDivider fromColor="#fdf6e9" toColor="#f0ece4" />
+      <SectionDivider fromColor="#fdf6e9" toColor="#f0ece4" />
 
-      {/* 5 ── Lessons / Services ── */}
+      {/* 5 ── Lessons ── */}
       <ServicesSlider />
 
-      {/* Wave: cream → sandy */}
-      <WaveDivider fromColor="#f0ece4" toColor="#fdf6e9" />
+      {/* Wave: cream → white */}
+      <SectionDivider fromColor="#f0ece4" toColor="#ffffff" />
 
-      {/* ── Packages ── */}
-      <HomepagePackages />
-
-      {/* Wave: sandy → white */}
-      <WaveDivider fromColor="#fdf6e9" toColor="#ffffff" />
-
-      {/* 6 ── Ratings / Reviews ── */}
-      <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
+      {/* 6 ── Google Reviews / Rating ── */}
+      <section className="bg-white pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
@@ -275,9 +253,7 @@ export default function HomePage() {
             </div>
             <p className="text-gray-500 text-sm">800+ verified Google reviews</p>
           </div>
-
           <ReviewsSlider reviews={googleReviews} />
-
           <div className="text-center mt-10">
             <a
               href="https://www.google.com/maps/place/Hirikatiya+Beach"
@@ -289,15 +265,13 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-
       </section>
 
       {/* Wave: white → sandy */}
-      <WaveDivider fromColor="#ffffff" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
 
       {/* 7 ── Why Learn With Us / Stats ── */}
       <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-4">
-
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 bg-primary/15 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
@@ -308,7 +282,6 @@ export default function HomePage() {
               The numbers speak
             </h2>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
             {stats.map(({ icon: Icon, number, label, sub }, i) => (
               <div
@@ -319,22 +292,20 @@ export default function HomePage() {
                 <div className="w-20 h-20 rounded-full bg-[#fdf6e9] shadow-md flex items-center justify-center mb-5 shrink-0">
                   <Icon className="w-9 h-9 text-primary" />
                 </div>
-                <p className="text-5xl md:text-6xl text-primary font-bold leading-none">{number}</p>
+                <p className="font-display text-5xl md:text-6xl text-primary font-bold leading-none">{number}</p>
                 <p className="font-semibold text-gray-800 mt-2 text-base">{label}</p>
                 <p className="text-sm text-gray-400 mt-1">{sub}</p>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Surfboard decoration */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[45%] pointer-events-none hidden xl:block opacity-10 select-none">
           <Image src="/surfboard.png" alt="" width={280} height={840} className="rotate-[-5deg]" aria-hidden />
         </div>
       </section>
 
       {/* Wave: sandy → white */}
-      <WaveDivider fromColor="#fdf6e9" toColor="#ffffff" />
+      <SectionDivider fromColor="#fdf6e9" toColor="#ffffff" />
 
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
@@ -348,11 +319,16 @@ export default function HomePage() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             Photos &amp; Vibes
           </h2>
-          <p className="text-gray-500 text-sm mb-8">Real moments from the water</p>
-
+          <p className="font-display text-xl text-gray-500 mb-8">Real moments from the water</p>
           {/* <GallerySlideshow /> */}
         </div>
       </section>
+
+      {/* Wave: white → sandy */}
+      <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
+
+      {/* 9 ── Packages / Services ── */}
+      <HomepagePackages />
 
       {/* ── CTA Banner ── */}
       <section
@@ -377,7 +353,7 @@ export default function HomePage() {
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
           </h2>
-          <p className="text-white/80 text-lg md:text-xl max-w-md mx-auto mb-10">
+          <p className="font-display text-white/80 text-2xl md:text-3xl max-w-md mx-auto mb-10">
             Every day, 6am – 6pm. All gear included.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
