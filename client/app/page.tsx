@@ -186,9 +186,11 @@ export default function HomePage() {
                 <p className="font-display text-2xl md:text-3xl text-gray-700 leading-snug">
                   I&apos;ve been riding these beautiful waves at Hirikatiya for over 14 years.
                 </p>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  My mission? Share the joy of surfing with anyone who wants to try — beginner, intermediate, kid or adult.
-                </p>
+                <blockquote className="border-l-2 border-primary pl-4 my-2">
+                  <p className="text-base text-gray-600 leading-relaxed italic">
+                    &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+                  </p>
+                </blockquote>
                 <p className="font-display text-2xl md:text-3xl text-primary">
                   The ocean is waiting for you! 🌊
                 </p>
@@ -212,9 +214,42 @@ export default function HomePage() {
 
               <Link
                 href="/about"
-                className="inline-block bg-primary text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-colors duration-200 cursor-pointer shadow-md"
+                className="relative inline-flex items-center justify-center cursor-pointer group select-none"
+                style={{ width: 210, height: 68 }}
               >
-                Read My Story
+                <svg
+                  className="absolute inset-0 w-full h-full overflow-visible"
+                  viewBox="0 0 210 68"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <filter id="brushstroke-fill" x="-12%" y="-35%" width="124%" height="170%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.022 0.028" numOctaves="4" seed="3" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                  </defs>
+                  {/* Main brushstroke fill */}
+                  <rect
+                    x="10" y="10" width="190" height="48" rx="8"
+                    fill="#3AAEE0"
+                    filter="url(#brushstroke-fill)"
+                    className="group-hover:fill-sky-400 transition-colors duration-300"
+                  />
+                  {/* Inner highlight for paint texture */}
+                  <rect
+                    x="20" y="14" width="130" height="18" rx="6"
+                    fill="white"
+                    opacity="0.12"
+                    filter="url(#brushstroke-fill)"
+                  />
+                </svg>
+                <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
+                  Read My Story
+                  <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
+                    <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+                  </svg>
+                </span>
               </Link>
             </div>
           </div>
@@ -253,20 +288,27 @@ export default function HomePage() {
       <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
 
       {/* 7 ── Why Learn With Us ── */}
-      <section className="bg-[#fdf6e9] relative overflow-hidden pb-20 md:pb-24 pt-16">
+      <section className="bg-[#fdf6e9] section-padding relative overflow-hidden">
+        <div className="absolute right-6 top-8 pointer-events-none hidden lg:block select-none animate-[float_7s_ease-in-out_infinite]">
+          <Image src="/noah-drawing.png" alt="" width={160} height={160} className="opacity-85 drop-shadow-md" aria-hidden />
+        </div>
         <div className="container-site">
-          <div className="text-center mb-14">
+          <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
               The Noah Difference
             </h2>
+            <p className="text-gray-500 text-sm mt-3 max-w-md">
+              Six reasons why surfers from 60+ countries choose Noah Surf School.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
                 title: 'New Surfboards',
+                desc: 'Top-of-the-line foam & fiberglass boards maintained weekly.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <path d="M24 5C31 5 43 12 43 24C43 36 31 43 24 43C17 43 5 36 5 24C5 12 17 5 24 5Z"/>
                     <path d="M24 38L22 44M24 38L26 44"/>
                     <path d="M20 24C20 21.8 21.8 20 24 20C26.2 20 28 21.8 28 24"/>
@@ -275,8 +317,9 @@ export default function HomePage() {
               },
               {
                 title: 'Ocean Safety First',
+                desc: 'Every session starts with ocean awareness & safety briefing.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <path d="M24 4L8 10V24C8 33 15 40 24 44C33 40 40 33 40 24V10L24 4Z"/>
                     <path d="M17 24L22 29L31 19"/>
                   </svg>
@@ -284,16 +327,18 @@ export default function HomePage() {
               },
               {
                 title: 'True Hospitality',
+                desc: "Sri Lankan warmth — you'll feel at home from day one.",
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <path d="M24 40C24 40 7 30 7 18C7 13 11 9 16 9C19.5 9 22.5 11 24 14C25.5 11 28.5 9 32 9C37 9 41 13 41 18C41 30 24 40 24 40Z"/>
                   </svg>
                 ),
               },
               {
                 title: 'Innovative Teaching',
+                desc: 'Video analysis, dryland drills & real-time in-water coaching.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <path d="M24 7C18 7 13 12 13 18C13 22 15 25.5 18 27.5V32H30V27.5C33 25.5 35 22 35 18C35 12 30 7 24 7Z"/>
                     <path d="M18 36H30M20 40H28"/>
                     <path d="M24 14V22M20 18H28"/>
@@ -302,8 +347,9 @@ export default function HomePage() {
               },
               {
                 title: 'ISA Certified',
+                desc: 'International Surfing Association certified instructors.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <circle cx="24" cy="20" r="12"/>
                     <path d="M24 8L26.5 15H34L28 19.5L30.5 26.5L24 22L17.5 26.5L20 19.5L14 15H21.5L24 8Z"/>
                     <path d="M18 32L15 44M30 32L33 44M15 44H33"/>
@@ -312,8 +358,9 @@ export default function HomePage() {
               },
               {
                 title: 'Teach Anyone',
+                desc: 'Ages 6 to 70 — total beginners to advanced surfers welcome.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-14 h-14 shrink-0">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <circle cx="24" cy="11" r="6"/>
                     <path d="M12 44V34C12 28 16 24 24 24C32 24 36 28 36 34V44"/>
                     <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
@@ -321,10 +368,13 @@ export default function HomePage() {
                   </svg>
                 ),
               },
-            ].map(({ svg, title }) => (
-              <div key={title} className="bg-white rounded-2xl px-7 py-6 shadow-sm flex items-center gap-6">
-                <div className="text-gray-900 shrink-0">{svg}</div>
-                <h3 className="font-bold text-gray-900 text-xl leading-snug">{title}</h3>
+            ].map(({ svg, title, desc }) => (
+              <div key={title} className="bg-white rounded-2xl p-6 shadow-sm flex gap-5">
+                <div className="text-gray-900 shrink-0 mt-1">{svg}</div>
+                <div>
+                  <h3 className="font-bold text-gray-900 text-lg leading-snug mb-1">{title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                </div>
               </div>
             ))}
           </div>

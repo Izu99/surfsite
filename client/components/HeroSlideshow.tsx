@@ -8,8 +8,8 @@ export default function HeroSlideshow() {
     <section className="relative h-screen min-h-[580px] overflow-hidden bg-[#0d3447]">
       {/* Hero image */}
       <Image
-        src="/hero-drone.webp"
-        alt="Hirikatiya Beach aerial drone view"
+        src="/hero-bg.png"
+        alt="Hirikatiya Beach"
         fill
         className="object-cover object-center"
         priority

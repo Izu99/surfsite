@@ -21,12 +21,6 @@ export default function HomepagePackages() {
     <section className="section-padding bg-[#fdf6e9]">
       <div className="container-site">
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Pricing
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Surf School Programs
           </h2>
