@@ -23,12 +23,6 @@ const services = [
 export default function Footer() {
   return (
     <footer className="bg-[#0d1b2a] text-gray-300">
-      {/* Wave top */}
-      <div className="bg-white">
-        <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '56px', display: 'block' }}>
-          <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,8 1200,28 C1320,42 1400,18 1440,22 L1440,56 L0,56 Z" fill="#0d1b2a" />
-        </svg>
-      </div>
 
       {/* CTA band */}
       <div className="bg-primary">

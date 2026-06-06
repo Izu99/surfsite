@@ -40,6 +40,11 @@
     50%       { transform: translateY(-12px); }
   }
   --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes reviews-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
 }
 
 @layer base {

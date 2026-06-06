@@ -8,15 +8,13 @@ import { packageApi, type SurfPackage } from '@/lib/api'
 import { INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 
 export default function HomepagePackages() {
-  const [packages, setPackages] = useState<SurfPackage[]>([])
-  const [mounted, setMounted] = useState(false)
+  const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES.slice(0, 3))
 
   useEffect(() => {
     packageApi
       .list()
       .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data].slice(0, 3)))
-      .catch(() => setPackages(HARDCODED_PACKAGES.slice(0, 3)))
-      .finally(() => setMounted(true))
+      .catch(() => {})
   }, [])
 
   return (
@@ -37,18 +35,11 @@ export default function HomepagePackages() {
           </p>
         </div>
 
-        {!mounted ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-[520px] bg-gray-200 animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {packages.map((plan) => (
               <div
                 key={plan._id}
-                className={`flex flex-col transition-all duration-300 ${
+                className={`flex flex-col transition-all duration-300 rounded-2xl overflow-hidden ${
                   plan.featured
                     ? 'border border-primary shadow-2xl shadow-primary-300/40 md:scale-105 z-10 bg-white relative'
                     : 'border border-gray-200 hover:border-gray-300 bg-white'
@@ -132,7 +123,6 @@ export default function HomepagePackages() {
               </div>
             ))}
           </div>
-        )}
 
         <div className="mt-12 text-center">
           <Link

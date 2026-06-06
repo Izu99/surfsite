@@ -7,6 +7,7 @@ import ServicesSlider from '@/components/ServicesSlider'
 import HomepagePackages from '@/components/HomepagePackages'
 import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
+import ReviewsSlider from '@/components/ReviewsSlider'
 
 export const metadata: Metadata = {
   title: { absolute: 'Best Surf School in Hiriketiya | Top South Coast Surfing Sri Lanka' },
@@ -302,40 +303,7 @@ export default function HomePage() {
             <p className="text-gray-500 text-sm">800+ verified Google reviews</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {googleReviews.map((review) => (
-              <div
-                key={review.name}
-                className={`bg-[#fdf6e9] rounded-2xl p-6 flex flex-col shadow-sm ${review.rotate}`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
-                    <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z" />
-                    <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z" />
-                    <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z" />
-                  </svg>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed mb-5 flex-1 italic">
-                  &ldquo;{review.review}&rdquo;
-                </p>
-                <div className="flex items-center gap-3 border-t border-primary/10 pt-4">
-                  <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center shrink-0">
-                    <span className="text-white text-sm font-bold">{review.name[0]}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900">{review.name}</p>
-                    <p className="text-xs text-gray-400">{review.date}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewsSlider reviews={googleReviews} />
 
           <div className="text-center mt-10">
             <a
