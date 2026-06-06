@@ -13,24 +13,12 @@ const quickLinks = [
 ]
 
 const services = [
-  { label: 'Beginner Lessons', href: '/packages' },
+  { label: 'Lessons', href: '/packages' },
 ]
 
 export default function Footer() {
   return (
     <footer className="bg-[#0d1b2a] text-gray-300">
-
-      {/* CTA band */}
-      <div className="bg-primary">
-        <div className="container-site py-10">
-          <h2 className="font-display text-white text-3xl md:text-4xl">
-            Ready to ride your first wave?
-          </h2>
-          <p className="text-primary-200 text-sm mt-1">
-            Join hundreds of surfers who started their journey with us.
-          </p>
-        </div>
-      </div>
 
       {/* Main footer */}
       <div className="container-site py-14">

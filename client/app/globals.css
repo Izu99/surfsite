@@ -77,7 +77,7 @@
 
 @layer utilities {
   .animate-marquee {
-    animation: reviews-scroll 28s linear infinite;
+    animation: reviews-scroll 140s linear infinite;
   }
 
   .container-site {

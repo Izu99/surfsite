@@ -33,7 +33,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com https://*.googleusercontent.com",
       "connect-src 'self' http://localhost:5000 https:",
       "frame-src https://www.google.com https://maps.google.com https://www.youtube.com https://youtube.com",
       "frame-ancestors 'none'",

@@ -100,9 +100,8 @@ export default function AboutPage() {
 
       {/* ── NOAH'S STORY ── */}
       <section className="bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
-          {/* Left text */}
-          <div className="flex items-center py-16 md:py-20 px-6 md:px-12 lg:px-10 xl:px-16 lg:max-w-[680px] lg:ml-auto w-full">
+        <div className="container-site py-16 md:py-20">
+          <div className="max-w-2xl">
             <div className="w-full">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-px bg-primary block shrink-0" />
@@ -146,6 +145,9 @@ export default function AboutPage() {
                   and truly live in rhythm with the sea.
                 </p>
               </div>
+              <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
+                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+              </p>
               <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
                 &ldquo;My journey started on these very sands, and I invite you
                 to begin yours with me. See you in the water — Noah.&rdquo;
@@ -165,17 +167,6 @@ export default function AboutPage() {
                 </Link>
               </div>
             </div>
-          </div>
-
-          {/* Right image */}
-          <div className="flex items-center justify-center bg-[#f0f4f8] min-h-[380px] p-4">
-            <Image
-              src="/unnamed (21).webp"
-              alt="Noah — founder at Hirikatiya Beach"
-              width={480}
-              height={600}
-              className="object-contain max-w-full max-h-[560px]"
-            />
           </div>
         </div>
       </section>
