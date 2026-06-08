@@ -6,14 +6,17 @@ import Link from 'next/link'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 
 const slides = [
-  { src: '/unnamed (4).webp',  alt: 'Riding the waves at Hirikatiya' },
-  { src: '/unnamed (5).webp',  alt: 'Surf lesson on the beach' },
-  { src: '/unnamed (6).webp',  alt: 'Early morning session' },
-  { src: '/unnamed (7).webp',  alt: 'The perfect barrel' },
-  { src: '/unnamed (21).webp', alt: 'Hirikatiya horseshoe bay' },
-  { src: '/unnamed (22).webp', alt: 'Students catching waves' },
-  { src: '/unnamed (1).webp',  alt: 'Paddling out together' },
-  { src: '/2024-09-14.webp',   alt: 'Golden hour at the beach' },
+  { src: '/gallery-trio-longboard.jpeg',              alt: 'New friends, one big board, and the start of a Hirikatiya story' },
+  { src: '/gallery-team-celebration.jpeg',            alt: 'When the lessons end, the laughs carry on long after sunset' },
+  { src: '/gallery-student-portrait.jpeg',            alt: 'Salt in the hair, a grin that says she is already hooked' },
+  { src: '/gallery-instructor-portrait-bw.jpeg',      alt: 'The kind of bond that forms over a shared love for the ocean' },
+  { src: '/gallery-instructor-tee-bw.jpeg',           alt: 'Proud to carry the Hiriketiya colours wherever the waves take us' },
+  { src: '/gallery-instructor-young-surfer.jpeg',     alt: 'Passing the stoke down, one wave and one student at a time' },
+  { src: '/gallery-beach-friends.jpeg',               alt: 'Sun, sand, and the friendships that form chasing the same swell' },
+  { src: '/gallery-sunset-soft-top-boards.jpeg',      alt: 'Golden light, soft boards, one more session before the day ends' },
+  { src: '/gallery-instructor-with-kids.jpeg',        alt: 'Family days on Hirikatiya, where everyone learns to ride together' },
+  { src: '/gallery-group-lesson.jpeg',                alt: 'A full crew, boards in hand, ready for whatever the next set brings' },
+  { src: '/gallery-instructor-students-shoreline.jpeg', alt: 'Wading out side by side, where every great story begins' },
 ]
 
 const INTERVAL = 5000
@@ -53,7 +56,7 @@ export default function GallerySlideshow() {
 
   return (
     <div
-      className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-0 rounded-3xl overflow-hidden min-h-[440px] lg:min-h-[520px] bg-gray-900"
+      className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-0 rounded-3xl overflow-hidden min-h-[440px] lg:min-h-[520px] bg-gray-900 shadow-[0_12px_40px_0_rgb(0_0_0_/_0.13)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
