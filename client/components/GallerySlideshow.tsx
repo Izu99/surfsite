@@ -58,7 +58,7 @@ export default function GallerySlideshow() {
       onMouseLeave={() => setPaused(false)}
     >
       {/* ── Left panel: controls ── */}
-      <div className="flex flex-col justify-between p-8 md:p-10 bg-[#f0ece4] text-gray-900 order-2 lg:order-1">
+      <div className="flex flex-col justify-between p-8 md:p-10 bg-[#fbfbfb] text-gray-900 order-2 lg:order-1">
         {/* Counter */}
         <div className="flex items-end gap-1 select-none">
           <span className="text-5xl font-extrabold text-primary leading-none">
