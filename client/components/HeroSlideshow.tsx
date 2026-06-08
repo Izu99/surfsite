@@ -8,7 +8,7 @@ export default function HeroSlideshow() {
     <section className="relative h-screen min-h-[580px] overflow-hidden bg-[#0d3447]">
       {/* Hero image */}
       <Image
-        src="/hero-bg.png"
+        src="/hero-hirikatiya-bay.webp"
         alt="Hirikatiya Beach"
         fill
         className="object-cover object-center"
@@ -17,8 +17,8 @@ export default function HeroSlideshow() {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-black/90" />
+      <div className="absolute inset-0 bg-black/15" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/25 to-black/60" />
 
       {/* ── Mobile layout: centered ── */}
       <div className="md:hidden absolute top-[72px] inset-x-0 bottom-0 flex flex-col items-center justify-center z-10 px-6 py-10 text-center gap-4">

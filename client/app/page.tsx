@@ -239,10 +239,10 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#fcfcfc" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
-      <section className="bg-[#fdf6e9] relative overflow-hidden py-20 md:py-28">
+      <section className="bg-[#f0e9dd] relative overflow-hidden py-20 md:py-28">
         {/* Floating surfboard */}
         <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
@@ -350,10 +350,10 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#fcfcfc" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* 7 ── Why Learn With Us ── */}
-      <section className="bg-[#fdf6e9] section-padding relative overflow-hidden">
+      <section className="bg-[#f0e9dd] section-padding relative overflow-hidden">
         <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
           <Image
             src="/noah-drawing.png"
@@ -378,28 +378,28 @@ export default function HomePage() {
             {[
               {
                 title: 'New Surfboards',
-                desc: 'Top-of-the-line foam & fiberglass boards maintained weekly.',
+                desc: 'Good, modern boards. We check and clean them every week.',
                 svg: (
                   <Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
                 title: 'Ocean Safety First',
-                desc: 'Every session starts with ocean awareness & safety briefing.',
+                desc: 'Every lesson starts with a safety talk about the ocean.',
                 svg: (
                   <Image src="/icon-difference-surfing.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
-                title: 'True Hospitality',
+                title: 'Warm Welcome',
                 desc: "Sri Lankan warmth — you'll feel at home from day one.",
                 svg: (
                   <Image src="/icon-difference-welcome.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
-                title: 'Innovative Teaching',
-                desc: 'Video analysis, dryland drills & real-time in-water coaching.',
+                title: 'Smart Teaching',
+                desc: 'We film you surfing, practice on the beach, then coach you live in the water.',
                 svg: (
                   <Image src="/icon-difference-classroom.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
@@ -437,7 +437,7 @@ export default function HomePage() {
       </section>
 
       {/* Wave: sandy → white */}
-      <SectionDivider fromColor="#fdf6e9" toColor="#fcfcfc" />
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* 8 ── Gallery ── */}
       <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4 relative overflow-hidden">
@@ -450,7 +450,7 @@ export default function HomePage() {
       <HomepagePackages />
 
       {/* Wave: sandy → cream */}
-      <SectionDivider fromColor="#fdf6e9" toColor="#f0ece4" />
+      <SectionDivider fromColor="#f0e9dd" toColor="#f0ece4" />
 
       {/* 10 ── Lessons ── */}
       <ServicesSlider />

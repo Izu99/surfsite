@@ -3,45 +3,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, ArrowRight, GraduationCap, Waves, Tent, User } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 
 type Service = {
   title: string
   description: string
   image: string
   alt: string
-  icon?: LucideIcon
 }
 
 const services: Service[] = [
   {
-    title: 'Beginner Lessons',
-    description: 'Stand up & ride your first wave.',
-    image: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Beginner surf lesson',
-    icon: GraduationCap,
+    title: 'Cap',
+    description: 'Classic surf cap to keep the sun out of your eyes.',
+    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Surf cap',
   },
   {
-    title: 'Private Coaching',
-    description: '100% focus on your progress.',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Private surf coaching',
-    icon: User,
+    title: 'Hat',
+    description: 'Wide-brim beach hat for all-day comfort in the sun.',
+    image: 'https://images.unsplash.com/photo-1561941087-2433c4a0ef12?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Beach hat',
   },
   {
-    title: 'Surf Camps',
-    description: 'Multi-day lessons + yoga + tours.',
-    image: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf camp',
-    icon: Tent,
+    title: 'T-Shirt',
+    description: 'Soft cotton tee with the Noah Surf School print.',
+    image: 'https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Surf t-shirt',
   },
   {
-    title: 'Board Rentals',
-    description: 'Foam, longboard & shortboard.',
-    image: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surfboard rentals',
-    icon: Waves,
+    title: 'Rash Guard',
+    description: 'UV-protective rash guard built for long sessions.',
+    image: 'https://images.unsplash.com/photo-1595389910742-5b5c0e958a11?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Rash guard',
   },
 ]
 
@@ -79,7 +73,7 @@ export default function ServicesSlider() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-md">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-2">
-              Shop
+              Outfitter Collection
             </h2>
             <p className="font-display text-xl text-gray-500">Pick your adventure — we&apos;ll do the rest!</p>
           </div>
@@ -123,12 +117,6 @@ export default function ServicesSlider() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 82vw, 360px"
                 />
-                {/* Big icon badge */}
-                {service.icon && (() => { const Icon = service.icon!; return (
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
-                )})()}
               </div>
 
               {/* Content */}
@@ -139,7 +127,7 @@ export default function ServicesSlider() {
                   href="/contact"
                   className="mt-5 inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-colors duration-200 cursor-pointer self-start"
                 >
-                  Book Now
+                  Shop Now
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
