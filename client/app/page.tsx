@@ -214,7 +214,7 @@ export default function HomePage() {
       <ConditionsBar />
 
       {/* 3 ── About Hirikatiya ── */}
-      <section className="bg-[#e8e8e8] py-20 md:py-24">
+      <section className="bg-[#fcfcfc] py-20 md:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: title + stats */}
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#e8e8e8" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#fdf6e9" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
       <section className="bg-[#fdf6e9] relative overflow-hidden py-20 md:py-28">
@@ -322,7 +322,7 @@ export default function HomePage() {
       </section>
 
       {/* 6 ── Google Reviews / Rating ── */}
-      <section className="bg-[#e8e8e8] pb-20 md:pb-24 pt-4">
+      <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -350,7 +350,7 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#e8e8e8" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#fdf6e9" />
 
       {/* 7 ── Why Learn With Us ── */}
       <section className="bg-[#fdf6e9] section-padding relative overflow-hidden">
@@ -437,10 +437,10 @@ export default function HomePage() {
       </section>
 
       {/* Wave: sandy → white */}
-      <SectionDivider fromColor="#fdf6e9" toColor="#e8e8e8" />
+      <SectionDivider fromColor="#fdf6e9" toColor="#fcfcfc" />
 
       {/* 8 ── Gallery ── */}
-      <section className="bg-[#e8e8e8] pb-20 md:pb-24 pt-4 relative overflow-hidden">
+      <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
           <GallerySlideshow />
         </div>
@@ -455,10 +455,10 @@ export default function HomePage() {
       {/* 10 ── Lessons ── */}
       <ServicesSlider />
 
-      <SectionDivider fromColor="#f0ece4" toColor="#e8e8e8" />
+      <SectionDivider fromColor="#f0ece4" toColor="#fcfcfc" />
 
       {/* ── CTA Banner ── */}
-      <section className="bg-[#e8e8e8] py-24 md:py-32">
+      <section className="bg-[#fcfcfc] py-24 md:py-32">
         <div className="container-site text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
