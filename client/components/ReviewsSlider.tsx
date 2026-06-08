@@ -10,6 +10,8 @@ type Review = {
   review: string
   avatar?: string
   link?: string
+  /** Photos the reviewer attached to their review (e.g. shots of them surfing), shown after the text — same as Google Reviews */
+  images?: string[]
 }
 
 function Avatar({ src, name }: { src?: string; name: string }) {
@@ -85,6 +87,23 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
             <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1 italic">
               &ldquo;{review.review}&rdquo;
             </p>
+            {review.images && review.images.length > 0 && (
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {review.images.map((src, imgIdx) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
+                    loading="lazy"
+                    className={`h-28 w-full object-cover rounded-lg ${
+                      review.images!.length === 1 ? 'col-span-2 h-40' : ''
+                    }`}
+                    referrerPolicy="no-referrer"
+                  />
+                ))}
+              </div>
+            )}
             <div className="flex items-center gap-3 border-t border-primary/10 pt-3">
               <Avatar src={review.avatar} name={review.name} />
               <div>

@@ -27,7 +27,7 @@ export default function HeroSlideshow() {
           alt="Noah Surf School"
           width={96}
           height={96}
-          className="h-32 w-auto object-contain"
+          className="h-36 w-auto object-contain"
           priority
         />
         <p className="text-primary-light text-base font-medium">

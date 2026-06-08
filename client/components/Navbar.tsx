@@ -56,8 +56,11 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Language switcher */}
+          {/* Language switcher — desktop nav */}
           <GoogleTranslate className="hidden md:flex" />
+
+          {/* Language switcher — mobile, always visible in the header bar */}
+          <GoogleTranslate className="flex md:hidden" />
 
           {/* WhatsApp button */}
           <a
@@ -107,7 +110,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <GoogleTranslate className="mt-3 px-4 justify-center" />
           <a
             href="https://wa.me/94710427241"
             target="_blank"

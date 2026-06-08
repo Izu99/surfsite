@@ -73,6 +73,11 @@ const googleReviews = [
     review: "My 4-year-old daughter had her first-ever surf lesson with Noah, and he was amazing. He was super kind, patient, and made her feel comfortable while introducing her to the basics. The pricing was more than fair, especially considering her age, attention span, and the course length. Fully recommend!",
     avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKRXfZ-E6Jl29GzZ5AALRphay9rVmDPcauhgzRCs2HgfC-4jhA=w36-h36-p-rp-mo-ba12-br100',
     link: 'https://share.google/RA3qdbdyPj0QARe28',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0gA9p9ap86IEc027vrpHHWOq7jbRdbMCogy-VOJD73Rcshkf4O3C_cU_dejbhgWJy3zav847YfTlVRhoTereOFI8DefeqHaO7Y6ad61CJqlwc8huyAtcKvEIoSXgeWsp5vft1H=w300-h450-p-k-no',
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3dxz4kSaAe0Z-WE9hadVsjHzGuh9D2ehwFKW8dhAMLbhCymL948wbE40iswaPCPzpy2hKcaScCAtmsGYTy0Nc7rLbSRBW7IOFgJ0gBoBp6_M1agqSvq8B4kbJUkjUQ4MAlMRU=w300-h225-p-k-no',
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn25f9ElVO4JIlmhYrODvSqVwzIv_K4ox1xf8gNPJZM4EKTh1VaNeoubm0BvM37W_SZ4FQO2IKz-Y42Jf4d6cYGj3KGqoMOO8ZVhZfMGva-mgRpM9fJqhAoJuhB4zGscg-MkNmnLSA=w300-h225-p-k-no',
+    ],
   },
   {
     name: 'Fabienne B.',
@@ -328,8 +333,15 @@ export default function HomePage() {
 
       {/* 7 ── Why Learn With Us ── */}
       <section className="bg-[#fdf6e9] section-padding relative overflow-hidden">
-        <div className="absolute right-6 top-8 pointer-events-none hidden lg:block select-none animate-[float_7s_ease-in-out_infinite]">
-          <Image src="/noah-drawing.png" alt="" width={160} height={160} className="opacity-85 drop-shadow-md" aria-hidden />
+        <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
+          <Image
+            src="/noah-drawing.png"
+            alt=""
+            width={160}
+            height={160}
+            className="w-32 sm:w-36 lg:w-40 h-auto opacity-85 drop-shadow-md"
+            aria-hidden
+          />
         </div>
         <div className="container-site">
           <div className="mb-12">

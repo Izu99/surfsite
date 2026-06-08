@@ -10,7 +10,7 @@ declare global {
     google?: {
       translate: {
         TranslateElement: new (
-          options: { pageLanguage: string; autoDisplay: boolean },
+          options: { pageLanguage: string; includedLanguages: string; autoDisplay: boolean },
           elementId: string
         ) => void
       }
@@ -20,13 +20,17 @@ declare global {
 
 const SCRIPT_ID = 'google-translate-script'
 
+// Languages most relevant to international surf tourists — Sinhala excluded,
+// since the site already serves local visitors in English.
+const INCLUDED_LANGUAGES = 'fr,de,es,it,ru,pt,nl,zh-CN,ja,ko'
+
 export default function GoogleTranslate({ className }: { className?: string }) {
   useEffect(() => {
     if (document.getElementById(SCRIPT_ID)) return
 
     window.googleTranslateElementInit = () => {
       new window.google!.translate.TranslateElement(
-        { pageLanguage: 'en', autoDisplay: false },
+        { pageLanguage: 'en', includedLanguages: INCLUDED_LANGUAGES, autoDisplay: false },
         'google_translate_element'
       )
     }
@@ -39,8 +43,16 @@ export default function GoogleTranslate({ className }: { className?: string }) {
   }, [])
 
   return (
-    <div className={cn('flex items-center gap-2 text-white/85', className)}>
+    <div
+      className={cn(
+        'relative inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/85 transition-colors duration-200 hover:bg-white/15 cursor-pointer',
+        className
+      )}
+    >
       <Languages className="h-4 w-4 shrink-0" aria-hidden="true" />
+      <span>Translate</span>
+      {/* Google renders its own (invisible) <select> here, stretched to cover this
+          whole pill — clicking the visible "Translate" label opens its native picker */}
       <div id="google_translate_element" />
     </div>
   )

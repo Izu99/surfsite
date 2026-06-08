@@ -81,11 +81,8 @@
   to   { transform: translateX(-50%); }
 }
 
-/* Google Translate widget — strip default chrome and blend the language select into the dark navbar */
-.goog-te-banner-frame.skiptranslate,
-.goog-te-balloon-frame,
-.goog-tooltip,
-.goog-tooltip:hover {
+/* Google Translate widget — Google injects a top banner iframe that pushes the page down; hide it */
+.goog-te-banner-frame.skiptranslate {
   display: none !important;
 }
 
@@ -93,31 +90,50 @@ body {
   top: 0 !important;
 }
 
-#google_translate_element .goog-te-gadget {
-  font-family: inherit;
-  font-size: 0;
-  color: transparent;
+/* We show our own "Translate" pill (see GoogleTranslate.tsx) and stretch Google's
+   own <select> invisibly over the whole pill, so a real click on the visible
+   English label opens its native language picker. Google's own gadget chrome
+   ("Powered by Google Translate" text + logo) is suppressed entirely. */
+#google_translate_element {
+  position: absolute;
+  inset: 0;
 }
 
-#google_translate_element .goog-te-gadget > span > a {
+#google_translate_element .goog-te-gadget {
+  position: absolute;
+  inset: 0;
+  font-size: 0;
+}
+
+#google_translate_element .goog-te-gadget > span,
+#google_translate_element .goog-te-gadget > a,
+#google_translate_element .goog-te-gadget img {
   display: none !important;
 }
 
-#google_translate_element .goog-te-combo {
+#google_translate_element select.goog-te-combo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  padding: 0.4rem 0.6rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
+  border: none;
+  opacity: 0;
   cursor: pointer;
 }
 
-#google_translate_element .goog-te-combo:focus {
-  outline: none;
-  border-color: var(--color-primary);
+/* The popup list itself renders on a light background — keep its text dark
+   regardless of the (invisible) select's own color */
+#google_translate_element select.goog-te-combo option {
+  color: #1f2937;
+  background-color: #ffffff;
+}
+
+/* The popup list renders on a light background — option text must stay dark, not
+   inherit the white text color of the closed pill, or it becomes unreadable */
+#google_translate_element select.goog-te-combo option {
+  color: #1f2937;
+  background-color: #ffffff;
 }
 
 @layer utilities {
