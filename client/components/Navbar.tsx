@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import GoogleTranslate from './GoogleTranslate'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -55,6 +56,9 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Language switcher */}
+          <GoogleTranslate className="hidden md:flex" />
+
           {/* WhatsApp button */}
           <a
             href="https://wa.me/94710427241"
@@ -103,6 +107,7 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+          <GoogleTranslate className="mt-3 px-4 justify-center" />
           <a
             href="https://wa.me/94710427241"
             target="_blank"

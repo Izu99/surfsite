@@ -75,9 +75,57 @@
   to   { transform: scaleX(1); }
 }
 
+@keyframes wave-flow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Google Translate widget — strip default chrome and blend the language select into the dark navbar */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+#google_translate_element .goog-te-gadget {
+  font-family: inherit;
+  font-size: 0;
+  color: transparent;
+}
+
+#google_translate_element .goog-te-gadget > span > a {
+  display: none !important;
+}
+
+#google_translate_element .goog-te-combo {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+#google_translate_element .goog-te-combo:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
 @layer utilities {
   .animate-marquee {
     animation: reviews-scroll 140s linear infinite;
+  }
+
+  .animate-wave-flow {
+    animation: wave-flow 22s linear infinite;
   }
 
   .container-site {
