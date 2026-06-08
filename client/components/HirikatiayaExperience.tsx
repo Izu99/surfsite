@@ -1,8 +1,10 @@
-const facts = [
-  { label: 'Swell consistency', value: '95%' },
-  { label: 'Water temp',        value: '27°C' },
-  { label: 'Beginner days/yr',  value: '300+' },
-  { label: 'Surf breaks',       value: '4' },
+import Image from 'next/image'
+
+const highlights = [
+  { icon: '/icon-surfboard2.png', text: 'Surfing for all levels — beginner to pro surfers' },
+  { icon: '/icon-beach.png',      text: 'The most beautiful beach on the South Coast' },
+  { icon: '/icon-turtle.png',     text: 'Sea turtles — swim with them' },
+  { icon: '/icon-cafe.png',       text: 'The ultimate all-in-one village' },
 ]
 
 export default function HirikatiayaExperience() {
@@ -12,11 +14,11 @@ export default function HirikatiayaExperience() {
         A beautiful, hidden bay on Sri Lanka&apos;s south coast where the jungle meets the ocean. Perfect waves, warm water, and great vibes.
       </p>
 
-      <div className="grid grid-cols-2 gap-3">
-        {facts.map(({ label, value }) => (
-          <div key={label} className="border border-gray-200 rounded-2xl p-4 bg-gray-50">
-            <p className="font-display text-3xl text-primary font-bold leading-none">{value}</p>
-            <p className="text-gray-500 text-xs mt-1">{label}</p>
+      <div className="space-y-5">
+        {highlights.map(({ icon, text }) => (
+          <div key={text} className="flex items-center gap-4">
+            <Image src={icon} alt="" width={32} height={32} className="shrink-0" aria-hidden />
+            <p className="text-sm text-gray-700">{text}</p>
           </div>
         ))}
       </div>
