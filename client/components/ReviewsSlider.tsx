@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Star } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Star, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Review = {
   name: string
@@ -46,11 +46,89 @@ const GoogleIcon = () => (
   </svg>
 )
 
+type LightboxState = { name: string; images: string[]; index: number }
+
+function Lightbox({ state, onClose, onNavigate }: {
+  state: LightboxState
+  onClose: () => void
+  onNavigate: (index: number) => void
+}) {
+  const { name, images, index } = state
+  const hasMultiple = images.length > 1
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowRight' && hasMultiple) onNavigate((index + 1) % images.length)
+      if (e.key === 'ArrowLeft' && hasMultiple) onNavigate((index - 1 + images.length) % images.length)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [index, images.length, hasMultiple, onClose, onNavigate])
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 sm:p-8"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Photo shared by ${name}`}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+      >
+        <X className="h-6 w-6" />
+      </button>
+
+      {hasMultiple && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onNavigate((index - 1 + images.length) % images.length) }}
+            aria-label="Previous photo"
+            className="absolute left-2 sm:left-6 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onNavigate((index + 1) % images.length) }}
+            aria-label="Next photo"
+            className="absolute right-2 sm:right-6 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </>
+      )}
+
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={images[index]}
+        alt={`Photo ${index + 1} shared by ${name}`}
+        className="max-w-full max-h-full object-contain rounded-lg"
+        referrerPolicy="no-referrer"
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {hasMultiple && (
+        <p className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-xs font-medium">
+          {index + 1} / {images.length}
+        </p>
+      )}
+    </div>
+  )
+}
+
 export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
   const doubled = [...reviews, ...reviews]
   const [paused, setPaused] = useState(false)
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
 
   return (
+    <>
     <div
       className="relative overflow-hidden"
       style={{
@@ -84,27 +162,35 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
                 <GoogleIcon />
               )}
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1 italic">
+            <p className="text-gray-700 text-sm leading-relaxed mb-4 italic">
               &ldquo;{review.review}&rdquo;
             </p>
             {review.images && review.images.length > 0 && (
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                {review.images.map((src, imgIdx) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={src}
-                    src={src}
-                    alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
-                    loading="lazy"
-                    className={`h-28 w-full object-cover rounded-lg ${
-                      review.images!.length === 1 ? 'col-span-2 h-40' : ''
-                    }`}
-                    referrerPolicy="no-referrer"
-                  />
-                ))}
+              <div className={`grid gap-2 mb-4 ${review.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+                {review.images.map((src, imgIdx) => {
+                  const spansFullWidth = review.images!.length % 2 === 1 && imgIdx === review.images!.length - 1
+                  return (
+                    <button
+                      key={src}
+                      type="button"
+                      onClick={() => setLightbox({ name: review.name, images: review.images!, index: imgIdx })}
+                      aria-label={`Open photo ${imgIdx + 1} from ${review.name} full size`}
+                      className={`block rounded-lg overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity ${spansFullWidth ? 'col-span-2' : ''}`}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
+                        loading="lazy"
+                        className="block w-full h-auto"
+                        referrerPolicy="no-referrer"
+                      />
+                    </button>
+                  )
+                })}
               </div>
             )}
-            <div className="flex items-center gap-3 border-t border-primary/10 pt-3">
+            <div className="mt-auto flex items-center gap-3 border-t border-primary/10 pt-3">
               <Avatar src={review.avatar} name={review.name} />
               <div>
                 <p className="text-sm font-bold text-gray-900 leading-none">{review.name}</p>
@@ -115,5 +201,13 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
         ))}
       </div>
     </div>
+    {lightbox && (
+      <Lightbox
+        state={lightbox}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox({ ...lightbox, index })}
+      />
+    )}
+    </>
   )
 }

@@ -57,6 +57,9 @@ const googleReviews = [
     review: "For sure the best surf instructor we've had. Noah's such a great guy and teaches you everything you need to know from the safety side of surfing to catching great waves. His attention to detail on every wave means by the end of each lesson you feel like you've learnt so much. Book with Noah and you won't be disappointed!",
     avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKVk_2d6PuXAy7lVK8z_80njfRDnRI6dZF-YQN2AiuOhTcC-w=w36-h36-p-rp-mo-br100',
     link: 'https://share.google/Ri0jmOdX3WZCiZmyA',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn21A124Py4o6zUNKznenvknY920t69wwrx6jcr3b58iu3X-O2XBKOTC6ykXP1t40YnfOYXdUU804asvwpuSI2g2zXqrQ9JsraPmeBhS6cvz5NZ6fCsx9m_R9I9jpAZPasrqefe1p8GfciE=w600-h450-p-k-no',
+    ],
   },
   {
     name: 'Mikko',
@@ -65,6 +68,9 @@ const googleReviews = [
     review: 'Had a few amazing surf lessons in Hiriketiya with Noah. He has a very calm and patient way of teaching and explains things in a way even a complete beginner can understand. He paid attention to small details, helped me improve quickly, and even encouraged me to try some slightly bigger waves. Highly recommend him to anyone looking for surf lessons here!',
     avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjXwma06cGu9OLnlGbhbOnR3YTmeZDyMKWrOODMD5l08wvUX0gI=w36-h36-p-rp-mo-br100',
     link: 'https://share.google/0bZQp8uWnzT56SUtV',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn2t2AbJCfKB0blmQAnocOAV5naR3rSwTSyKScmS7nk2Fn-W4q_c2tjffma_dF9_uaHTtXv_r1WjXaq_ByzvCDt7rRVineBg07cpgGiqEfKAbi_aRTmzTJNcew2Kc5GWx7J9ab-zvCsEOGjm=w600-h450-p-k-no',
+    ],
   },
   {
     name: 'Peter Zelenay',
@@ -86,6 +92,10 @@ const googleReviews = [
     review: "My best surf lessons so far: absolute recommendation! Noah speaks very good English and is great at explaining things. He knows exactly where to start and teaches you the really important things so that you get better and better and can eventually catch your own waves. What's more, he's just a very cool and relaxed guy who immediately makes you feel at ease. Thank you Noah!",
     avatar: 'https://lh3.googleusercontent.com/a/ACg8ocI3NSZmg43ujHczBSK2_i-ixesc0H4TnxWLLT6h0kdpxpk2Yg=w36-h36-p-rp-mo-ba12-br100',
     link: 'https://share.google/BnR2ncWQ3m3OjHIw6',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0t-r3LAJfDFIE1WUCyhv6awUL4y2B2m9LFMlNZzt2Qsf_Oaqxit4Dzrs8qblVncxwp6FOQDOwGDdTELE2iw9AnkJzpWLCAQ8Taxijw9eJHI5mU38FET3JpHPwVADZqsUTBHjgYLA=w300-h450-p-k-no',
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3IcvKhPi7lavsBM5mHGmZgqabLDKcr6WHG0tG3Pk5RFLKOnyrOjg1Kyv4183O76riuMpjUyb5zdSkI4SmLhZKdYZjE-qMFEqvTNKhhX6fzrhjvMV_K_ET7mjWUaXeAQw-fmqcb=w300-h450-p-k-no',
+    ],
   },
   {
     name: 'Michal Vachler',
@@ -94,6 +104,9 @@ const googleReviews = [
     review: "One of the best activities we did in Sri Lanka. What makes this experience unique is Noah. A friendly, easygoing, funny, professional surfer who helped us surf our first wave. Noah takes care of safety. We did stretching together before the lesson. I really enjoyed the theory about the bay, how water flows, what kinds of waves there are. The lesson is long enough for a good price. Noah tried really hard to help us surf the first wave and it worked :) Thank you!",
     avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjUj8JTnYLGmx_EaRMcHr3suAzZD7q5CaOChXUz7ss5l7ooQMpu7=w36-h36-p-rp-mo-ba12-br100',
     link: 'https://share.google/AjmA7LVPabo6X8iF5',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0h4CHnfgM6suoecfsuN2Ai4_OgRJoTfj_I4T84iXUCG_haj_i7wZu2_z60TJzRweXBiRnVQ7M6kSvrpQRE4JqYKoC6bwQVeUdvqapaXRUind8hCOgcxDqwasIOyn9pkZLYiUXk=w600-h450-p-k-no',
+    ],
   },
   {
     name: 'Nina Thornton',
@@ -126,6 +139,10 @@ const googleReviews = [
     review: "Best Surf teacher! I took two surf lessons with Noah, and I felt so incredibly supported — he is such a great instructor. Noah speaks English at a good level and is one of the more experienced surfers and instructors. He focuses on safety, a step-by-step approach, and gives great explanations. And once you are on the board, you know what it means to catch a wave — it's unreal!",
     avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjW9b15-jt9FhHfN7w0TPx24l-YG4cNCVqcQ-kQBSo8VUKFhhayN=w36-h36-p-rp-mo-ba4-br100',
     link: 'https://share.google/nAzpyaHUnrnUaj2di',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0w1VC9gkGvR7wN_Ek0TX3b_yhw7qJ1885jhQOV0GN-1-F3YnUtI6cxD6UrklryDfEOQN-Ir3U07JZEBCNowpuSgdi-YJ7PpwNuEN0ENgwpWhnI8Nsln8nq8koN0-q1GiHsnMBr4AvCDvNA=w300-h450-p-k-no',
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3MY293czUMBkEuyoULscd4o6c5fj_C1FLgFXn-roMVZFlxoaC-v575MwHf0JiFWFAEr1D75iXGQv5zMxMUtWi-4o9PHF_8xSk0fp1hzz8q937Ce5s5A0tYvWl7l2wP75Hybnl3vYtD4JmV=w300-h450-p-k-no',
+    ],
   },
   {
     name: 'Samuel Durrance',
