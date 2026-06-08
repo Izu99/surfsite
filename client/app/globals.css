@@ -90,50 +90,11 @@ body {
   top: 0 !important;
 }
 
-/* We show our own "Translate" pill (see GoogleTranslate.tsx) and stretch Google's
-   own <select> invisibly over the whole pill, so a real click on the visible
-   English label opens its native language picker. Google's own gadget chrome
-   ("Powered by Google Translate" text + logo) is suppressed entirely. */
+/* Our own menu in GoogleTranslate.tsx fully replaces Google's UI — keep the
+   container in the DOM (Google needs it to mount the hidden <select> that
+   actually performs translation) but hidden */
 #google_translate_element {
-  position: absolute;
-  inset: 0;
-}
-
-#google_translate_element .goog-te-gadget {
-  position: absolute;
-  inset: 0;
-  font-size: 0;
-}
-
-#google_translate_element .goog-te-gadget > span,
-#google_translate_element .goog-te-gadget > a,
-#google_translate_element .goog-te-gadget img {
   display: none !important;
-}
-
-#google_translate_element select.goog-te-combo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  border: none;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* The popup list itself renders on a light background — keep its text dark
-   regardless of the (invisible) select's own color */
-#google_translate_element select.goog-te-combo option {
-  color: #1f2937;
-  background-color: #ffffff;
-}
-
-/* The popup list renders on a light background — option text must stay dark, not
-   inherit the white text color of the closed pill, or it becomes unreadable */
-#google_translate_element select.goog-te-combo option {
-  color: #1f2937;
-  background-color: #ffffff;
 }
 
 @layer utilities {
