@@ -242,13 +242,13 @@ export default function HomePage() {
 
             {/* Right: text — first on mobile, right on desktop */}
             <div className="order-1 lg:order-2 space-y-3">
-              <p className="font-display text-4xl md:text-5xl text-gray-900 leading-tight">
+              <p className="font-italianno text-5xl md:text-6xl text-gray-900 leading-tight">
                 Hey! I&apos;m Noah 👋
               </p>
-              <p className="font-display text-2xl md:text-3xl text-gray-700 leading-snug">
+              <p className="font-italianno text-3xl md:text-4xl text-gray-700 leading-snug">
                 &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
               </p>
-              <p className="font-display text-2xl md:text-3xl text-primary">
+              <p className="font-italianno text-3xl md:text-4xl text-primary">
                 The ocean is waiting for you! 🌊
               </p>
               <div className="pt-4">

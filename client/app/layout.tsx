@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Poppins, Caveat } from 'next/font/google'
+import { Poppins, Caveat, Italianno } from 'next/font/google'
 import './globals.css'
 import SiteShell from '@/components/SiteShell'
 import { Providers } from '@/components/Providers'
@@ -16,6 +16,13 @@ const caveat = Caveat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-display',
+  display: 'swap',
+})
+
+const italianno = Italianno({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-italianno',
   display: 'swap',
 })
 
@@ -84,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${caveat.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${caveat.variable} ${italianno.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
           <SiteShell>{children}</SiteShell>
