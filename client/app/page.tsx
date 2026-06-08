@@ -405,13 +405,6 @@ export default function HomePage() {
                 ),
               },
               {
-                title: 'ISA Certified',
-                desc: 'International Surfing Association certified instructors.',
-                svg: (
-                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
                 title: 'Teach Anyone',
                 desc: 'Ages 4 to 70 — total beginners to advanced surfers welcome.',
                 svg: (
@@ -423,12 +416,28 @@ export default function HomePage() {
                   </svg>
                 ),
               },
-            ].map(({ svg, title, desc }) => (
+              {
+                title: 'Certified & Qualified',
+                bullets: [
+                  'ISA Certified — International Surfing Association certified instructors',
+                  'Diploma in Hospitality and Tourism Management, Singapore',
+                ],
+                svg: (
+                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
+                ),
+              },
+            ].map(({ svg, title, desc, bullets }) => (
               <div key={title} className="bg-white rounded-2xl p-6 shadow-sm flex gap-5">
                 <div className="text-gray-900 shrink-0 mt-1">{svg}</div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg leading-snug mb-1">{title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                  {bullets ? (
+                    <ul className="text-gray-500 text-sm leading-relaxed space-y-1 list-disc list-inside">
+                      {bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                  )}
                 </div>
               </div>
             ))}

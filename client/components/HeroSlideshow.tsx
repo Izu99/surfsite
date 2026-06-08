@@ -8,7 +8,7 @@ export default function HeroSlideshow() {
     <section className="relative h-screen min-h-[580px] overflow-hidden bg-[#0d3447]">
       {/* Hero image */}
       <Image
-        src="/hero-hirikatiya-bay.webp"
+        src="/hero-bay-aerial.webp"
         alt="Hirikatiya Beach"
         fill
         className="object-cover object-center"
@@ -18,6 +18,7 @@ export default function HeroSlideshow() {
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-black/15" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/25 to-black/60" />
 
       {/* ── Mobile layout: centered ── */}
@@ -27,7 +28,7 @@ export default function HeroSlideshow() {
           alt="Noah Surf School"
           width={96}
           height={96}
-          className="h-36 w-auto object-contain"
+          className="h-36 w-auto object-contain -mt-6"
           priority
         />
         <p className="text-primary-light text-base font-medium">
@@ -56,7 +57,7 @@ export default function HeroSlideshow() {
         <div className="container-site">
           <div className="max-w-3xl">
             {/* Logo */}
-            <div className="mb-5">
+            <div className="mb-5 -mt-8">
               <Image
                 src="/logo.png"
                 alt="Noah Surf School"
