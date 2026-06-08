@@ -184,7 +184,7 @@ export default function GalleryPage() {
               <div
                 key={photo.src}
                 className={cn(
-                  'group relative overflow-hidden bg-[#f0f4f8]',
+                  'group relative overflow-hidden bg-[#fbfbfb]',
                   photo.wide && 'sm:col-span-2',
                   photo.tall && 'row-span-2'
                 )}
