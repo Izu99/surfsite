@@ -99,11 +99,16 @@ export default function HeroSlideshow() {
         </div>
       </div>
 
-      {/* Wave bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: '56px' }}>
-          <path d="M0,28 C180,56 360,0 540,28 C720,56 900,5 1080,28 C1260,50 1380,18 1440,28 L1440,56 L0,56 Z" fill="#0d1b2a" />
-        </svg>
+      {/* Wave bottom — single wave, gently flowing */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 h-14 overflow-hidden pointer-events-none">
+        <div className="flex h-full w-[200%] animate-wave-flow">
+          <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
+            <path d="M0,32 C360,72 1080,-8 1440,32 L1440,56 L0,56 Z" fill="#0d3447" />
+          </svg>
+          <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
+            <path d="M0,32 C360,72 1080,-8 1440,32 L1440,56 L0,56 Z" fill="#0d3447" />
+          </svg>
+        </div>
       </div>
     </section>
   )
