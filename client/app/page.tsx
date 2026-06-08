@@ -109,6 +109,18 @@ const googleReviews = [
     ],
   },
   {
+    name: 'Wendy Schippers',
+    rating: 5,
+    date: '2 weeks ago',
+    review: "Best Surf teacher! I took two surf lessons with Noah, and I felt so incredibly supported — he is such a great instructor. Noah speaks English at a good level and is one of the more experienced surfers and instructors. He focuses on safety, a step-by-step approach, and gives great explanations. And once you are on the board, you know what it means to catch a wave — it's unreal!",
+    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjW9b15-jt9FhHfN7w0TPx24l-YG4cNCVqcQ-kQBSo8VUKFhhayN=w36-h36-p-rp-mo-ba4-br100',
+    link: 'https://share.google/nAzpyaHUnrnUaj2di',
+    images: [
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0w1VC9gkGvR7wN_Ek0TX3b_yhw7qJ1885jhQOV0GN-1-F3YnUtI6cxD6UrklryDfEOQN-Ir3U07JZEBCNowpuSgdi-YJ7PpwNuEN0ENgwpWhnI8Nsln8nq8koN0-q1GiHsnMBr4AvCDvNA=w300-h450-p-k-no',
+      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3MY293czUMBkEuyoULscd4o6c5fj_C1FLgFXn-roMVZFlxoaC-v575MwHf0JiFWFAEr1D75iXGQv5zMxMUtWi-4o9PHF_8xSk0fp1hzz8q937Ce5s5A0tYvWl7l2wP75Hybnl3vYtD4JmV=w300-h450-p-k-no',
+    ],
+  },
+  {
     name: 'Nina Thornton',
     rating: 5,
     date: '8 months ago',
@@ -131,18 +143,6 @@ const googleReviews = [
     review: "Epic Experience! 5 stars are not enough 🤙 3 awesome surf coaches for just 4 of us! Always safety first, but still all the fun. They took us to a perfect beginner-friendly beach near Hiri and it was just amazing. Hands down, best surf lesson ever! Thanks to Noah and the crew — you guys rock 🌊🏄‍♂️🔥",
     avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKxCeaaUCo1dN8HbeDBUlt5WGtIiIf0UEoFcYs073GzpGWhig=w36-h36-p-rp-mo-br100',
     link: 'https://share.google/eCe7qMoNx4tufKTc8',
-  },
-  {
-    name: 'Wendy Schippers',
-    rating: 5,
-    date: '2 weeks ago',
-    review: "Best Surf teacher! I took two surf lessons with Noah, and I felt so incredibly supported — he is such a great instructor. Noah speaks English at a good level and is one of the more experienced surfers and instructors. He focuses on safety, a step-by-step approach, and gives great explanations. And once you are on the board, you know what it means to catch a wave — it's unreal!",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjW9b15-jt9FhHfN7w0TPx24l-YG4cNCVqcQ-kQBSo8VUKFhhayN=w36-h36-p-rp-mo-ba4-br100',
-    link: 'https://share.google/nAzpyaHUnrnUaj2di',
-    images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0w1VC9gkGvR7wN_Ek0TX3b_yhw7qJ1885jhQOV0GN-1-F3YnUtI6cxD6UrklryDfEOQN-Ir3U07JZEBCNowpuSgdi-YJ7PpwNuEN0ENgwpWhnI8Nsln8nq8koN0-q1GiHsnMBr4AvCDvNA=w300-h450-p-k-no',
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3MY293czUMBkEuyoULscd4o6c5fj_C1FLgFXn-roMVZFlxoaC-v575MwHf0JiFWFAEr1D75iXGQv5zMxMUtWi-4o9PHF_8xSk0fp1hzz8q937Ce5s5A0tYvWl7l2wP75Hybnl3vYtD4JmV=w300-h450-p-k-no',
-    ],
   },
   {
     name: 'Samuel Durrance',
@@ -249,9 +249,22 @@ export default function HomePage() {
         </div>
 
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: beach image — below text on mobile, left on desktop */}
-            <div className="order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-y-8 lg:gap-y-3 gap-x-12 lg:gap-x-20 items-start">
+            {/* Greeting + quote + ocean line — first on mobile, top-right on desktop */}
+            <div className="lg:col-start-2 lg:row-start-1 space-y-3">
+              <p className="font-italianno text-5xl md:text-6xl text-gray-900 leading-tight">
+                Hey! I&apos;m Noah 👋
+              </p>
+              <p className="font-italianno text-3xl md:text-4xl text-gray-700 leading-snug">
+                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+              </p>
+              <p className="font-italianno text-3xl md:text-4xl text-primary">
+                The ocean is waiting for you! 🌊
+              </p>
+            </div>
+
+            {/* Beach image — middle on mobile, left (full height) on desktop */}
+            <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
               <Image
                 src="/hirikatiya-bay.png"
                 alt="Man and child at Hirikatiya Beach"
@@ -262,56 +275,45 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Right: text — first on mobile, right on desktop */}
-            <div className="order-1 lg:order-2 space-y-3">
-              <p className="font-italianno text-5xl md:text-6xl text-gray-900 leading-tight">
-                Hey! I&apos;m Noah 👋
-              </p>
-              <p className="font-italianno text-3xl md:text-4xl text-gray-700 leading-snug">
-                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
-              </p>
-              <p className="font-italianno text-3xl md:text-4xl text-primary">
-                The ocean is waiting for you! 🌊
-              </p>
-              <div className="pt-4">
-                <Link
-                  href="/about"
-                  className="relative inline-flex items-center justify-center cursor-pointer group select-none"
-                  style={{ width: 210, height: 68 }}
+            {/* Button — last on mobile, bottom-right on desktop */}
+            <div className="lg:col-start-2 lg:row-start-2">
+              <Link
+                href="/about"
+                className="relative inline-flex items-center justify-center cursor-pointer group select-none"
+                style={{ width: 210, height: 68 }}
+              >
+                <svg
+                  className="absolute inset-0 w-full h-full overflow-visible"
+                  viewBox="0 0 210 68"
+                  fill="none"
+                  aria-hidden="true"
                 >
-                  <svg
-                    className="absolute inset-0 w-full h-full overflow-visible"
-                    viewBox="0 0 210 68"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <defs>
-                      <filter id="brushstroke-fill" x="-12%" y="-35%" width="124%" height="170%">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.022 0.028" numOctaves="4" seed="3" result="noise" />
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
-                      </filter>
-                    </defs>
-                    <rect
-                      x="10" y="10" width="190" height="48" rx="8"
-                      fill="#3AAEE0"
-                      filter="url(#brushstroke-fill)"
-                      className="group-hover:fill-sky-400 transition-colors duration-300"
-                    />
-                    <rect
-                      x="20" y="14" width="130" height="18" rx="6"
-                      fill="white"
-                      opacity="0.12"
-                      filter="url(#brushstroke-fill)"
-                    />
+                  <defs>
+                    <filter id="brushstroke-fill" x="-12%" y="-35%" width="124%" height="170%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.022 0.028" numOctaves="4" seed="3" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                  </defs>
+                  <rect
+                    x="10" y="10" width="190" height="48" rx="8"
+                    fill="#3AAEE0"
+                    filter="url(#brushstroke-fill)"
+                    className="group-hover:fill-sky-400 transition-colors duration-300"
+                  />
+                  <rect
+                    x="20" y="14" width="130" height="18" rx="6"
+                    fill="white"
+                    opacity="0.12"
+                    filter="url(#brushstroke-fill)"
+                  />
+                </svg>
+                <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
+                  Read My Story
+                  <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
+                    <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
                   </svg>
-                  <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
-                    Read My Story
-                    <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
-                      <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-                    </svg>
-                  </span>
-                </Link>
-              </div>
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -376,21 +378,14 @@ export default function HomePage() {
                 title: 'New Surfboards',
                 desc: 'Top-of-the-line foam & fiberglass boards maintained weekly.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <path d="M24 5C31 5 43 12 43 24C43 36 31 43 24 43C17 43 5 36 5 24C5 12 17 5 24 5Z"/>
-                    <path d="M24 38L22 44M24 38L26 44"/>
-                    <path d="M20 24C20 21.8 21.8 20 24 20C26.2 20 28 21.8 28 24"/>
-                  </svg>
+                  <Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
                 title: 'Ocean Safety First',
                 desc: 'Every session starts with ocean awareness & safety briefing.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <path d="M24 4L8 10V24C8 33 15 40 24 44C33 40 40 33 40 24V10L24 4Z"/>
-                    <path d="M17 24L22 29L31 19"/>
-                  </svg>
+                  <Image src="/icon-difference-surf.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
@@ -406,22 +401,14 @@ export default function HomePage() {
                 title: 'Innovative Teaching',
                 desc: 'Video analysis, dryland drills & real-time in-water coaching.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <path d="M24 7C18 7 13 12 13 18C13 22 15 25.5 18 27.5V32H30V27.5C33 25.5 35 22 35 18C35 12 30 7 24 7Z"/>
-                    <path d="M18 36H30M20 40H28"/>
-                    <path d="M24 14V22M20 18H28"/>
-                  </svg>
+                  <Image src="/icon-difference-classroom.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
                 title: 'ISA Certified',
                 desc: 'International Surfing Association certified instructors.',
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <circle cx="24" cy="20" r="12"/>
-                    <path d="M24 8L26.5 15H34L28 19.5L30.5 26.5L24 22L17.5 26.5L20 19.5L14 15H21.5L24 8Z"/>
-                    <path d="M18 32L15 44M30 32L33 44M15 44H33"/>
-                  </svg>
+                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
@@ -455,10 +442,6 @@ export default function HomePage() {
       {/* 8 ── Gallery ── */}
       <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Photos &amp; Vibes
-          </h2>
-          <p className="font-display text-xl text-gray-500 mb-8">Real moments from the water</p>
           <GallerySlideshow />
         </div>
       </section>

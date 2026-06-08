@@ -117,40 +117,37 @@ export default function AboutPage() {
               </p>
               <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  I was born and raised where the jungle meets the sand in
-                  Hiriketiya, a small village on the southern coast of Sri
-                  Lanka. Long before it became a global destination, Hiriketiya
-                  was my playground. By the age of six, I was already living in
-                  harmony with the tides — playing in the surf, watching the sea
-                  turtles, and learning the ways of the ocean from our local
-                  fishermen. To me, the sound of the crashing waves wasn&apos;t
-                  just noise; it was the heartbeat of my home.
+                  I was born in Hiriketiya, a small village on the south coast
+                  of Sri Lanka, where the jungle meets the beach. Long before it
+                  became famous, Hiriketiya was my playground. By the age of
+                  six, I was already playing in the waves, watching sea
+                  turtles, and learning about the ocean from local fishermen.
+                  The sound of the waves felt like home to me.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
-                  I remember being eight years old when I saw something that
-                  changed my life: a traveler gliding across the water on a
-                  board. My friends and I watched in awe from the shore. Though
-                  I lacked the money to buy equipment, I began by borrowing
-                  boards from travelers for just a few minutes at a time. Through
-                  persistence and passion, I taught myself — progressing from a
-                  beginner to an expert.
+                  When I was eight, I saw something that changed my life: a
+                  traveler riding the waves on a surfboard. My friends and I
+                  watched from the beach, amazed. I didn&apos;t have money to
+                  buy my own board, so I asked travelers if I could borrow
+                  theirs for a few minutes at a time. I kept practicing and
+                  slowly taught myself — from a beginner to an expert.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Today, known simply as &ldquo;Noah&rdquo; to students from
-                  around the world, I share the magic of the Indian Ocean with
-                  visitors from the UK, US, Australia, and beyond. I don&apos;t
-                  just teach you how to stand on a board — I teach you how to
-                  breathe with the waves, respect the nature of the south coast,
-                  and truly live in rhythm with the sea.
+                  Today, students from all over the world simply call me
+                  &ldquo;Noah.&rdquo; I teach visitors from the UK, US,
+                  Australia, and many other countries. I don&apos;t just teach
+                  you how to stand on a surfboard — I also help you feel
+                  comfortable in the waves, respect the ocean, and enjoy every
+                  moment in the water.
                 </p>
               </div>
               <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
                 &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
               </p>
               <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
-                &ldquo;My journey started on these very sands, and I invite you
-                to begin yours with me. See you in the water — Noah.&rdquo;
+                &ldquo;My journey started on this beach, and I&apos;d love to
+                help you start yours too. See you in the water — Noah.&rdquo;
               </blockquote>
               <div className="flex flex-wrap gap-4">
                 <Link

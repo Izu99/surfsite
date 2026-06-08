@@ -100,13 +100,13 @@ export default function HeroSlideshow() {
       </div>
 
       {/* Wave bottom — single wave, gently flowing */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-14 overflow-hidden pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 z-10 h-24 overflow-hidden pointer-events-none">
         <div className="flex h-full w-[200%] animate-wave-flow">
-          <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
-            <path d="M0,32 C360,72 1080,-8 1440,32 L1440,56 L0,56 Z" fill="#0d3447" />
+          <svg viewBox="0 0 1440 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
+            <path d="M0,48 C360,84 1080,12 1440,48 L1440,96 L0,96 Z" fill="#0d3447" />
           </svg>
-          <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
-            <path d="M0,32 C360,72 1080,-8 1440,32 L1440,56 L0,56 Z" fill="#0d3447" />
+          <svg viewBox="0 0 1440 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="h-full w-1/2 shrink-0 block">
+            <path d="M0,48 C360,84 1080,12 1440,48 L1440,96 L0,96 Z" fill="#0d3447" />
           </svg>
         </div>
       </div>

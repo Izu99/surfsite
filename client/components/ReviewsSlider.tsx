@@ -139,7 +139,7 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
       onTouchEnd={() => setPaused(false)}
     >
       <div
-        className="flex gap-5 w-max animate-marquee hover:[animation-play-state:paused]"
+        className="flex items-start gap-5 w-max animate-marquee hover:[animation-play-state:paused]"
         style={{ animationPlayState: paused ? 'paused' : undefined }}
       >
         {doubled.map((review, i) => (
@@ -190,7 +190,11 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
                 })}
               </div>
             )}
-            <div className="mt-auto flex items-center gap-3 border-t border-primary/10 pt-3">
+            <div
+              className={`flex items-center gap-3 border-t border-primary/10 pt-3 ${
+                review.images && review.images.length > 0 ? 'mt-auto' : 'mt-[50px]'
+              }`}
+            >
               <Avatar src={review.avatar} name={review.name} />
               <div>
                 <p className="text-sm font-bold text-gray-900 leading-none">{review.name}</p>

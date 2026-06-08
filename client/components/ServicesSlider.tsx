@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, ArrowRight, GraduationCap, Waves, Tent, Users, User, Star } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight, GraduationCap, Waves, Tent, User } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 type Service = {
@@ -23,25 +23,11 @@ const services: Service[] = [
     icon: GraduationCap,
   },
   {
-    title: 'Group Lessons',
-    description: 'Max 6 students. Great energy.',
-    image: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Group surf lesson',
-    icon: Users,
-  },
-  {
     title: 'Private Coaching',
     description: '100% focus on your progress.',
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop',
     alt: 'Private surf coaching',
     icon: User,
-  },
-  {
-    title: 'Kids Surf School',
-    description: 'Safe, fun & made for ages 6+.',
-    image: 'https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Kids surf school',
-    icon: Star,
   },
   {
     title: 'Surf Camps',
@@ -93,7 +79,7 @@ export default function ServicesSlider() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-md">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-2">
-              What we offer
+              Shop
             </h2>
             <p className="font-display text-xl text-gray-500">Pick your adventure — we&apos;ll do the rest!</p>
           </div>

@@ -4,7 +4,7 @@ const highlights = [
   { icon: '/icon-surfboard2.png', text: 'Surfing for all levels — beginner to pro surfers' },
   { icon: '/icon-beach.png',      text: 'The most beautiful beach on the South Coast' },
   { icon: '/icon-turtle.png',     text: 'Sea turtles — swim with them' },
-  { icon: '/icon-cafe.png',       text: 'The ultimate all-in-one village' },
+  { icon: '/icon-cafe.png',       text: 'All-in-one village: restaurants, cafes, parties, and total relaxation' },
 ]
 
 export default function HirikatiayaExperience() {
