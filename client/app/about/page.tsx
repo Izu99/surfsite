@@ -29,7 +29,7 @@ const values: { text: string; icon: LucideIcon }[] = [
 const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] = [
   { icon: Users, number: '2,500+', label: 'Surfers Trained', sub: 'Students from 60+ countries' },
   { icon: Award, number: '14', label: 'Years Experience', sub: 'Operating since 2010' },
-  { icon: Star, number: '4.9', label: 'Student Rating', sub: 'Based on 800+ reviews' },
+  { icon: Star, number: '5.0', label: 'Student Rating', sub: 'Based on 300+ reviews' },
 ]
 
 const socials = [

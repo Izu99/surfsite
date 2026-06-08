@@ -43,9 +43,9 @@ const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] 
   },
   {
     icon: Star,
-    number: '4.9★',
+    number: '5.0★',
     label: 'Student Rating',
-    sub: '800+ reviews',
+    sub: '300+ reviews',
   },
 ]
 
@@ -214,7 +214,7 @@ export default function HomePage() {
       <ConditionsBar />
 
       {/* 3 ── About Hirikatiya ── */}
-      <section className="bg-white py-20 md:py-24">
+      <section className="bg-[#e8e8e8] py-20 md:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: title + stats */}
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#e8e8e8" toColor="#fdf6e9" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
       <section className="bg-[#fdf6e9] relative overflow-hidden py-20 md:py-28">
@@ -249,22 +249,19 @@ export default function HomePage() {
         </div>
 
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-y-8 lg:gap-y-3 gap-x-12 lg:gap-x-20 items-start">
-            {/* Greeting + quote + ocean line — first on mobile, top-right on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 gap-y-8 lg:gap-y-3 gap-x-12 lg:gap-x-20 items-start">
+            {/* Greeting + quote — first on mobile, top-right on desktop */}
             <div className="lg:col-start-2 lg:row-start-1 space-y-3">
               <p className="font-italianno text-5xl md:text-6xl text-gray-900 leading-tight">
-                Hey! I&apos;m Noah 👋
+                Hey! I&apos;m Noah
               </p>
               <p className="font-italianno text-3xl md:text-4xl text-gray-700 leading-snug">
                 &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
               </p>
-              <p className="font-italianno text-3xl md:text-4xl text-primary">
-                The ocean is waiting for you! 🌊
-              </p>
             </div>
 
-            {/* Beach image — middle on mobile, left (full height) on desktop */}
-            <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
+            {/* Beach image — second on mobile, left (full height) on desktop */}
+            <div className="lg:col-start-1 lg:row-start-1 lg:row-span-3">
               <Image
                 src="/hirikatiya-bay.png"
                 alt="Man and child at Hirikatiya Beach"
@@ -275,8 +272,13 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Button — last on mobile, bottom-right on desktop */}
-            <div className="lg:col-start-2 lg:row-start-2">
+            {/* Ocean line — third on mobile (after image), middle-right on desktop */}
+            <p className="font-italianno text-3xl md:text-4xl text-primary lg:col-start-2 lg:row-start-2">
+              The ocean is waiting for you! 🌊
+            </p>
+
+            {/* Button — last on mobile (centered), bottom-right on desktop */}
+            <div className="flex justify-center lg:justify-start lg:col-start-2 lg:row-start-3">
               <Link
                 href="/about"
                 className="relative inline-flex items-center justify-center cursor-pointer group select-none"
@@ -320,18 +322,18 @@ export default function HomePage() {
       </section>
 
       {/* 6 ── Google Reviews / Rating ── */}
-      <section className="bg-white pb-20 md:pb-24 pt-4">
+      <section className="bg-[#e8e8e8] pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-              Rated 4.9 on Google
+              Rated 5.0 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
               ))}
             </div>
-            <p className="text-gray-500 text-sm">800+ verified Google reviews</p>
+            <p className="text-gray-500 text-sm">300+ verified Google reviews</p>
           </div>
           <ReviewsSlider reviews={googleReviews} />
           <div className="text-center mt-10">
@@ -348,7 +350,7 @@ export default function HomePage() {
       </section>
 
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#ffffff" toColor="#fdf6e9" />
+      <SectionDivider fromColor="#e8e8e8" toColor="#fdf6e9" />
 
       {/* 7 ── Why Learn With Us ── */}
       <section className="bg-[#fdf6e9] section-padding relative overflow-hidden">
@@ -385,16 +387,14 @@ export default function HomePage() {
                 title: 'Ocean Safety First',
                 desc: 'Every session starts with ocean awareness & safety briefing.',
                 svg: (
-                  <Image src="/icon-difference-surf.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
+                  <Image src="/icon-difference-surfing.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
                 title: 'True Hospitality',
                 desc: "Sri Lankan warmth — you'll feel at home from day one.",
                 svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <path d="M24 40C24 40 7 30 7 18C7 13 11 9 16 9C19.5 9 22.5 11 24 14C25.5 11 28.5 9 32 9C37 9 41 13 41 18C41 30 24 40 24 40Z"/>
-                  </svg>
+                  <Image src="/icon-difference-welcome.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
@@ -413,7 +413,7 @@ export default function HomePage() {
               },
               {
                 title: 'Teach Anyone',
-                desc: 'Ages 6 to 70 — total beginners to advanced surfers welcome.',
+                desc: 'Ages 4 to 70 — total beginners to advanced surfers welcome.',
                 svg: (
                   <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
                     <circle cx="24" cy="11" r="6"/>
@@ -437,10 +437,10 @@ export default function HomePage() {
       </section>
 
       {/* Wave: sandy → white */}
-      <SectionDivider fromColor="#fdf6e9" toColor="#ffffff" />
+      <SectionDivider fromColor="#fdf6e9" toColor="#e8e8e8" />
 
       {/* 8 ── Gallery ── */}
-      <section className="bg-white pb-20 md:pb-24 pt-4 relative overflow-hidden">
+      <section className="bg-[#e8e8e8] pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
           <GallerySlideshow />
         </div>
@@ -455,10 +455,10 @@ export default function HomePage() {
       {/* 10 ── Lessons ── */}
       <ServicesSlider />
 
-      <SectionDivider fromColor="#f0ece4" toColor="#ffffff" />
+      <SectionDivider fromColor="#f0ece4" toColor="#e8e8e8" />
 
       {/* ── CTA Banner ── */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#e8e8e8] py-24 md:py-32">
         <div className="container-site text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?

@@ -166,28 +166,25 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
               &ldquo;{review.review}&rdquo;
             </p>
             {review.images && review.images.length > 0 && (
-              <div className={`grid gap-2 mb-4 ${review.images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
-                {review.images.map((src, imgIdx) => {
-                  const spansFullWidth = review.images!.length % 2 === 1 && imgIdx === review.images!.length - 1
-                  return (
-                    <button
-                      key={src}
-                      type="button"
-                      onClick={() => setLightbox({ name: review.name, images: review.images!, index: imgIdx })}
-                      aria-label={`Open photo ${imgIdx + 1} from ${review.name} full size`}
-                      className={`block rounded-lg overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity ${spansFullWidth ? 'col-span-2' : ''}`}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={src}
-                        alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
-                        loading="lazy"
-                        className="block w-full h-auto"
-                        referrerPolicy="no-referrer"
-                      />
-                    </button>
-                  )
-                })}
+              <div className="flex gap-2 mb-4">
+                {review.images.map((src, imgIdx) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setLightbox({ name: review.name, images: review.images!, index: imgIdx })}
+                    aria-label={`Open photo ${imgIdx + 1} from ${review.name} full size`}
+                    className="block h-20 w-20 shrink-0 rounded-lg overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
+                      loading="lazy"
+                      className="block h-full w-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </button>
+                ))}
               </div>
             )}
             <div
