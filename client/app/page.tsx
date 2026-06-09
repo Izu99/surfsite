@@ -319,11 +319,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Wave: sand → teal (About Noah → Reviews) */}
+      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" />
+
       {/* 6 ── Google Reviews / Rating ── */}
-      <section className="bg-[#f0e9dd] pb-20 md:pb-24 pt-4">
+      <section className="bg-[#5ca3af] pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Rated 5.0 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
@@ -331,7 +334,7 @@ export default function HomePage() {
                 <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
               ))}
             </div>
-            <p className="text-gray-500 text-sm">300+ verified Google reviews</p>
+            <p className="text-white/80 text-sm">300+ verified Google reviews</p>
           </div>
           <ReviewsSlider reviews={googleReviews} />
           <div className="text-center mt-10">
@@ -339,7 +342,7 @@ export default function HomePage() {
               href="https://www.google.com/maps/place/Hirikatiya+Beach"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
+              className="inline-block border-2 border-white text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-white hover:text-[#5ca3af] transition-colors duration-200 cursor-pointer"
             >
               View All Reviews on Google
             </a>
@@ -349,11 +352,11 @@ export default function HomePage() {
 
       <div className="v2-zone">
 
-      {/* Wave: sand → teal */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" className="v2-divider" />
+      {/* Wave: teal → sand (Reviews → Noah Difference) */}
+      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" className="v2-divider" />
 
       {/* 7 ── Why Learn With Us ── */}
-      <section className="v2-s-diff bg-[#5ca3af] section-padding relative overflow-hidden">
+      <section className="v2-s-diff bg-[#f0e9dd] section-padding relative overflow-hidden">
         <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
           <Image
             src="/noah-drawing.png"
@@ -366,10 +369,10 @@ export default function HomePage() {
         </div>
         <div className="container-site">
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 v2-h">
               The Noah Difference
             </h2>
-            <p className="font-display text-2xl md:text-3xl text-white/80 mt-3 max-w-xl">
+            <p className="font-display text-2xl md:text-3xl text-gray-600 mt-3 max-w-xl v2-p">
               Six reasons why surfers from 60+ countries choose Noah Surf School.
             </p>
           </div>
@@ -445,8 +448,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Wave: teal → teal (seamless) */}
-      <SectionDivider fromColor="#5ca3af" toColor="#5ca3af" className="v2-divider" />
+      {/* Wave: sand → teal (Noah Difference → Gallery) */}
+      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" className="v2-divider" />
 
       {/* 8 ── Gallery ── */}
       <section className="v2-s-gallery bg-[#5ca3af] pb-20 md:pb-24 pt-4 relative overflow-hidden">
@@ -470,7 +473,10 @@ export default function HomePage() {
       <SectionDivider fromColor="#5ca3af" toColor="#5ca3af" className="v2-divider" />
 
       {/* ── CTA Banner ── */}
-      <section className="v2-s-cta bg-[#5ca3af] py-24 md:py-32">
+      <section className="v2-s-cta bg-[#5ca3af] py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute left-6 bottom-8 pointer-events-none select-none animate-[float_8s_ease-in-out_infinite]">
+          <Image src="/decor-gemini.png" alt="" width={140} height={140} className="w-28 sm:w-32 lg:w-36 h-auto opacity-80 drop-shadow-md rotate-[-12deg]" aria-hidden />
+        </div>
         <div className="container-site text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
