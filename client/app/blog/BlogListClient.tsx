@@ -75,24 +75,24 @@ export default function BlogListClient() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="bg-[#5ca3af] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
-        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-20 select-none animate-[float_7s_ease-in-out_infinite]">
+      <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
+        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-25 select-none animate-[float_7s_ease-in-out_infinite]">
           <Image src="/noah-drawing.png" alt="" width={110} height={110} className="rotate-[-6deg] drop-shadow-md" aria-hidden />
         </div>
         <div className="container-site pb-16 md:pb-20">
-          <p className="font-display text-2xl text-white/80 mb-2">From Our Instructors</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <p className="font-display text-2xl text-primary mb-2">From Our Instructors</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Surf Stories &amp; Tips
           </h1>
-          <p className="text-white/80 max-w-lg text-sm leading-relaxed">
+          <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
             Guides, destination insights, gear reviews, and life from Hirikatiya Beach — straight
             from our instructors.
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#5ca3af" toColor="#fcfcfc" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
-      <section className="section-padding bg-[#fcfcfc]">
+      <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
           {/* ── Featured post ── */}
           {mounted && featured && !search && activeCategory === 'All' && (

@@ -62,7 +62,7 @@ const team = [
     name: 'Noah',
     role: 'Head Instructor & Founder',
     image: '/noah-portrait.png',
-    bio: 'ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya\'s waves with visitors from around the world.',
+    bio: "ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya's waves with visitors from around the world.",
   },
   {
     name: 'Kasun Perera',
@@ -81,28 +81,25 @@ const team = [
 export default function AboutPage() {
   return (
     <>
-      {/* ── Page hero ── */}
-      <section className="bg-[#5ca3af] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
-        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-20 select-none animate-[float_9s_ease-in-out_infinite]">
-          <Image src="/surfboard.png" alt="" width={56} height={160} className="rotate-[14deg]" aria-hidden />
+      {/* ── Hero ── */}
+      <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
+        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-25 select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/noah-drawing.png" alt="" width={120} height={120} className="drop-shadow-md" aria-hidden />
         </div>
         <div className="container-site pb-16 md:pb-20">
-          <p className="font-display text-2xl text-white/80 mb-2">Our Story</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <p className="font-display text-2xl text-primary mb-2">Our Story</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Noah&apos;s Journey
           </h1>
-          <p className="text-white/80 max-w-lg text-sm leading-relaxed">
-            Hello, I&apos;m Noah — born on this beach, shaped by these waves.
+          <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
+            Born on this beach, shaped by these waves.
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#5ca3af" toColor="#fcfcfc" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
-      {/* ── NOAH'S STORY ── */}
-      <section className="bg-[#fcfcfc] relative overflow-hidden">
-        <div className="absolute right-4 top-10 pointer-events-none hidden lg:block select-none animate-[float_7s_ease-in-out_infinite]">
-          <Image src="/noah-drawing.png" alt="" width={110} height={110} className="opacity-50 drop-shadow-md" aria-hidden />
-        </div>
+      {/* ── Noah's Story ── */}
+      <section className="bg-[#f0e9dd] relative overflow-hidden">
         <div className="container-site py-16 md:py-20">
           <div className="max-w-2xl">
             <p className="font-display text-2xl text-primary mb-3">Noah&apos;s Story</p>
@@ -114,98 +111,93 @@ export default function AboutPage() {
             </p>
             <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
               <p className="text-gray-600 text-sm leading-relaxed">
-                I was born in Hiriketiya, a small village on the south coast
-                of Sri Lanka, where the jungle meets the beach. Long before it
-                became famous, Hiriketiya was my playground. By the age of
-                six, I was already playing in the waves, watching sea
-                turtles, and learning about the ocean from local fishermen.
-                The sound of the waves felt like home to me.
+                I was born in Hiriketiya, a small village on the south coast of Sri Lanka, where
+                the jungle meets the beach. Long before it became famous, Hiriketiya was my
+                playground. By the age of six, I was already playing in the waves, watching sea
+                turtles, and learning about the ocean from local fishermen. The sound of the waves
+                felt like home to me.
               </p>
               <p className="text-gray-600 text-sm leading-relaxed">
                 <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
-                When I was eight, I saw something that changed my life: a
-                traveler riding the waves on a surfboard. My friends and I
-                watched from the beach, amazed. I didn&apos;t have money to
-                buy my own board, so I asked travelers if I could borrow
-                theirs for a few minutes at a time. I kept practicing and
-                slowly taught myself — from a beginner to an expert.
+                When I was eight, I saw something that changed my life: a traveler riding the waves
+                on a surfboard. I didn&apos;t have money to buy my own board, so I asked travelers
+                if I could borrow theirs. I kept practicing and slowly taught myself — from a
+                beginner to an expert.
               </p>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Today, students from all over the world simply call me
-                &ldquo;Noah.&rdquo; I teach visitors from the UK, US,
-                Australia, and many other countries. I don&apos;t just teach
-                you how to stand on a surfboard — I also help you feel
-                comfortable in the waves, respect the ocean, and enjoy every
-                moment in the water.
+                Today, students from all over the world simply call me &ldquo;Noah.&rdquo; I teach
+                visitors from the UK, US, Australia, and many other countries. I don&apos;t just
+                teach you how to stand on a surfboard — I help you feel comfortable in the waves,
+                respect the ocean, and enjoy every moment in the water.
               </p>
             </div>
             <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
               &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
             </p>
             <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
-              &ldquo;My journey started on this beach, and I&apos;d love to
-              help you start yours too. See you in the water — Noah.&rdquo;
+              &ldquo;My journey started on this beach, and I&apos;d love to help you start yours
+              too. See you in the water — Noah.&rdquo;
             </blockquote>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
-              >
+              <Link href="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors">
                 Book A Lesson
               </Link>
-              <Link
-                href="/gallery"
-                className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors"
-              >
+              <Link href="/gallery" className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors">
                 View Gallery
               </Link>
             </div>
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Surf History ── */}
-      <section className="section-padding bg-[#f0e9dd]">
+      <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           <p className="font-display text-2xl text-primary mb-3">Surf History</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight max-w-2xl">
-            The Evolution of Surf: A History of Waves in Sri Lanka
+            The Evolution of Surf in Sri Lanka
           </h2>
           <p className="text-base font-semibold text-gray-700 mb-10 max-w-xl leading-snug">
-            From ancient coasts to a global surf haven — the story of how Sri Lanka found its place on the world&apos;s surfing map.
+            From ancient coasts to a global surf haven.
           </p>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="space-y-8">
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">From Ancient Coasts to Global Surf Haven</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Sri Lanka&apos;s relationship with the ocean spans thousands of years, rooted in the traditions of our resilient fishing communities. However, the story of surfing in Sri Lanka truly began in the 1960s and 70s. During this era, intrepid travelers from Australia and Europe began exploring our southern and eastern shores, discovering what we locals always knew: our coastline holds some of the most consistent waves in the Indian Ocean.
+                  Sri Lanka&apos;s relationship with the ocean spans thousands of years. The story
+                  of surfing in Sri Lanka truly began in the 1960s and 70s when intrepid travelers
+                  from Australia and Europe began exploring our southern and eastern shores,
+                  discovering what locals always knew: our coastline holds some of the most
+                  consistent waves in the Indian Ocean.
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">The Discovery of Hikkaduwa and Arugam Bay</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  The first surf hubs emerged in Hikkaduwa on the southwest coast and Arugam Bay on the east. These pioneers brought the first fiberglass boards to our shores, sparking a curiosity among local village kids. What started as watching from the sand turned into a local movement. Sri Lankans began borrowing boards — much like Noah did in Hiriketiya — and teaching themselves to dance with the waves.
+                  The first surf hubs emerged in Hikkaduwa and Arugam Bay. These pioneers brought
+                  the first fiberglass boards to our shores. Sri Lankans began borrowing boards —
+                  much like Noah did in Hiriketiya — and teaching themselves to dance with the waves.
                 </p>
               </div>
             </div>
-
             <div className="space-y-8">
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">The Rise of the South Coast &amp; Hiriketiya</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  While Hikkaduwa was the birthplace, the &ldquo;Golden Era&rdquo; of the south coast — including Mirissa, Weligama, and Ahangama — followed shortly after. For a long time, Hiriketiya Beach remained a hidden secret, known only to locals and a few lucky travelers.
-                </p>
-                <p className="text-gray-600 text-sm leading-relaxed mt-3">
-                  It wasn&apos;t until the last decade that the world woke up to the &ldquo;Horseshoe Bay.&rdquo; Today, Sri Lanka is recognized globally not just for its beauty, but as a premier surfing destination.
+                  For a long time, Hiriketiya Beach remained a hidden secret. It wasn&apos;t until
+                  the last decade that the world woke up to the &ldquo;Horseshoe Bay.&rdquo; Today,
+                  Sri Lanka is recognized globally as a premier surfing destination.
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">Surfing Today: A Way of Life</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Surfing is no longer just a tourist activity in Sri Lanka; it is a vital part of our coastal identity. From the early days of wooden planks and borrowed boards to the high-performance coaching available today at Noah&apos;s Surf School, the spirit remains the same: a profound respect for the ocean and the pure joy of the ride.
+                  Surfing is no longer just a tourist activity; it is a vital part of our coastal
+                  identity. From borrowed boards to the high-performance coaching at Noah&apos;s
+                  Surf School, the spirit remains the same: a profound respect for the ocean and
+                  the pure joy of the ride.
                 </p>
               </div>
             </div>
@@ -246,10 +238,8 @@ export default function AboutPage() {
                 Why Learn to Surf<br />With Us?
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                Learn to surf with confidence at the best south coast surf
-                destination. Safety and technique come first — our team, led by
-                Noah, consists of ISA-certified professionals dedicated to
-                helping you progress quickly and safely.
+                Safety and technique come first — our team, led by Noah, consists of ISA-certified
+                professionals dedicated to helping you progress quickly and safely.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {values.map(({ text, icon: Icon }) => (
@@ -279,27 +269,17 @@ export default function AboutPage() {
         <div className="container-site">
           <div className="text-center mb-12">
             <p className="font-display text-2xl text-primary mb-2">Our Team</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Meet the Instructors
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Meet the Instructors</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member) => (
               <div key={member.name} className="bg-white overflow-hidden rounded-2xl shadow-sm">
                 <div className="relative h-64 overflow-hidden rounded-t-2xl">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                  <Image src={member.image} alt={member.name} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-base font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1 mb-3">
-                    {member.role}
-                  </p>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1 mb-3">{member.role}</p>
                   <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
                 </div>
               </div>
@@ -309,7 +289,7 @@ export default function AboutPage() {
       </section>
       <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
-      {/* ── A Day in the Life ── */}
+      {/* ── Day in the Life ── */}
       <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -319,21 +299,18 @@ export default function AboutPage() {
                 A Day in the Life<br />at Hirikatiya
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                Wake up to the sound of waves, grab a board, and spend the day doing
-                what you love. Watch what a typical day looks like at Noah Surf School
-                — from morning sessions to sunset walks on the beach.
+                Wake up to the sound of waves, grab a board, and spend the day doing what you love.
+                Watch what a typical day looks like at Noah Surf School — from morning sessions to
+                sunset walks on the beach.
               </p>
-              <Link
-                href="/contact"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
-              >
+              <Link href="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors">
                 Book Your Day
               </Link>
             </div>
             <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl">
               <iframe
                 src="https://www.youtube.com/embed/LwU4zxolXoY?rel=0&modestbranding=1"
-                title="A day in the life at Noah Surf School — Hirikatiya Beach, Sri Lanka"
+                title="A day in the life at Noah Surf School"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="absolute inset-0 w-full h-full"
@@ -349,23 +326,15 @@ export default function AboutPage() {
         <div className="container-site">
           <div className="text-center mb-10">
             <p className="font-display text-2xl text-primary mb-2">Follow Us</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Stay in the Loop
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Stay in the Loop</h2>
             <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed">
-              Follow our daily surf sessions, behind-the-scenes moments, and Hirikatiya
-              life on social media.
+              Follow our daily surf sessions, behind-the-scenes moments, and Hirikatiya life on social media.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
             {socials.map(({ label, handle, href, Icon, bg }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm hover:-translate-y-1 transition-all group"
-              >
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm hover:-translate-y-1 transition-all group">
                 <div className={`h-14 w-14 rounded-full ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <Icon className="h-6 w-6 text-white" />
                 </div>
@@ -382,42 +351,27 @@ export default function AboutPage() {
       <section className="bg-[#fcfcfc]">
         <div className="container-site py-16 md:py-20">
           <p className="font-display text-2xl text-primary mb-2">Find Us</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Hirikatiya Beach, Sri Lanka
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Hirikatiya Beach, Sri Lanka</h2>
           <div className="overflow-hidden rounded-2xl shadow-2xl aspect-[21/9] min-h-[300px] md:min-h-[420px]">
             <iframe
               title="Hiriketiya Noah Surfing School location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.505071691863!2d80.70676637386983!3d5.9624342109168165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1370012226f0f%3A0xaf6fc116b43ab5a1!2sHiriketiya%20Noah%20Surfing%20School!5e1!3m2!1sen!2slk!4v1776399349914!5m2!1sen!2slk"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#bdd2c8" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── CTA ── */}
-      <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #bdd2c8, #5ca3af)' }}>
-        <div className="absolute right-[-20px] bottom-0 pointer-events-none hidden xl:block select-none animate-[float_9s_ease-in-out_infinite]">
-          <Image src="/surfboard.png" alt="" width={64} height={180} className="rotate-[12deg] opacity-15" aria-hidden />
-        </div>
+      <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site text-center">
-          <p className="font-display text-2xl text-white/80 mb-2">Get Started</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Ready to Hit the Waves?
-          </h2>
-          <p className="text-white/80 text-sm mb-8 max-w-sm mx-auto">
+          <p className="font-display text-2xl text-primary mb-2">Get Started</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Ready to Hit the Waves?</h2>
+          <p className="text-gray-500 text-sm mb-8 max-w-sm mx-auto">
             Book a session with one of our certified instructors today.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-[#5ca3af] px-10 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-primary-50 transition-colors shadow-lg"
-          >
+          <Link href="/contact" className="inline-block bg-primary text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-md">
             Book A Lesson
           </Link>
         </div>
