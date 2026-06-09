@@ -242,7 +242,7 @@ export default function HomePage() {
       <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
-      <section className="bg-[#f0e9dd] relative overflow-hidden py-20 md:py-28">
+      <section className="bg-[#f0e9dd] relative overflow-hidden pt-8 md:pt-12 pb-20 md:pb-28">
         {/* Floating surfboard */}
         <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
@@ -274,7 +274,7 @@ export default function HomePage() {
 
             {/* Ocean line — third on mobile (after image), middle-right on desktop */}
             <p className="font-italianno text-3xl md:text-4xl text-primary lg:col-start-2 lg:row-start-2">
-              The ocean is waiting for you! 🌊
+              The ocean is waiting for you!
             </p>
 
             {/* Button — last on mobile (centered), bottom-right on desktop */}
@@ -311,9 +311,7 @@ export default function HomePage() {
                 </svg>
                 <span className="relative text-white text-sm font-semibold flex items-center gap-2 drop-shadow-sm">
                   Read My Story
-                  <svg viewBox="0 0 22 10" fill="none" className="w-5 h-2.5 opacity-90" aria-hidden="true">
-                    <path d="M1,5 Q5.5,1 11,5 Q16.5,9 21,5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-                  </svg>
+                  <span aria-hidden="true" className="text-base leading-none">🌊</span>
                 </span>
               </Link>
             </div>
@@ -371,7 +369,7 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               The Noah Difference
             </h2>
-            <p className="font-display text-xl text-white/80 mt-3 max-w-md">
+            <p className="font-display text-2xl md:text-3xl text-white/80 mt-3 max-w-xl">
               Six reasons why surfers from 60+ countries choose Noah Surf School.
             </p>
           </div>
@@ -379,17 +377,27 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
-                title: 'New Surfboards',
-                desc: 'Good, modern boards. We check and clean them every week.',
-                svg: (
-                  <Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
                 title: 'Ocean Safety First',
                 desc: 'Every lesson starts with a safety talk about the ocean.',
                 svg: (
                   <Image src="/icon-difference-surfing.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
+                ),
+              },
+              {
+                title: 'Certified & Qualified',
+                bullets: [
+                  'ISA Certified — International Surfing Association certified instructors',
+                  'Diploma in Hospitality and Tourism Management, Singapore',
+                ],
+                svg: (
+                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
+                ),
+              },
+              {
+                title: 'New Surfboards',
+                desc: 'Good, modern boards. We check and clean them every week.',
+                svg: (
+                  <Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
               {
@@ -416,16 +424,6 @@ export default function HomePage() {
                     <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
                     <path d="M40 36C40 36 44 33 44 29C44 26 42 24 40 24"/>
                   </svg>
-                ),
-              },
-              {
-                title: 'Certified & Qualified',
-                bullets: [
-                  'ISA Certified — International Surfing Association certified instructors',
-                  'Diploma in Hospitality and Tourism Management, Singapore',
-                ],
-                svg: (
-                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
                 ),
               },
             ].map(({ svg, title, desc, bullets }) => (

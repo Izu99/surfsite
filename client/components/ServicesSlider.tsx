@@ -73,7 +73,7 @@ export default function ServicesSlider() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-md">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-2 v2-h">
-              Outfitter Collection
+              The Noah Collection
             </h2>
             <p className="font-display text-xl text-gray-500 v2-p">Pick your adventure — we&apos;ll do the rest!</p>
           </div>
