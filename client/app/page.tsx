@@ -214,12 +214,12 @@ export default function HomePage() {
       <ConditionsBar />
 
       {/* 3 ── About Hirikatiya ── */}
-      <section className="bg-[#5ca3af] py-20 md:py-24">
+      <section className="bg-[#fcfcfc] py-20 md:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: title + stats */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 The Hirikatiya<br />Experience
               </h2>
               <HirikatiayaExperience />
@@ -238,16 +238,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Wave: teal → sandy */}
-      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" />
-
-      {/* 4 ── About Noah ── handwritten personal section */}
-      <section className="bg-[#f0e9dd] relative overflow-hidden pt-8 md:pt-12 pb-20 md:pb-28">
-        {/* Floating surfboard */}
-        <div className="absolute right-4 top-12 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
-          <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[-14deg]" aria-hidden />
+      {/* Hirikatiya + About Noah — wrapped so surfboard spans both ── */}
+      <div className="relative">
+        {/* ONE Noah surfboard spanning both sections on the right */}
+        <div className="absolute right-[-25px] top-[-20px] pointer-events-none select-none z-10 animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/decor-gemini.png" alt="" width={480} height={480} className="w-44 sm:w-60 lg:w-72 h-auto opacity-90 drop-shadow-xl rotate-[-18deg]" aria-hidden />
         </div>
 
+      {/* Wave: white → sandy */}
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
+
+      {/* 4 ── About Noah ── handwritten personal section */}
+      <section className="bg-[#f0e9dd] relative pt-8 md:pt-12 pb-20 md:pb-28">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 gap-y-8 lg:gap-y-3 gap-x-12 lg:gap-x-20 items-start">
             {/* Greeting + quote — first on mobile, top-right on desktop */}
@@ -318,15 +320,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>{/* end Hirikatiya+Noah wrapper */}
 
-      {/* Wave: sand → teal (About Noah → Reviews) */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" />
+      {/* Wave: sand → white (About Noah → Reviews) */}
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* 6 ── Google Reviews / Rating ── */}
-      <section className="bg-[#5ca3af] pb-20 md:pb-24 pt-4">
+      <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Rated 5.0 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
@@ -334,7 +337,7 @@ export default function HomePage() {
                 <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
               ))}
             </div>
-            <p className="text-white/80 text-sm">300+ verified Google reviews</p>
+            <p className="text-gray-500 text-sm">300+ verified Google reviews</p>
           </div>
           <ReviewsSlider reviews={googleReviews} />
           <div className="text-center mt-10">
@@ -342,7 +345,7 @@ export default function HomePage() {
               href="https://www.google.com/maps/place/Hirikatiya+Beach"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-white text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-white hover:text-[#5ca3af] transition-colors duration-200 cursor-pointer"
+              className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-gray-800 hover:text-white transition-colors duration-200 cursor-pointer"
             >
               View All Reviews on Google
             </a>
@@ -351,7 +354,7 @@ export default function HomePage() {
       </section>
 
       {/* Smooth transition into gradient zone */}
-      <SectionDivider fromColor="#5ca3af" toColor="#bdd2c8" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#bdd2c8" />
 
       {/* Gradient zone: Noah Difference → CTA */}
       <div className="gradient-zone relative overflow-hidden">
@@ -449,7 +452,7 @@ export default function HomePage() {
         <div className="relative">
           {/* Noah surfboard — right side, starts at card bottom, spans into CTA */}
           <div className="absolute right-[-30px] top-[510px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
-            <Image src="/decor-gemini.png" alt="" width={572} height={572} className="w-[352px] sm:w-[422px] lg:w-[528px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
+            <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[352px] sm:w-[422px] lg:w-[528px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
           </div>
 
           <ServicesSlider />
