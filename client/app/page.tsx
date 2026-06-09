@@ -451,7 +451,7 @@ export default function HomePage() {
         {/* 10 ── Noah Collection + CTA wrapped for surfboard positioning ── */}
         <div className="relative">
           {/* Noah surfboard — right side, starts at card bottom, spans into CTA */}
-          <div className="absolute right-[-20px] top-[510px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
+          <div className="absolute right-[-20px] top-[640px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
             <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[180px] sm:w-[220px] lg:w-[270px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
           </div>
 
