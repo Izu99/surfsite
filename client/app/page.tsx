@@ -214,12 +214,12 @@ export default function HomePage() {
       <ConditionsBar />
 
       {/* 3 ── About Hirikatiya ── */}
-      <section className="bg-[#fcfcfc] py-20 md:py-24">
+      <section className="bg-[#5ca3af] py-20 md:py-24">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: title + stats */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 The Hirikatiya<br />Experience
               </h2>
               <HirikatiayaExperience />
@@ -238,8 +238,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
+      {/* Wave: teal → sandy */}
+      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" />
 
       {/* 4 ── About Noah ── handwritten personal section */}
       <section className="bg-[#f0e9dd] relative overflow-hidden pt-8 md:pt-12 pb-20 md:pb-28">
@@ -320,10 +320,10 @@ export default function HomePage() {
       </section>
 
       {/* 6 ── Google Reviews / Rating ── */}
-      <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4">
+      <section className="bg-[#5ca3af] pb-20 md:pb-24 pt-4">
         <div className="container-site">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Rated 5.0 on Google
             </h2>
             <div className="flex items-center justify-center gap-1 mb-2">
@@ -331,7 +331,7 @@ export default function HomePage() {
                 <Star key={i} className="h-5 w-5 text-amber-400 fill-amber-400" />
               ))}
             </div>
-            <p className="text-gray-500 text-sm">300+ verified Google reviews</p>
+            <p className="text-white/80 text-sm">300+ verified Google reviews</p>
           </div>
           <ReviewsSlider reviews={googleReviews} />
           <div className="text-center mt-10">
@@ -339,7 +339,7 @@ export default function HomePage() {
               href="https://www.google.com/maps/place/Hirikatiya+Beach"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
+              className="inline-block border-2 border-white text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-white hover:text-[#5ca3af] transition-colors duration-200 cursor-pointer"
             >
               View All Reviews on Google
             </a>
@@ -349,8 +349,8 @@ export default function HomePage() {
 
       <div className="v2-zone">
 
-      {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" className="v2-divider" />
+      {/* Wave: teal → teal (seamless) */}
+      <SectionDivider fromColor="#5ca3af" toColor="#5ca3af" className="v2-divider" />
 
       {/* 7 ── Why Learn With Us ── */}
       <section className="v2-s-diff bg-[#5ca3af] section-padding relative overflow-hidden">
@@ -445,11 +445,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Wave: sandy → white */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" className="v2-divider" />
+      {/* Wave: teal → teal (seamless) */}
+      <SectionDivider fromColor="#5ca3af" toColor="#5ca3af" className="v2-divider" />
 
       {/* 8 ── Gallery ── */}
-      <section className="v2-s-gallery bg-[#fcfcfc] pb-20 md:pb-24 pt-4 relative overflow-hidden">
+      <section className="v2-s-gallery bg-[#5ca3af] pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
           <GallerySlideshow />
         </div>
@@ -458,21 +458,21 @@ export default function HomePage() {
       {/* 9 ── Packages / Services ── */}
       <HomepagePackages />
 
-      {/* Wave: sandy → cream */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#f0ece4" className="v2-divider" />
+      {/* Wave: teal → sandy */}
+      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" className="v2-divider" />
 
       {/* 10 ── Lessons ── */}
       <ServicesSlider />
 
-      <SectionDivider fromColor="#f0ece4" toColor="#fcfcfc" className="v2-divider" />
+      <SectionDivider fromColor="#f0ece4" toColor="#5ca3af" className="v2-divider" />
 
       {/* ── CTA Banner ── */}
-      <section className="v2-s-cta bg-[#fcfcfc] py-24 md:py-32">
+      <section className="v2-s-cta bg-[#5ca3af] py-24 md:py-32">
         <div className="container-site text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight v2-h">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Catch Your First Wave?
           </h2>
-          <p className="font-display text-2xl md:text-3xl text-gray-500 max-w-md mx-auto v2-p">
+          <p className="font-display text-2xl md:text-3xl text-white/80 max-w-md mx-auto">
             Every day, 6am – 6pm. All gear included.
           </p>
         </div>
