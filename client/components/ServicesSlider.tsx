@@ -67,29 +67,29 @@ export default function ServicesSlider() {
   }, [scroll])
 
   return (
-    <section className="bg-[#f0ece4] section-padding overflow-hidden">
+    <section className="bg-[#5ca3af] section-padding overflow-hidden">
       <div className="container-site">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="max-w-md">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-2 v2-h">
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-2">
               The Noah Collection
             </h2>
-            <p className="font-display text-xl text-gray-500 v2-p">Pick your adventure — we&apos;ll do the rest!</p>
+            <p className="font-display text-xl text-white/80">Pick your adventure — we&apos;ll do the rest!</p>
           </div>
           {/* Arrows */}
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => scroll('prev')}
               aria-label="Previous"
-              className="h-11 w-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
+              className="h-11 w-11 rounded-full border border-white/40 flex items-center justify-center text-white hover:border-white hover:bg-white/10 transition-colors duration-200 cursor-pointer"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={() => scroll('next')}
               aria-label="Next"
-              className="h-11 w-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
+              className="h-11 w-11 rounded-full border border-white/40 flex items-center justify-center text-white hover:border-white hover:bg-white/10 transition-colors duration-200 cursor-pointer"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
