@@ -18,7 +18,7 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d1b2a] text-gray-300">
+    <footer className="bg-[#2c6670] text-gray-300">
 
       {/* Main footer */}
       <div className="container-site py-14">
