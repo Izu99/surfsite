@@ -7,12 +7,13 @@ import { Check, Clock, Users, Gift, Shield, LifeBuoy } from 'lucide-react'
 import { PACKAGE_LEVELS, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import { cn } from '@/lib/utils'
+import SectionDivider from '@/components/SectionDivider'
 
 function PackageCard({ pkg }: { pkg: SurfPackage }) {
   return (
     <div
       className={cn(
-        'flex flex-col transition-all duration-300',
+        'flex flex-col transition-all duration-300 rounded-2xl overflow-hidden',
         pkg.featured
           ? 'border border-primary shadow-2xl shadow-primary-300/40 bg-white relative z-10 md:scale-105'
           : 'border border-gray-200 hover:border-gray-300 bg-white',
@@ -86,7 +87,7 @@ function PackageCard({ pkg }: { pkg: SurfPackage }) {
         <Link
           href={`/contact?package=${encodeURIComponent(pkg.name)}`}
           className={cn(
-            'inline-block px-10 py-3 text-sm font-bold uppercase tracking-wide transition-colors',
+            'inline-block px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors',
             pkg.featured
               ? 'bg-primary text-white hover:bg-primary-dark'
               : 'border-2 border-gray-800 text-gray-800 hover:border-primary hover:text-primary',
@@ -119,23 +120,26 @@ export default function PackagesListClient() {
 
   return (
     <>
-      <section className="bg-primary-50 border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
-        <div className="container-site">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Packages</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      {/* ── Page hero ── */}
+      <section className="bg-[#5ca3af] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
+        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-20 select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/surfboard.png" alt="" width={56} height={160} className="rotate-[14deg]" aria-hidden />
+        </div>
+        <div className="container-site pb-16 md:pb-20">
+          <p className="font-display text-2xl text-white/80 mb-2">Choose Your Adventure</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Surf School Programs
           </h1>
-          <p className="text-gray-500 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/80 max-w-xl text-sm leading-relaxed">
             Every session includes surf boards, rash guard, sunscreen, water, and first aid on standby
             — all you need to do is show up and ride.
           </p>
         </div>
       </section>
+      <SectionDivider fromColor="#5ca3af" toColor="#fcfcfc" />
 
-      <section className="section-padding bg-white">
+      {/* ── Packages grid ── */}
+      <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           <div className="flex flex-wrap gap-2 mb-10">
             {PACKAGE_LEVELS.map((level) => (
@@ -143,10 +147,10 @@ export default function PackagesListClient() {
                 key={level}
                 onClick={() => setActiveLevel(level)}
                 className={cn(
-                  'px-4 py-2 text-sm font-medium transition-all',
+                  'px-5 py-2 rounded-full text-sm font-medium transition-all',
                   activeLevel === level
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                    ? 'bg-primary text-white shadow-sm'
+                    : 'bg-[#f0e9dd] text-gray-600 hover:bg-primary/10 hover:text-primary',
                 )}
               >
                 {level}
@@ -157,7 +161,7 @@ export default function PackagesListClient() {
           {!mounted ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="h-[500px] bg-gray-100 animate-pulse rounded" />
+                <div key={i} className="h-[500px] bg-gray-100 animate-pulse rounded-2xl" />
               ))}
             </div>
           ) : filtered.length === 0 ? (
@@ -172,19 +176,15 @@ export default function PackagesListClient() {
             </div>
           )}
 
-          <div className="mt-16 bg-primary-50 p-8 md:p-10 border border-gray-200">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-primary block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                Included in Every Session
-              </span>
-            </div>
+          {/* Everything included */}
+          <div className="mt-16 bg-[#f0e9dd] p-8 md:p-10 rounded-2xl">
+            <p className="font-display text-2xl text-primary mb-1">Included in Every Session</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Everything You Need</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {INCLUDED_IN_ALL.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 bg-white border border-gray-100 px-4 py-3"
+                  className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm"
                 >
                   <Check className="h-4 w-4 text-primary shrink-0" />
                   <span className="text-sm font-medium text-gray-700">{item}</span>
@@ -194,44 +194,44 @@ export default function PackagesListClient() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#fcfcfc" toColor="#bdd2c8" />
 
-      <section className="section-padding bg-primary-50 border-t border-gray-200">
+      {/* ── Safety ── */}
+      <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #bdd2c8, #5ca3af)' }}>
+        <div className="absolute right-[-20px] bottom-0 pointer-events-none hidden xl:block select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/surfboard.png" alt="" width={64} height={180} className="rotate-[12deg] opacity-15" aria-hidden />
+        </div>
         <div className="container-site">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-primary block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  Safety First
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Professional Standards</h2>
+              <p className="font-display text-2xl text-white/80 mb-2">Safety First</p>
+              <h2 className="text-3xl font-bold text-white mb-8">Professional Standards</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-white flex items-center justify-center border border-gray-100 shadow-sm">
-                    <Shield className="w-6 h-6 text-primary" />
+                  <div className="shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1">ISA Certified Instructors</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <h4 className="font-bold text-white mb-1">ISA Certified Instructors</h4>
+                    <p className="text-white/80 text-sm leading-relaxed">
                       All instructors hold International Life Saving Federation certification.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-white flex items-center justify-center border border-gray-100 shadow-sm">
-                    <LifeBuoy className="w-6 h-6 text-primary" />
+                  <div className="shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                    <LifeBuoy className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1">First Aid on Every Session</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <h4 className="font-bold text-white mb-1">First Aid on Every Session</h4>
+                    <p className="text-white/80 text-sm leading-relaxed">
                       A certified first aider and full kit are present at every lesson, every time.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop"
                 alt="Safety at Noah Surf School"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram, Facebook, Youtube, ShieldCheck, Users, Star, Award, Sun, Clock, Globe, type LucideIcon } from 'lucide-react'
+import SectionDivider from '@/components/SectionDivider'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
@@ -81,102 +82,93 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="bg-primary-50 border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
-        <div className="container-site">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              About Us
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Noah <span className="text-primary">Story</span>
+      <section className="bg-[#5ca3af] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
+        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-20 select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/surfboard.png" alt="" width={56} height={160} className="rotate-[14deg]" aria-hidden />
+        </div>
+        <div className="container-site pb-16 md:pb-20">
+          <p className="font-display text-2xl text-white/80 mb-2">Our Story</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Noah&apos;s Journey
           </h1>
-          <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
-           Hello, I'm Noah
+          <p className="text-white/80 max-w-lg text-sm leading-relaxed">
+            Hello, I&apos;m Noah — born on this beach, shaped by these waves.
           </p>
         </div>
       </section>
+      <SectionDivider fromColor="#5ca3af" toColor="#fcfcfc" />
 
       {/* ── NOAH'S STORY ── */}
-      <section className="bg-white">
+      <section className="bg-[#fcfcfc] relative overflow-hidden">
+        <div className="absolute right-4 top-10 pointer-events-none hidden lg:block select-none animate-[float_7s_ease-in-out_infinite]">
+          <Image src="/noah-drawing.png" alt="" width={110} height={110} className="opacity-50 drop-shadow-md" aria-hidden />
+        </div>
         <div className="container-site py-16 md:py-20">
           <div className="max-w-2xl">
-            <div className="w-full">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-primary block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  NOAH'S STORY
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
-                Our Story: Born from the<br />Waves of Hiriketiya
-              </h2>
-              <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
-                A Childhood in the Salt Air
+            <p className="font-display text-2xl text-primary mb-3">Noah&apos;s Story</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+              Born from the<br />Waves of Hiriketiya
+            </h2>
+            <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
+              A Childhood in the Salt Air
+            </p>
+            <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
+              <p className="text-gray-600 text-sm leading-relaxed">
+                I was born in Hiriketiya, a small village on the south coast
+                of Sri Lanka, where the jungle meets the beach. Long before it
+                became famous, Hiriketiya was my playground. By the age of
+                six, I was already playing in the waves, watching sea
+                turtles, and learning about the ocean from local fishermen.
+                The sound of the waves felt like home to me.
               </p>
-              <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  I was born in Hiriketiya, a small village on the south coast
-                  of Sri Lanka, where the jungle meets the beach. Long before it
-                  became famous, Hiriketiya was my playground. By the age of
-                  six, I was already playing in the waves, watching sea
-                  turtles, and learning about the ocean from local fishermen.
-                  The sound of the waves felt like home to me.
-                </p>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
-                  When I was eight, I saw something that changed my life: a
-                  traveler riding the waves on a surfboard. My friends and I
-                  watched from the beach, amazed. I didn&apos;t have money to
-                  buy my own board, so I asked travelers if I could borrow
-                  theirs for a few minutes at a time. I kept practicing and
-                  slowly taught myself — from a beginner to an expert.
-                </p>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Today, students from all over the world simply call me
-                  &ldquo;Noah.&rdquo; I teach visitors from the UK, US,
-                  Australia, and many other countries. I don&apos;t just teach
-                  you how to stand on a surfboard — I also help you feel
-                  comfortable in the waves, respect the ocean, and enjoy every
-                  moment in the water.
-                </p>
-              </div>
-              <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
-                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+              <p className="text-gray-600 text-sm leading-relaxed">
+                <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
+                When I was eight, I saw something that changed my life: a
+                traveler riding the waves on a surfboard. My friends and I
+                watched from the beach, amazed. I didn&apos;t have money to
+                buy my own board, so I asked travelers if I could borrow
+                theirs for a few minutes at a time. I kept practicing and
+                slowly taught myself — from a beginner to an expert.
               </p>
-              <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
-                &ldquo;My journey started on this beach, and I&apos;d love to
-                help you start yours too. See you in the water — Noah.&rdquo;
-              </blockquote>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
-                >
-                  Book A Lesson
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors"
-                >
-                  View Gallery
-                </Link>
-              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Today, students from all over the world simply call me
+                &ldquo;Noah.&rdquo; I teach visitors from the UK, US,
+                Australia, and many other countries. I don&apos;t just teach
+                you how to stand on a surfboard — I also help you feel
+                comfortable in the waves, respect the ocean, and enjoy every
+                moment in the water.
+              </p>
+            </div>
+            <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
+              &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
+            </p>
+            <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
+              &ldquo;My journey started on this beach, and I&apos;d love to
+              help you start yours too. See you in the water — Noah.&rdquo;
+            </blockquote>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/contact"
+                className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
+              >
+                Book A Lesson
+              </Link>
+              <Link
+                href="/gallery"
+                className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors"
+              >
+                View Gallery
+              </Link>
             </div>
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Surf History ── */}
-      <section className="section-padding bg-[#f0f4f8] border-t border-gray-200">
+      <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Surf History
-            </span>
-          </div>
+          <p className="font-display text-2xl text-primary mb-3">Surf History</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight max-w-2xl">
             The Evolution of Surf: A History of Waves in Sri Lanka
           </h2>
@@ -185,7 +177,6 @@ export default function AboutPage() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            {/* Left column */}
             <div className="space-y-8">
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">From Ancient Coasts to Global Surf Haven</h3>
@@ -201,7 +192,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right column */}
             <div className="space-y-8">
               <div className="border-l-4 border-primary pl-5">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">The Rise of the South Coast &amp; Hiriketiya</h3>
@@ -209,7 +199,7 @@ export default function AboutPage() {
                   While Hikkaduwa was the birthplace, the &ldquo;Golden Era&rdquo; of the south coast — including Mirissa, Weligama, and Ahangama — followed shortly after. For a long time, Hiriketiya Beach remained a hidden secret, known only to locals and a few lucky travelers.
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed mt-3">
-                  It wasn&apos;t until the last decade that the world woke up to the &ldquo;Horseshoe Bay.&rdquo; Today, Sri Lanka is recognized globally not just for its beauty, but as a premier surfing destination. The culture has shifted from simply watching the waves to producing ISA-certified local instructors who lead the industry with a blend of professional technique and deep, ancestral knowledge of the sea.
+                  It wasn&apos;t until the last decade that the world woke up to the &ldquo;Horseshoe Bay.&rdquo; Today, Sri Lanka is recognized globally not just for its beauty, but as a premier surfing destination.
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-5">
@@ -223,12 +213,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Stats (With FIXED background image) ── */}
+      {/* ── Stats (parallax) ── */}
       <section
         className="relative py-24 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{
-          backgroundImage: "url('https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop')"
-        }}
+        style={{ backgroundImage: "url('https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop')" }}
       >
         <div className="absolute inset-0 bg-[#0d1b2a]/40 backdrop-blur-[2px]" />
         <div className="absolute inset-0 bg-primary/10" />
@@ -249,16 +237,11 @@ export default function AboutPage() {
       </section>
 
       {/* ── Why Choose Us ── */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-primary block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  Advantages
-                </span>
-              </div>
+              <p className="font-display text-2xl text-primary mb-3">Advantages</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
                 Why Learn to Surf<br />With Us?
               </h2>
@@ -277,7 +260,7 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
-            <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1616449973117-0e1d99c56ed3?q=80&w=2070&auto=format&fit=crop"
                 alt="Surf coaching at Noah"
@@ -289,26 +272,21 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Team ── */}
-      <section className="section-padding bg-primary-50">
+      <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-8 h-px bg-primary block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                Our Team
-              </span>
-              <span className="w-8 h-px bg-primary block shrink-0" />
-            </div>
+            <p className="font-display text-2xl text-primary mb-2">Our Team</p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Meet the Instructors
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member) => (
-              <div key={member.name} className="bg-white overflow-hidden border border-gray-100 shadow-[0_4px_20px_0_rgb(0_0_0/0.06)]">
-                <div className="relative h-64 overflow-hidden">
+              <div key={member.name} className="bg-white overflow-hidden rounded-2xl shadow-sm">
+                <div className="relative h-64 overflow-hidden rounded-t-2xl">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -329,18 +307,14 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── A Day in the Life ── */}
-      <section className="section-padding bg-white border-t border-gray-100">
+      <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-primary block shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  Behind the Scenes
-                </span>
-              </div>
+              <p className="font-display text-2xl text-primary mb-3">Behind the Scenes</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
                 A Day in the Life<br />at Hirikatiya
               </h2>
@@ -351,13 +325,12 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-primary text-white px-8 py-3 text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
+                className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
               >
                 Book Your Day
               </Link>
             </div>
-            {/* YouTube embed */}
-            <div className="relative w-full aspect-video overflow-hidden border border-gray-200 shadow-[var(--shadow-card)]">
+            <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl">
               <iframe
                 src="https://www.youtube.com/embed/LwU4zxolXoY?rel=0&modestbranding=1"
                 title="A day in the life at Noah Surf School — Hirikatiya Beach, Sri Lanka"
@@ -369,18 +342,13 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Follow Us ── */}
-      <section className="section-padding bg-[#f0f4f8] border-t border-gray-200">
+      <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
           <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-8 h-px bg-primary block shrink-0" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                Follow Us
-              </span>
-              <span className="w-8 h-px bg-primary block shrink-0" />
-            </div>
+            <p className="font-display text-2xl text-primary mb-2">Follow Us</p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Stay in the Loop
             </h2>
@@ -396,11 +364,9 @@ export default function AboutPage() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center text-center p-8 bg-white border border-gray-100 shadow-[var(--shadow-card)] hover:-translate-y-1 transition-all group"
+                className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm hover:-translate-y-1 transition-all group"
               >
-                <div
-                  className={`h-14 w-14 rounded-full ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
-                >
+                <div className={`h-14 w-14 rounded-full ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <Icon className="h-6 w-6 text-white" />
                 </div>
                 <p className="text-sm font-bold text-gray-900">{label}</p>
@@ -410,23 +376,19 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Map ── */}
-      <section className="bg-white pb-0 border-t border-gray-200">
+      <section className="bg-[#fcfcfc]">
         <div className="container-site py-16 md:py-20">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Find Us
-            </span>
-          </div>
+          <p className="font-display text-2xl text-primary mb-2">Find Us</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             Hirikatiya Beach, Sri Lanka
           </h2>
-          <div className="overflow-hidden border border-gray-200 aspect-[21/9] min-h-[300px] md:min-h-[420px]">
+          <div className="overflow-hidden rounded-2xl shadow-2xl aspect-[21/9] min-h-[300px] md:min-h-[420px]">
             <iframe
               title="Hiriketiya Noah Surfing School location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.505071691863!2d80.70676637386983!3d5.9624342109168165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1370012226f0f%3A0xaf6fc116b43ab5a1!2sHiriketiya%20Noah%20Surfing%20School!5e1!3m2!1sen!2slk!4v1776399349914!5m2!1sen!2slk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.505071691863!2d80.70676637386983!3d5.9624342109168165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1370012226f0f%3A0xaf6fc116b43ab5a1!2sHiriketiya%20Noah%20Surfing%20School!5e1!3m2!1sen!2slk!4v1776399349914!5m2!1sen!2slk"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -437,26 +399,24 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SectionDivider fromColor="#fcfcfc" toColor="#bdd2c8" />
 
       {/* ── CTA ── */}
-      <section className="section-padding bg-white border-t border-gray-100">
+      <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, #bdd2c8, #5ca3af)' }}>
+        <div className="absolute right-[-20px] bottom-0 pointer-events-none hidden xl:block select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/surfboard.png" alt="" width={64} height={180} className="rotate-[12deg] opacity-15" aria-hidden />
+        </div>
         <div className="container-site text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Get Started
-            </span>
-            <span className="w-8 h-px bg-primary block shrink-0" />
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+          <p className="font-display text-2xl text-white/80 mb-2">Get Started</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
             Ready to Hit the Waves?
           </h2>
-          <p className="text-gray-500 text-sm mb-8 max-w-sm mx-auto">
+          <p className="text-white/80 text-sm mb-8 max-w-sm mx-auto">
             Book a session with one of our certified instructors today.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-primary text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-colors"
+            className="inline-block bg-white text-[#5ca3af] px-10 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-primary-50 transition-colors shadow-lg"
           >
             Book A Lesson
           </Link>

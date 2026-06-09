@@ -7,13 +7,14 @@ import { Search, Calendar, Clock, Tag, ChevronRight, Star } from 'lucide-react'
 import { useBlogs } from '@/lib/blog-store'
 import { CATEGORIES } from '@/data/blogs'
 import { cn } from '@/lib/utils'
+import SectionDivider from '@/components/SectionDivider'
 
 const PAGE_SIZE = 6
 
 function SkeletonCard() {
   return (
-    <div className="bg-white overflow-hidden shadow-[var(--shadow-card)] animate-pulse">
-      <div className="h-52 bg-gray-200" />
+    <div className="bg-white overflow-hidden shadow-[var(--shadow-card)] animate-pulse rounded-2xl">
+      <div className="h-52 bg-gray-200 rounded-t-2xl" />
       <div className="p-5 space-y-3">
         <div className="h-3 bg-gray-200 rounded w-1/4" />
         <div className="h-5 bg-gray-200 rounded w-3/4" />
@@ -74,31 +75,30 @@ export default function BlogListClient() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="bg-[#f0f4f8] border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
-        <div className="container-site">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-primary block shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Our Blog
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Surf Stories &amp; <span className="text-primary">Tips</span>
+      <section className="bg-[#5ca3af] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
+        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-20 select-none animate-[float_7s_ease-in-out_infinite]">
+          <Image src="/noah-drawing.png" alt="" width={110} height={110} className="rotate-[-6deg] drop-shadow-md" aria-hidden />
+        </div>
+        <div className="container-site pb-16 md:pb-20">
+          <p className="font-display text-2xl text-white/80 mb-2">From Our Instructors</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Surf Stories &amp; Tips
           </h1>
-          <p className="text-gray-500 max-w-lg text-sm leading-relaxed">
+          <p className="text-white/80 max-w-lg text-sm leading-relaxed">
             Guides, destination insights, gear reviews, and life from Hirikatiya Beach — straight
             from our instructors.
           </p>
         </div>
       </section>
+      <SectionDivider fromColor="#5ca3af" toColor="#fcfcfc" />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#fcfcfc]">
         <div className="container-site">
           {/* ── Featured post ── */}
           {mounted && featured && !search && activeCategory === 'All' && (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group block mb-14 overflow-hidden shadow-[var(--shadow-card)] hover:shadow-lg transition-shadow"
+              className="group block mb-14 overflow-hidden shadow-[var(--shadow-card)] hover:shadow-lg transition-shadow rounded-2xl"
             >
               <div className="grid md:grid-cols-2">
                 <div className="relative h-64 md:h-auto overflow-hidden">
@@ -170,7 +170,7 @@ export default function BlogListClient() {
                       'px-4 py-2 text-sm font-medium transition-all',
                       activeCategory === cat
                         ? 'bg-primary text-white shadow-sm'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+                        : 'bg-[#f0e9dd] text-gray-600 hover:bg-primary/10 hover:text-primary',
                     )}
                   >
                     {cat}
@@ -232,9 +232,9 @@ export default function BlogListClient() {
                   <Link
                     key={post._id}
                     href={`/blog/${post.slug}`}
-                    className="group block bg-white overflow-hidden shadow-[var(--shadow-card)] hover:shadow-lg transition-all hover:-translate-y-1"
+                    className="group block bg-white overflow-hidden shadow-[var(--shadow-card)] hover:shadow-lg transition-all hover:-translate-y-1 rounded-2xl"
                   >
-                    <div className="relative h-52 overflow-hidden">
+                    <div className="relative h-52 overflow-hidden rounded-t-2xl">
                       <Image
                         src={post.image}
                         alt={post.title}
@@ -285,7 +285,7 @@ export default function BlogListClient() {
                 <div className="text-center mt-12">
                   <button
                     onClick={() => setPage((p) => p + 1)}
-                    className="px-8 py-3 bg-primary text-white text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
+                    className="px-8 py-3 rounded-full bg-primary text-white text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors"
                   >
                     Load More Articles
                   </button>
