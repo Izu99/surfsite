@@ -145,7 +145,7 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
         {doubled.map((review, i) => (
           <div
             key={`${review.name}-${i}`}
-            className="w-72 sm:w-80 shrink-0 bg-[#f0e9dd] rounded-2xl p-5 flex flex-col shadow-sm"
+            className="w-72 sm:w-80 shrink-0 bg-white rounded-2xl p-5 flex flex-col shadow-sm"
             style={{ rotate: i % 3 === 0 ? '-0.6deg' : i % 3 === 1 ? '0.5deg' : '-0.3deg' }}
           >
             <div className="flex items-start justify-between mb-3">

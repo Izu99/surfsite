@@ -196,9 +196,9 @@ const googleReviews = [
 
 // ─── Wave divider ─────────────────────────────────────────────────────────────
 
-function SectionDivider({ fromColor, toColor }: { fromColor: string; toColor: string }) {
+function SectionDivider({ fromColor, toColor, className }: { fromColor: string; toColor: string; className?: string }) {
   return (
-    <div style={{ background: `linear-gradient(to bottom, ${fromColor}, ${toColor})`, height: '40px' }} />
+    <div className={className} style={{ background: `linear-gradient(to bottom, ${fromColor}, ${toColor})`, height: '40px' }} />
   )
 }
 
@@ -349,11 +349,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="v2-zone">
+
       {/* Wave: white → sandy */}
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
+      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" className="v2-divider" />
 
       {/* 7 ── Why Learn With Us ── */}
-      <section className="bg-[#f0e9dd] section-padding relative overflow-hidden">
+      <section className="v2-s-diff bg-[#5ca3af] section-padding relative overflow-hidden">
         <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
           <Image
             src="/noah-drawing.png"
@@ -366,10 +368,10 @@ export default function HomePage() {
         </div>
         <div className="container-site">
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               The Noah Difference
             </h2>
-            <p className="font-display text-xl text-gray-500 mt-3 max-w-md">
+            <p className="font-display text-xl text-white/80 mt-3 max-w-md">
               Six reasons why surfers from 60+ countries choose Noah Surf School.
             </p>
           </div>
@@ -446,10 +448,10 @@ export default function HomePage() {
       </section>
 
       {/* Wave: sandy → white */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
+      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" className="v2-divider" />
 
       {/* 8 ── Gallery ── */}
-      <section className="bg-[#fcfcfc] pb-20 md:pb-24 pt-4 relative overflow-hidden">
+      <section className="v2-s-gallery bg-[#fcfcfc] pb-20 md:pb-24 pt-4 relative overflow-hidden">
         <div className="container-site">
           <GallerySlideshow />
         </div>
@@ -459,24 +461,26 @@ export default function HomePage() {
       <HomepagePackages />
 
       {/* Wave: sandy → cream */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#f0ece4" />
+      <SectionDivider fromColor="#f0e9dd" toColor="#f0ece4" className="v2-divider" />
 
       {/* 10 ── Lessons ── */}
       <ServicesSlider />
 
-      <SectionDivider fromColor="#f0ece4" toColor="#fcfcfc" />
+      <SectionDivider fromColor="#f0ece4" toColor="#fcfcfc" className="v2-divider" />
 
       {/* ── CTA Banner ── */}
-      <section className="bg-[#fcfcfc] py-24 md:py-32">
+      <section className="v2-s-cta bg-[#fcfcfc] py-24 md:py-32">
         <div className="container-site text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto leading-tight v2-h">
             Ready to Catch Your First Wave?
           </h2>
-          <p className="font-display text-2xl md:text-3xl text-gray-500 max-w-md mx-auto">
+          <p className="font-display text-2xl md:text-3xl text-gray-500 max-w-md mx-auto v2-p">
             Every day, 6am – 6pm. All gear included.
           </p>
         </div>
       </section>
+
+      </div>{/* end v2-zone */}
     </>
   )
 }
