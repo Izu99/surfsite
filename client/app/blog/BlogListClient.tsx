@@ -7,7 +7,6 @@ import { Search, Calendar, Clock, Tag, ChevronRight, Star } from 'lucide-react'
 import { useBlogs } from '@/lib/blog-store'
 import { CATEGORIES } from '@/data/blogs'
 import { cn } from '@/lib/utils'
-import SectionDivider from '@/components/SectionDivider'
 
 const PAGE_SIZE = 6
 
@@ -90,7 +89,6 @@ export default function BlogListClient() {
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">

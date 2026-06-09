@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import SectionDivider from '@/components/SectionDivider'
 
 export const metadata: Metadata = {
   title: { absolute: 'Surf Photo Gallery | Noah Surf School Sri Lanka' },
@@ -68,7 +67,6 @@ export default function GalleryPage() {
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Photo grid ── */}
       <section className="section-padding bg-[#f0e9dd]">
@@ -102,7 +100,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── CTA ── */}
       <section className="section-padding bg-[#fcfcfc]">

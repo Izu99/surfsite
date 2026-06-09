@@ -7,7 +7,6 @@ import { Check, Clock, Users, Gift, Shield, LifeBuoy } from 'lucide-react'
 import { PACKAGE_LEVELS, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import { cn } from '@/lib/utils'
-import SectionDivider from '@/components/SectionDivider'
 
 function PackageCard({ pkg }: { pkg: SurfPackage }) {
   return (
@@ -136,7 +135,6 @@ export default function PackagesListClient() {
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Packages grid ── */}
       <section className="section-padding bg-[#f0e9dd]">
@@ -194,7 +192,6 @@ export default function PackagesListClient() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Safety ── */}
       <section className="section-padding bg-[#fcfcfc]">

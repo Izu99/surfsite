@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
-import SectionDivider from '@/components/SectionDivider'
 
 export const metadata: Metadata = {
   title: { absolute: 'Book a Surf Lesson | Contact Noah Surf School Sri Lanka' },
@@ -47,7 +46,6 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Main content ── */}
       <section className="section-padding bg-[#f0e9dd]">
@@ -104,7 +102,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── FAQ ── */}
       <section className="section-padding bg-[#fcfcfc]">

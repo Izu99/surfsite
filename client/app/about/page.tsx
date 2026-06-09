@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram, Facebook, Youtube, ShieldCheck, Users, Star, Award, Sun, Clock, Globe, type LucideIcon } from 'lucide-react'
-import SectionDivider from '@/components/SectionDivider'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
@@ -96,7 +95,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Noah's Story ── */}
       <section className="bg-[#f0e9dd] relative overflow-hidden">
@@ -149,7 +147,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Surf History ── */}
       <section className="section-padding bg-[#fcfcfc]">
@@ -262,7 +259,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Team ── */}
       <section className="section-padding bg-[#f0e9dd]">
@@ -287,7 +283,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Day in the Life ── */}
       <section className="section-padding bg-[#fcfcfc]">
@@ -319,7 +314,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── Follow Us ── */}
       <section className="section-padding bg-[#f0e9dd]">
@@ -345,7 +339,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#f0e9dd" toColor="#fcfcfc" />
 
       {/* ── Map ── */}
       <section className="bg-[#fcfcfc]">
@@ -361,7 +354,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SectionDivider fromColor="#fcfcfc" toColor="#f0e9dd" />
 
       {/* ── CTA ── */}
       <section className="section-padding bg-[#f0e9dd]">
