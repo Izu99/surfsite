@@ -56,11 +56,12 @@ const socials = [
   },
 ]
 
-const team = [
+const team: { name: string; role: string; image: string; bio: string; character?: boolean }[] = [
   {
     name: 'Noah',
     role: 'Head Instructor & Founder',
-    image: '/noah-portrait.png',
+    image: '/noah-character.png',
+    character: true,
     bio: "ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya's waves with visitors from around the world.",
   },
   {
@@ -82,7 +83,7 @@ export default function AboutPage() {
     <>
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
-        <div className="absolute right-6 top-24 pointer-events-none hidden lg:block opacity-25 select-none animate-[float_9s_ease-in-out_infinite]">
+        <div className="absolute right-6 top-24 pointer-events-none opacity-60 select-none animate-[float_9s_ease-in-out_infinite]">
           <Image src="/noah-drawing.png" alt="" width={120} height={120} className="drop-shadow-md" aria-hidden />
         </div>
         <div className="container-site pb-16 md:pb-20">
@@ -99,50 +100,65 @@ export default function AboutPage() {
       {/* ── Noah's Story ── */}
       <section className="bg-[#f0e9dd] relative overflow-hidden">
         <div className="container-site py-16 md:py-20">
-          <div className="max-w-2xl">
-            <p className="font-display text-2xl text-primary mb-3">Noah&apos;s Story</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
-              Born from the<br />Waves of Hiriketiya
-            </h2>
-            <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
-              A Childhood in the Salt Air
-            </p>
-            <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
-              <p className="text-gray-600 text-sm leading-relaxed">
-                I was born in Hiriketiya, a small village on the south coast of Sri Lanka, where
-                the jungle meets the beach. Long before it became famous, Hiriketiya was my
-                playground. By the age of six, I was already playing in the waves, watching sea
-                turtles, and learning about the ocean from local fishermen. The sound of the waves
-                felt like home to me.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+            {/* Story text */}
+            <div>
+              <p className="font-display text-2xl text-primary mb-3">Noah&apos;s Story</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+                Born from the<br />Waves of Hiriketiya
+              </h2>
+              <p className="text-base font-semibold text-gray-700 mb-6 leading-snug">
+                A Childhood in the Salt Air
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
-                When I was eight, I saw something that changed my life: a traveler riding the waves
-                on a surfboard. I didn&apos;t have money to buy my own board, so I asked travelers
-                if I could borrow theirs. I kept practicing and slowly taught myself — from a
-                beginner to an expert.
+              <div className="border-l-4 border-primary pl-5 space-y-4 mb-6">
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  I was born in Hiriketiya, a small village on the south coast of Sri Lanka, where
+                  the jungle meets the beach. Long before it became famous, Hiriketiya was my
+                  playground. By the age of six, I was already playing in the waves, watching sea
+                  turtles, and learning about the ocean from local fishermen. The sound of the waves
+                  felt like home to me.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <strong className="text-gray-800">The Spark of a Dream —</strong>{' '}
+                  When I was eight, I saw something that changed my life: a traveler riding the waves
+                  on a surfboard. I didn&apos;t have money to buy my own board, so I asked travelers
+                  if I could borrow theirs. I kept practicing and slowly taught myself — from a
+                  beginner to an expert.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Today, students from all over the world simply call me &ldquo;Noah.&rdquo; I teach
+                  visitors from the UK, US, Australia, and many other countries. I don&apos;t just
+                  teach you how to stand on a surfboard — I help you feel comfortable in the waves,
+                  respect the ocean, and enjoy every moment in the water.
+                </p>
+              </div>
+              <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
+                &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Today, students from all over the world simply call me &ldquo;Noah.&rdquo; I teach
-                visitors from the UK, US, Australia, and many other countries. I don&apos;t just
-                teach you how to stand on a surfboard — I help you feel comfortable in the waves,
-                respect the ocean, and enjoy every moment in the water.
-              </p>
+              <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
+                &ldquo;My journey started on this beach, and I&apos;d love to help you start yours
+                too. See you in the water — Noah.&rdquo;
+              </blockquote>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors">
+                  Book A Lesson
+                </Link>
+                <Link href="/gallery" className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors">
+                  View Gallery
+                </Link>
+              </div>
             </div>
-            <p className="font-display text-2xl md:text-3xl text-gray-800 leading-snug mb-6">
-              &ldquo;I saw a foreigner out in the sea, riding the waves on a strange board. I had no idea what it actually was.&rdquo;
-            </p>
-            <blockquote className="border-l-4 border-primary/40 pl-5 mb-8 italic text-gray-500 text-sm leading-relaxed">
-              &ldquo;My journey started on this beach, and I&apos;d love to help you start yours
-              too. See you in the water — Noah.&rdquo;
-            </blockquote>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors">
-                Book A Lesson
-              </Link>
-              <Link href="/gallery" className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors">
-                View Gallery
-              </Link>
+
+            {/* Noah character illustration */}
+            <div className="flex justify-center items-end pointer-events-none select-none mt-6 lg:mt-0">
+              <Image
+                src="/noah-character.png"
+                alt="Noah, founder and head instructor at Noah Surf School"
+                width={340}
+                height={480}
+                className="drop-shadow-2xl w-52 md:w-64 lg:w-auto"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -270,8 +286,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member) => (
               <div key={member.name} className="bg-white overflow-hidden rounded-2xl shadow-sm">
-                <div className="relative h-64 overflow-hidden rounded-t-2xl">
-                  <Image src={member.image} alt={member.name} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 33vw" />
+                <div className={`relative h-64 overflow-hidden rounded-t-2xl ${member.character ? 'bg-[#f0e9dd]' : ''}`}>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className={member.character ? 'object-contain object-bottom p-3' : 'object-cover object-top'}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-base font-bold text-gray-900">{member.name}</h3>
