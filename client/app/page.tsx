@@ -350,144 +350,124 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="v2-zone">
+      {/* Smooth transition into gradient zone */}
+      <SectionDivider fromColor="#5ca3af" toColor="#bdd2c8" />
 
-      {/* Wave: teal → sand (Reviews → Noah Difference) */}
-      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" className="v2-divider" />
-
-      {/* 7 ── Why Learn With Us ── */}
-      <section className="v2-s-diff bg-[#f0e9dd] section-padding relative overflow-hidden">
-        <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
-          <Image
-            src="/noah-drawing.png"
-            alt=""
-            width={160}
-            height={160}
-            className="w-32 sm:w-36 lg:w-40 h-auto opacity-85 drop-shadow-md"
-            aria-hidden
-          />
+      {/* Gradient zone: Noah Difference → CTA */}
+      <div className="gradient-zone relative overflow-hidden">
+        {/* Floating surfboard decoration */}
+        <div className="absolute right-6 top-32 pointer-events-none hidden xl:block opacity-15 select-none animate-[float_9s_ease-in-out_infinite]">
+          <Image src="/surfboard.png" alt="" width={72} height={210} className="rotate-[14deg]" aria-hidden />
         </div>
-        <div className="container-site">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 v2-h">
-              The Noah Difference
-            </h2>
-            <p className="font-display text-2xl md:text-3xl text-gray-600 mt-3 max-w-xl v2-p">
-              Six reasons why surfers from 60+ countries choose Noah Surf School.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              {
-                title: 'Ocean Safety First',
-                desc: 'Every lesson starts with a safety talk about the ocean.',
-                svg: (
-                  <Image src="/icon-difference-surfing.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
-                title: 'Certified & Qualified',
-                bullets: [
-                  'ISA Certified — International Surfing Association certified instructors',
-                  'Diploma in Hospitality and Tourism Management, Singapore',
-                ],
-                svg: (
-                  <Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
-                title: 'New Surfboards',
-                desc: 'Good, modern boards. We check and clean them every week.',
-                svg: (
-                  <Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
-                title: 'Warm Welcome',
-                desc: "Sri Lankan warmth — you'll feel at home from day one.",
-                svg: (
-                  <Image src="/icon-difference-welcome.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
-                title: 'Smart Teaching',
-                desc: 'We film you surfing, practice on the beach, then coach you live in the water.',
-                svg: (
-                  <Image src="/icon-difference-classroom.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />
-                ),
-              },
-              {
-                title: 'Teach Anyone',
-                desc: 'Ages 4 to 70 — total beginners to advanced surfers welcome.',
-                svg: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                    <circle cx="24" cy="11" r="6"/>
-                    <path d="M12 44V34C12 28 16 24 24 24C32 24 36 28 36 34V44"/>
-                    <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
-                    <path d="M40 36C40 36 44 33 44 29C44 26 42 24 40 24"/>
-                  </svg>
-                ),
-              },
-            ].map(({ svg, title, desc, bullets }) => (
-              <div key={title} className="bg-white rounded-2xl p-6 shadow-sm flex gap-5">
-                <div className="text-gray-900 shrink-0 mt-1">{svg}</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg leading-snug mb-1">{title}</h3>
-                  {bullets ? (
-                    <ul className="text-gray-500 text-sm leading-relaxed space-y-1 list-disc list-inside">
-                      {bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
-                    </ul>
-                  ) : (
-                    <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-                  )}
+        {/* 7 ── Why Learn With Us ── */}
+        <section className="section-padding relative overflow-hidden">
+          <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
+            <Image src="/noah-drawing.png" alt="" width={160} height={160} className="w-32 sm:w-36 lg:w-40 h-auto opacity-85 drop-shadow-md" aria-hidden />
+          </div>
+          <div className="container-site">
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                The Noah Difference
+              </h2>
+              <p className="font-display text-2xl md:text-3xl text-white/80 mt-3 max-w-xl">
+                Six reasons why surfers from 60+ countries choose Noah Surf School.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                {
+                  title: 'Ocean Safety First',
+                  desc: 'Every lesson starts with a safety talk about the ocean.',
+                  svg: (<Image src="/icon-difference-surfing.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
+                },
+                {
+                  title: 'Certified & Qualified',
+                  bullets: [
+                    'ISA Certified — International Surfing Association certified instructors',
+                    'Diploma in Hospitality and Tourism Management, Singapore',
+                  ],
+                  svg: (<Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />),
+                },
+                {
+                  title: 'New Surfboards',
+                  desc: 'Good, modern boards. We check and clean them every week.',
+                  svg: (<Image src="/icon-difference-surfboard.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
+                },
+                {
+                  title: 'Warm Welcome',
+                  desc: "Sri Lankan warmth — you'll feel at home from day one.",
+                  svg: (<Image src="/icon-difference-welcome.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
+                },
+                {
+                  title: 'Smart Teaching',
+                  desc: 'We film you surfing, practice on the beach, then coach you live in the water.',
+                  svg: (<Image src="/icon-difference-classroom.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
+                },
+                {
+                  title: 'Teach Anyone',
+                  desc: 'Ages 4 to 70 — total beginners to advanced surfers welcome.',
+                  svg: (
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
+                      <circle cx="24" cy="11" r="6"/>
+                      <path d="M12 44V34C12 28 16 24 24 24C32 24 36 28 36 34V44"/>
+                      <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
+                      <path d="M40 36C40 36 44 33 44 29C44 26 42 24 40 24"/>
+                    </svg>
+                  ),
+                },
+              ].map(({ svg, title, desc, bullets }) => (
+                <div key={title} className="bg-white rounded-2xl p-6 shadow-sm flex gap-5">
+                  <div className="text-gray-900 shrink-0 mt-1">{svg}</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg leading-snug mb-1">{title}</h3>
+                    {bullets ? (
+                      <ul className="text-gray-500 text-sm leading-relaxed space-y-1 list-disc list-inside">
+                        {bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        </section>
+
+        {/* 8 ── Gallery ── */}
+        <section className="pb-20 md:pb-24 pt-4 relative overflow-hidden">
+          <div className="container-site">
+            <GallerySlideshow />
+          </div>
+        </section>
+
+        {/* 9 ── Packages ── */}
+        <HomepagePackages />
+
+        {/* 10 ── Noah Collection + CTA wrapped for surfboard positioning ── */}
+        <div className="relative">
+          {/* Noah surfboard — right side, starts at card bottom, spans into CTA */}
+          <div className="absolute right-[-30px] top-[510px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
+            <Image src="/decor-gemini.png" alt="" width={572} height={572} className="w-[352px] sm:w-[422px] lg:w-[528px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
+          </div>
+
+          <ServicesSlider />
+
+          {/* ── CTA Banner ── */}
+          <section className="py-24 md:py-32">
+            <div className="container-site text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
+                Ready to Catch Your First Wave?
+              </h2>
+              <p className="font-display text-2xl md:text-3xl text-white/80 max-w-md mx-auto">
+                Every day, 6am – 6pm. All gear included.
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
 
-      {/* Wave: sand → teal (Noah Difference → Gallery) */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" className="v2-divider" />
-
-      {/* 8 ── Gallery ── */}
-      <section className="v2-s-gallery bg-[#5ca3af] pb-20 md:pb-24 pt-4 relative overflow-hidden">
-        <div className="container-site">
-          <GallerySlideshow />
-        </div>
-      </section>
-
-      {/* Wave: teal → sandy (Gallery → Packages) */}
-      <SectionDivider fromColor="#5ca3af" toColor="#f0e9dd" className="v2-divider" />
-
-      {/* 9 ── Packages / Services ── */}
-      <HomepagePackages />
-
-      {/* Wave: sand → teal (Packages → Noah Collection) */}
-      <SectionDivider fromColor="#f0e9dd" toColor="#5ca3af" className="v2-divider" />
-
-      {/* 10 ── Lessons ── */}
-      <ServicesSlider />
-
-      <SectionDivider fromColor="#5ca3af" toColor="#5ca3af" className="v2-divider" />
-
-      {/* ── CTA Banner ── */}
-      <section className="v2-s-cta bg-[#5ca3af] py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute left-6 bottom-8 pointer-events-none select-none animate-[float_8s_ease-in-out_infinite]">
-          <Image src="/decor-gemini.png" alt="" width={140} height={140} className="w-28 sm:w-32 lg:w-36 h-auto opacity-80 drop-shadow-md rotate-[-12deg]" aria-hidden />
-        </div>
-        <div className="container-site text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
-            Ready to Catch Your First Wave?
-          </h2>
-          <p className="font-display text-2xl md:text-3xl text-white/80 max-w-md mx-auto">
-            Every day, 6am – 6pm. All gear included.
-          </p>
-        </div>
-      </section>
-
-      </div>{/* end v2-zone */}
+      </div>{/* end gradient-zone */}
     </>
   )
 }

@@ -4,7 +4,6 @@ import './globals.css'
 import SiteShell from '@/components/SiteShell'
 import { Providers } from '@/components/Providers'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
-import ThemeToggle from '@/components/ThemeToggle'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -97,7 +96,6 @@ export default function RootLayout({
         <Providers>
           <SiteShell>{children}</SiteShell>
           <FloatingWhatsApp />
-          <ThemeToggle />
         </Providers>
       </body>
     </html>

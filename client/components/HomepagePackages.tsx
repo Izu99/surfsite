@@ -21,10 +21,10 @@ export default function HomepagePackages() {
     <section className="section-padding bg-[#f0e9dd]">
       <div className="container-site">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 v2-h">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             Surf School Programs
           </h2>
-          <p className="font-display text-xl text-gray-500 mt-3 max-w-md v2-p">
+          <p className="font-display text-xl text-white/80 mt-3 max-w-md">
             Every session includes boards, rash guard, sunscreen, water &amp; first aid. No hidden fees.
           </p>
         </div>
