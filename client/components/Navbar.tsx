@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import GoogleTranslate from './GoogleTranslate'
@@ -20,6 +20,16 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+
+  // Lock body scroll when mobile menu is open — prevents iOS viewport bounce
+  // and overscroll from making the fixed header jump off-screen on the homepage.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  // Close menu when route changes (user navigated via a link)
+  useEffect(() => { setOpen(false) }, [pathname])
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-black/55 backdrop-blur-xl border-b border-white/10 transition-colors">
@@ -77,8 +87,9 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
+            type="button"
             onClick={() => setOpen(!open)}
-            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
+            className="md:hidden shrink-0 p-2 text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
