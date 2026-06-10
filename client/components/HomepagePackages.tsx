@@ -1,21 +1,30 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { Play } from 'lucide-react'
 import { packageApi, type SurfPackage } from '@/lib/api'
-import { HARDCODED_PACKAGES } from '@/data/packages'
-import PackageCard from './PackageCard'
+import { PACKAGE_CATEGORIES, HARDCODED_PACKAGES } from '@/data/packages'
+import PackageCategorySlider from './PackageCategorySlider'
 
 export default function HomepagePackages() {
-  const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES.slice(0, 3))
+  const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES)
 
   useEffect(() => {
     packageApi
       .list()
-      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data].slice(0, 3)))
+      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data]))
       .catch(() => {})
   }, [])
+
+  const grouped = useMemo(
+    () =>
+      PACKAGE_CATEGORIES.map((category) => ({
+        category,
+        packages: packages.filter((p) => category.levels.includes(p.level)),
+      })).filter(({ packages: catPackages }) => catPackages.length > 0),
+    [packages],
+  )
 
   return (
     <section className="section-padding bg-[#f0e9dd]">
@@ -29,9 +38,9 @@ export default function HomepagePackages() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {packages.map((plan) => (
-            <PackageCard key={plan._id} pkg={plan} />
+        <div className="space-y-6">
+          {grouped.map(({ category, packages: catPackages }) => (
+            <PackageCategorySlider key={category.key} category={category} packages={catPackages} />
           ))}
         </div>
 
