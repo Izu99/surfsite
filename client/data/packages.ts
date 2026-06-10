@@ -120,7 +120,7 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
       'Suitable for intermediate surfers',
       'Focus on technique & wave selection',
     ],
-    souvenir: false,
+    souvenir: true,
     featured: false,
     published: true,
     order: 3,
