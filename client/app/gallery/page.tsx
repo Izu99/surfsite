@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: { absolute: 'Surf Photo Gallery | Noah Surf School Sri Lanka' },
@@ -52,6 +53,8 @@ const tagColors: Record<string, string> = {
 export default function GalleryPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery' }]} />
+
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
         <div className="absolute right-8 top-20 pointer-events-none opacity-60 select-none animate-[float_8s_ease-in-out_infinite]">

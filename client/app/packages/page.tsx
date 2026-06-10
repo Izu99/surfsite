@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import PackagesListClient from './PackagesListClient'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: { absolute: 'Surf Lessons & Camps Hiriketiya | Noah Surf School Sri Lanka' },
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 }
 
 export default function PackagesPage() {
-  return <PackagesListClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Packages', path: '/packages' }]} />
+      <PackagesListClient />
+    </>
+  )
 }
