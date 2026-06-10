@@ -35,6 +35,56 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function BlogDetailPage({ params }: Props) {
-  return <BlogDetailClient params={params} />
+export default async function BlogDetailPage({ params }: Props) {
+  const { slug } = await params
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
+  let articleJsonLd: Record<string, unknown> | null = null
+  try {
+    const res = await fetch(`${apiUrl}/api/blogs/${slug}`, { next: { revalidate: 60 } })
+    if (res.ok) {
+      const data = await res.json()
+      if (data.success && data.data) {
+        const post = data.data as {
+          title: string
+          description: string
+          image: string
+          author: string
+          createdAt: string
+          updatedAt: string
+        }
+        articleJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: post.title,
+          description: post.description,
+          image: post.image,
+          author: { '@type': 'Person', name: post.author },
+          datePublished: post.createdAt,
+          dateModified: post.updatedAt,
+          mainEntityOfPage: `${siteUrl}/blog/${slug}`,
+          publisher: {
+            '@type': 'Organization',
+            name: 'Noah Surf School',
+            logo: { '@type': 'ImageObject', url: `${siteUrl}/logo.png` },
+          },
+        }
+      }
+    }
+  } catch {
+    articleJsonLd = null
+  }
+
+  return (
+    <>
+      {articleJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
+      <BlogDetailClient params={params} />
+    </>
+  )
 }

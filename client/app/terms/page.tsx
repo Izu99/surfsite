@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Terms & Conditions | Noah Surf School Sri Lanka',
     description:
       'Read the full Terms and Conditions, Safety Waiver, Booking & Cancellation Policy, and Privacy Policy for Noah Surf School at Hirikatiya Beach, Sri Lanka.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
 }
 

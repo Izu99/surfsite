@@ -30,6 +30,9 @@ function Avatar({ src, name }: { src?: string; name: string }) {
     <img
       src={src}
       alt={name}
+      width={32}
+      height={32}
+      loading="lazy"
       className="h-8 w-8 rounded-full object-cover shrink-0"
       referrerPolicy="no-referrer"
       onError={() => setFailed(true)}

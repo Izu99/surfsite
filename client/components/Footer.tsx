@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MapPin, Phone, Clock, Facebook, Instagram, Twitter, Mail } from 'lucide-react'
+import RisingBubbles from './RisingBubbles'
 
 const quickLinks = [
   { href: '/', label: 'Home' },
@@ -18,7 +19,8 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2c6670] text-gray-300">
+    <footer className="relative bg-[#2c6670] text-gray-300">
+      <RisingBubbles />
 
       {/* Main footer */}
       <div className="container-site py-14">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
+import FaqAccordion from '@/components/FaqAccordion'
 
 export const metadata: Metadata = {
   title: { absolute: 'Book a Surf Lesson | Contact Noah Surf School Sri Lanka' },
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Book a Surf Lesson | Contact Noah Surf School Sri Lanka',
     description:
       'Book your surf lesson at Hirikatiya Beach, Sri Lanka with Noah Surf School. Private lessons, group sessions, surf camps and board rentals. Open 6am–6pm daily.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
 }
 
@@ -110,14 +111,7 @@ export default function ContactPage() {
             <p className="font-display text-2xl text-primary mb-2">FAQ</p>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Common Questions</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
-            {faqs.map(({ q, a }) => (
-              <div key={q} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <p className="text-sm font-bold text-gray-900 mb-2">{q}</p>
-                <p className="text-sm text-gray-500 leading-relaxed">{a}</p>
-              </div>
-            ))}
-          </div>
+          <FaqAccordion faqs={faqs} />
         </div>
       </section>
     </>

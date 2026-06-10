@@ -1,7 +1,27 @@
 import type { MetadataRoute } from 'next'
+import { HARDCODED_BLOGS } from '@/data/blogs'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+
+  let apiBlogs: { slug: string; updatedAt: string }[] = []
+  try {
+    const res = await fetch(`${apiUrl}/api/blogs?limit=100`, { next: { revalidate: 3600 } })
+    if (res.ok) {
+      const data = await res.json()
+      if (data.success && Array.isArray(data.data)) apiBlogs = data.data
+    }
+  } catch {
+    apiBlogs = []
+  }
+
+  const blogEntries: MetadataRoute.Sitemap = [...HARDCODED_BLOGS, ...apiBlogs].map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
 
   return [
     {
@@ -46,5 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    ...blogEntries,
   ]
 }

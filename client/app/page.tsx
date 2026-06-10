@@ -14,15 +14,15 @@ import ReviewsSlider from '@/components/ReviewsSlider'
 import GallerySlideshow from '@/components/GallerySlideshow'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Best Surf School in Hiriketiya | Top South Coast Surfing Sri Lanka' },
+  title: { absolute: 'Surf School in Hiriketiya | South Coast Sri Lanka Surfing' },
   description:
-    'Hiriketiya Beach is a world-class surfing destination with a perfect horseshoe bay and consistent waves. Expert coaching for beginners to intermediates. Open daily 6am–6pm.',
+    'Hiriketiya Beach is a world-class surf spot with a horseshoe bay and consistent waves. Expert coaching for beginners and intermediates. Open daily 6am–6pm.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Noah Surf School | Best Surf Lessons in Hiriketiya & South Coast Sri Lanka',
     description:
       'Professional surf lessons in Hiriketiya, Matara and the South Coast of Sri Lanka. Beginners to intermediates welcome. Open daily 6am–6pm.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School Hiriketiya' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School Hiriketiya' }],
   },
 }
 
@@ -204,9 +204,23 @@ function SectionDivider({ fromColor, toColor, className }: { fromColor: string; 
 
 // ─── Page (Section order: Hero → Conditions → Hirikatiya → Noah → Lessons → Ratings → Why Us → Gallery) ──
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Noah Surf School',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  description:
+    'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Group and private lessons, surf camps, board rentals. Open daily 6am–6pm.',
+}
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+
       {/* 1 ── Hero ── */}
       <HeroSlideshow />
 
@@ -241,7 +255,7 @@ export default function HomePage() {
       {/* Hirikatiya + About Noah — wrapped so surfboard spans both ── */}
       <div className="relative">
         {/* ONE Noah surfboard spanning both sections on the right */}
-        <div className="absolute right-[-25px] top-[-20px] pointer-events-none select-none z-10 animate-[float_9s_ease-in-out_infinite]">
+        <div className="absolute right-[-25px] top-[-20px] pointer-events-none select-none z-50 animate-[float_9s_ease-in-out_infinite]">
           <Image src="/decor-gemini.png" alt="" width={480} height={480} className="w-44 sm:w-60 lg:w-72 h-auto opacity-90 drop-shadow-xl rotate-[-18deg]" aria-hidden />
         </div>
 
@@ -451,16 +465,21 @@ export default function HomePage() {
         {/* 10 ── Noah Collection + CTA wrapped for surfboard positioning ── */}
         <div className="relative">
           {/* Noah surfboard — right side, starts at card bottom, spans into CTA */}
-          <div className="absolute right-[-20px] top-[640px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
-            <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[352px] sm:w-[422px] lg:w-[528px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
+          <div className="absolute right-[-20px] top-[650px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
+            <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[334px] sm:w-[401px] lg:w-[502px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
           </div>
 
           <ServicesSlider />
 
           {/* ── CTA Banner ── */}
-          <section className="py-24 md:py-32">
-            <div className="container-site text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
+          <section className="relative py-24 md:py-32 overflow-hidden">
+            {/* Seabed decoration along the bottom edge */}
+            <div className="absolute bottom-0 inset-x-0 pointer-events-none select-none">
+              <Image src="/footer-seabed.png" alt="" width={788} height={317} className="w-full h-auto" aria-hidden />
+            </div>
+
+            <div className="container-site text-center relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight mt-5">
                 Ready to Catch Your First Wave?
               </h2>
               <p className="font-display text-2xl md:text-3xl text-white/80 max-w-md mx-auto">

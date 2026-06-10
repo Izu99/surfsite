@@ -34,13 +34,15 @@ export default function HeroSlideshow() {
         <p className="text-primary-light text-base font-medium">
           Hirikatiya Beach, Sri Lanka
         </p>
-        <h1
+        <div
+          role="heading"
+          aria-level={1}
           className="text-white font-extrabold uppercase leading-none"
           style={{ fontSize: 'clamp(2.6rem, 13vw, 4.5rem)' }}
         >
           NOAH SURF<br />SCHOOL
           <span className="sr-only"> — Surf Lessons Hiriketiya Sri Lanka</span>
-        </h1>
+        </div>
         <p className="text-white/80 text-base">
           Catch your first wave. Feel the freedom.
         </p>

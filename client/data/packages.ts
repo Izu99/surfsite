@@ -11,6 +11,45 @@ export const PACKAGE_LEVELS = [
 
 export type PackageLevel = (typeof PACKAGE_LEVELS)[number]
 
+export type PackageCategory = {
+  key: string
+  label: string
+  tagline: string
+  levels: string[]
+  emptyText: string
+}
+
+export const PACKAGE_CATEGORIES: PackageCategory[] = [
+  {
+    key: 'Beginner',
+    label: 'Beginner',
+    tagline: 'New to surfing? Start here.',
+    levels: ['Beginner'],
+    emptyText: 'New beginner packages coming soon.',
+  },
+  {
+    key: 'Intermediate',
+    label: 'Intermediate',
+    tagline: 'Already up and riding? Sharpen your skills.',
+    levels: ['Intermediate'],
+    emptyText: 'New intermediate packages coming soon.',
+  },
+  {
+    key: 'Advanced',
+    label: 'Advanced',
+    tagline: 'Push your limits in bigger conditions.',
+    levels: ['Advanced', 'Beginner-Advance'],
+    emptyText: 'New advanced packages coming soon.',
+  },
+  {
+    key: 'Agencies',
+    label: 'For Agencies',
+    tagline: 'Are you a travel agency or hotel? We offer group packages and partnerships for your guests.',
+    levels: ['Surf Guide', 'Agencies'],
+    emptyText: 'Contact us to set up a partnership package for your guests.',
+  },
+]
+
 export const INCLUDED_IN_ALL = [
   'Good quality surf boards',
   'Rash guard',
@@ -22,15 +61,21 @@ export const INCLUDED_IN_ALL = [
 export const HARDCODED_PACKAGES: SurfPackage[] = [
   {
     _id: 'hc-pkg-2',
-    name: 'Private Surf Coaching',
+    name: 'Beginner 1-on-1 (Theory & Practical)',
     level: 'Beginner',
     format: '1-on-1 Private',
     duration: '1 hour 30 min',
     price: 65,
     priceNote: 'per session',
-    description: 'One-on-one coaching tailored to your level — fastest way to progress with full instructor attention.',
-    includes: INCLUDED_IN_ALL,
-    souvenir: false,
+    description: 'Includes surf boards, safety tips, an introduction to Hirikatiya Beach, and ocean safety.',
+    includes: [
+      '1 teacher : 1 student',
+      'No prior experience needed',
+      'Suitable for complete beginners',
+      "Can't swim? No problem",
+      'A souvenir is given at the end of the course',
+    ],
+    souvenir: true,
     featured: true,
     published: true,
     order: 1,
@@ -40,15 +85,21 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
   },
   {
     _id: 'hc-pkg-1',
-    name: 'Beginner Group Lesson',
+    name: 'Beginner Group (Theory & Practical)',
     level: 'Beginner',
     format: 'Group (max 6)',
     duration: '1 hour 45 min',
     price: 35,
     priceNote: 'per person',
-    description: 'Perfect first taste of surfing — learn the basics in a fun, small group with a certified instructor.',
-    includes: INCLUDED_IN_ALL,
-    souvenir: false,
+    description: 'Includes surf boards, safety tips, an introduction to Hirikatiya Beach, and ocean safety.',
+    includes: [
+      '1 teacher : up to 6 students',
+      'No prior experience needed',
+      'Suitable for complete beginners',
+      "Can't swim? No problem",
+      'A souvenir is given at the end of the course',
+    ],
+    souvenir: true,
     featured: false,
     published: true,
     order: 2,
@@ -65,7 +116,12 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
     price: 50,
     priceNote: 'per person',
     description: 'Already up and riding? Sharpen your turns, positioning and wave selection with focused small-group coaching.',
-    includes: INCLUDED_IN_ALL,
+    includes: [
+      '1 teacher : up to 4 students',
+      'Basic surfing experience required',
+      'Suitable for intermediate surfers',
+      'Focus on technique & wave selection',
+    ],
     souvenir: false,
     featured: false,
     published: true,

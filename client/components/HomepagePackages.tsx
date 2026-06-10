@@ -75,6 +75,9 @@ export default function HomepagePackages() {
 
                 {/* Details */}
                 <div className="flex-1 bg-white p-6 space-y-4">
+                  {plan.description && (
+                    <p className="text-sm text-gray-500 leading-relaxed">{plan.description}</p>
+                  )}
                   <div className="flex flex-wrap gap-3 text-sm text-gray-600">
                     <span className="flex items-center gap-1.5">
                       <Clock className="h-3.5 w-3.5 text-primary" />
@@ -92,7 +95,7 @@ export default function HomepagePackages() {
                     )}
                   </div>
                   <ul className="space-y-2">
-                    {INCLUDED_IN_ALL.map((item) => (
+                    {(plan.includes?.length ? plan.includes : INCLUDED_IN_ALL).map((item) => (
                       <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
                         <Check className="h-3.5 w-3.5 text-primary shrink-0" />
                         {item}
@@ -118,7 +121,7 @@ export default function HomepagePackages() {
             ))}
           </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-7 text-center">
           <Link
             href="/packages"
             className="inline-flex items-center gap-2 bg-gray-900 text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary transition-colors duration-200 cursor-pointer shadow-md group"

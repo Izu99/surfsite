@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka',
     description:
       'The story behind Noah Surf School at Hirikatiya Beach, Sri Lanka. Meet our ISA-certified instructors and learn why surfers from over 60 countries choose us.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
 }
 
@@ -220,7 +220,7 @@ export default function AboutPage() {
 
       {/* ── Stats (parallax) ── */}
       <section
-        className="relative py-24 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="relative py-24 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{ backgroundImage: "url('https://plus.unsplash.com/premium_photo-1672510003630-18d2535419ef?q=80&w=2070&auto=format&fit=crop')" }}
       >
         <div className="absolute inset-0 bg-[#0d1b2a]/40 backdrop-blur-[2px]" />
@@ -367,7 +367,7 @@ export default function AboutPage() {
         <div className="container-site py-16 md:py-20">
           <p className="font-display text-2xl text-primary mb-2">Find Us</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Hirikatiya Beach, Sri Lanka</h2>
-          <div className="overflow-hidden rounded-2xl shadow-2xl aspect-[21/9] min-h-[300px] md:min-h-[420px]">
+          <div className="overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]">
             <iframe
               title="Hiriketiya Noah Surfing School location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.505071691863!2d80.70676637386983!3d5.9624342109168165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1370012226f0f%3A0xaf6fc116b43ab5a1!2sHiriketiya%20Noah%20Surfing%20School!5e1!3m2!1sen!2slk!4v1776399349914!5m2!1sen!2slk"

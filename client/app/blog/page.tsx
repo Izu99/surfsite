@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Surf Tips, Stories & Travel Guides | Noah Surf School Blog',
     description:
       'Surf tips, technique guides, Hirikatiya travel stories, wave reports and south coast Sri Lanka life written by the instructors at Noah Surf School, Hirikatiya.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
   twitter: {
     card: 'summary_large_image',

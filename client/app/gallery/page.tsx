@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Surf Photo Gallery | Noah Surf School Sri Lanka',
     description: 'Photos of surf lessons, Hirikatiya Beach, and the Noah Surf School experience in Sri Lanka.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
 }
 

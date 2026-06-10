@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: 'Noah Surf School | Surf Lessons at Hirikatiya Beach, Sri Lanka',
     description:
       'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Beginner lessons, advanced coaching, board rentals, surf camps, and yoga retreats.',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Noah Surf School' }],
+    images: [{ url: '/logo.png', width: 1020, height: 1020, alt: 'Noah Surf School' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -85,14 +85,56 @@ export const metadata: Metadata = {
   },
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsActivityLocation',
+  name: 'Noah Surf School',
+  image: `${siteUrl}/logo.png`,
+  logo: `${siteUrl}/logo.png`,
+  url: siteUrl,
+  telephone: '+94710427241',
+  email: 'partnerships@noahsurfschool.lk',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hirikatiya Beach',
+    addressRegion: 'Southern Province',
+    addressCountry: 'LK',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 5.9624342109168165,
+    longitude: 80.70676637386983,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
+    ],
+    opens: '06:00',
+    closes: '18:00',
+  },
+  sameAs: [
+    'https://instagram.com/noahsurfschool',
+    'https://facebook.com/noahsurfschool',
+    'https://youtube.com/@noahsurfschool',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${caveat.variable} ${italianno.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased">
+    <html lang="en" className={`${poppins.variable} ${caveat.variable} ${italianno.variable} overflow-x-hidden`}>
+      <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Providers>
           <SiteShell>{children}</SiteShell>
           <FloatingWhatsApp />
