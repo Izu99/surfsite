@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Check, Clock, Users, Gift, Play } from 'lucide-react'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import { INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
+import { splitPackageName } from '@/lib/utils'
 
 export default function HomepagePackages() {
   const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES.slice(0, 3))
@@ -30,14 +31,12 @@ export default function HomepagePackages() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {packages.map((plan) => (
+            {packages.map((plan) => {
+              const { title, subtitle } = splitPackageName(plan.name)
+              return (
               <div
                 key={plan._id}
-                className={`flex flex-col transition-all duration-300 rounded-2xl overflow-hidden ${
-                  plan.featured
-                    ? 'border border-primary shadow-2xl shadow-primary-300/40 md:scale-105 z-10 bg-white relative'
-                    : 'border border-gray-200 hover:border-gray-300 bg-white'
-                }`}
+                className="flex flex-col transition-all duration-300 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300 bg-white"
               >
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
@@ -49,25 +48,23 @@ export default function HomepagePackages() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
-                  {plan.featured && (
-                    <span className="absolute top-0 left-0 text-[10px] font-bold uppercase tracking-widest bg-primary text-white px-3 py-1.5">
-                      Most Popular
-                    </span>
-                  )}
                   <div className="absolute bottom-3 left-4">
-                    <p className="text-white font-bold text-base">{plan.name}</p>
+                    <p className="text-white font-bold text-base">
+                      {title}
+                      {subtitle && <span className="block">{subtitle}</span>}
+                    </p>
                     <p className="text-white/70 text-xs">{plan.level}</p>
                   </div>
                 </div>
 
                 {/* Price */}
-                <div className={`px-6 py-4 border-b border-gray-100 ${plan.featured ? 'bg-primary' : 'bg-white'}`}>
+                <div className="px-6 py-4 border-b border-gray-100 bg-white">
                   <div className="flex items-baseline gap-0.5">
-                    <span className={`text-base font-bold ${plan.featured ? 'text-primary-100' : 'text-gray-400'}`}>$</span>
-                    <span className={`text-5xl font-extrabold leading-none ${plan.featured ? 'text-white' : 'text-gray-900'}`}>
+                    <span className="text-base font-bold text-gray-400">$</span>
+                    <span className="text-5xl font-extrabold leading-none text-gray-900">
                       {plan.price}
                     </span>
-                    <span className={`text-xs ml-1.5 ${plan.featured ? 'text-primary-100' : 'text-gray-400'}`}>
+                    <span className="text-xs ml-1.5 text-gray-400">
                       / {plan.priceNote}
                     </span>
                   </div>
@@ -108,17 +105,14 @@ export default function HomepagePackages() {
                 <div className="bg-white p-6 border-t border-gray-100 text-center">
                   <Link
                     href={`/contact?package=${encodeURIComponent(plan.name)}`}
-                    className={`inline-block px-10 py-3 rounded-full text-sm font-semibold uppercase tracking-wide transition-colors duration-200 cursor-pointer ${
-                      plan.featured
-                        ? 'bg-primary text-white hover:bg-primary-dark shadow-lg'
-                        : 'border-2 border-gray-800 text-gray-800 hover:border-primary hover:text-primary'
-                    }`}
+                    className="inline-block px-10 py-3 rounded-full text-sm font-semibold uppercase tracking-wide transition-colors duration-200 cursor-pointer border-2 border-gray-800 text-gray-800 hover:border-primary hover:text-primary"
                   >
                     Book Now
                   </Link>
                 </div>
               </div>
-            ))}
+              )
+            })}
           </div>
 
         <div className="mt-7 text-center">

@@ -32,7 +32,7 @@ export default function Navbar() {
   useEffect(() => { setOpen(false) }, [pathname])
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-black/55 backdrop-blur-xl border-b border-white/10 transition-colors">
+    <header className="fixed top-0 inset-x-0 z-[100] bg-black/55 backdrop-blur-xl border-b border-white/10 transition-colors">
       <div className="container-site">
         <nav className="flex h-[72px] items-center justify-between gap-4">
           {/* Logo */}

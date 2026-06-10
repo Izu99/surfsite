@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthState | null>(null)
 
 // ⚠️ TEMP DEV BYPASS — set back to false before deploying / once backend is live.
 // When true, the admin UI is unlocked without logging in (no real session).
-const BYPASS_AUTH = true
+const BYPASS_AUTH = false
 
 const MOCK_ADMIN: AdminUser = {
   id: 'dev',

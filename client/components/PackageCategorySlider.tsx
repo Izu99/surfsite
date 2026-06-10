@@ -33,7 +33,7 @@ export default function PackageCategorySlider({
           <p className="text-sm text-gray-500 mt-1 max-w-md">{category.tagline}</p>
         </div>
         {packages.length > 1 && (
-          <div className="hidden sm:flex gap-2 shrink-0">
+          <div className="flex gap-2 shrink-0">
             <button
               type="button"
               onClick={() => scroll('prev')}

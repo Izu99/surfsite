@@ -474,11 +474,6 @@ export default function HomePage() {
 
           {/* ── CTA Banner ── */}
           <section className="relative py-24 md:py-32 overflow-hidden">
-            {/* Seabed decoration along the bottom edge */}
-            <div className="absolute bottom-0 inset-x-0 pointer-events-none select-none">
-              <Image src="/footer-seabed.png" alt="" width={788} height={317} className="w-full h-auto" aria-hidden />
-            </div>
-
             <div className="container-site text-center relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl mx-auto leading-tight mt-5">
                 Ready to Catch Your First Wave?

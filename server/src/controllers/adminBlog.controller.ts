@@ -140,7 +140,16 @@ export async function update(
       }
     }
 
-    Object.assign(blog, body)
+    if (body.title !== undefined) blog.title = body.title
+    if (body.slug !== undefined) blog.slug = body.slug
+    if (body.description !== undefined) blog.description = body.description
+    if (body.content !== undefined) blog.content = body.content
+    if (body.image !== undefined) blog.image = body.image
+    if (body.category !== undefined) blog.category = body.category
+    if (body.tags !== undefined) blog.tags = body.tags
+    if (body.author !== undefined) blog.author = body.author
+    if (body.published !== undefined) blog.published = body.published
+    if (body.featured !== undefined) blog.featured = body.featured
 
     if (body.content) {
       blog.readTime = calcReadTime(body.content)

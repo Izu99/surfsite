@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
+import { validationResult } from 'express-validator'
 import { Blog } from '../models/Blog'
 
 /**
@@ -10,6 +11,12 @@ export async function listPublished(
   res: Response,
   next: NextFunction,
 ): Promise<void> {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    res.status(422).json({ success: false, errors: errors.array() })
+    return
+  }
+
   try {
     const page = Math.max(1, parseInt(String(req.query.page ?? '1')))
     const limit = Math.min(50, Math.max(1, parseInt(String(req.query.limit ?? '20'))))
