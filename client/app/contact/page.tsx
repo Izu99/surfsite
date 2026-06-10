@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
 import FaqAccordion from '@/components/FaqAccordion'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: { absolute: 'Book a Surf Lesson | Contact Noah Surf School Sri Lanka' },
@@ -34,6 +35,8 @@ const faqs = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
+
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
         <div className="absolute right-6 top-24 pointer-events-none opacity-60 select-none animate-[float_9s_ease-in-out_infinite]">
