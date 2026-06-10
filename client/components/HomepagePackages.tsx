@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-import { Check, Clock, Users, Gift, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import { packageApi, type SurfPackage } from '@/lib/api'
-import { INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
-import { splitPackageName } from '@/lib/utils'
+import { HARDCODED_PACKAGES } from '@/data/packages'
+import PackageCard from './PackageCard'
 
 export default function HomepagePackages() {
   const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES.slice(0, 3))
@@ -31,89 +30,10 @@ export default function HomepagePackages() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {packages.map((plan) => {
-              const { title, subtitle } = splitPackageName(plan.name)
-              return (
-              <div
-                key={plan._id}
-                className="flex flex-col transition-all duration-300 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300 bg-white"
-              >
-                {/* Image */}
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={plan.image}
-                    alt={plan.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-4">
-                    <p className="text-white font-bold text-base">
-                      {title}
-                      {subtitle && <span className="block">{subtitle}</span>}
-                    </p>
-                    <p className="text-white/70 text-xs">{plan.level}</p>
-                  </div>
-                </div>
-
-                {/* Price */}
-                <div className="px-6 py-4 border-b border-gray-100 bg-white">
-                  <div className="flex items-baseline gap-0.5">
-                    <span className="text-base font-bold text-gray-400">$</span>
-                    <span className="text-5xl font-extrabold leading-none text-gray-900">
-                      {plan.price}
-                    </span>
-                    <span className="text-xs ml-1.5 text-gray-400">
-                      / {plan.priceNote}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Details */}
-                <div className="flex-1 bg-white p-6 space-y-4">
-                  {plan.description && (
-                    <p className="text-sm text-gray-500 leading-relaxed">{plan.description}</p>
-                  )}
-                  <div className="flex flex-wrap gap-3 text-sm text-gray-600">
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="h-3.5 w-3.5 text-primary" />
-                      {plan.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Users className="h-3.5 w-3.5 text-primary" />
-                      {plan.format}
-                    </span>
-                    {plan.souvenir && (
-                      <span className="flex items-center gap-1.5 text-amber-600 font-medium text-xs">
-                        <Gift className="h-3.5 w-3.5" />
-                        Souvenir included
-                      </span>
-                    )}
-                  </div>
-                  <ul className="space-y-2">
-                    {(plan.includes?.length ? plan.includes : INCLUDED_IN_ALL).map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
-                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* CTA */}
-                <div className="bg-white p-6 border-t border-gray-100 text-center">
-                  <Link
-                    href={`/contact?package=${encodeURIComponent(plan.name)}`}
-                    className="inline-block px-10 py-3 rounded-full text-sm font-semibold uppercase tracking-wide transition-colors duration-200 cursor-pointer border-2 border-gray-800 text-gray-800 hover:border-primary hover:text-primary"
-                  >
-                    Book Now
-                  </Link>
-                </div>
-              </div>
-              )
-            })}
-          </div>
+          {packages.map((plan) => (
+            <PackageCard key={plan._id} pkg={plan} />
+          ))}
+        </div>
 
         <div className="mt-7 text-center">
           <Link

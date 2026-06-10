@@ -101,7 +101,7 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
     featured: false,
     published: true,
     order: 2,
-    image: '/beginner-group-coaching.png',
+    image: '/group-lesson.jpg',
     createdAt: '2026-04-22T00:00:00.000Z',
     updatedAt: '2026-04-22T00:00:00.000Z',
   },
