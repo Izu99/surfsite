@@ -1,3 +1,5 @@
+import { jsonLdString } from '@/lib/json-ld'
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
 export default function BreadcrumbJsonLd({ items }: { items: { name: string; path: string }[] }) {
@@ -15,7 +17,7 @@ export default function BreadcrumbJsonLd({ items }: { items: { name: string; pat
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
     />
   )
 }

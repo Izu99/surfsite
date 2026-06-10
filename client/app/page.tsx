@@ -12,6 +12,7 @@ import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
 import ReviewsSlider from '@/components/ReviewsSlider'
 import GallerySlideshow from '@/components/GallerySlideshow'
+import { jsonLdString } from '@/lib/json-ld'
 
 export const metadata: Metadata = {
   title: { absolute: 'Surf School in Hiriketiya | South Coast Sri Lanka Surfing' },
@@ -218,7 +219,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(websiteJsonLd) }}
       />
 
       {/* 1 ── Hero ── */}

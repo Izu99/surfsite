@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import BlogDetailClient from './BlogDetailClient'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
+import { jsonLdString } from '@/lib/json-ld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -41,6 +43,7 @@ export default async function BlogDetailPage({ params }: Props) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
   let articleJsonLd: Record<string, unknown> | null = null
+  let postTitle: string | null = null
   try {
     const res = await fetch(`${apiUrl}/api/blogs/${slug}`, { next: { revalidate: 60 } })
     if (res.ok) {
@@ -54,6 +57,7 @@ export default async function BlogDetailPage({ params }: Props) {
           createdAt: string
           updatedAt: string
         }
+        postTitle = post.title
         articleJsonLd = {
           '@context': 'https://schema.org',
           '@type': 'Article',
@@ -81,9 +85,16 @@ export default async function BlogDetailPage({ params }: Props) {
       {articleJsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(articleJsonLd) }}
         />
       )}
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: postTitle ?? slug, path: `/blog/${slug}` },
+        ]}
+      />
       <BlogDetailClient params={params} />
     </>
   )

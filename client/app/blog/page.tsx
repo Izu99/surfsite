@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import BlogListClient from './BlogListClient'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: { absolute: 'Surf Tips, Stories & Travel Guides | Noah Surf School Blog' },
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  return <BlogListClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }]} />
+      <BlogListClient />
+    </>
+  )
 }

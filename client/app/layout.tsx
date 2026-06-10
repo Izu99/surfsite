@@ -4,6 +4,7 @@ import './globals.css'
 import SiteShell from '@/components/SiteShell'
 import { Providers } from '@/components/Providers'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
+import { jsonLdString } from '@/lib/json-ld'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -133,7 +134,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(organizationJsonLd) }}
         />
         <Providers>
           <SiteShell>{children}</SiteShell>

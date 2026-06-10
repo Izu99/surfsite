@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
 import FaqAccordion from '@/components/FaqAccordion'
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
+import { jsonLdString } from '@/lib/json-ld'
 
 export const metadata: Metadata = {
   title: { absolute: 'Book a Surf Lesson | Contact Noah Surf School Sri Lanka' },
@@ -32,10 +33,24 @@ const faqs = [
   { q: 'Is Hirikatiya safe for beginners?', a: "Hirikatiya's inner reef breaks produce mellow, consistent waves — ideal for learning all year round." },
 ]
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 export default function ContactPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(faqJsonLd) }}
+      />
 
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">

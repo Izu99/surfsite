@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: { absolute: 'Terms & Conditions | Noah Surf School Sri Lanka' },
@@ -112,6 +113,8 @@ const sections = [
 export default function TermsPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Terms & Conditions', path: '/terms' }]} />
+
       {/* ── Page hero ── */}
       <section className="bg-primary-50 border-b border-gray-200 pt-[calc(72px+3rem)] pb-12 md:pt-[calc(72px+4rem)] md:pb-14">
         <div className="container-site">
