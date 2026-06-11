@@ -77,7 +77,7 @@ export default function PackageCardCompact() {
             <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ per session</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link
               href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
               className="block text-center whitespace-nowrap px-2 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white"
