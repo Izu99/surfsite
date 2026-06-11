@@ -43,8 +43,7 @@ export default function FloatingShopButton() {
             </div>
 
             <p className="mt-3 mb-5 text-sm text-gray-500 leading-relaxed">
-              Take a piece of the ocean home with you. Hand-crafted surf wear and
-              goods made by our crew, right here at the beach.
+              Items from our Noah Collection — you can buy any of these from our shop.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
