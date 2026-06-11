@@ -32,7 +32,6 @@ export default function PackageCategorySlider({
       <div className="flex items-end justify-between gap-4 mb-5">
         <div>
           <h3 className="text-xl md:text-2xl font-bold text-gray-900">{category.label}</h3>
-          <p className="text-sm text-gray-500 mt-1 max-w-md">{category.tagline}</p>
         </div>
         {packages.length > 1 && (
           <div className="flex gap-2 shrink-0">

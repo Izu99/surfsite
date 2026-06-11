@@ -7,7 +7,7 @@ import { ChevronLeft, Check, LayoutDashboard, AlertCircle } from 'lucide-react'
 import { adminPackageApi, type PackageInput } from '@/lib/api'
 import { cn } from '@/lib/utils'
 
-const LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'Beginner-Advance', 'Surf Guide'] as const
+const LEVELS = ['Beginner', 'Intermediate', 'Surf Guide', 'Agency'] as const
 
 type FormData = {
   name: string

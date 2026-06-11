@@ -36,24 +36,21 @@ const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] 
 const socials = [
   {
     label: 'Instagram',
-    handle: '@noahsurfschool',
-    href: 'https://instagram.com/noahsurfschool',
+    href: 'https://www.instagram.com/hiriketiya_noah_surf_school/',
     Icon: Instagram,
-    bg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
+    bg: 'border-2 border-gray-900',
   },
   {
     label: 'Facebook',
-    handle: 'Noah Surf School',
     href: 'https://facebook.com/noahsurfschool',
     Icon: Facebook,
-    bg: 'bg-[#1877F2]',
+    bg: 'border-2 border-gray-900',
   },
   {
     label: 'YouTube',
-    handle: 'Noah Surf School',
     href: 'https://youtube.com/@noahsurfschool',
     Icon: Youtube,
-    bg: 'bg-[#FF0000]',
+    bg: 'border-2 border-gray-900',
   },
 ]
 
@@ -61,8 +58,7 @@ const team: { name: string; role: string; image: string; bio: string; character?
   {
     name: 'Noah',
     role: 'Head Instructor & Founder',
-    image: '/noah-character.png',
-    character: true,
+    image: '/noah-surfing-action.png',
     bio: "ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya's waves with visitors from around the world.",
   },
   {
@@ -103,7 +99,7 @@ export default function AboutPage() {
       {/* ── Noah's Story ── */}
       <section className="bg-[#f0e9dd] relative overflow-hidden">
         <div className="container-site py-16 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end lg:items-center">
             {/* Story text */}
             <div>
               <p className="font-display text-2xl text-primary mb-3">Noah&apos;s Story</p>
@@ -152,16 +148,18 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Noah character illustration */}
-            <div className="flex justify-center items-end pointer-events-none select-none mt-6 lg:mt-0">
-              <Image
-                src="/noah-character.png"
-                alt="Noah, founder and head instructor at Noah Surf School"
-                width={340}
-                height={480}
-                className="drop-shadow-2xl w-52 md:w-64 lg:w-auto"
-                priority
-              />
+            {/* Noah photo */}
+            <div className="mt-6 lg:mt-0">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src="/noah-surfing-action.png"
+                  alt="Noah, founder and head instructor at Noah Surf School"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -351,14 +349,13 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {socials.map(({ label, handle, href, Icon, bg }) => (
+            {socials.map(({ label, href, Icon, bg }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm hover:-translate-y-1 transition-all group">
                 <div className={`h-14 w-14 rounded-full ${bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <Icon className="h-6 w-6 text-white" />
+                  <Icon className="h-6 w-6 text-gray-900" />
                 </div>
                 <p className="text-sm font-bold text-gray-900">{label}</p>
-                <p className="text-xs text-gray-400 mt-1">{handle}</p>
               </a>
             ))}
           </div>

@@ -49,16 +49,22 @@ export default function PackageCard({
             <p className="text-sm text-gray-500 leading-relaxed">{pkg.description}</p>
           )}
 
-          <div className="flex flex-wrap gap-3 text-sm text-gray-600">
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-primary" />
-              {pkg.duration}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Users className="h-3.5 w-3.5 text-primary" />
-              {pkg.format}
-            </span>
-          </div>
+          {(pkg.duration || pkg.format) && (
+            <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+              {pkg.duration && (
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5 text-primary" />
+                  {pkg.duration}
+                </span>
+              )}
+              {pkg.format && (
+                <span className="flex items-center gap-1.5">
+                  <Users className="h-3.5 w-3.5 text-primary" />
+                  {pkg.format}
+                </span>
+              )}
+            </div>
+          )}
 
           {readMoreHref ? (
             <Link
@@ -77,22 +83,35 @@ export default function PackageCard({
             </button>
           )}
 
-          <div className="flex-1" />
+          {pkg.price > 0 && (
+            <div className="space-y-3 mt-1">
+              <div className="border-t border-gray-100" />
 
-          <div className="border-t border-gray-100" />
+              <div className="flex items-start leading-none gap-0.5">
+                <span className="text-lg font-bold mt-1 text-primary">$</span>
+                <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
+                <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
+              </div>
 
-          <div className="flex items-start leading-none gap-0.5">
-            <span className="text-lg font-bold mt-1 text-primary">$</span>
-            <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
-            <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
-          </div>
+              <Link
+                href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+              >
+                Book Now
+              </Link>
 
-          <Link
-            href={`/contact?package=${encodeURIComponent(pkg.name)}`}
-            className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
-          >
-            Book Now
-          </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setSlideIndex(0)
+                  setCollectionOpen(true)
+                }}
+                className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
+              >
+                Noah Collection
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -154,29 +173,22 @@ export default function PackageCard({
                 </span>
               )}
 
-              <button
-                type="button"
-                onClick={() => {
-                  setSlideIndex(0)
-                  setCollectionOpen(true)
-                }}
-                className="font-bold text-gray-900 hover:text-primary cursor-pointer"
-              >
-                Noah Collection
-              </button>
+              {pkg.price > 0 && (
+                <>
+                  <div className="flex items-start leading-none gap-0.5">
+                    <span className="text-lg font-bold mt-1 text-primary">$</span>
+                    <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
+                    <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
+                  </div>
 
-              <div className="flex items-start leading-none gap-0.5">
-                <span className="text-lg font-bold mt-1 text-primary">$</span>
-                <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
-                <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
-              </div>
-
-              <Link
-                href={`/contact?package=${encodeURIComponent(pkg.name)}`}
-                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
-              >
-                Book Now
-              </Link>
+                  <Link
+                    href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                    className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+                  >
+                    Book Now
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { Check, Shield, LifeBuoy } from 'lucide-react'
 import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
+import FloatingShopButton from '@/components/FloatingShopButton'
 
 export default function PackagesListClient() {
   const [packages, setPackages] = useState<SurfPackage[]>([])
@@ -127,6 +128,8 @@ export default function PackagesListClient() {
           </div>
         </div>
       </section>
+
+      <FloatingShopButton />
     </>
   )
 }

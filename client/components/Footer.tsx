@@ -51,7 +51,9 @@ export default function Footer() {
                 <Facebook className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/hiriketiya_noah_surf_school/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="h-9 w-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-colors duration-200 cursor-pointer"
               >

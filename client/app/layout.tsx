@@ -118,7 +118,7 @@ const organizationJsonLd = {
     closes: '18:00',
   },
   sameAs: [
-    'https://instagram.com/noahsurfschool',
+    'https://www.instagram.com/hiriketiya_noah_surf_school/',
     'https://facebook.com/noahsurfschool',
     'https://youtube.com/@noahsurfschool',
   ],

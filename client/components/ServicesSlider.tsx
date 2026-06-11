@@ -10,6 +10,7 @@ export type Service = {
   description: string
   image: string
   alt: string
+  price: number
 }
 
 export const services: Service[] = [
@@ -18,24 +19,28 @@ export const services: Service[] = [
     description: 'Classic surf cap to keep the sun out of your eyes.',
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2070&auto=format&fit=crop',
     alt: 'Surf cap',
+    price: 20,
   },
   {
     title: 'Hat',
     description: 'Wide-brim beach hat for all-day comfort in the sun.',
     image: 'https://images.unsplash.com/photo-1561941087-2433c4a0ef12?q=80&w=2070&auto=format&fit=crop',
     alt: 'Beach hat',
+    price: 20,
   },
   {
     title: 'T-Shirt',
     description: 'Soft cotton tee with the Noah Surf School print.',
     image: 'https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?q=80&w=2070&auto=format&fit=crop',
     alt: 'Surf t-shirt',
+    price: 40,
   },
   {
     title: 'Rash Guard',
     description: 'UV-protective rash guard built for long sessions.',
     image: 'https://images.unsplash.com/photo-1595389910742-5b5c0e958a11?q=80&w=2070&auto=format&fit=crop',
     alt: 'Rash guard',
+    price: 40,
   },
 ]
 
