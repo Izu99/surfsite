@@ -60,7 +60,12 @@ export default function PackagesListClient() {
           ) : (
             <div className="space-y-6">
               {grouped.map(({ category, packages: catPackages }) => (
-                <PackageCategorySlider key={category.key} category={category} packages={catPackages} />
+                <PackageCategorySlider
+                  key={category.key}
+                  category={category}
+                  packages={catPackages}
+                  showCollection={false}
+                />
               ))}
             </div>
           )}

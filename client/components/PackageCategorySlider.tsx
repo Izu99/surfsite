@@ -11,10 +11,12 @@ export default function PackageCategorySlider({
   category,
   packages,
   readMoreHref,
+  showCollection,
 }: {
   category: PackageCategory
   packages: SurfPackage[]
   readMoreHref?: string
+  showCollection?: boolean
 }) {
   const trackRef = useRef<HTMLDivElement>(null)
 
@@ -72,7 +74,7 @@ export default function PackageCategorySlider({
         >
           {packages.map((pkg) => (
             <div key={pkg._id} data-card className="snap-start shrink-0 w-[85%] sm:w-[320px]">
-              <PackageCard pkg={pkg} readMoreHref={readMoreHref} />
+              <PackageCard pkg={pkg} readMoreHref={readMoreHref} showCollection={showCollection} />
             </div>
           ))}
         </div>

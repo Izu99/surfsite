@@ -12,9 +12,11 @@ import { splitPackageName } from '@/lib/utils'
 export default function PackageCard({
   pkg,
   readMoreHref,
+  showCollection = true,
 }: {
   pkg: SurfPackage
   readMoreHref?: string
+  showCollection?: boolean
 }) {
   const { title, subtitle } = splitPackageName(pkg.name)
   const [open, setOpen] = useState(false)
@@ -50,7 +52,7 @@ export default function PackageCard({
           )}
 
           {(pkg.duration || pkg.format) && (
-            <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3 text-sm text-gray-600">
               {pkg.duration && (
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-3.5 w-3.5 text-primary" />
@@ -100,16 +102,18 @@ export default function PackageCard({
                 Book Now
               </Link>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setSlideIndex(0)
-                  setCollectionOpen(true)
-                }}
-                className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
-              >
-                Noah Collection
-              </button>
+              {showCollection && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSlideIndex(0)
+                    setCollectionOpen(true)
+                  }}
+                  className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
+                >
+                  Noah Collection
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -247,7 +251,7 @@ export default function PackageCard({
             </div>
 
             <div className="p-6 space-y-4">
-              <p className="font-display text-2xl text-primary">The Noah Collection</p>
+              <p className="text-2xl font-bold text-primary">The Noah Collection</p>
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
                 You can buy these from our online shop
               </p>
