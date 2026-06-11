@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { X, Check, Users, Gift } from 'lucide-react'
+import { X, Check, Clock, Users, Gift, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
+import { services } from '@/components/ServicesSlider'
 
 const LEARN_ITEMS = [
   'How to stay safe in the water and read the ocean a little better',
@@ -18,6 +19,12 @@ const LEARN_ITEMS = [
 
 export default function PackageCardCompact() {
   const [open, setOpen] = useState(false)
+  const [collectionOpen, setCollectionOpen] = useState(false)
+  const [slideIndex, setSlideIndex] = useState(0)
+
+  const nextSlide = () => setSlideIndex((i) => (i + 1) % services.length)
+  const prevSlide = () => setSlideIndex((i) => (i - 1 + services.length) % services.length)
+  const activeService = services[slideIndex]
 
   return (
     <>
@@ -32,18 +39,27 @@ export default function PackageCardCompact() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-5">
-            <span className="inline-flex items-center gap-1.5 bg-primary text-white text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-full mb-2">
-              <Users className="h-3.5 w-3.5" />
-              1-on-1
-            </span>
-            <p className="text-white text-lg font-bold">Beginner Lessons</p>
+            <p className="inline-block bg-gray-700/60 text-white text-lg font-bold px-2.5 py-1 rounded-md">
+              Beginner Lessons
+            </p>
           </div>
         </div>
 
         <div className="p-6 space-y-4">
           <p className="text-sm text-gray-500 leading-relaxed">
-            Perfect if you&apos;ve never surfed before or have only tried it a couple times.
+            Perfect if you&apos;ve never surfed before or have only tried it a couple of times.
           </p>
+
+          <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-primary" />
+              1 hour 45 min
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Users className="h-3.5 w-3.5 text-primary" />
+              1-on-1
+            </span>
+          </div>
 
           <button
             type="button"
@@ -56,17 +72,30 @@ export default function PackageCardCompact() {
           <div className="border-t border-gray-100" />
 
           <div className="flex items-start leading-none gap-0.5">
-            <span className="text-lg font-bold mt-1 text-gray-400">$</span>
-            <span className="text-4xl font-extrabold text-gray-900">29</span>
+            <span className="text-lg font-bold mt-1 text-primary">$</span>
+            <span className="text-4xl font-extrabold text-primary">29</span>
             <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ per session</span>
           </div>
 
-          <Link
-            href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
-            className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors bg-gray-900 text-white hover:bg-primary"
-          >
-            Book Now
-          </Link>
+          <div className="grid grid-cols-2 gap-3">
+            <Link
+              href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
+              className="block text-center px-4 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white"
+            >
+              Book Now
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => {
+                setSlideIndex(0)
+                setCollectionOpen(true)
+              }}
+              className="block text-center px-4 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white cursor-pointer"
+            >
+              Collection
+            </button>
+          </div>
         </div>
       </div>
 
@@ -103,7 +132,7 @@ export default function PackageCardCompact() {
 
             <div className="p-6 space-y-4">
               <p className="text-sm text-gray-500 leading-relaxed">
-                Perfect if you&apos;ve never surfed before or have only tried it a couple times.
+                Perfect if you&apos;ve never surfed before or have only tried it a couple of times.
               </p>
 
               <div>
@@ -124,16 +153,98 @@ export default function PackageCardCompact() {
               </span>
 
               <div className="flex items-start leading-none gap-0.5">
-                <span className="text-lg font-bold mt-1 text-gray-400">$</span>
-                <span className="text-4xl font-extrabold text-gray-900">29</span>
+                <span className="text-lg font-bold mt-1 text-primary">$</span>
+                <span className="text-4xl font-extrabold text-primary">29</span>
                 <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ per session</span>
               </div>
 
               <Link
                 href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
-                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors bg-gray-900 text-white hover:bg-primary"
+                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white"
               >
                 Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {collectionOpen && (
+        <div
+          className="fixed inset-0 z-40 flex items-start justify-center overflow-y-auto bg-black/50 p-4 pt-[88px]"
+          onClick={() => setCollectionOpen(false)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-lg w-full max-h-[calc(100vh-104px)] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-48 sm:h-64 shrink-0">
+              <Image
+                src={activeService.image}
+                alt={activeService.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 512px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+
+              <button
+                type="button"
+                onClick={() => setCollectionOpen(false)}
+                aria-label="Close"
+                className="absolute top-3 right-3 h-8 w-8 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={prevSlide}
+                aria-label="Previous"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={nextSlide}
+                aria-label="Next"
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+
+              <div className="absolute bottom-4 left-5">
+                <p className="inline-block bg-gray-700/60 text-white text-lg font-bold px-2.5 py-1 rounded-md">
+                  {activeService.title}
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-4">
+              <p className="font-display text-2xl text-primary">The Noah Collection</p>
+              <p className="text-sm text-gray-500 leading-relaxed">{activeService.description}</p>
+
+              <div className="flex items-center justify-center gap-2">
+                {services.map((service, i) => (
+                  <button
+                    key={service.title}
+                    type="button"
+                    onClick={() => setSlideIndex(i)}
+                    aria-label={`Go to ${service.title}`}
+                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                      i === slideIndex ? 'w-6 bg-primary' : 'w-2 bg-gray-200'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center gap-2 w-full px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors bg-primary text-white hover:bg-primary-dark"
+              >
+                Shop The Collection
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>

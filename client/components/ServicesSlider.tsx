@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 
-type Service = {
+export type Service = {
   title: string
   description: string
   image: string
   alt: string
 }
 
-const services: Service[] = [
+export const services: Service[] = [
   {
     title: 'Cap',
     description: 'Classic surf cap to keep the sun out of your eyes.',
