@@ -40,7 +40,12 @@ export default function HomepagePackages() {
 
         <div className="space-y-6">
           {grouped.map(({ category, packages: catPackages }) => (
-            <PackageCategorySlider key={category.key} category={category} packages={catPackages} />
+            <PackageCategorySlider
+              key={category.key}
+              category={category}
+              packages={catPackages}
+              readMoreHref="/packages"
+            />
           ))}
         </div>
 

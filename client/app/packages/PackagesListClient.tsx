@@ -6,7 +6,6 @@ import { Check, Shield, LifeBuoy } from 'lucide-react'
 import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
-import PackageCardCompact from '@/components/PackageCardCompact'
 
 export default function PackagesListClient() {
   const [packages, setPackages] = useState<SurfPackage[]>([])
@@ -48,18 +47,8 @@ export default function PackagesListClient() {
         </div>
       </section>
 
-      {/* ── New card design (preview for approval) ── */}
-      <section className="bg-[#fcfcfc] pb-16 md:pb-20">
-        <div className="container-site">
-          <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-4">
-            New card design — preview
-          </p>
-          <PackageCardCompact />
-        </div>
-      </section>
-
       {/* ── Packages by category ── */}
-      <section className="section-padding bg-[#f0e9dd]">
+      <section className="section-padding bg-[#afcec5]">
         <div className="container-site">
           {!mounted ? (
             <div className="space-y-6">
