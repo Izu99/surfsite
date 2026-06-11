@@ -6,6 +6,7 @@ import { Check, Shield, LifeBuoy } from 'lucide-react'
 import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
+import PackageCardCompact from '@/components/PackageCardCompact'
 
 export default function PackagesListClient() {
   const [packages, setPackages] = useState<SurfPackage[]>([])
@@ -44,6 +45,16 @@ export default function PackagesListClient() {
             Every session includes surf boards, rash guard, sunscreen, water, and first aid on standby
             — all you need to do is show up and ride.
           </p>
+        </div>
+      </section>
+
+      {/* ── New card design (preview for approval) ── */}
+      <section className="bg-[#fcfcfc] pb-16 md:pb-20">
+        <div className="container-site">
+          <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-4">
+            New card design — preview
+          </p>
+          <PackageCardCompact />
         </div>
       </section>
 

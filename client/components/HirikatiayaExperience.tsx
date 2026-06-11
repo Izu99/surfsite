@@ -17,7 +17,7 @@ export default function HirikatiayaExperience() {
       <div className="space-y-5">
         {highlights.map(({ icon, text }) => (
           <div key={text} className="flex items-center gap-4">
-            <Image src={icon} alt="" width={32} height={32} className="shrink-0" aria-hidden />
+            <Image src={icon} alt="" width={44} height={44} className="shrink-0" aria-hidden />
             <p className="text-sm text-gray-700">{text}</p>
           </div>
         ))}

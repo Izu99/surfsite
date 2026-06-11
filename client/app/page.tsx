@@ -405,7 +405,7 @@ export default function HomePage() {
                     'ISA Certified — International Surfing Association certified instructors',
                     'Diploma in Hospitality and Tourism Management, Singapore',
                   ],
-                  svg: (<Image src="/icon-difference-certificate.gif" alt="" width={48} height={48} unoptimized className="w-12 h-12 shrink-0" aria-hidden />),
+                  svg: (<Image src="/icon-difference-certificate.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
                 },
                 {
                   title: 'New Surfboards',
@@ -425,14 +425,7 @@ export default function HomePage() {
                 {
                   title: 'Teach Anyone',
                   desc: 'Ages 4 to 70 — total beginners to advanced surfers welcome.',
-                  svg: (
-                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 shrink-0">
-                      <circle cx="24" cy="11" r="6"/>
-                      <path d="M12 44V34C12 28 16 24 24 24C32 24 36 28 36 34V44"/>
-                      <path d="M8 36C8 36 4 33 4 29C4 26 6 24 8 24"/>
-                      <path d="M40 36C40 36 44 33 44 29C44 26 42 24 40 24"/>
-                    </svg>
-                  ),
+                  svg: (<Image src="/icon-difference-teach-anyone.png" alt="" width={48} height={48} className="w-12 h-12 shrink-0" aria-hidden />),
                 },
               ].map(({ svg, title, desc, bullets }) => (
                 <div key={title} className="bg-white rounded-2xl p-6 shadow-sm flex gap-5">

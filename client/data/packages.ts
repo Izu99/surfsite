@@ -61,7 +61,7 @@ export const INCLUDED_IN_ALL = [
 export const HARDCODED_PACKAGES: SurfPackage[] = [
   {
     _id: 'hc-pkg-2',
-    name: 'Beginner 1-on-1 (Theory & Practical)',
+    name: 'Beginner 1-on-1',
     level: 'Beginner',
     format: '1-on-1 Private',
     duration: '1 hour 45 min',
@@ -84,7 +84,7 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
   },
   {
     _id: 'hc-pkg-1',
-    name: 'Group (Theory & Practical)',
+    name: 'Group Lesson',
     level: 'Beginner',
     format: 'Group (max 6)',
     duration: '1 hour 45 min',
