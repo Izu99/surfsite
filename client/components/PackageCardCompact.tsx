@@ -80,7 +80,7 @@ export default function PackageCardCompact() {
           <div className="grid grid-cols-2 gap-3">
             <Link
               href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
-              className="block text-center px-4 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white"
+              className="block text-center whitespace-nowrap px-2 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white"
             >
               Book Now
             </Link>
@@ -91,7 +91,7 @@ export default function PackageCardCompact() {
                 setSlideIndex(0)
                 setCollectionOpen(true)
               }}
-              className="block text-center px-4 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white cursor-pointer"
+              className="block text-center whitespace-nowrap px-2 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white cursor-pointer"
             >
               Collection
             </button>
@@ -160,7 +160,7 @@ export default function PackageCardCompact() {
 
               <Link
                 href={`/contact?package=${encodeURIComponent('Beginner Lessons')}`}
-                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-400 text-gray-500 hover:border-primary hover:bg-primary hover:text-white"
+                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white"
               >
                 Book Now
               </Link>
