@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Instagram, Facebook, Youtube, ShieldCheck, Users, Star, Award, Sun, Clock, Globe, type LucideIcon } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Users, Star, Award, type LucideIcon } from 'lucide-react'
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   },
 }
 
-const values: { text: string; icon: LucideIcon }[] = [
-  { text: 'Certified ISA surf instructors on every session', icon: ShieldCheck },
-  { text: 'Small student-to-instructor ratios (max 6 per group)', icon: Users },
-  { text: 'All equipment provided — boards, leashes, rash guards', icon: Award },
-  { text: 'Suitable for all ages from 7 years and up', icon: Users },
-  { text: 'Warm, consistent Indian Ocean swells year-round', icon: Sun },
-  { text: 'Flexible scheduling — daily 6:00 am to 6:00 pm', icon: Clock },
-  { text: 'Lessons in English', icon: Globe },
+const values: { text: string; icon: string }[] = [
+  { text: 'Certified ISA surf instructors on every session', icon: '/icon-value-certified.png' },
+  { text: 'Small student-to-instructor ratios (max 6 per group)', icon: '/icon-value-small-groups.png' },
+  { text: 'All equipment provided — boards, leashes, rash guards', icon: '/icon-value-equipment.png' },
+  { text: 'Suitable for all ages from 7 years and up', icon: '/icon-value-all-ages.png' },
+  { text: 'Warm, consistent Indian Ocean swells year-round', icon: '/icon-value-warm-water.png' },
+  { text: 'Flexible scheduling — daily 6:00 am to 6:00 pm', icon: '/icon-value-flexible-schedule.png' },
+  { text: 'Lessons in English', icon: '/icon-value-english.png' },
 ]
 
 const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] = [
@@ -51,27 +51,6 @@ const socials = [
     href: 'https://youtube.com/@noahsurfschool',
     Icon: Youtube,
     bg: 'border-2 border-gray-900',
-  },
-]
-
-const team: { name: string; role: string; image: string; bio: string; character?: boolean }[] = [
-  {
-    name: 'Noah',
-    role: 'Head Instructor & Founder',
-    image: '/noah-surfing-action.png',
-    bio: "ISA certified with years of surf instruction experience. Noah founded the school to share his love of Hiriketiya's waves with visitors from around the world.",
-  },
-  {
-    name: 'Kasun Perera',
-    role: 'Senior Surf Instructor',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop',
-    bio: 'ISA Level 2 certified. Kasun specialises in beginner lessons and junior programs, with a patient and encouraging teaching style.',
-  },
-  {
-    name: 'Amara Silva',
-    role: 'Surf Instructor & Camp Coordinator',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop',
-    bio: 'ISA Level 2 certified. Amara coordinates our surf camp programs and brings energy and enthusiasm to every session she leads.',
   },
 ]
 
@@ -256,9 +235,9 @@ export default function AboutPage() {
                 professionals dedicated to helping you progress quickly and safely.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {values.map(({ text, icon: Icon }) => (
-                  <li key={text} className="flex items-start gap-3 text-sm text-gray-700">
-                    <Icon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                {values.map(({ text, icon }) => (
+                  <li key={text} className="flex items-center gap-3 text-sm text-gray-700">
+                    <Image src={icon} alt="" width={36} height={36} className="w-9 h-9 shrink-0" aria-hidden />
                     {text}
                   </li>
                 ))}
@@ -282,59 +261,22 @@ export default function AboutPage() {
         <div className="container-site">
           <div className="text-center mb-12">
             <p className="font-display text-2xl text-primary mb-2">Our Team</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Meet the Instructors</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Meet Our Team</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member) => (
-              <div key={member.name} className="bg-white overflow-hidden rounded-2xl shadow-sm">
-                <div className={`relative h-64 overflow-hidden rounded-t-2xl ${member.character ? 'bg-[#f0e9dd]' : ''}`}>
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className={member.character ? 'object-contain object-bottom p-3' : 'object-cover object-top'}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1 mb-3">{member.role}</p>
-                  <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
-                </div>
-              </div>
-            ))}
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl shadow-2xl mb-8">
+            <Image
+              src="/gallery-team-celebration.jpeg"
+              alt="The Noah Surf School team"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
           </div>
-        </div>
-      </section>
-
-      {/* ── Day in the Life ── */}
-      <section className="section-padding bg-[#fcfcfc]">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <p className="font-display text-2xl text-primary mb-3">Behind the Scenes</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
-                A Day in the Life<br />at Hirikatiya
-              </h2>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                Wake up to the sound of waves, grab a board, and spend the day doing what you love.
-                Watch what a typical day looks like at Noah Surf School — from morning sessions to
-                sunset walks on the beach.
-              </p>
-              <Link href="/contact" className="inline-block bg-primary text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wide hover:bg-primary-dark transition-colors">
-                Book Your Day
-              </Link>
-            </div>
-            <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl">
-              <iframe
-                src="https://www.youtube.com/embed/LwU4zxolXoY?rel=0&modestbranding=1"
-                title="A day in the life at Noah Surf School"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-              />
-            </div>
-          </div>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-3xl mx-auto text-center">
+            Led by Noah, our team of ISA-certified instructors shares a passion for Hiriketiya&apos;s waves and
+            for helping surfers of every level progress quickly and safely. From first-timers to advanced
+            riders, we bring patience, local knowledge, and genuine warmth to every session.
+          </p>
         </div>
       </section>
 

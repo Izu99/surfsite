@@ -29,18 +29,6 @@ const photos: Photo[] = [
   { src: '/unnamed (5).webp', alt: 'Noah surf school beach', tag: 'Beach' },
   { src: '/unnamed (6).webp', alt: 'Surf coaching Hirikatiya', tag: 'Lessons' },
   { src: '/unnamed (7).webp', alt: 'Surfing at sunset Hirikatiya', tag: 'Action', wide: true },
-  { src: 'https://images.unsplash.com/photo-1502933691298-84fc14542831?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Surfer at Hirikatiya Beach', tag: 'Action', wide: true },
-  { src: 'https://images.unsplash.com/photo-1527731149372-fae504a1185f?q=80&w=2070&auto=format&fit=crop', alt: 'Surf instructor guiding a student', tag: 'Lessons', tall: true },
-  { src: 'https://images.unsplash.com/photo-1513569143478-b38b2c0ef97f?q=80&w=2070&auto=format&fit=crop', alt: 'Surfing at Hirikatiya', tag: 'Action' },
-  { src: 'https://plus.unsplash.com/premium_photo-1667865667926-a1f8b7339950?q=80&w=2070&auto=format&fit=crop', alt: 'Hirikatiya Beach Sri Lanka', tag: 'Beach' },
-  { src: 'https://plus.unsplash.com/premium_photo-1672510000383-8f46f7b157b0?q=80&w=2070&auto=format&fit=crop', alt: 'Surf coaching session', tag: 'Lessons', wide: true },
-  { src: 'https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?q=80&w=2070&auto=format&fit=crop', alt: 'Surfer in action at sunrise', tag: 'Action' },
-  { src: 'https://images.unsplash.com/photo-1459745930869-b3d0d72c3cbb?q=80&w=2070&auto=format&fit=crop', alt: 'Surfing waves at Hirikatiya', tag: 'Beach', tall: true },
-  { src: 'https://images.unsplash.com/photo-1616449973117-0e1d99c56ed3?q=80&w=2070&auto=format&fit=crop', alt: 'Ocean surf session', tag: 'Action' },
-  { src: 'https://images.unsplash.com/photo-1607429288969-a64f13f2fc27?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Surf camp morning session', tag: 'Lessons' },
-  { src: 'https://images.unsplash.com/photo-1530870110042-98b2cb110834?q=80&w=2070&auto=format&fit=crop', alt: 'Wave breaking at Hirikatiya', tag: 'Action', wide: true },
-  { src: 'https://images.unsplash.com/photo-1601387269718-2b104a09daf4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Sunset over the Indian Ocean', tag: 'Beach' },
-  { src: 'https://images.unsplash.com/photo-1601505804121-45e2c5506c94?q=80&w=2070&auto=format&fit=crop', alt: 'Group surf lesson on the beach', tag: 'Lessons' },
 ]
 
 const tagColors: Record<string, string> = {

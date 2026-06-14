@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-import { Check, Shield, LifeBuoy } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
@@ -98,19 +98,20 @@ export default function PackagesListClient() {
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Professional Standards</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-primary" />
+                  <div className="shrink-0 w-12 h-12 flex items-center justify-center">
+                    <Image src="/icon-difference-certificate.png" alt="" width={36} height={36} className="w-9 h-9" aria-hidden />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-1">ISA Certified Instructors</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      All instructors hold International Life Saving Federation certification.
-                    </p>
+                    <ul className="text-gray-500 text-sm leading-relaxed list-disc list-inside space-y-1">
+                      <li>ISA Certified — International Surfing Association certified instructors</li>
+                      <li>Diploma in Hospitality and Tourism Management, Singapore</li>
+                    </ul>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <LifeBuoy className="w-6 h-6 text-primary" />
+                  <div className="shrink-0 w-12 h-12 flex items-center justify-center">
+                    <Image src="/icon-value-certified.png" alt="" width={36} height={36} className="w-9 h-9" aria-hidden />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-1">First Aid on Every Session</h4>
