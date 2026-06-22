@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -14,6 +15,11 @@ import packageRoutes from './routes/package.routes'
 import adminPackageRoutes from './routes/adminPackage.routes'
 import conditionsRoutes from './routes/conditions.routes'
 import adminConditionsRoutes from './routes/adminConditions.routes'
+import shopItemRoutes from './routes/shopItem.routes'
+import adminShopItemRoutes from './routes/adminShopItem.routes'
+import bookingRoutes from './routes/booking.routes'
+import adminBookingRoutes from './routes/adminBooking.routes'
+import uploadRoutes from './routes/upload.routes'
 import { errorHandler, notFound } from './middleware/errorHandler'
 
 const app = express()
@@ -55,6 +61,9 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'))
 }
 
+// ── Static files (uploaded images) ──────────────────────────────
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')))
+
 // ── Health check ─────────────────────────────────────────────────
 app.get('/health', (_req, res) => {
   res.json({ success: true, service: 'Noah Surf School API', status: 'ok' })
@@ -68,6 +77,11 @@ app.use('/api/packages', apiLimiter, packageRoutes)
 app.use('/api/admin/packages', apiLimiter, adminPackageRoutes)
 app.use('/api/conditions', apiLimiter, conditionsRoutes)
 app.use('/api/admin/conditions', apiLimiter, adminConditionsRoutes)
+app.use('/api/shop', apiLimiter, shopItemRoutes)
+app.use('/api/admin/shop', apiLimiter, adminShopItemRoutes)
+app.use('/api/bookings', apiLimiter, bookingRoutes)
+app.use('/api/admin/bookings', apiLimiter, adminBookingRoutes)
+app.use('/api/admin/upload', apiLimiter, uploadRoutes)
 
 // ── Error handling ───────────────────────────────────────────────
 app.use(notFound)

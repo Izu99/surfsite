@@ -50,6 +50,7 @@ export type SurfPackage = {
   price: number
   priceNote: string
   description: string
+  shortDescription?: string
   includes: string[]
   souvenir: boolean
   featured: boolean

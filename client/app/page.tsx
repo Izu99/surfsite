@@ -239,14 +239,14 @@ export default function HomePage() {
               </h2>
               <HirikatiayaExperience />
             </div>
-            {/* Right: video */}
+            {/* Right: video — autoplay/loop background, no user interaction */}
             <div className="relative w-full aspect-video overflow-hidden rounded-3xl shadow-2xl">
               <iframe
-                src="https://www.youtube.com/embed/LwU4zxolXoY?autoplay=1&mute=1&loop=1&playlist=LwU4zxolXoY&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1"
+                src="https://www.youtube.com/embed/48oXIoQ1Nmw?autoplay=1&mute=1&loop=1&playlist=48oXIoQ1Nmw&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1"
                 title="Noah Surf School — Hirikatiya Beach, Sri Lanka"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
+                tabIndex={-1}
+                className="absolute inset-0 w-full h-full pointer-events-none"
               />
             </div>
           </div>
@@ -357,7 +357,7 @@ export default function HomePage() {
           <ReviewsSlider reviews={googleReviews} />
           <div className="text-center mt-10">
             <a
-              href="https://www.google.com/maps/place/Hirikatiya+Beach"
+              href="https://www.google.com/maps/place/Hiriketiya+Noah+Surfing+School/@5.962363,80.7042361,17z/data=!4m18!1m9!3m8!1s0x3ae1370012226f0f:0xaf6fc116b43ab5a1!2sHiriketiya+Noah+Surfing+School!8m2!3d5.9623577!4d80.706811!9m1!1b1!16s%2Fg%2F11w9n2p__3!3m7!1s0x3ae1370012226f0f:0xaf6fc116b43ab5a1!8m2!3d5.9623577!4d80.706811!9m1!1b1!16s%2Fg%2F11w9n2p__3?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border-2 border-gray-800 text-gray-800 px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-gray-800 hover:text-white transition-colors duration-200 cursor-pointer"

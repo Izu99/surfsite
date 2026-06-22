@@ -2,11 +2,17 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-import { Check } from 'lucide-react'
 import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
 import FloatingShopButton from '@/components/FloatingShopButton'
+
+const INCLUDED_ICONS: Record<string, string> = {
+  'Good quality surf boards': '/icon-surfboard-new.png',
+  'Rash guard': '/icon-value-equipment.png',
+  'Zinc & sunscreen': '/icon-value-warm-water.png',
+  'First aid on standby': '/icon-value-certified.png',
+}
 
 export default function PackagesListClient() {
   const [packages, setPackages] = useState<SurfPackage[]>([])
@@ -42,7 +48,7 @@ export default function PackagesListClient() {
             Surf School Programs
           </h1>
           <p className="text-gray-500 max-w-xl text-sm leading-relaxed">
-            Every session includes surf boards, rash guard, sunscreen, water, and first aid on standby
+            Every session includes surf boards, rash guard, sunscreen, and first aid on standby
             — all you need to do is show up and ride.
           </p>
         </div>
@@ -80,7 +86,13 @@ export default function PackagesListClient() {
                   key={item}
                   className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm"
                 >
-                  <Check className="h-4 w-4 text-primary shrink-0" />
+                  <Image
+                    src={INCLUDED_ICONS[item] ?? '/icon-surfboard-new.png'}
+                    alt=""
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 shrink-0 object-contain"
+                  />
                   <span className="text-sm font-medium text-gray-700">{item}</span>
                 </div>
               ))}

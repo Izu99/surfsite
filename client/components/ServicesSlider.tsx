@@ -29,10 +29,17 @@ export const services: Service[] = [
     price: 20,
   },
   {
-    title: 'T-Shirt',
-    description: 'Soft cotton tee with the Noah Surf School print.',
-    image: 'https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf t-shirt',
+    title: 'White Noah Surf Tee',
+    description: 'Soft cotton tee with the Noah Surf School print, Sri Lanka flag patch on front, full back logo.',
+    image: '/shop-tshirt-white.jpeg',
+    alt: 'White Noah Surf t-shirt, front and back',
+    price: 40,
+  },
+  {
+    title: 'Black Noah Surf Tee',
+    description: 'Soft cotton tee with the Noah Surf School print, Sri Lanka flag patch on front, full back logo.',
+    image: '/shop-tshirt-black.jpeg',
+    alt: 'Black Noah Surf t-shirt, front and back',
     price: 40,
   },
   {

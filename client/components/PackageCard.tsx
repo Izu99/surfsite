@@ -47,8 +47,8 @@ export default function PackageCard({
             {title}
             {subtitle && <span className="block font-display text-base text-gray-500">{subtitle}</span>}
           </p>
-          {pkg.description && (
-            <p className="text-sm text-gray-500 leading-relaxed">{pkg.description}</p>
+          {(pkg.shortDescription || pkg.description) && (
+            <p className="text-sm text-gray-500 leading-relaxed">{pkg.shortDescription || pkg.description}</p>
           )}
 
           {(pkg.duration || pkg.format) && (
@@ -90,7 +90,7 @@ export default function PackageCard({
               <div className="border-t border-gray-100" />
 
               <div className="flex items-start leading-none gap-0.5">
-                <span className="text-lg font-bold mt-1 text-primary">$</span>
+                <span className="text-lg font-bold mt-1 text-primary">Rs</span>
                 <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
                 <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
               </div>
@@ -173,14 +173,14 @@ export default function PackageCard({
               {pkg.souvenir && (
                 <span className="flex items-center gap-1.5 text-amber-600 font-display text-2xl">
                   <Gift className="h-3.5 w-3.5" />
-                  Souvenir included
+                  Mystery Gift
                 </span>
               )}
 
               {pkg.price > 0 && (
                 <>
                   <div className="flex items-start leading-none gap-0.5">
-                    <span className="text-lg font-bold mt-1 text-primary">$</span>
+                    <span className="text-lg font-bold mt-1 text-primary">Rs</span>
                     <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
                     <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
                   </div>

@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose'
 
-const LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'Beginner-Advance', 'Surf Guide'] as const
+const LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'Beginner-Advance', 'Surf Guide', 'Agency'] as const
 type Level = (typeof LEVELS)[number]
 
 export interface IPackage extends Document {
@@ -10,6 +10,8 @@ export interface IPackage extends Document {
   duration: string
   price: number
   priceNote: string
+  description: string
+  includes: string[]
   souvenir: boolean
   featured: boolean
   published: boolean
@@ -25,6 +27,8 @@ const packageSchema = new Schema<IPackage>(
     duration: { type: String, required: true, trim: true },
     price: { type: Number, required: true, min: 0 },
     priceNote: { type: String, required: true, trim: true, default: 'per session' },
+    description: { type: String, default: '', trim: true },
+    includes: { type: [String], default: [] },
     souvenir: { type: Boolean, default: false },
     featured: { type: Boolean, default: false },
     published: { type: Boolean, default: false },

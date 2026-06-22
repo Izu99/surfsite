@@ -58,6 +58,22 @@ src/
 | PUT | /api/admin/packages/:id | ✓ | Update package |
 | DELETE | /api/admin/packages/:id | ✓ | Delete package |
 | PATCH | /api/admin/packages/:id/toggle-publish | ✓ | Toggle publish state |
+| GET | /api/shop | — | List published shop items |
+| GET | /api/admin/shop | ✓ | List all shop items (admin) |
+| POST | /api/admin/shop | ✓ | Create shop item |
+| PUT | /api/admin/shop/:id | ✓ | Update shop item |
+| DELETE | /api/admin/shop/:id | ✓ | Delete shop item |
+| PATCH | /api/admin/shop/:id/toggle-publish | ✓ | Toggle publish state |
+| POST | /api/bookings | — | Submit a booking (public form) |
+| GET | /api/admin/bookings | ✓ | List all bookings (admin) |
+| PATCH | /api/admin/bookings/:id/status | ✓ | Update booking status |
+| DELETE | /api/admin/bookings/:id | ✓ | Delete booking |
+| POST | /api/admin/upload | ✓ | Upload image (multipart/form-data, field: image, max 5 MB) → returns { url } |
+
+## Static files
+
+Uploaded images are served at `/uploads/<filename>` (e.g. `http://localhost:5000/uploads/abc.jpg`).
+Files are stored in the `uploads/` directory at the project root.
 
 ## Auth
 
@@ -75,4 +91,7 @@ JWT_SECRET must be ≥ 32 chars — server exits on startup if missing.
 - Validation lives in route files using `express-validator` `body()`
 - Controllers return `{ success: boolean, data/message }` shape consistently
 - Blog categories: `Surf Tips | Sri Lanka | Gear | Lifestyle | News`
-- Package levels: `Beginner | Intermediate | Advanced | Beginner-Advance | Surf Guide`
+- Package levels: `Beginner | Intermediate | Advanced | Beginner-Advance | Surf Guide | Agency`
+- Package fields include optional `description` (string) and `includes` (string array)
+- Booking statuses: `pending | confirmed | cancelled | completed`
+- Booking sources: `form | whatsapp | walk-in`

@@ -19,18 +19,15 @@ const packageValidation = [
     .trim()
     .notEmpty()
     .withMessage('Level is required')
-    .isIn(['Beginner', 'Intermediate', 'Advanced', 'Beginner-Advance', 'Surf Guide'])
+    .isIn(['Beginner', 'Intermediate', 'Advanced', 'Beginner-Advance', 'Surf Guide', 'Agency'])
     .withMessage('Invalid level'),
   body('format').trim().notEmpty().withMessage('Format is required'),
   body('duration').trim().notEmpty().withMessage('Duration is required'),
   body('price').isNumeric().withMessage('Price must be a number').isFloat({ min: 0 }),
   body('priceNote').trim().notEmpty().withMessage('Price note is required'),
-  body('image')
-    .trim()
-    .notEmpty()
-    .withMessage('Image URL is required')
-    .isURL({ protocols: ['http', 'https'], require_protocol: true })
-    .withMessage('Image must be a valid HTTP(S) URL'),
+  body('description').optional().trim().isLength({ max: 1000 }),
+  body('includes').optional().isArray(),
+  body('image').trim().notEmpty().withMessage('Image URL is required'),
 ]
 
 router.get('/', listAll)

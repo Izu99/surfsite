@@ -34,7 +34,7 @@ export default function HomepagePackages() {
             Surf School Programs
           </h2>
           <p className="font-display text-xl text-white/80 mt-3 max-w-md">
-            Every session includes boards, rash guard, sunscreen, water &amp; first aid. No hidden fees.
+            Every session includes boards, rash guard, sunscreen &amp; first aid. No hidden fees.
           </p>
         </div>
 
