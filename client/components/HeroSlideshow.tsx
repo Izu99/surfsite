@@ -44,7 +44,7 @@ export default function HeroSlideshow() {
           <span className="sr-only"> — Surf Lessons Hiriketiya Sri Lanka</span>
         </div>
         <p className="text-white/80 text-base">
-          Catch your wave. Feel the freedom.
+          Catch your waves...
         </p>
         <Link
           href="/contact"
@@ -88,7 +88,7 @@ export default function HeroSlideshow() {
 
             {/* Sub */}
             <p className="text-white/80 text-xl mt-4 mb-8">
-              Catch your wave. Feel the freedom.
+              Catch your waves...
             </p>
 
             {/* Single CTA */}
