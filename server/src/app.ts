@@ -90,15 +90,17 @@ app.use(errorHandler)
 // ── Bootstrap ────────────────────────────────────────────────────
 const PORT = parseInt(process.env.PORT || '5000')
 
+const HOST = process.env.HOST || '127.0.0.1'
+
 async function bootstrap() {
   if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
     console.error('❌  JWT_SECRET is missing or too short (min 32 chars). Exiting.')
     process.exit(1)
   }
   await connectDB()
-  app.listen(PORT, () => {
-    console.log(`🚀  API running at http://localhost:${PORT}`)
-    console.log(`📋  Health: http://localhost:${PORT}/health`)
+  app.listen(PORT, HOST, () => {
+    console.log(`🚀  API running at http://${HOST}:${PORT}`)
+    console.log(`📋  Health: http://${HOST}:${PORT}/health`)
   })
 }
 
