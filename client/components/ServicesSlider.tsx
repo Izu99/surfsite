@@ -147,7 +147,7 @@ export default function ServicesSlider() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 mb-8 text-center">
           <Link
             href="/shop"
             className="inline-flex items-center gap-2 bg-gray-900 text-white px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-primary transition-colors duration-200 cursor-pointer shadow-md group"

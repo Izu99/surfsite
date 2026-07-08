@@ -48,7 +48,21 @@ export default function PackageCard({
             {subtitle && <span className="block font-display text-base text-gray-500">{subtitle}</span>}
           </p>
           {(pkg.shortDescription || pkg.description) && (
-            <p className="text-sm text-gray-500 leading-relaxed">{pkg.shortDescription || pkg.description}</p>
+            (() => {
+              const lines = (pkg.shortDescription || pkg.description).split('\n').filter(Boolean)
+              return lines.length > 1 ? (
+                <ul className="space-y-1">
+                  {lines.map((line, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-500 leading-relaxed">
+                      <span className="text-primary shrink-0">•</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm text-gray-500 leading-relaxed">{lines[0]}</p>
+              )
+            })()
           )}
 
           {(pkg.duration || pkg.format) && (
@@ -68,7 +82,11 @@ export default function PackageCard({
             </div>
           )}
 
-          {readMoreHref ? (
+          {pkg.level === 'Agency' ? (
+            <span className="self-start text-left text-sm font-semibold text-primary">
+              Contact Us
+            </span>
+          ) : readMoreHref ? (
             <Link
               href={readMoreHref}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"

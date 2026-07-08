@@ -33,23 +33,25 @@ export default function PackageCategorySlider({
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-7">
-      <div className="flex flex-wrap items-center gap-2 mb-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
-        <Clock className="h-4 w-4 text-primary shrink-0" />
-        <span className="text-sm font-bold text-gray-900">Session Times:</span>
-        <div className="flex flex-wrap gap-2">
-          {SESSION_TIMES.map((time) => (
-            <span
-              key={time}
-              className="rounded-full bg-primary text-white text-xs font-semibold px-3 py-1"
-            >
-              {time}
-            </span>
-          ))}
+      {!category.hideSessionTimes && (
+        <div className="flex flex-wrap items-center gap-2 mb-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+          <Clock className="h-4 w-4 text-primary shrink-0" />
+          <span className="text-sm font-bold text-gray-900">Session Times:</span>
+          <div className="flex flex-wrap gap-2">
+            {SESSION_TIMES.map((time) => (
+              <span
+                key={time}
+                className="rounded-full bg-primary text-white text-xs font-semibold px-3 py-1"
+              >
+                {time}
+              </span>
+            ))}
+          </div>
+          <span className="w-full text-xs text-gray-500 mt-1">
+            Thank you for arriving on time; we truly appreciate it.
+          </span>
         </div>
-        <span className="w-full text-xs text-gray-500 mt-1">
-          Thank you for arriving on time; we truly appreciate it.
-        </span>
-      </div>
+      )}
 
       <div className="flex items-end justify-between gap-4 mb-5">
         <div>

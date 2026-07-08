@@ -131,7 +131,7 @@ export default function AboutPage() {
             <div className="mt-6 lg:mt-0">
               <div className="relative aspect-[3/2] overflow-hidden rounded-2xl shadow-2xl">
                 <Image
-                  src="/noah-surfing-action.png"
+                  src="/noah-surfing-action.webp"
                   alt="Noah, founder and head instructor at Noah Surf School"
                   fill
                   className="object-cover"

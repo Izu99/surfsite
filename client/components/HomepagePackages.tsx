@@ -44,7 +44,6 @@ export default function HomepagePackages() {
               key={category.key}
               category={category}
               packages={catPackages}
-              readMoreHref="/packages"
             />
           ))}
         </div>

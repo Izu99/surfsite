@@ -56,10 +56,10 @@ const googleReviews = [
     rating: 5,
     date: '3 months ago',
     review: "For sure the best surf instructor we've had. Noah's such a great guy and teaches you everything you need to know from the safety side of surfing to catching great waves. His attention to detail on every wave means by the end of each lesson you feel like you've learnt so much. Book with Noah and you won't be disappointed!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKVk_2d6PuXAy7lVK8z_80njfRDnRI6dZF-YQN2AiuOhTcC-w=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/ollie-yeates.webp',
     link: 'https://share.google/Ri0jmOdX3WZCiZmyA',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn21A124Py4o6zUNKznenvknY920t69wwrx6jcr3b58iu3X-O2XBKOTC6ykXP1t40YnfOYXdUU804asvwpuSI2g2zXqrQ9JsraPmeBhS6cvz5NZ6fCsx9m_R9I9jpAZPasrqefe1p8GfciE=w600-h450-p-k-no',
+      '/reviews/photos/ollie-yeates-1.webp',
     ],
   },
   {
@@ -67,10 +67,10 @@ const googleReviews = [
     rating: 5,
     date: '4 months ago',
     review: 'Had a few amazing surf lessons in Hiriketiya with Noah. He has a very calm and patient way of teaching and explains things in a way even a complete beginner can understand. He paid attention to small details, helped me improve quickly, and even encouraged me to try some slightly bigger waves. Highly recommend him to anyone looking for surf lessons here!',
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjXwma06cGu9OLnlGbhbOnR3YTmeZDyMKWrOODMD5l08wvUX0gI=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/mikko.webp',
     link: 'https://share.google/0bZQp8uWnzT56SUtV',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn2t2AbJCfKB0blmQAnocOAV5naR3rSwTSyKScmS7nk2Fn-W4q_c2tjffma_dF9_uaHTtXv_r1WjXaq_ByzvCDt7rRVineBg07cpgGiqEfKAbi_aRTmzTJNcew2Kc5GWx7J9ab-zvCsEOGjm=w600-h450-p-k-no',
+      '/reviews/photos/mikko-1.webp',
     ],
   },
   {
@@ -78,12 +78,12 @@ const googleReviews = [
     rating: 5,
     date: 'a year ago',
     review: "My 4-year-old daughter had her first-ever surf lesson with Noah, and he was amazing. He was super kind, patient, and made her feel comfortable while introducing her to the basics. The pricing was more than fair, especially considering her age, attention span, and the course length. Fully recommend!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKRXfZ-E6Jl29GzZ5AALRphay9rVmDPcauhgzRCs2HgfC-4jhA=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/peter-zelenay.webp',
     link: 'https://share.google/RA3qdbdyPj0QARe28',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0gA9p9ap86IEc027vrpHHWOq7jbRdbMCogy-VOJD73Rcshkf4O3C_cU_dejbhgWJy3zav847YfTlVRhoTereOFI8DefeqHaO7Y6ad61CJqlwc8huyAtcKvEIoSXgeWsp5vft1H=w300-h450-p-k-no',
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3dxz4kSaAe0Z-WE9hadVsjHzGuh9D2ehwFKW8dhAMLbhCymL948wbE40iswaPCPzpy2hKcaScCAtmsGYTy0Nc7rLbSRBW7IOFgJ0gBoBp6_M1agqSvq8B4kbJUkjUQ4MAlMRU=w300-h225-p-k-no',
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn25f9ElVO4JIlmhYrODvSqVwzIv_K4ox1xf8gNPJZM4EKTh1VaNeoubm0BvM37W_SZ4FQO2IKz-Y42Jf4d6cYGj3KGqoMOO8ZVhZfMGva-mgRpM9fJqhAoJuhB4zGscg-MkNmnLSA=w300-h225-p-k-no',
+      '/reviews/photos/peter-zelenay-1.webp',
+      '/reviews/photos/peter-zelenay-2.webp',
+      '/reviews/photos/peter-zelenay-3.webp',
     ],
   },
   {
@@ -91,11 +91,11 @@ const googleReviews = [
     rating: 5,
     date: 'a year ago',
     review: "My best surf lessons so far: absolute recommendation! Noah speaks very good English and is great at explaining things. He knows exactly where to start and teaches you the really important things so that you get better and better and can eventually catch your own waves. What's more, he's just a very cool and relaxed guy who immediately makes you feel at ease. Thank you Noah!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocI3NSZmg43ujHczBSK2_i-ixesc0H4TnxWLLT6h0kdpxpk2Yg=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/fabienne-b.webp',
     link: 'https://share.google/BnR2ncWQ3m3OjHIw6',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0t-r3LAJfDFIE1WUCyhv6awUL4y2B2m9LFMlNZzt2Qsf_Oaqxit4Dzrs8qblVncxwp6FOQDOwGDdTELE2iw9AnkJzpWLCAQ8Taxijw9eJHI5mU38FET3JpHPwVADZqsUTBHjgYLA=w300-h450-p-k-no',
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3IcvKhPi7lavsBM5mHGmZgqabLDKcr6WHG0tG3Pk5RFLKOnyrOjg1Kyv4183O76riuMpjUyb5zdSkI4SmLhZKdYZjE-qMFEqvTNKhhX6fzrhjvMV_K_ET7mjWUaXeAQw-fmqcb=w300-h450-p-k-no',
+      '/reviews/photos/fabienne-b-1.webp',
+      '/reviews/photos/fabienne-b-2.webp',
     ],
   },
   {
@@ -103,10 +103,10 @@ const googleReviews = [
     rating: 5,
     date: 'a year ago',
     review: "One of the best activities we did in Sri Lanka. What makes this experience unique is Noah. A friendly, easygoing, funny, professional surfer who helped us surf our first wave. Noah takes care of safety. We did stretching together before the lesson. I really enjoyed the theory about the bay, how water flows, what kinds of waves there are. The lesson is long enough for a good price. Noah tried really hard to help us surf the first wave and it worked :) Thank you!",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjUj8JTnYLGmx_EaRMcHr3suAzZD7q5CaOChXUz7ss5l7ooQMpu7=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/michal-vachler.webp',
     link: 'https://share.google/AjmA7LVPabo6X8iF5',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0h4CHnfgM6suoecfsuN2Ai4_OgRJoTfj_I4T84iXUCG_haj_i7wZu2_z60TJzRweXBiRnVQ7M6kSvrpQRE4JqYKoC6bwQVeUdvqapaXRUind8hCOgcxDqwasIOyn9pkZLYiUXk=w600-h450-p-k-no',
+      '/reviews/photos/michal-vachler-1.webp',
     ],
   },
   {
@@ -114,11 +114,11 @@ const googleReviews = [
     rating: 5,
     date: '2 weeks ago',
     review: "Best Surf teacher! I took two surf lessons with Noah, and I felt so incredibly supported — he is such a great instructor. Noah speaks English at a good level and is one of the more experienced surfers and instructors. He focuses on safety, a step-by-step approach, and gives great explanations. And once you are on the board, you know what it means to catch a wave — it's unreal!",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjW9b15-jt9FhHfN7w0TPx24l-YG4cNCVqcQ-kQBSo8VUKFhhayN=w36-h36-p-rp-mo-ba4-br100',
+    avatar: '/reviews/avatars/wendy-schippers.webp',
     link: 'https://share.google/nAzpyaHUnrnUaj2di',
     images: [
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn0w1VC9gkGvR7wN_Ek0TX3b_yhw7qJ1885jhQOV0GN-1-F3YnUtI6cxD6UrklryDfEOQN-Ir3U07JZEBCNowpuSgdi-YJ7PpwNuEN0ENgwpWhnI8Nsln8nq8koN0-q1GiHsnMBr4AvCDvNA=w300-h450-p-k-no',
-      'https://lh3.googleusercontent.com/grass-cs/ANxoTn3MY293czUMBkEuyoULscd4o6c5fj_C1FLgFXn-roMVZFlxoaC-v575MwHf0JiFWFAEr1D75iXGQv5zMxMUtWi-4o9PHF_8xSk0fp1hzz8q937Ce5s5A0tYvWl7l2wP75Hybnl3vYtD4JmV=w300-h450-p-k-no',
+      '/reviews/photos/wendy-schippers-1.webp',
+      '/reviews/photos/wendy-schippers-2.webp',
     ],
   },
   {
@@ -126,7 +126,7 @@ const googleReviews = [
     rating: 5,
     date: '8 months ago',
     review: "Best surf school ever! It was my first time surfing but my boyfriend already surfed a few times in different countries and he also said he had never experienced such good teachers. They take safety very seriously, take you to a beach where the waves are not as rough but still great for surfing, especially for beginners. They really give you one-on-one guidance even when you're with a whole group. Amazing feedback that's really helpful!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocJ6T7einuvwtQKvbHlp0sf-IpPZ7mLsdaEtpB-GaspC3oHFLpc=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/nina-thornton.webp',
     link: 'https://share.google/HqMaFIWAU00h5P4X8',
   },
   {
@@ -134,7 +134,7 @@ const googleReviews = [
     rating: 5,
     date: '9 months ago',
     review: "Noah and his assistant were fantastic instructors! They patiently taught the technique on land first, then guided the kids into the water. They even chose a quieter beach with gentler waves, perfect for young learners. The kids picked up surfing on their very first try! A wonderful experience — highly recommend for a safe, personalized, and fun surfing lesson.",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjUD3jEPX-qDFlnpqhXSaBvu-9rcBgKrd7E-qBzmjeur5SAIbuil=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/hasanthi-de-silva.webp',
     link: 'https://share.google/5Lf6plIWRLW99HWpt',
   },
   {
@@ -142,7 +142,7 @@ const googleReviews = [
     rating: 5,
     date: '9 months ago',
     review: "Epic Experience! 5 stars are not enough 🤙 3 awesome surf coaches for just 4 of us! Always safety first, but still all the fun. They took us to a perfect beginner-friendly beach near Hiri and it was just amazing. Hands down, best surf lesson ever! Thanks to Noah and the crew — you guys rock 🌊🏄‍♂️🔥",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKxCeaaUCo1dN8HbeDBUlt5WGtIiIf0UEoFcYs073GzpGWhig=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/andrea-sodero.webp',
     link: 'https://share.google/eCe7qMoNx4tufKTc8',
   },
   {
@@ -150,7 +150,7 @@ const googleReviews = [
     rating: 5,
     date: '5 months ago',
     review: "We first observed Noah delivering a lesson whilst having our own lesson with another surf school. Switching schools was the best decision we made. Noah was incredibly attentive to all the finer details — patient, informative and an incredibly good instructor which made our lesson both enjoyable and successful. We couldn't recommend Noah highly enough for those wanting to get into surfing in Hiriketiya!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocId5e99bS98G22ZwK6pj_1zgkrbDoPwOkP7laCGe6yD8LTMlQ=w36-h36-p-rp-mo-ba2-br100',
+    avatar: '/reviews/avatars/samuel-durrance.webp',
     link: 'https://share.google/eBLuVzljpX5FO5e9p',
   },
   {
@@ -158,7 +158,7 @@ const googleReviews = [
     rating: 5,
     date: '3 months ago',
     review: "First surf teacher I ever encountered who skipped lessons in bad wave conditions instead of just taking money. Very honest and friendly person. Helped me catch my first waves at the point break in Hiri. I highly recommend him for intermediate surfers — and he'll be great for beginners too!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocIT1Mp2YpLE0OE8-H3uZCDIoN5tC2qVQtt3VT4wMcqRgW2arQ=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/karl-krauss.webp',
     link: 'https://share.google/BFDReTy6fF3C7uVP8',
   },
   {
@@ -166,7 +166,7 @@ const googleReviews = [
     rating: 5,
     date: '5 months ago',
     review: "Noah is a magician. I wanted to try the point break on Hiriketiya beach but as an intermediate surfer, I was nervous. I booked Noah and had one of the best surfs of my life. He is kind, patient and a very skilled instructor. He helped me navigate the reef and catch some fantastic waves. I couldn't recommend him enough for a one-on-one session.",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKT9rwkKyOf8Y3nBhhdACaMx0AIrCSobTQWhU_8ovDV_uWCKQ=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/ashmead-road.webp',
     link: 'https://share.google/Lyd6gKKraV4QDEKCS',
   },
   {
@@ -174,7 +174,7 @@ const googleReviews = [
     rating: 5,
     date: '8 months ago',
     review: "I normally don't write reviews on my trips, but this one deserves it. Noah and his friends are awesome surf teachers. They cover the fundamentals: safety, surf rules and of course the surfing itself. I've taken surf lessons all over the world, but their quality of teaching really surprised me. 100% recommend, 10/10. You won't be disappointed! ✌🏽",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjWVO1sGuoLd0vUAvRV_snLCI0YQ9D1Lv3qPgPi-xAn1bY071oI=w36-h36-p-rp-mo-br100',
+    avatar: '/reviews/avatars/jozef.webp',
     link: 'https://share.google/fACN8BmdmJOjlCNJY',
   },
   {
@@ -182,7 +182,7 @@ const googleReviews = [
     rating: 5,
     date: '2 months ago',
     review: "Noah has been by far the best instructor I've ever had. He took the time to explain not only the technique, but also ocean safety. He has a great eye for spotting what you're doing wrong — follow his advice and you will pop up in no time. His lessons are structured and systematic, almost like he's found the recipe for success. I truly felt like I was in good hands!",
-    avatar: 'https://lh3.googleusercontent.com/a/ACg8ocKNuOE-bznQlMP6h3NV4fMlbkqWjzIyY7J8n7l1fbiPlQHTGQ=w36-h36-p-rp-mo-ba2-br100',
+    avatar: '/reviews/avatars/mightyshroom.webp',
     link: 'https://share.google/5zLKrNAHK2MapANnc',
   },
   {
@@ -190,7 +190,7 @@ const googleReviews = [
     rating: 5,
     date: '2 months ago',
     review: "Noah is an amazing guy. He took great attention to all details, from surfing etiquette in the water to safety. He took time with each mistake I made, explaining it until I understood and corrected it. Just go ahead and give it a try — you will see progress after the first hour together, guaranteed. Noah, keep it up, you're doing a pretty damn good job ❤️",
-    avatar: 'https://lh3.googleusercontent.com/a-/ALV-UjU6Tq57xbTd0ND_TmzoTRXbrQ1IFLid1qMhp8m8-lLpZyyROurq=w36-h36-p-rp-mo-ba12-br100',
+    avatar: '/reviews/avatars/you-sef.webp',
     link: 'https://share.google/tVbQjy1eHF2Gz99Uy',
   },
 ]
@@ -280,7 +280,7 @@ export default function HomePage() {
             {/* Beach image — second on mobile, left (full height) on desktop */}
             <div className="lg:col-start-1 lg:row-start-1 lg:row-span-3">
               <Image
-                src="/hirikatiya-bay.png"
+                src="/hirikatiya-bay.webp"
                 alt="Man and child at Hirikatiya Beach"
                 width={2528}
                 height={1684}
@@ -458,12 +458,14 @@ export default function HomePage() {
 
         {/* 10 ── Noah Collection + CTA wrapped for surfboard positioning ── */}
         <div className="relative">
-          {/* Noah surfboard — right side, starts at card bottom, spans into CTA */}
-          <div className="absolute right-[-20px] top-[650px] pointer-events-none select-none z-10 animate-[float_8s_ease-in-out_infinite]">
-            <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[334px] sm:w-[401px] lg:w-[502px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
-          </div>
-
           <ServicesSlider />
+
+          {/* Noah turtle — sits in a zero-height marker at the ServicesSlider/CTA boundary, with no overflow-clipping ancestor, so the head is never cut off */}
+          <div className="relative h-0">
+            <div className="absolute right-[-20px] -top-16 pointer-events-none select-none z-0 animate-[float_8s_ease-in-out_infinite]">
+              <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[334px] sm:w-[401px] lg:w-[502px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
+            </div>
+          </div>
 
           {/* ── CTA Banner ── */}
           <section className="relative py-24 md:py-32 overflow-hidden">
