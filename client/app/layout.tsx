@@ -100,7 +100,7 @@ const organizationJsonLd = {
   image: `${siteUrl}/logo.png`,
   logo: `${siteUrl}/logo.png`,
   url: siteUrl,
-  telephone: '+94710427241',
+  telephone: '+94713207241',
   email: 'partnerships@noahsurfschool.lk',
   priceRange: '$$',
   address: {
@@ -123,8 +123,9 @@ const organizationJsonLd = {
     closes: '18:00',
   },
   sameAs: [
-    'https://www.instagram.com/hiriketiya_noah_surf_school/',
-    'https://facebook.com/noahsurfschool',
+    'https://www.instagram.com/hiriketiya_noah_surf_school?igsh=MTA5dW1kdGh3MnJiNw==',
+    'https://www.facebook.com/share/19CWBdk9m1/?mibextid=wwXIfr',
+    'https://www.tiktok.com/@noah_surf_hiri?_r=1&_t=ZS-97t3FjESDkT',
     'https://youtube.com/@noahsurfschool',
   ],
 }

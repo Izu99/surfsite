@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const contactInfo = [
   { icon: MapPin, label: 'Address', lines: ['Hirikatiya Beach', 'Southern Province, Sri Lanka'] },
-  { icon: Phone, label: 'Phone', lines: ['+94 71 042 7241'], href: 'tel:+94710427241' },
+  { icon: Phone, label: 'Phone', lines: ['+94 71 320 7241'], href: 'tel:+94713207241' },
   { icon: Clock, label: 'Hours', lines: ['Daily 6:00 am – 6:00 pm', 'Open 365 days a year'] },
 ]
 
@@ -72,7 +72,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
             <div className="flex flex-col gap-6">
-              <a href="https://wa.me/94710427241" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/94713207241" target="_blank" rel="noopener noreferrer"
                 className="flex flex-col items-center text-center p-10 bg-[#25D366] text-white hover:bg-[#20bd5a] transition-all shadow-xl shadow-green-500/20 rounded-2xl group">
                 <div className="h-20 w-20 bg-white/20 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                   <svg className="w-10 h-10 fill-white" viewBox="0 0 24 24">

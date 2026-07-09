@@ -75,7 +75,7 @@ export default function Navbar() {
 
           {/* WhatsApp button */}
           <a
-            href="https://wa.me/94710427241"
+            href="https://wa.me/94713207241"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2 rounded-full text-sm font-bold transition-colors duration-200 shadow-lg shadow-green-500/20 shrink-0 cursor-pointer"
@@ -123,7 +123,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/94710427241"
+            href="https://wa.me/94713207241"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full text-sm font-bold transition-colors duration-200 cursor-pointer"

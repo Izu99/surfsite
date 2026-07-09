@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 }
 
-const WHATSAPP_NUMBER = '94710427241'
+const WHATSAPP_NUMBER = '94713207241'
 
 export default function ShopPage() {
   return (

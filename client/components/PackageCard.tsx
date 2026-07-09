@@ -102,12 +102,6 @@ export default function PackageCard({
             <div className="space-y-3 mt-1">
               <div className="border-t border-gray-100" />
 
-              <div className="flex items-start leading-none gap-0.5">
-                <span className="text-lg font-bold mt-1 text-primary">Rs</span>
-                <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
-                <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
-              </div>
-
               <Link
                 href={`/contact?package=${encodeURIComponent(pkg.name)}`}
                 className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
@@ -188,20 +182,12 @@ export default function PackageCard({
               )}
 
               {pkg.price > 0 && (
-                <>
-                  <div className="flex items-start leading-none gap-0.5">
-                    <span className="text-lg font-bold mt-1 text-primary">Rs</span>
-                    <span className="text-4xl font-extrabold text-primary">{pkg.price}</span>
-                    <span className="text-xs self-end mb-1 ml-1.5 text-gray-400">/ {pkg.priceNote}</span>
-                  </div>
-
-                  <Link
-                    href={`/contact?package=${encodeURIComponent(pkg.name)}`}
-                    className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
-                  >
-                    Book Now
-                  </Link>
-                </>
+                <Link
+                  href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                  className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+                >
+                  Book Now
+                </Link>
               )}
             </div>
           </div>

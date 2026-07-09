@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram, Facebook, Youtube, Users, Star, Award, type LucideIcon } from 'lucide-react'
 import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
+import TikTokIcon from '@/components/icons/TikTokIcon'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Noah Surf School | Hirikatiya Beach, Sri Lanka' },
@@ -36,14 +37,20 @@ const stats: { icon: LucideIcon; number: string; label: string; sub: string }[] 
 const socials = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/hiriketiya_noah_surf_school/',
+    href: 'https://www.instagram.com/hiriketiya_noah_surf_school?igsh=MTA5dW1kdGh3MnJiNw==',
     Icon: Instagram,
     bg: 'border-2 border-gray-900',
   },
   {
     label: 'Facebook',
-    href: 'https://facebook.com/noahsurfschool',
+    href: 'https://www.facebook.com/share/19CWBdk9m1/?mibextid=wwXIfr',
     Icon: Facebook,
+    bg: 'border-2 border-gray-900',
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@noah_surf_hiri?_r=1&_t=ZS-97t3FjESDkT',
+    Icon: TikTokIcon,
     bg: 'border-2 border-gray-900',
   },
   {
@@ -290,7 +297,7 @@ export default function AboutPage() {
               Follow our daily surf sessions, behind-the-scenes moments, and Hirikatiya life on social media.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl lg:max-w-4xl mx-auto">
             {socials.map(({ label, href, Icon, bg }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm hover:-translate-y-1 transition-all group">

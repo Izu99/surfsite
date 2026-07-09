@@ -28,7 +28,18 @@ export default function PackageCategorySlider({
     const card = track.querySelector<HTMLElement>('[data-card]')
     if (!card) return
     const step = card.offsetWidth + 20
-    track.scrollBy({ left: dir === 'next' ? step : -step, behavior: 'smooth' })
+    const maxScroll = track.scrollWidth - track.clientWidth
+
+    const atEnd = dir === 'next' && track.scrollLeft >= maxScroll - step / 2
+    const atStart = dir === 'prev' && track.scrollLeft <= step / 2
+
+    if (atEnd) {
+      track.scrollTo({ left: 0, behavior: 'smooth' })
+    } else if (atStart) {
+      track.scrollTo({ left: maxScroll, behavior: 'smooth' })
+    } else {
+      track.scrollBy({ left: dir === 'next' ? step : -step, behavior: 'smooth' })
+    }
   }, [])
 
   return (
