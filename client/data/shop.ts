@@ -78,5 +78,6 @@ export const services: Service[] = [
     image: 'https://images.unsplash.com/photo-1595389910742-5b5c0e958a11?q=80&w=2070&auto=format&fit=crop',
     alt: 'Rash guard',
     price: 7500,
+    sizes: ALL_SIZES,
   },
 ]
