@@ -4,55 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
-
-export type Service = {
-  title: string
-  description: string
-  image: string
-  alt: string
-  price: number
-}
-
-export const services: Service[] = [
-  {
-    title: 'Cap',
-    description: 'Classic surf cap to keep the sun out of your eyes.',
-    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Surf cap',
-    price: 20,
-  },
-  {
-    title: 'Hat',
-    description: 'Wide-brim beach hat for all-day comfort in the sun.',
-    image: 'https://images.unsplash.com/photo-1561941087-2433c4a0ef12?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Beach hat',
-    price: 20,
-  },
-  {
-    title: 'White Noah Surf Tee',
-    description: 'Soft cotton tee with the Noah Surf School print, Sri Lanka flag patch on front, full back logo.',
-    image: '/shop-tshirt-white.jpeg',
-    alt: 'White Noah Surf t-shirt, front and back',
-    price: 40,
-  },
-  {
-    title: 'Black Noah Surf Tee',
-    description: 'Soft cotton tee with the Noah Surf School print, Sri Lanka flag patch on front, full back logo.',
-    image: '/shop-tshirt-black.jpeg',
-    alt: 'Black Noah Surf t-shirt, front and back',
-    price: 40,
-  },
-  {
-    title: 'Rash Guard',
-    description: 'UV-protective rash guard built for long sessions.',
-    image: 'https://images.unsplash.com/photo-1595389910742-5b5c0e958a11?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Rash guard',
-    price: 40,
-  },
-]
+import { services } from '@/data/shop'
+import { useShopModal } from '@/components/ShopModalContext'
 
 export default function ServicesSlider() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const openShopModal = useShopModal()
 
   const scroll = useCallback((dir: 'prev' | 'next') => {
     const track = trackRef.current
@@ -135,13 +92,14 @@ export default function ServicesSlider() {
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 leading-tight">{service.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed flex-1">{service.description}</p>
-                <Link
-                  href="/contact"
+                <button
+                  type="button"
+                  onClick={openShopModal}
                   className="mt-5 inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-colors duration-200 cursor-pointer self-start"
                 >
                   Shop Now
                   <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                </button>
               </div>
             </div>
           ))}

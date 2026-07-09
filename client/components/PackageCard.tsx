@@ -3,11 +3,11 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { X, Check, Clock, Users, Gift, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
+import { X, Check, Clock, Users, Gift } from 'lucide-react'
 import { INCLUDED_IN_ALL } from '@/data/packages'
-import { services } from '@/components/ServicesSlider'
 import type { SurfPackage } from '@/lib/api'
 import { splitPackageName } from '@/lib/utils'
+import { useShopModal } from '@/components/ShopModalContext'
 
 export default function PackageCard({
   pkg,
@@ -20,12 +20,7 @@ export default function PackageCard({
 }) {
   const { title, subtitle } = splitPackageName(pkg.name)
   const [open, setOpen] = useState(false)
-  const [collectionOpen, setCollectionOpen] = useState(false)
-  const [slideIndex, setSlideIndex] = useState(0)
-
-  const nextSlide = () => setSlideIndex((i) => (i + 1) % services.length)
-  const prevSlide = () => setSlideIndex((i) => (i - 1 + services.length) % services.length)
-  const activeService = services[slideIndex]
+  const openShopModal = useShopModal()
   const includes = pkg.includes?.length ? pkg.includes : INCLUDED_IN_ALL
 
   return (
@@ -123,10 +118,7 @@ export default function PackageCard({
               {showCollection && (
                 <button
                   type="button"
-                  onClick={() => {
-                    setSlideIndex(0)
-                    setCollectionOpen(true)
-                  }}
+                  onClick={openShopModal}
                   className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
                 >
                   Noah Collection
@@ -211,91 +203,6 @@ export default function PackageCard({
                   </Link>
                 </>
               )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {collectionOpen && (
-        <div
-          className="fixed inset-0 z-40 flex items-start justify-center overflow-y-auto bg-black/50 p-4 pt-[88px]"
-          onClick={() => setCollectionOpen(false)}
-        >
-          <div
-            className="bg-white rounded-2xl max-w-lg w-full max-h-[calc(100vh-104px)] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative h-48 sm:h-64 shrink-0">
-              <Image
-                src={activeService.image}
-                alt={activeService.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 512px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
-
-              <button
-                type="button"
-                onClick={() => setCollectionOpen(false)}
-                aria-label="Close"
-                className="absolute top-3 right-3 h-8 w-8 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
-              >
-                <X className="h-4 w-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={prevSlide}
-                aria-label="Previous"
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next"
-                className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:text-primary cursor-pointer"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-
-              <div className="absolute bottom-4 left-5">
-                <p className="inline-block bg-gray-700/60 text-white text-lg font-bold px-2.5 py-1 rounded-md">
-                  {activeService.title}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 space-y-4">
-              <p className="text-2xl font-bold text-primary">The Noah Collection</p>
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
-                You can buy these from our online shop
-              </p>
-              <p className="text-sm text-gray-500 leading-relaxed">{activeService.description}</p>
-
-              <div className="flex items-center justify-center gap-2">
-                {services.map((service, i) => (
-                  <button
-                    key={service.title}
-                    type="button"
-                    onClick={() => setSlideIndex(i)}
-                    aria-label={`Go to ${service.title}`}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
-                      i === slideIndex ? 'w-6 bg-primary' : 'w-2 bg-gray-200'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Link
-                href="/shop"
-                className="inline-flex items-center justify-center gap-2 w-full px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors bg-primary text-white hover:bg-primary-dark"
-              >
-                Shop The Collection
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
             </div>
           </div>
         </div>

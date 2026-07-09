@@ -11,6 +11,7 @@ import GoogleTranslate from './GoogleTranslate'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/packages', label: 'Packages' },
+  { href: '/shop', label: 'Shop' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '/gallery', label: 'Gallery' },

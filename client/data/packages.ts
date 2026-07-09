@@ -75,7 +75,7 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
     featured: false,
     published: true,
     order: 1,
-    image: '/gallery-beach-friends.jpeg',
+    image: '/beginner-fun-lesson-group.webp',
     createdAt: '2026-06-22T00:00:00.000Z',
     updatedAt: '2026-06-22T00:00:00.000Z',
   },
@@ -115,7 +115,7 @@ export const HARDCODED_PACKAGES: SurfPackage[] = [
     level: 'Beginner',
     format: '',
     duration: '2 hours',
-    price: 7500,
+    price: 10000,
     priceNote: 'per session',
     description:
       "This lesson is special for people who have never surfed before. In this lesson you can learn more theory and get a lot more fun than our other lessons because we provide two hours.",
