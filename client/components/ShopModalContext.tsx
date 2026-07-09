@@ -63,7 +63,9 @@ export function ShopModalProvider({ children }: { children: React.ReactNode }) {
                   </div>
                   <p className="mt-2 text-sm font-bold text-gray-900">{service.title}</p>
                   <p className="text-sm font-semibold text-primary">Rs {service.price.toLocaleString()}</p>
-                  <p className="text-xs text-gray-400">Sizes: {service.sizes.join(', ')}</p>
+                  {service.sizes && (
+                    <p className="text-xs text-gray-400">Sizes: {service.sizes.join(', ')}</p>
+                  )}
                 </div>
               ))}
             </div>

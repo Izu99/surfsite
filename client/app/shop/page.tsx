@@ -70,16 +70,18 @@ export default function ShopPage() {
                       {service.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-1.5">
-                      {service.sizes.map((size) => (
-                        <span
-                          key={size}
-                          className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600"
-                        >
-                          {size}
-                        </span>
-                      ))}
-                    </div>
+                    {service.sizes && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {service.sizes.map((size) => (
+                          <span
+                            key={size}
+                            className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600"
+                          >
+                            {size}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     <div className="border-t border-gray-100 pt-3">
                       <div className="flex items-start leading-none gap-0.5 mb-4">

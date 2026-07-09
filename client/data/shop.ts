@@ -4,7 +4,7 @@ export type Service = {
   image: string
   alt: string
   price: number
-  sizes: string[]
+  sizes?: string[]
 }
 
 const ALL_SIZES = ['S', 'M', 'L', 'XL', 'XXL']
@@ -16,7 +16,6 @@ export const services: Service[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2070&auto=format&fit=crop',
     alt: 'Surf cap',
     price: 5000,
-    sizes: ALL_SIZES,
   },
   {
     title: 'Hat',
@@ -24,7 +23,6 @@ export const services: Service[] = [
     image: 'https://images.unsplash.com/photo-1561941087-2433c4a0ef12?q=80&w=2070&auto=format&fit=crop',
     alt: 'Beach hat',
     price: 7500,
-    sizes: ALL_SIZES,
   },
   {
     title: 'White Noah Surf Tee',
@@ -80,6 +78,5 @@ export const services: Service[] = [
     image: 'https://images.unsplash.com/photo-1595389910742-5b5c0e958a11?q=80&w=2070&auto=format&fit=crop',
     alt: 'Rash guard',
     price: 7500,
-    sizes: ALL_SIZES,
   },
 ]
