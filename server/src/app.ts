@@ -26,6 +26,13 @@ import { errorHandler, notFound } from './middleware/errorHandler'
 
 const app = express()
 
+// Trust exactly one hop: the local nginx reverse proxy in front of this app.
+// nginx's real_ip module already resolves the true client IP from Cloudflare's
+// CF-Connecting-IP header before setting X-Forwarded-For, so Express only
+// needs to trust that one immediate proxy to read the real client IP —
+// required for express-rate-limit to key limits by client IP correctly.
+app.set('trust proxy', 1)
+
 // ── Security ────────────────────────────────────────────────────
 app.use(helmet())
 app.use(
