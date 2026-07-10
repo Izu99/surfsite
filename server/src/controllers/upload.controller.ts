@@ -1,11 +1,17 @@
 import { Request, Response, NextFunction } from 'express'
+import fs from 'fs'
 import path from 'path'
 import multer, { FileFilterCallback } from 'multer'
 import { v4 as uuidv4 } from 'uuid'
 
+const uploadsDir = path.join(process.cwd(), 'uploads')
+
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, path.join(process.cwd(), 'uploads'))
+    // Create on demand — the directory is gitignored (its contents are
+    // runtime-only) and may not exist yet on a fresh deploy/clone.
+    fs.mkdirSync(uploadsDir, { recursive: true })
+    cb(null, uploadsDir)
   },
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase()

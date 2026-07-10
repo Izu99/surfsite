@@ -22,9 +22,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Local env files
-.env*.local
+# Env files — all variants (.env, .env.local, .env.production, etc).
+# Never commit these; each environment (dev machine, VPS) sets its own.
 .env
+.env.*
 
 # Vercel
 .vercel

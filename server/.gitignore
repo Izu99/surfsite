@@ -2,7 +2,8 @@ node_modules/
 dist/
 .env
 *.log
-uploads/
-
-# Runtime uploads stay local — keep the empty dir so multer can write
+# Runtime uploads stay local — ignore contents (not the directory itself,
+# git can't un-ignore a file inside an ignored dir) so multer's target
+# folder exists in a fresh clone.
+uploads/*
 !uploads/.gitkeep
