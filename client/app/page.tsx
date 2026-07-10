@@ -462,7 +462,7 @@ export default function HomePage() {
 
           {/* Noah turtle — sits in a zero-height marker at the ServicesSlider/CTA boundary, with no overflow-clipping ancestor, so the head is never cut off */}
           <div className="relative h-0">
-            <div className="absolute right-[-20px] -top-16 pointer-events-none select-none z-0 animate-[float_8s_ease-in-out_infinite]">
+            <div className="absolute right-[-20px] -top-36 pointer-events-none select-none z-0 animate-[float_8s_ease-in-out_infinite]">
               <Image src="/decor-new.png" alt="" width={572} height={572} className="w-[334px] sm:w-[401px] lg:w-[502px] h-auto opacity-95 drop-shadow-lg rotate-[15deg]" aria-hidden />
             </div>
           </div>

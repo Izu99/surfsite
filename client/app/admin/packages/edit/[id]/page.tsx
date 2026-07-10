@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ChevronLeft, Check, LayoutDashboard, AlertCircle } from 'lucide-react'
 import { adminPackageApi, type PackageInput } from '@/lib/api'
 import { cn } from '@/lib/utils'
+import ImageUploadField from '@/components/ImageUploadField'
 
 const LEVELS = ['Beginner', 'Intermediate', 'Surf Guide', 'Agency'] as const
 
@@ -17,6 +18,7 @@ type FormData = {
   price: string
   priceNote: string
   description: string
+  shortDescription: string
   includes: string
   image: string
   souvenir: boolean
@@ -96,6 +98,7 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
           price: String(pkg.price),
           priceNote: pkg.priceNote,
           description: pkg.description ?? '',
+          shortDescription: pkg.shortDescription ?? '',
           includes: (pkg.includes ?? []).join('\n'),
           image: pkg.image,
           souvenir: pkg.souvenir,
@@ -146,6 +149,7 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
         price: Number(form.price),
         priceNote: form.priceNote.trim(),
         description: form.description.trim(),
+        shortDescription: form.shortDescription.trim(),
         includes: form.includes.split('\n').map((s) => s.trim()).filter(Boolean),
         image: form.image.trim(),
         souvenir: form.souvenir,
@@ -278,9 +282,18 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
                 </Field>
               </div>
 
-              <Field label="Description" hint="shown under the price on the card">
+              <Field label="Short Description" hint="shown on the card in the packages grid — keep it brief">
                 <textarea
                   rows={2}
+                  value={form.shortDescription}
+                  onChange={(e) => set('shortDescription', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
+
+              <Field label="Full Description" hint="shown in the package popup">
+                <textarea
+                  rows={4}
                   value={form.description}
                   onChange={(e) => set('description', e.target.value)}
                   className={inputCls(false)}
@@ -302,7 +315,7 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Pricing</h2>
 
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Price (USD)" error={errors.price}>
+                <Field label="Price (Rs)" error={errors.price}>
                   <input
                     type="number"
                     min="0"
@@ -327,20 +340,14 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
             {/* Cover Image */}
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-5">Cover Image</h2>
-              <Field label="Image URL" error={errors.image}>
-                <input
-                  type="url"
+              <Field label="Image" hint="upload a file or paste a URL">
+                <ImageUploadField
                   value={form.image}
-                  onChange={(e) => set('image', e.target.value)}
-                  className={inputCls(!!errors.image)}
+                  onChange={(url) => set('image', url)}
+                  error={errors.image}
+                  inputCls={inputCls}
                 />
               </Field>
-              {form.image && (
-                <div className="mt-3 h-40 rounded-xl overflow-hidden bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={form.image} alt="Preview" className="w-full h-full object-cover" />
-                </div>
-              )}
             </div>
 
             {/* Options */}

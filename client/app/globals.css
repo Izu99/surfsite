@@ -83,24 +83,33 @@
 
 @keyframes bubble-rise {
   0% {
-    transform: translateY(0) scale(0.85);
+    transform: translateY(0) scale(0.7);
     opacity: 0;
   }
-  12% {
+  10% {
     opacity: 1;
   }
-  80% {
-    opacity: 0.8;
+  85% {
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(calc(-1 * var(--rise, 320px))) scale(1.15);
+    transform: translateY(calc(-1 * var(--rise, 320px))) scale(1.08);
     opacity: 0;
   }
 }
 
 @keyframes bubble-sway {
   0%, 100% { margin-left: 0px; }
-  50%      { margin-left: var(--sway, 12px); }
+  35%      { margin-left: var(--sway, 12px); }
+  70%      { margin-left: calc(var(--sway, 12px) * -0.25); }
+}
+
+/* Organic squash-and-stretch — percentage radii scale with bubble size,
+   so tiny bubbles stay near-spherical like real ones */
+@keyframes bubble-wobble {
+  0%, 100% { border-radius: 50%; }
+  30% { border-radius: 48% 52% 51% 49% / 52% 48% 51% 49%; }
+  60% { border-radius: 52% 48% 49% 51% / 49% 51% 48% 52%; }
 }
 
 .bubble {
@@ -108,7 +117,38 @@
   bottom: 0;
   border-radius: 50%;
   pointer-events: none;
-  animation: bubble-rise 9s ease-in infinite, bubble-sway 4s ease-in-out infinite;
+  /* Glassy body with a blue tint + blue rim — stays visible over the light
+     sections above the footer while still reading as water */
+  background: radial-gradient(
+    circle at 33% 28%,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(191, 219, 254, 0.15) 24%,
+    rgba(96, 165, 250, 0.12) 48%,
+    rgba(59, 130, 246, 0.22) 78%,
+    rgba(37, 99, 235, 0.5) 93%,
+    rgba(147, 197, 253, 0.65) 100%
+  );
+  box-shadow:
+    inset -2px -3px 6px rgba(191, 219, 254, 0.5),
+    inset 1px 2px 3px rgba(255, 255, 255, 0.35),
+    0 0 3px rgba(59, 130, 246, 0.35);
+  backdrop-filter: blur(0.5px);
+  animation:
+    bubble-rise 9s ease-in infinite,
+    bubble-sway 4s ease-in-out infinite,
+    bubble-wobble 3s ease-in-out infinite;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 30%;
+  height: 24%;
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 /* Google Translate widget — Google injects a top banner iframe that pushes the page down; hide it */

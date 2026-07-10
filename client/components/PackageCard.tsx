@@ -84,6 +84,7 @@ export default function PackageCard({
           ) : readMoreHref ? (
             <Link
               href={readMoreHref}
+              aria-label={`Read more about ${pkg.name}`}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
             >
               Read More
@@ -92,6 +93,7 @@ export default function PackageCard({
             <button
               type="button"
               onClick={() => setOpen(true)}
+              aria-label={`Read more about ${pkg.name}`}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
             >
               Read More
@@ -101,6 +103,11 @@ export default function PackageCard({
           {pkg.price > 0 && (
             <div className="space-y-3 mt-1">
               <div className="border-t border-gray-100" />
+
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-2xl font-extrabold text-primary">Rs {pkg.price.toLocaleString()}</span>
+                {pkg.priceNote && <span className="text-xs text-gray-400">/ {pkg.priceNote}</span>}
+              </div>
 
               <Link
                 href={`/contact?package=${encodeURIComponent(pkg.name)}`}
@@ -182,12 +189,19 @@ export default function PackageCard({
               )}
 
               {pkg.price > 0 && (
-                <Link
-                  href={`/contact?package=${encodeURIComponent(pkg.name)}`}
-                  className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
-                >
-                  Book Now
-                </Link>
+                <>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-2xl font-extrabold text-primary">Rs {pkg.price.toLocaleString()}</span>
+                    {pkg.priceNote && <span className="text-xs text-gray-400">/ {pkg.priceNote}</span>}
+                  </div>
+
+                  <Link
+                    href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                    className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+                  >
+                    Book Now
+                  </Link>
+                </>
               )}
             </div>
           </div>

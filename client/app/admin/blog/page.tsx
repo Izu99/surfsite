@@ -251,7 +251,7 @@ export default function AdminBlogPage() {
                       title={post.published ? 'Move to Draft' : 'Publish'}
                       className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-primary-50 transition-colors"
                     >
-                      {post.published ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {post.published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                     </button>
                     <button
                       onClick={() => router.push(`/admin/blog/edit/${post._id}`)}

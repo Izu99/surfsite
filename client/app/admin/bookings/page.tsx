@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import {
   LayoutDashboard,
   Calendar,
@@ -14,125 +14,24 @@ import {
   MessageSquare,
   ChevronDown,
   Search,
+  Trash2,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { Booking } from '@/lib/api'
+import { adminBookingApi, type Booking } from '@/lib/api'
 
-// ─── Hardcoded demo data ──────────────────────────────────────────────────────
-const DEMO_BOOKINGS: Booking[] = [
-  {
-    _id: '1',
-    name: 'Emma Johnson',
-    email: 'emma.johnson@email.com',
-    phone: '+44 7700 900123',
-    packageName: 'Beginner Group Lesson',
-    sessionDate: '2026-04-20',
-    sessionTime: '08:00 AM',
-    groupSize: 2,
-    notes: 'First time surfing. Excited!',
-    status: 'confirmed',
-    source: 'form',
-    createdAt: '2026-04-17T06:30:00Z',
-  },
-  {
-    _id: '2',
-    name: 'Lucas Weber',
-    email: 'lucas.weber@gmail.com',
-    phone: '+49 151 12345678',
-    packageName: 'Private Lesson — 1 Hour',
-    sessionDate: '2026-04-21',
-    sessionTime: '10:00 AM',
-    groupSize: 1,
-    notes: 'Intermediate surfer, wants to work on cutbacks.',
-    status: 'pending',
-    source: 'whatsapp',
-    createdAt: '2026-04-17T08:15:00Z',
-  },
-  {
-    _id: '3',
-    name: 'Aisha Patel',
-    email: 'aisha.p@outlook.com',
-    phone: '+61 412 345 678',
-    packageName: '3-Day Surf Camp',
-    sessionDate: '2026-04-22',
-    sessionTime: '07:00 AM',
-    groupSize: 4,
-    notes: 'Family booking — 2 adults, 2 children (ages 10 & 12).',
-    status: 'confirmed',
-    source: 'form',
-    createdAt: '2026-04-16T14:20:00Z',
-  },
-  {
-    _id: '4',
-    name: 'Marco Rossi',
-    email: 'marco.rossi@libero.it',
-    phone: '+39 333 123 4567',
-    packageName: 'Semi-Private Lesson',
-    sessionDate: '2026-04-19',
-    sessionTime: '09:00 AM',
-    groupSize: 2,
-    notes: '',
-    status: 'completed',
-    source: 'walk-in',
-    createdAt: '2026-04-14T11:00:00Z',
-  },
-  {
-    _id: '5',
-    name: 'Sofia Lindqvist',
-    email: 'sofia.l@hotmail.se',
-    phone: '+46 70 123 45 67',
-    packageName: 'Beginner Group Lesson',
-    sessionDate: '2026-04-18',
-    sessionTime: '08:00 AM',
-    groupSize: 1,
-    notes: 'Prefers female instructor if available.',
-    status: 'cancelled',
-    source: 'form',
-    createdAt: '2026-04-15T09:45:00Z',
-  },
-  {
-    _id: '6',
-    name: 'Ryan Thompson',
-    email: 'ryan.t@icloud.com',
-    phone: '+1 555 234 5678',
-    packageName: 'Advanced Coaching Session',
-    sessionDate: '2026-04-23',
-    sessionTime: '06:30 AM',
-    groupSize: 1,
-    notes: 'Experienced surfer, competing next month.',
-    status: 'pending',
-    source: 'whatsapp',
-    createdAt: '2026-04-17T10:00:00Z',
-  },
-  {
-    _id: '7',
-    name: 'Priya Nair',
-    email: 'priya.nair@gmail.com',
-    phone: '+91 98765 43210',
-    packageName: 'Private Lesson — 1 Hour',
-    sessionDate: '2026-04-24',
-    sessionTime: '11:00 AM',
-    groupSize: 1,
-    notes: '',
-    status: 'confirmed',
-    source: 'form',
-    createdAt: '2026-04-17T12:00:00Z',
-  },
-  {
-    _id: '8',
-    name: 'Oliver Müller',
-    email: 'o.mueller@web.de',
-    phone: '+49 170 9876543',
-    packageName: '3-Day Surf Camp',
-    sessionDate: '2026-04-25',
-    sessionTime: '07:00 AM',
-    groupSize: 3,
-    notes: 'Corporate team building group.',
-    status: 'pending',
-    source: 'form',
-    createdAt: '2026-04-16T16:30:00Z',
-  },
-]
+function Toast({ message, type }: { message: string; type: 'success' | 'error' }) {
+  return (
+    <div
+      className={cn(
+        'fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium shadow-lg',
+        type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white',
+      )}
+    >
+      {type === 'success' ? <Check className="h-4 w-4" /> : <AlertCircle className="h-4 w-4" />}
+      {message}
+    </div>
+  )
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const STATUS_STYLES: Record<Booking['status'], string> = {
@@ -155,8 +54,11 @@ const SOURCE_STYLES: Record<Booking['source'], string> = {
   'walk-in': 'bg-purple-50 text-purple-700',
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('en-GB', {
+function formatDate(value: string) {
+  const d = new Date(value)
+  // Session dates from the public form may be free text like "Flexible"
+  if (isNaN(d.getTime())) return value
+  return d.toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -167,10 +69,33 @@ const STATUSES: Array<Booking['status'] | 'All'> = ['All', 'pending', 'confirmed
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function AdminBookingsPage() {
-  const [bookings, setBookings] = useState<Booking[]>(DEMO_BOOKINGS)
+  const [bookings, setBookings] = useState<Booking[]>([])
+  const [mounted, setMounted] = useState(false)
   const [statusFilter, setStatusFilter] = useState<Booking['status'] | 'All'>('All')
   const [search, setSearch] = useState('')
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type })
+    setTimeout(() => setToast(null), 3000)
+  }
+
+  const fetchBookings = useCallback(async () => {
+    try {
+      const res = await adminBookingApi.list({ limit: 100 })
+      setBookings(res.data)
+    } catch {
+      setToast({ message: 'Failed to load bookings.', type: 'error' })
+      setTimeout(() => setToast(null), 3000)
+    } finally {
+      setMounted(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchBookings()
+  }, [fetchBookings])
 
   const filtered = useMemo(() => {
     let result = bookings
@@ -198,13 +123,33 @@ export default function AdminBookingsPage() {
     [bookings],
   )
 
-  const updateStatus = (id: string, status: Booking['status']) => {
-    setBookings((prev) => prev.map((b) => (b._id === id ? { ...b, status } : b)))
-    setExpandedId(null)
+  const updateStatus = async (id: string, status: Booking['status']) => {
+    try {
+      const res = await adminBookingApi.updateStatus(id, status)
+      setBookings((prev) => prev.map((b) => (b._id === id ? res.data : b)))
+      setExpandedId(null)
+      showToast(`Booking ${STATUS_LABELS[status].toLowerCase()}.`)
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : 'Failed to update booking.', 'error')
+    }
+  }
+
+  const deleteBooking = async (id: string) => {
+    if (!window.confirm('Delete this booking permanently?')) return
+    try {
+      await adminBookingApi.delete(id)
+      setBookings((prev) => prev.filter((b) => b._id !== id))
+      setExpandedId(null)
+      showToast('Booking deleted.')
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : 'Failed to delete booking.', 'error')
+    }
   }
 
   return (
     <>
+      {toast && <Toast message={toast.message} type={toast.type} />}
+
       {/* ── Admin header ── */}
       <div className="bg-[#1a2e4a] border-b border-white/10">
         <div className="container-site py-6 flex items-center justify-between gap-4">
@@ -277,10 +222,18 @@ export default function AdminBookingsPage() {
           </div>
 
           {/* ── Table ── */}
-          {filtered.length === 0 ? (
+          {!mounted ? (
+            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-12 flex justify-center">
+              <span className="h-8 w-8 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+            </div>
+          ) : filtered.length === 0 ? (
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-12 text-center">
               <AlertCircle className="h-10 w-10 text-gray-300 mx-auto mb-3" />
-              <p className="text-gray-400">No bookings found.</p>
+              <p className="text-gray-400">
+                {bookings.length === 0
+                  ? 'No bookings yet. New booking requests from the website will appear here.'
+                  : 'No bookings found.'}
+              </p>
               {search && (
                 <button
                   onClick={() => setSearch('')}
@@ -497,6 +450,13 @@ export default function AdminBookingsPage() {
                             Confirm Booking
                           </button>
                         )}
+                        <button
+                          onClick={() => deleteBooking(booking._id)}
+                          className="flex items-center gap-2 bg-white border border-red-200 text-red-600 px-4 py-2 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors ml-auto"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Delete
+                        </button>
                       </div>
                     </div>
                   )}

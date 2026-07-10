@@ -2,3 +2,7 @@ node_modules/
 dist/
 .env
 *.log
+uploads/
+
+# Runtime uploads stay local — keep the empty dir so multer can write
+!uploads/.gitkeep

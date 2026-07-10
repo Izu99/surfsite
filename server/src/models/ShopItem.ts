@@ -6,6 +6,7 @@ export interface IShopItem extends Document {
   image: string
   alt: string
   price: number
+  sizes: string[]
   published: boolean
   order: number
 }
@@ -17,6 +18,7 @@ const shopItemSchema = new Schema<IShopItem>(
     image: { type: String, required: true, trim: true },
     alt: { type: String, required: true, trim: true },
     price: { type: Number, required: true, min: 0 },
+    sizes: { type: [String], default: [] },
     published: { type: Boolean, default: false },
     order: { type: Number, default: 0 },
   },

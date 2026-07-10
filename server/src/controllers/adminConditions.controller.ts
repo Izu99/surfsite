@@ -46,3 +46,19 @@ export async function updateConditions(
     next(err)
   }
 }
+
+/**
+ * DELETE /api/admin/conditions
+ */
+export async function deleteConditions(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    await SurfConditions.deleteMany({})
+    res.json({ success: true, message: 'Conditions reset' })
+  } catch (err) {
+    next(err)
+  }
+}

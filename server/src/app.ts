@@ -19,6 +19,8 @@ import shopItemRoutes from './routes/shopItem.routes'
 import adminShopItemRoutes from './routes/adminShopItem.routes'
 import bookingRoutes from './routes/booking.routes'
 import adminBookingRoutes from './routes/adminBooking.routes'
+import faqRoutes from './routes/faq.routes'
+import adminFaqRoutes from './routes/adminFaq.routes'
 import uploadRoutes from './routes/upload.routes'
 import { errorHandler, notFound } from './middleware/errorHandler'
 
@@ -62,7 +64,18 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // ── Static files (uploaded images) ──────────────────────────────
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')))
+// helmet's default Cross-Origin-Resource-Policy: same-origin blocks the
+// client (a different origin) from rendering these images directly via
+// <img src>. Relax it to cross-origin for this route only — the rest of
+// the API keeps helmet's stricter defaults.
+app.use(
+  '/uploads',
+  (req, res, next) => {
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin')
+    next()
+  },
+  express.static(path.join(process.cwd(), 'uploads')),
+)
 
 // ── Health check ─────────────────────────────────────────────────
 app.get('/health', (_req, res) => {
@@ -81,6 +94,8 @@ app.use('/api/shop', apiLimiter, shopItemRoutes)
 app.use('/api/admin/shop', apiLimiter, adminShopItemRoutes)
 app.use('/api/bookings', apiLimiter, bookingRoutes)
 app.use('/api/admin/bookings', apiLimiter, adminBookingRoutes)
+app.use('/api/faqs', apiLimiter, faqRoutes)
+app.use('/api/admin/faqs', apiLimiter, adminFaqRoutes)
 app.use('/api/admin/upload', apiLimiter, uploadRoutes)
 
 // ── Error handling ───────────────────────────────────────────────

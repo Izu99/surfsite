@@ -101,7 +101,7 @@ const organizationJsonLd = {
   logo: `${siteUrl}/logo.png`,
   url: siteUrl,
   telephone: '+94713207241',
-  email: 'partnerships@noahsurfschool.lk',
+  email: 'noahsurfhiriketiya2@gmail.com',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

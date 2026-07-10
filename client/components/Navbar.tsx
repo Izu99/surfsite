@@ -22,6 +22,9 @@ export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
+
   // Lock body scroll when mobile menu is open — prevents iOS viewport bounce
   // and overscroll from making the fixed header jump off-screen on the homepage.
   useEffect(() => {
@@ -56,7 +59,7 @@ export default function Navbar() {
                   href={href}
                   className={cn(
                     'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer',
-                    pathname === href
+                    isActive(href)
                       ? 'bg-primary/20 text-primary-light'
                       : 'text-white/85 hover:text-white hover:bg-white/10'
                   )}
@@ -114,7 +117,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={cn(
                 'px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer',
-                pathname === href
+                isActive(href)
                   ? 'bg-primary/20 text-primary-light'
                   : 'text-white/85 hover:bg-white/10 hover:text-white'
               )}

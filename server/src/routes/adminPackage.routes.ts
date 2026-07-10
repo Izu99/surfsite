@@ -26,8 +26,13 @@ const packageValidation = [
   body('price').isNumeric().withMessage('Price must be a number').isFloat({ min: 0 }),
   body('priceNote').trim().notEmpty().withMessage('Price note is required'),
   body('description').optional().trim().isLength({ max: 1000 }),
+  body('shortDescription').optional().trim(),
   body('includes').optional().isArray(),
-  body('image').trim().notEmpty().withMessage('Image URL is required'),
+  body('image')
+    .trim()
+    .notEmpty().withMessage('Image is required')
+    .custom((value: string) => value.startsWith('/') || /^https?:\/\/\S+$/.test(value))
+    .withMessage('Image must be an uploaded file path or a valid http(s) URL'),
 ]
 
 router.get('/', listAll)

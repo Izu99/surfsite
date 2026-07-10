@@ -16,20 +16,36 @@ export const metadata: Metadata = {
   },
 }
 
-type Photo = { src: string; alt: string; tag: string; wide?: boolean; tall?: boolean }
+type Photo = { src: string; alt: string; tag: string; width: number; height: number }
 
 const photos: Photo[] = [
-  { src: '/2024-09-14.webp', alt: 'Noah at Hirikatiya Beach', tag: 'People', wide: true },
-  { src: '/2024-09-14 (1).webp', alt: 'Noah surf school owner', tag: 'People', tall: true },
-  { src: '/unnamed.webp', alt: 'Surf school at Hirikatiya Beach', tag: 'Lessons', wide: true },
-  { src: '/unnamed (1).webp', alt: 'Surfing at Hirikatiya', tag: 'Action' },
-  { src: '/unnamed (2).webp', alt: 'Hirikatiya Beach Sri Lanka', tag: 'Beach' },
-  { src: '/unnamed (3).webp', alt: 'Surf lesson session', tag: 'Lessons' },
-  { src: '/unnamed (4).webp', alt: 'Surfing waves at Hirikatiya', tag: 'Action', tall: true },
-  { src: '/unnamed (5).webp', alt: 'Noah surf school beach', tag: 'Beach' },
-  { src: '/unnamed (6).webp', alt: 'Surf coaching Hirikatiya', tag: 'Lessons' },
-  { src: '/unnamed (7).webp', alt: 'Surfing at sunset Hirikatiya', tag: 'Action', wide: true },
+  { src: '/gallery-instructor-students-shoreline.jpeg', alt: 'Instructor guiding students along the shoreline', tag: 'Lessons', width: 960, height: 1280 },
+  { src: '/gallery-group-lesson.jpeg', alt: 'Group surf lesson at Hirikatiya Beach', tag: 'Lessons', width: 1280, height: 960 },
+  { src: '/gallery-instructor-portrait-bw.jpeg', alt: 'Portrait of a Noah Surf School instructor', tag: 'People', width: 869, height: 1280 },
+  { src: '/gallery-trio-longboard.jpeg', alt: 'Three surfers with a longboard', tag: 'Action', width: 960, height: 1280 },
+  { src: '/gallery-beach-friends.jpeg', alt: 'Friends relaxing on the beach', tag: 'Beach', width: 960, height: 1280 },
+  { src: '/gallery-student-portrait.jpeg', alt: 'Student smiling after a surf lesson', tag: 'People', width: 1280, height: 853 },
+  { src: '/gallery-instructor-with-kids.jpeg', alt: 'Instructor teaching kids to surf', tag: 'Lessons', width: 960, height: 1280 },
+  { src: '/gallery-sunset-soft-top-boards.jpeg', alt: 'Soft-top surfboards lined up at sunset', tag: 'Beach', width: 960, height: 1280 },
+  { src: '/gallery-instructor-young-surfer.jpeg', alt: 'Instructor coaching a young surfer', tag: 'Action', width: 960, height: 1280 },
+  { src: '/gallery-team-celebration.jpeg', alt: 'The Noah Surf School team celebrating', tag: 'Action', width: 960, height: 1280 },
+  { src: '/gallery-instructor-tee-bw.jpeg', alt: 'Instructor wearing a Noah Surf School tee', tag: 'People', width: 1280, height: 1244 },
 ]
+
+// Bento cell sizing: column span reflects orientation (landscape gets 2 cols),
+// row span is derived from each photo's real aspect ratio so cells never force
+// a crop that fights the image (that's what was cutting off heads before).
+const COL_BASIS = 220
+const GAP = 12
+const ROW_UNIT = 8
+
+function cellSpans(photo: Photo) {
+  const ratio = photo.width / photo.height
+  const colSpan = ratio > 1.2 ? 2 : 1
+  const cellWidth = COL_BASIS * colSpan + GAP * (colSpan - 1)
+  const rowSpan = Math.round(cellWidth / ratio / ROW_UNIT)
+  return { colSpan, rowSpan }
+}
 
 const tagColors: Record<string, string> = {
   Action: 'bg-primary text-white',
@@ -62,32 +78,32 @@ export default function GalleryPage() {
       {/* ── Photo grid ── */}
       <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 [grid-auto-rows:240px]">
-            {photos.map((photo) => (
-              <div
-                key={photo.src}
-                className={cn(
-                  'group relative overflow-hidden rounded-2xl',
-                  photo.wide && 'sm:col-span-2',
-                  photo.tall && 'row-span-2'
-                )}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                <span className={cn('absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full', tagColors[photo.tag])}>
-                  {photo.tag}
-                </span>
-                <p className="absolute bottom-0 inset-x-0 p-4 text-white text-sm font-medium leading-snug translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  {photo.alt}
-                </p>
-              </div>
-            ))}
+          <div className="grid gap-3 md:gap-4 [grid-auto-flow:dense] [grid-auto-rows:8px] grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+            {photos.map((photo) => {
+              const { colSpan, rowSpan } = cellSpans(photo)
+              return (
+                <div
+                  key={photo.src}
+                  className="group relative overflow-hidden rounded-2xl"
+                  style={{ gridColumn: `span ${colSpan}`, gridRow: `span ${rowSpan}` }}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  <span className={cn('absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full', tagColors[photo.tag])}>
+                    {photo.tag}
+                  </span>
+                  <p className="absolute bottom-0 inset-x-0 p-4 text-white text-sm font-medium leading-snug translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    {photo.alt}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>

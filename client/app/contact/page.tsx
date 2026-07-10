@@ -24,33 +24,46 @@ const contactInfo = [
   { icon: Clock, label: 'Hours', lines: ['Daily 6:00 am – 6:00 pm', 'Open 365 days a year'] },
 ]
 
-const faqs = [
-  { q: 'Do I need experience to book a lesson?', a: 'Not at all. We welcome complete beginners and tailor every lesson to your current skill level.' },
-  { q: 'What should I bring?', a: 'Just yourself and sunscreen. We provide boards, leashes, rash guards, and all necessary equipment.' },
-  { q: 'What is the minimum age?', a: 'We accept students aged 7 and up. Children under 12 are placed in our supervised junior program.' },
-  { q: 'Can I cancel or reschedule?', a: 'Yes. Free cancellation or rescheduling up to 24 hours before your lesson start time.' },
-  { q: 'How big are the groups?', a: 'Group lessons have a maximum of 6 students per instructor to ensure personalised attention.' },
-  { q: 'Is Hirikatiya safe for beginners?', a: "Hirikatiya's inner reef breaks produce mellow, consistent waves — ideal for learning all year round." },
-]
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map(({ q, a }) => ({
-    '@type': 'Question',
-    name: q,
-    acceptedAnswer: { '@type': 'Answer', text: a },
-  })),
+async function getFaqs(): Promise<{ q: string; a: string }[]> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+  try {
+    const res = await fetch(`${apiUrl}/api/faqs`, { next: { revalidate: 300 } })
+    if (!res.ok) return []
+    const data = await res.json()
+    if (!data.success || !Array.isArray(data.data)) return []
+    return (data.data as { question: string; answer: string }[]).map((f) => ({
+      q: f.question,
+      a: f.answer,
+    }))
+  } catch {
+    return []
+  }
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const faqs = await getFaqs()
+
+  const faqJsonLd = faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(({ q, a }) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      }
+    : null
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(faqJsonLd) }}
-      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(faqJsonLd) }}
+        />
+      )}
 
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
@@ -123,15 +136,17 @@ export default function ContactPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="section-padding bg-[#fcfcfc]">
-        <div className="container-site">
-          <div className="mb-10">
-            <p className="font-display text-2xl text-primary mb-2">FAQ</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Common Questions</h2>
+      {faqs.length > 0 && (
+        <section className="section-padding bg-[#fcfcfc]">
+          <div className="container-site">
+            <div className="mb-10">
+              <p className="font-display text-2xl text-primary mb-2">FAQ</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Common Questions</h2>
+            </div>
+            <FaqAccordion faqs={faqs} />
           </div>
-          <FaqAccordion faqs={faqs} />
-        </div>
-      </section>
+        </section>
+      )}
     </>
   )
 }

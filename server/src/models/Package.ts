@@ -11,6 +11,7 @@ export interface IPackage extends Document {
   price: number
   priceNote: string
   description: string
+  shortDescription: string
   includes: string[]
   souvenir: boolean
   featured: boolean
@@ -28,6 +29,7 @@ const packageSchema = new Schema<IPackage>(
     price: { type: Number, required: true, min: 0 },
     priceNote: { type: String, required: true, trim: true, default: 'per session' },
     description: { type: String, default: '', trim: true },
+    shortDescription: { type: String, default: '', trim: true },
     includes: { type: [String], default: [] },
     souvenir: { type: Boolean, default: false },
     featured: { type: Boolean, default: false },

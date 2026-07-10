@@ -2,8 +2,9 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Send, CheckCircle } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { bookingApi } from '@/lib/api'
 
 type FormState = {
   name: string
@@ -31,6 +32,7 @@ function ContactFormInner() {
   const [errors, setErrors] = useState<Partial<FormState>>({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   useEffect(() => {
     const pkg = searchParams.get('package')
@@ -45,6 +47,7 @@ function ContactFormInner() {
     if (!form.email.trim()) e.email = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = 'Enter a valid email'
+    if (!form.phone.trim()) e.phone = 'Phone number is required'
     if (!form.level) e.level = 'Please select your skill level'
     if (!form.message.trim()) e.message = 'Message is required'
     setErrors(e)
@@ -63,14 +66,36 @@ function ContactFormInner() {
     }
   }
 
+  const packageLabels: Record<string, string> = {
+    private: 'Private Lesson',
+    'semi-private': 'Semi-Private Lesson',
+    group: 'Group Session',
+    'first-aid': 'First Aid Workshop',
+    'surf-yoga': 'Surf & Yoga Retreat',
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validate()) return
     setLoading(true)
-    // Simulate network request
-    await new Promise((r) => setTimeout(r, 1200))
-    setLoading(false)
-    setSubmitted(true)
+    setSubmitError(null)
+    try {
+      await bookingApi.create({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        packageName: packageLabels[form.package] || form.package || 'Not specified',
+        sessionDate: form.date || 'Flexible',
+        sessionTime: 'Flexible',
+        groupSize: 1,
+        notes: `Skill level: ${form.level}. ${form.message.trim()}`,
+      })
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -126,14 +151,14 @@ function ContactFormInner() {
 
       {/* Phone + Date */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <Field label="Phone Number" error={errors.phone}>
+        <Field label="Phone Number" error={errors.phone} required>
           <input
             name="phone"
             type="tel"
             value={form.phone}
             onChange={handleChange}
             placeholder="+94 77 000 0000"
-            className={inputClass(false)}
+            className={inputClass(!!errors.phone)}
           />
         </Field>
         <Field label="Preferred Date">
@@ -195,6 +220,13 @@ function ContactFormInner() {
           className={cn(inputClass(!!errors.message), 'resize-none')}
         />
       </Field>
+
+      {submitError && (
+        <div className="flex items-start gap-2.5 bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+          <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+          <span>{submitError}</span>
+        </div>
+      )}
 
       <button
         type="submit"

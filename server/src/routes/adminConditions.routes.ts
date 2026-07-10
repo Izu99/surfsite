@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { protect } from '../middleware/auth'
-import { getConditions, updateConditions } from '../controllers/adminConditions.controller'
+import { getConditions, updateConditions, deleteConditions } from '../controllers/adminConditions.controller'
 
 const router = Router()
 
@@ -17,5 +17,6 @@ const validation = [
 
 router.get('/', getConditions)
 router.put('/', validation, updateConditions)
+router.delete('/', deleteConditions)
 
 export default router

@@ -69,6 +69,7 @@ export type PackageInput = {
   price: number
   priceNote: string
   description?: string
+  shortDescription?: string
   includes?: string[]
   souvenir?: boolean
   featured?: boolean
@@ -200,6 +201,10 @@ export const adminConditionsApi = {
     const { data } = await api.put<{ success: boolean; data: SurfConditions }>('/api/admin/conditions', input)
     return data
   },
+  delete: async () => {
+    const { data } = await api.delete<{ success: boolean; message: string }>('/api/admin/conditions')
+    return data
+  },
 }
 
 // ── Booking Types ─────────────────────────────────────────────────
@@ -216,6 +221,47 @@ export type Booking = {
   status: 'pending' | 'confirmed' | 'cancelled' | 'completed'
   source: 'form' | 'whatsapp' | 'walk-in'
   createdAt: string
+}
+
+export type BookingInput = {
+  name: string
+  email: string
+  phone: string
+  packageName: string
+  sessionDate: string
+  sessionTime: string
+  groupSize: number
+  notes?: string
+}
+
+export const bookingApi = {
+  create: async (input: BookingInput) => {
+    const { data } = await api.post<{ success: boolean; data: Booking }>('/api/bookings', input)
+    return data
+  },
+}
+
+export const adminBookingApi = {
+  list: async (params?: { page?: number; limit?: number; status?: string }) => {
+    const { data } = await api.get<{ success: boolean; data: Booking[]; pagination: PaginationMeta }>(
+      '/api/admin/bookings',
+      { params },
+    )
+    return data
+  },
+  updateStatus: async (id: string, status: Booking['status']) => {
+    const { data } = await api.patch<{ success: boolean; data: Booking }>(
+      `/api/admin/bookings/${id}/status`,
+      { status },
+    )
+    return data
+  },
+  delete: async (id: string) => {
+    const { data } = await api.delete<{ success: boolean; message: string }>(
+      `/api/admin/bookings/${id}`,
+    )
+    return data
+  },
 }
 
 export const adminBlogApi = {
@@ -246,6 +292,144 @@ export const adminBlogApi = {
   togglePublish: async (id: string) => {
     const { data } = await api.patch<{ success: boolean; data: BlogPost }>(
       `/api/admin/blogs/${id}/toggle-publish`,
+    )
+    return data
+  },
+}
+
+// ── Shop ─────────────────────────────────────────────────────────
+export type ShopItem = {
+  _id: string
+  title: string
+  description: string
+  image: string
+  alt: string
+  price: number
+  sizes: string[]
+  published: boolean
+  order: number
+  createdAt: string
+  updatedAt: string
+}
+
+export type ShopItemInput = {
+  title: string
+  description: string
+  image: string
+  alt: string
+  price: number
+  sizes?: string[]
+  published?: boolean
+  order?: number
+}
+
+export const shopApi = {
+  list: async () => {
+    const { data } = await api.get<{ success: boolean; data: ShopItem[] }>('/api/shop')
+    return data
+  },
+}
+
+export const adminShopItemApi = {
+  list: async (params?: { page?: number; limit?: number }) => {
+    const { data } = await api.get<{ success: boolean; data: ShopItem[]; pagination: PaginationMeta }>(
+      '/api/admin/shop',
+      { params },
+    )
+    return data
+  },
+  create: async (input: ShopItemInput) => {
+    const { data } = await api.post<{ success: boolean; data: ShopItem }>('/api/admin/shop', input)
+    return data
+  },
+  update: async (id: string, input: Partial<ShopItemInput>) => {
+    const { data } = await api.put<{ success: boolean; data: ShopItem }>(
+      `/api/admin/shop/${id}`,
+      input,
+    )
+    return data
+  },
+  delete: async (id: string) => {
+    const { data } = await api.delete<{ success: boolean; message: string }>(
+      `/api/admin/shop/${id}`,
+    )
+    return data
+  },
+  togglePublish: async (id: string) => {
+    const { data } = await api.patch<{ success: boolean; data: ShopItem }>(
+      `/api/admin/shop/${id}/toggle-publish`,
+    )
+    return data
+  },
+}
+
+// ── FAQ ──────────────────────────────────────────────────────────
+export type Faq = {
+  _id: string
+  question: string
+  answer: string
+  published: boolean
+  order: number
+  createdAt: string
+  updatedAt: string
+}
+
+export type FaqInput = {
+  question: string
+  answer: string
+  published?: boolean
+  order?: number
+}
+
+export const faqApi = {
+  list: async () => {
+    const { data } = await api.get<{ success: boolean; data: Faq[] }>('/api/faqs')
+    return data
+  },
+}
+
+export const adminFaqApi = {
+  list: async (params?: { page?: number; limit?: number }) => {
+    const { data } = await api.get<{ success: boolean; data: Faq[]; pagination: PaginationMeta }>(
+      '/api/admin/faqs',
+      { params },
+    )
+    return data
+  },
+  create: async (input: FaqInput) => {
+    const { data } = await api.post<{ success: boolean; data: Faq }>('/api/admin/faqs', input)
+    return data
+  },
+  update: async (id: string, input: Partial<FaqInput>) => {
+    const { data } = await api.put<{ success: boolean; data: Faq }>(
+      `/api/admin/faqs/${id}`,
+      input,
+    )
+    return data
+  },
+  delete: async (id: string) => {
+    const { data } = await api.delete<{ success: boolean; message: string }>(
+      `/api/admin/faqs/${id}`,
+    )
+    return data
+  },
+  togglePublish: async (id: string) => {
+    const { data } = await api.patch<{ success: boolean; data: Faq }>(
+      `/api/admin/faqs/${id}/toggle-publish`,
+    )
+    return data
+  },
+}
+
+// ── Upload ───────────────────────────────────────────────────────
+export const adminUploadApi = {
+  upload: async (file: File) => {
+    const formData = new FormData()
+    formData.append('image', file)
+    const { data } = await api.post<{ success: boolean; url: string }>(
+      '/api/admin/upload',
+      formData,
+      { headers: { 'Content-Type': 'multipart/form-data' } },
     )
     return data
   },

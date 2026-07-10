@@ -39,11 +39,11 @@ export async function create(
   }
 
   try {
-    const { title, description, image, alt, price, published, order } = req.body as {
+    const { title, description, image, alt, price, sizes, published, order } = req.body as {
       title: string; description: string; image: string; alt: string
-      price: number; published?: boolean; order?: number
+      price: number; sizes?: string[]; published?: boolean; order?: number
     }
-    const item = await ShopItem.create({ title, description, image, alt, price, published, order })
+    const item = await ShopItem.create({ title, description, image, alt, price, sizes, published, order })
     res.status(201).json({ success: true, data: item })
   } catch (err) {
     next(err)
@@ -62,13 +62,13 @@ export async function update(
   }
 
   try {
-    const { title, description, image, alt, price, published, order } = req.body as Partial<{
+    const { title, description, image, alt, price, sizes, published, order } = req.body as Partial<{
       title: string; description: string; image: string; alt: string
-      price: number; published: boolean; order: number
+      price: number; sizes: string[]; published: boolean; order: number
     }>
     const item = await ShopItem.findByIdAndUpdate(
       req.params.id,
-      { title, description, image, alt, price, published, order },
+      { title, description, image, alt, price, sizes, published, order },
       { new: true, runValidators: true },
     )
     if (!item) {

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next'
-import { HARDCODED_BLOGS } from '@/data/blogs'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
@@ -7,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let apiBlogs: { slug: string; updatedAt: string }[] = []
   try {
-    const res = await fetch(`${apiUrl}/api/blogs?limit=100`, { next: { revalidate: 3600 } })
+    const res = await fetch(`${apiUrl}/api/blogs?limit=50`, { next: { revalidate: 3600 } })
     if (res.ok) {
       const data = await res.json()
       if (data.success && Array.isArray(data.data)) apiBlogs = data.data
@@ -16,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     apiBlogs = []
   }
 
-  const blogEntries: MetadataRoute.Sitemap = [...HARDCODED_BLOGS, ...apiBlogs].map((post) => ({
+  const blogEntries: MetadataRoute.Sitemap = apiBlogs.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt),
     changeFrequency: 'monthly',
@@ -41,6 +40,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/shop`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/gallery`,

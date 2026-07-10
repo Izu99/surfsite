@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Waves, Save, AlertCircle, Check, Clock } from 'lucide-react'
+import { Waves, Save, AlertCircle, Check, Clock, RotateCcw } from 'lucide-react'
 import { adminConditionsApi, type SurfConditions } from '@/lib/api'
 import { cn } from '@/lib/utils'
 
@@ -43,6 +43,51 @@ function Toast({ message, type }: { message: string; type: 'success' | 'error' }
   )
 }
 
+function ConfirmModal({
+  title,
+  message,
+  confirmLabel,
+  onConfirm,
+  onCancel,
+}: {
+  title: string
+  message: string
+  confirmLabel: string
+  onConfirm: () => void
+  onCancel: () => void
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onCancel} />
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 space-y-4">
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 flex-shrink-0 p-2 rounded-full bg-red-100">
+            <AlertCircle className="h-5 w-5 text-red-600" />
+          </div>
+          <div>
+            <h3 className="font-bold text-gray-900 text-base">{title}</h3>
+            <p className="text-sm text-gray-500 mt-1">{message}</p>
+          </div>
+        </div>
+        <div className="flex gap-3 pt-1 justify-end">
+          <button
+            onClick={onCancel}
+            className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="px-5 py-2 rounded-xl text-sm font-bold text-white bg-red-600 hover:bg-red-700 transition-colors"
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function AdminConditionsPage() {
   const [form, setForm] = useState({
     waveHeight: '',
@@ -53,6 +98,8 @@ export default function AdminConditionsPage() {
   })
   const [lastUpdated, setLastUpdated] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
+  const [resetting, setResetting] = useState(false)
+  const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
@@ -106,6 +153,21 @@ export default function AdminConditionsPage() {
       showToast('Failed to save. Please try again.', 'error')
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleReset = async () => {
+    setShowResetConfirm(false)
+    setResetting(true)
+    try {
+      await adminConditionsApi.delete()
+      setForm({ waveHeight: '', wind: '', waterTemp: '', airTemp: '', conditions: '' })
+      setLastUpdated(null)
+      showToast('Conditions reset — homepage will show defaults until re-saved.')
+    } catch {
+      showToast('Failed to reset. Please try again.', 'error')
+    } finally {
+      setResetting(false)
     }
   }
 
@@ -201,10 +263,10 @@ export default function AdminConditionsPage() {
                 ))
               )}
 
-              <div className="pt-2">
+              <div className="pt-2 flex items-center gap-3">
                 <button
                   onClick={handleSave}
-                  disabled={saving || !mounted}
+                  disabled={saving || resetting || !mounted}
                   className="flex items-center gap-2 bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
                 >
                   {saving ? (
@@ -213,6 +275,18 @@ export default function AdminConditionsPage() {
                     <Save className="h-4 w-4" />
                   )}
                   {saving ? 'Saving…' : 'Save Conditions'}
+                </button>
+                <button
+                  onClick={() => setShowResetConfirm(true)}
+                  disabled={saving || resetting || !mounted}
+                  className="flex items-center gap-2 border border-red-200 text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed px-5 py-2.5 rounded-xl text-sm font-bold transition-colors"
+                >
+                  {resetting ? (
+                    <span className="w-4 h-4 border-2 border-red-300 border-t-red-600 rounded-full animate-spin" />
+                  ) : (
+                    <RotateCcw className="h-4 w-4" />
+                  )}
+                  {resetting ? 'Resetting…' : 'Reset'}
                 </button>
               </div>
             </div>
@@ -225,6 +299,16 @@ export default function AdminConditionsPage() {
       </section>
 
       {toast && <Toast message={toast.message} type={toast.type} />}
+
+      {showResetConfirm && (
+        <ConfirmModal
+          title="Reset Conditions"
+          message="This clears the saved conditions record from the database. The homepage will show its built-in defaults until you save new values."
+          confirmLabel="Reset"
+          onConfirm={handleReset}
+          onCancel={() => setShowResetConfirm(false)}
+        />
+      )}
     </>
   )
 }

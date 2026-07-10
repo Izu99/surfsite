@@ -233,10 +233,10 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-5">Cover Image</h2>
               <Field label="Image URL" error={errors.image}>
-                <input type="url" value={form.image} onChange={(e) => set('image', e.target.value)} className={inputCls(!!errors.image)} />
+                <input type="text" value={form.image} onChange={(e) => set('image', e.target.value)} className={inputCls(!!errors.image)} />
               </Field>
               {form.image && (
-                <div className="mt-3 h-40 rounded-xl overflow-hidden bg-gray-100">
+                <div className="mt-3 w-48 h-32 rounded-xl overflow-hidden bg-gray-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={form.image} alt="Preview" className="w-full h-full object-cover" />
                 </div>

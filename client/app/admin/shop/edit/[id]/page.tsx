@@ -1,0 +1,352 @@
+'use client'
+
+import { useState, useCallback, useEffect, use } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { ChevronLeft, Check, LayoutDashboard, AlertCircle } from 'lucide-react'
+import { adminShopItemApi, type ShopItemInput } from '@/lib/api'
+import { cn } from '@/lib/utils'
+import ImageUploadField from '@/components/ImageUploadField'
+
+type FormData = {
+  title: string
+  description: string
+  image: string
+  alt: string
+  price: string
+  sizes: string
+  published: boolean
+  order: string
+}
+
+function ConfirmModal({
+  title,
+  message,
+  confirmLabel,
+  onConfirm,
+  onCancel,
+}: {
+  title: string
+  message: string
+  confirmLabel: string
+  onConfirm: () => void
+  onCancel: () => void
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onCancel} />
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 space-y-4">
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 flex-shrink-0 p-2 rounded-full bg-primary-100">
+            <AlertCircle className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-bold text-gray-900 text-base">{title}</h3>
+            <p className="text-sm text-gray-500 mt-1">{message}</p>
+          </div>
+        </div>
+        <div className="flex gap-3 pt-1 justify-end">
+          <button
+            onClick={onCancel}
+            className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="px-5 py-2 rounded-xl text-sm font-bold text-white bg-primary hover:bg-primary-dark transition-colors"
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function EditShopItemPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const router = useRouter()
+
+  const [form, setForm] = useState<FormData | null>(null)
+  const [saved, setSaved] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [notFound, setNotFound] = useState(false)
+  const [apiError, setApiError] = useState('')
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
+  const [showConfirm, setShowConfirm] = useState(false)
+
+  useEffect(() => {
+    adminShopItemApi
+      .list()
+      .then((res) => {
+        const item = res.data.find((i) => i._id === id)
+        if (!item) { setNotFound(true); return }
+        setForm({
+          title: item.title,
+          description: item.description,
+          image: item.image,
+          alt: item.alt,
+          price: String(item.price),
+          sizes: (item.sizes ?? []).join(', '),
+          published: item.published,
+          order: String(item.order),
+        })
+      })
+      .catch(() => setNotFound(true))
+  }, [id])
+
+  const set = useCallback(<K extends keyof FormData>(key: K, value: FormData[K]) => {
+    setForm((prev) => prev ? { ...prev, [key]: value } : prev)
+    setErrors((e) => ({ ...e, [key]: undefined }))
+    setApiError('')
+  }, [])
+
+  const validate = (): boolean => {
+    if (!form) return false
+    const e: Partial<Record<keyof FormData, string>> = {}
+    if (!form.title.trim()) e.title = 'Title is required'
+    if (!form.description.trim()) e.description = 'Description is required'
+    if (!form.image.trim()) e.image = 'Image URL is required'
+    if (!form.alt.trim()) e.alt = 'Alt text is required'
+    if (!form.price.trim() || isNaN(Number(form.price))) e.price = 'Valid price is required'
+    setErrors(e)
+    return Object.keys(e).length === 0
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!form || !validate()) return
+    setShowConfirm(true)
+  }
+
+  const doSave = async () => {
+    if (!form) return
+    setShowConfirm(false)
+    setSubmitting(true)
+    setApiError('')
+    try {
+      const input: Partial<ShopItemInput> = {
+        title: form.title.trim(),
+        description: form.description.trim(),
+        image: form.image.trim(),
+        alt: form.alt.trim(),
+        price: Number(form.price),
+        sizes: form.sizes.split(',').map((s) => s.trim()).filter(Boolean),
+        published: form.published,
+        order: Number(form.order) || 0,
+      }
+      await adminShopItemApi.update(id, input)
+      setSaved(true)
+      setTimeout(() => router.push('/admin/shop'), 1200)
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : 'Failed to save changes')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  if (!form && !notFound) {
+    return (
+      <div className="animate-pulse">
+        <div className="h-24 bg-gray-200" />
+        <div className="container-site py-12 space-y-6">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-40 bg-gray-200 rounded-2xl" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  if (notFound) {
+    return (
+      <div className="pt-[calc(72px+4rem)] text-center container-site">
+        <p className="text-gray-500 mb-4">Shop item not found.</p>
+        <Link href="/admin/shop" className="text-primary underline text-sm">Back to admin</Link>
+      </div>
+    )
+  }
+
+  if (!form) return null
+
+  return (
+    <>
+      {showConfirm && (
+        <ConfirmModal
+          title="Save Changes"
+          message="Are you sure you want to save changes to this shop item?"
+          confirmLabel="Save Changes"
+          onConfirm={doSave}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
+
+      <div className="bg-[#1a2e4a] border-b border-white/10">
+        <div className="container-site py-6 flex items-center gap-4">
+          <LayoutDashboard className="h-5 w-5 text-primary" />
+          <div>
+            <div className="flex items-center gap-1.5 text-xs text-gray-400">
+              <Link href="/admin/shop" className="hover:text-white transition-colors">Shop Management</Link>
+              <ChevronLeft className="h-3 w-3 rotate-180" />
+              <span className="text-gray-300 truncate max-w-[200px]">{form.title || 'Edit Item'}</span>
+            </div>
+            <h1 className="text-white font-bold text-lg">Edit Shop Item</h1>
+          </div>
+        </div>
+      </div>
+
+      <section className="section-padding bg-primary-50">
+        <div className="container-site max-w-3xl">
+          {apiError && (
+            <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-6">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              {apiError}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Basic Info */}
+            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
+              <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Basic Info</h2>
+
+              <Field label="Title" error={errors.title}>
+                <input
+                  type="text"
+                  value={form.title}
+                  onChange={(e) => set('title', e.target.value)}
+                  className={inputCls(!!errors.title)}
+                />
+              </Field>
+
+              <Field label="Description" error={errors.description}>
+                <textarea
+                  rows={3}
+                  value={form.description}
+                  onChange={(e) => set('description', e.target.value)}
+                  className={inputCls(!!errors.description)}
+                />
+              </Field>
+
+              <Field label="Sizes" hint="comma-separated, leave blank if not applicable">
+                <input
+                  type="text"
+                  value={form.sizes}
+                  onChange={(e) => set('sizes', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
+
+              <Field label="Display Order" hint="lower = first">
+                <input
+                  type="number"
+                  min="0"
+                  value={form.order}
+                  onChange={(e) => set('order', e.target.value)}
+                  className={inputCls(false)}
+                />
+              </Field>
+            </div>
+
+            {/* Pricing */}
+            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
+              <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Pricing</h2>
+              <Field label="Price (Rs)" error={errors.price}>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={form.price}
+                  onChange={(e) => set('price', e.target.value)}
+                  className={inputCls(!!errors.price)}
+                />
+              </Field>
+            </div>
+
+            {/* Image */}
+            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
+              <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Image</h2>
+              <Field label="Image" hint="upload a file or paste a URL">
+                <ImageUploadField
+                  value={form.image}
+                  onChange={(url) => set('image', url)}
+                  error={errors.image}
+                  inputCls={inputCls}
+                />
+              </Field>
+              <Field label="Alt Text" error={errors.alt} hint="for accessibility and SEO">
+                <input
+                  type="text"
+                  value={form.alt}
+                  onChange={(e) => set('alt', e.target.value)}
+                  className={inputCls(!!errors.alt)}
+                />
+              </Field>
+            </div>
+
+            {/* Options */}
+            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-4">
+              <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Options</h2>
+              <Toggle checked={form.published} onChange={(v) => set('published', v)} label="Published" description="Visible to visitors on the shop page and Noah Collection popup" />
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-4 justify-end">
+              <Link href="/admin/shop" className="px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Cancel</Link>
+              <button
+                type="submit"
+                disabled={saved || submitting}
+                className={cn(
+                  'flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all',
+                  saved ? 'bg-green-600 text-white' : 'bg-primary hover:bg-primary-dark text-white disabled:opacity-60',
+                )}
+              >
+                {saved ? (
+                  <><Check className="h-4 w-4" /> Saved!</>
+                ) : submitting ? (
+                  <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> Saving…</>
+                ) : (
+                  'Save Changes'
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function inputCls(hasError: boolean) {
+  return cn(
+    'w-full rounded-xl border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 transition',
+    hasError ? 'border-red-300 focus:ring-red-200 focus:border-red-400' : 'border-gray-200 focus:ring-primary/20 focus:border-primary',
+  )
+}
+
+function Field({ label, hint, error, children }: { label: string; hint?: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+        {label}
+        {hint && <span className="font-normal text-gray-400 ml-1.5">— {hint}</span>}
+      </label>
+      {children}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+    </div>
+  )
+}
+
+function Toggle({ checked, onChange, label, description }: { checked: boolean; onChange: (v: boolean) => void; label: string; description: string }) {
+  return (
+    <label className="flex items-center justify-between cursor-pointer select-none">
+      <div>
+        <p className="text-sm font-semibold text-gray-900">{label}</p>
+        <p className="text-xs text-gray-400">{description}</p>
+      </div>
+      <div onClick={() => onChange(!checked)} className={cn('relative w-11 h-6 rounded-full transition-colors', checked ? 'bg-primary' : 'bg-gray-200')}>
+        <span className={cn('absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform', checked && 'translate-x-5')} />
+      </div>
+    </label>
+  )
+}

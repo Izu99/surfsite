@@ -4,16 +4,16 @@ import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { Play } from 'lucide-react'
 import { packageApi, type SurfPackage } from '@/lib/api'
-import { PACKAGE_CATEGORIES, HARDCODED_PACKAGES } from '@/data/packages'
+import { PACKAGE_CATEGORIES } from '@/data/packages'
 import PackageCategorySlider from './PackageCategorySlider'
 
 export default function HomepagePackages() {
-  const [packages, setPackages] = useState<SurfPackage[]>(HARDCODED_PACKAGES)
+  const [packages, setPackages] = useState<SurfPackage[]>([])
 
   useEffect(() => {
     packageApi
       .list()
-      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data]))
+      .then((res) => setPackages(res.data))
       .catch(() => {})
   }, [])
 

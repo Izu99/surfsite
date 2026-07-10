@@ -52,7 +52,7 @@ const sections = [
       },
       {
         heading: '7. Cancellation by Client',
-        body: `Cancellations made more than 24 hours before the scheduled session start time will receive a full refund or session credit. Cancellations within 24 hours of the session start time are non-refundable. No-shows are non-refundable. To cancel, contact us via WhatsApp at +94 71 320 7241 or email info@wavepeaksurf.lk.`,
+        body: `Cancellations made more than 24 hours before the scheduled session start time will receive a full refund or session credit. Cancellations within 24 hours of the session start time are non-refundable. No-shows are non-refundable. To cancel, contact us via WhatsApp at +94 71 320 7241 or email noahsurfhiriketiya2@gmail.com.`,
       },
       {
         heading: '8. Cancellation by Noah Surf School',
@@ -100,11 +100,11 @@ const sections = [
       },
       {
         heading: '16. Data Retention',
-        body: `We retain booking and contact records for up to 2 years for administrative and safety purposes, after which they are securely deleted. You may request deletion of your data at any time by contacting info@wavepeaksurf.lk.`,
+        body: `We retain booking and contact records for up to 2 years for administrative and safety purposes, after which they are securely deleted. You may request deletion of your data at any time by contacting noahsurfhiriketiya2@gmail.com.`,
       },
       {
         heading: '17. Contact',
-        body: `For any privacy-related questions or data access requests, email us at info@wavepeaksurf.lk or write to Noah Surf School, Hirikatiya Beach, Southern Province, Sri Lanka.`,
+        body: `For any privacy-related questions or data access requests, email us at noahsurfhiriketiya2@gmail.com or write to Noah Surf School, Hirikatiya Beach, Southern Province, Sri Lanka.`,
       },
     ],
   },
@@ -204,10 +204,10 @@ export default function TermsPage() {
                 <p className="text-sm text-gray-500 mt-3">
                   For questions, contact us at{' '}
                   <a
-                    href="mailto:info@wavepeaksurf.lk"
+                    href="mailto:noahsurfhiriketiya2@gmail.com"
                     className="text-primary hover:underline"
                   >
-                    info@wavepeaksurf.lk
+                    noahsurfhiriketiya2@gmail.com
                   </a>{' '}
                   or{' '}
                   <a href="tel:+94713207241" className="text-primary hover:underline">

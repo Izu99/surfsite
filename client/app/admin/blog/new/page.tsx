@@ -173,15 +173,15 @@ export default function NewBlogPage() {
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-5">Cover Image</h2>
               <Field label="Image URL (Unsplash recommended)" error={errors.image}>
                 <input
-                  type="url"
-                  placeholder="https://images.unsplash.com/…"
+                  type="text"
+                  placeholder="https://images.unsplash.com/… or /local-image.webp"
                   value={form.image}
                   onChange={(e) => set('image', e.target.value)}
                   className={inputCls(!!errors.image)}
                 />
               </Field>
               {form.image && (
-                <div className="mt-3 h-40 rounded-xl overflow-hidden bg-gray-100">
+                <div className="mt-3 w-48 h-32 rounded-xl overflow-hidden bg-gray-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={form.image} alt="Preview" className="w-full h-full object-cover" />
                 </div>

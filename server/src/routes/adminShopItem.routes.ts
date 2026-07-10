@@ -19,6 +19,7 @@ const shopItemValidation = [
   body('image').trim().notEmpty().withMessage('Image is required'),
   body('alt').trim().notEmpty().withMessage('Alt text is required'),
   body('price').isNumeric().withMessage('Price must be a number').isFloat({ min: 0 }),
+  body('sizes').optional().isArray(),
   body('published').optional().isBoolean(),
   body('order').optional().isInt({ min: 0 }),
 ]

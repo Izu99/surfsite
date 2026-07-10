@@ -21,7 +21,9 @@ export async function listPublished(
     const page = Math.max(1, parseInt(String(req.query.page ?? '1')))
     const limit = Math.min(50, Math.max(1, parseInt(String(req.query.limit ?? '20'))))
     const skip = (page - 1) * limit
-    const { category, search } = req.query as { category?: string; search?: string }
+    // Coerce to strings — qs can parse ?category[$ne]=x into an object (NoSQL operator injection)
+    const category = req.query.category ? String(req.query.category) : undefined
+    const search = req.query.search ? String(req.query.search) : undefined
 
     const filter: Record<string, unknown> = { published: true }
 
@@ -30,7 +32,7 @@ export async function listPublished(
     }
 
     if (search) {
-      const escaped = (search as string).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       const q = { $regex: escaped, $options: 'i' }
       filter.$or = [{ title: q }, { description: q }, { tags: { $elemMatch: q } }]
     }

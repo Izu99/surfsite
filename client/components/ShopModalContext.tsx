@@ -1,10 +1,10 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { X, ArrowRight } from 'lucide-react'
-import { services } from '@/data/shop'
+import { shopApi, type ShopItem } from '@/lib/api'
 
 const ShopModalContext = createContext<(() => void) | null>(null)
 
@@ -16,7 +16,15 @@ export function useShopModal() {
 
 export function ShopModalProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
+  const [items, setItems] = useState<ShopItem[]>([])
   const openShopModal = useCallback(() => setOpen(true), [])
+
+  useEffect(() => {
+    shopApi
+      .list()
+      .then((res) => setItems(res.data))
+      .catch(() => {})
+  }, [])
 
   return (
     <ShopModalContext.Provider value={openShopModal}>
@@ -50,21 +58,21 @@ export function ShopModalProvider({ children }: { children: React.ReactNode }) {
             </p>
 
             <div className="grid grid-cols-2 gap-4 px-6 pb-6">
-              {services.map((service) => (
-                <div key={service.title}>
+              {items.map((item) => (
+                <div key={item._id}>
                   <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-100">
                     <Image
-                      src={service.image}
-                      alt={service.alt}
+                      src={item.image}
+                      alt={item.alt}
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 50vw, 200px"
                     />
                   </div>
-                  <p className="mt-2 text-sm font-bold text-gray-900">{service.title}</p>
-                  <p className="text-sm font-semibold text-primary">Rs {service.price.toLocaleString()}</p>
-                  {service.sizes && (
-                    <p className="text-xs text-gray-400">Sizes: {service.sizes.join(', ')}</p>
+                  <p className="mt-2 text-sm font-bold text-gray-900">{item.title}</p>
+                  <p className="text-sm font-semibold text-primary">Rs {item.price.toLocaleString()}</p>
+                  {item.sizes && item.sizes.length > 0 && (
+                    <p className="text-xs text-gray-400">Sizes: {item.sizes.join(', ')}</p>
                   )}
                 </div>
               ))}

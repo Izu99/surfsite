@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL, HARDCODED_PACKAGES } from '@/data/packages'
+import { PACKAGE_CATEGORIES, INCLUDED_IN_ALL } from '@/data/packages'
 import { packageApi, type SurfPackage } from '@/lib/api'
 import PackageCategorySlider from '@/components/PackageCategorySlider'
 import FloatingShopButton from '@/components/FloatingShopButton'
@@ -21,8 +21,8 @@ export default function PackagesListClient() {
   useEffect(() => {
     packageApi
       .list()
-      .then((res) => setPackages([...HARDCODED_PACKAGES, ...res.data]))
-      .catch(() => setPackages(HARDCODED_PACKAGES))
+      .then((res) => setPackages(res.data))
+      .catch(() => {})
       .finally(() => setMounted(true))
   }, [])
 

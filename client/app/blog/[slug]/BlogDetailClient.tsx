@@ -21,9 +21,13 @@ import DOMPurify from 'dompurify'
 function BlogContent({ html }: { html: string }) {
   // During SSR typeof window === 'undefined' — render nothing rather than
   // passing raw unsanitised HTML. DOMPurify runs after hydration on the client.
+  // ADD_ATTR keeps DOMPurify's default safe attribute list and additionally
+  // allows `style` — needed for the editor's text color / highlight color,
+  // which TipTap renders as inline style="color:…"/"background-color:…".
+  // DOMPurify still sanitises the style value itself, so this stays safe.
   const clean =
     typeof window !== 'undefined'
-      ? DOMPurify.sanitize(html, { USE_PROFILES: { html: true } })
+      ? DOMPurify.sanitize(html, { USE_PROFILES: { html: true }, ADD_ATTR: ['style'] })
       : ''
 
   return (
@@ -103,7 +107,7 @@ export default function BlogDetailClient({
         <div className="absolute bottom-0 left-0 right-0 container-site pb-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-white/70 text-xs hover:text-white mb-4 transition-colors"
+            className="inline-flex items-center gap-1 text-white/70 text-xs hover:text-white mb-4 mr-4 transition-colors"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
             Back to Blog

@@ -25,7 +25,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="container-site py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.9fr_0.5fr_1.2fr_1.3fr] gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-4 cursor-pointer">
@@ -150,8 +150,8 @@ export default function Footer() {
             <ul className="space-y-3.5">
               <li className="flex gap-3">
                 <Mail className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                <a href="mailto:partnerships@noahsurfschool.lk" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer break-all">
-                  partnerships@noahsurfschool.lk
+                <a href="mailto:noahsurfhiriketiya2@gmail.com" className="text-sm hover:text-white transition-colors duration-200 cursor-pointer break-all">
+                  noahsurfhiriketiya2@gmail.com
                 </a>
               </li>
               <li className="flex gap-3">

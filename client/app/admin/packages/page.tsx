@@ -232,7 +232,7 @@ export default function AdminPackagesPage() {
                   </span>
 
                   <span className="hidden md:block text-sm font-bold text-gray-900">
-                    ${pkg.price}
+                    Rs {pkg.price.toLocaleString()}
                   </span>
 
                   <span className="hidden md:block text-xs text-gray-500 truncate">
@@ -258,7 +258,7 @@ export default function AdminPackagesPage() {
                       title={pkg.published ? 'Move to Draft' : 'Publish'}
                       className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-primary-50 transition-colors"
                     >
-                      {pkg.published ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {pkg.published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
                     </button>
                     <button
                       onClick={() => router.push(`/admin/packages/edit/${pkg._id}`)}

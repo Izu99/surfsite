@@ -2,14 +2,22 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
-import { services } from '@/data/shop'
+import { shopApi, type ShopItem } from '@/lib/api'
 import { useShopModal } from '@/components/ShopModalContext'
 
 export default function ServicesSlider() {
   const trackRef = useRef<HTMLDivElement>(null)
   const openShopModal = useShopModal()
+  const [services, setServices] = useState<ShopItem[]>([])
+
+  useEffect(() => {
+    shopApi
+      .list()
+      .then((res) => setServices(res.data))
+      .catch(() => {})
+  }, [])
 
   const scroll = useCallback((dir: 'prev' | 'next') => {
     const track = trackRef.current

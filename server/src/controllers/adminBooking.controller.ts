@@ -11,7 +11,7 @@ export async function listAll(
     const page = Math.max(1, parseInt(String(req.query.page ?? '1')))
     const limit = Math.min(100, Math.max(1, parseInt(String(req.query.limit ?? '30'))))
     const skip = (page - 1) * limit
-    const statusFilter = req.query.status as string | undefined
+    const statusFilter = req.query.status ? String(req.query.status) : undefined
 
     const query = statusFilter && statusFilter !== 'All' ? { status: statusFilter } : {}
 

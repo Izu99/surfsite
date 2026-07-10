@@ -47,16 +47,16 @@ export async function create(
   try {
     const {
       name, level, format, duration, price, priceNote,
-      description, includes,
+      description, shortDescription, includes,
       souvenir, featured, published, order, image,
     } = req.body as {
       name: string; level: string; format: string; duration: string
-      price: number; priceNote: string; description?: string; includes?: string[]
+      price: number; priceNote: string; description?: string; shortDescription?: string; includes?: string[]
       souvenir?: boolean; featured?: boolean; published?: boolean; order?: number; image: string
     }
     const pkg = await Package.create({
       name, level, format, duration, price, priceNote,
-      description, includes,
+      description, shortDescription, includes,
       souvenir, featured, published, order, image,
     })
     res.status(201).json({ success: true, data: pkg })
@@ -82,16 +82,16 @@ export async function update(
   try {
     const {
       name, level, format, duration, price, priceNote,
-      description, includes,
+      description, shortDescription, includes,
       souvenir, featured, published, order, image,
     } = req.body as Partial<{
       name: string; level: string; format: string; duration: string
-      price: number; priceNote: string; description: string; includes: string[]
+      price: number; priceNote: string; description: string; shortDescription: string; includes: string[]
       souvenir: boolean; featured: boolean; published: boolean; order: number; image: string
     }>
     const pkg = await Package.findByIdAndUpdate(
       req.params.id,
-      { name, level, format, duration, price, priceNote, description, includes, souvenir, featured, published, order, image },
+      { name, level, format, duration, price, priceNote, description, shortDescription, includes, souvenir, featured, published, order, image },
       { new: true, runValidators: true },
     )
     if (!pkg) {
