@@ -116,7 +116,12 @@ export default function EditShopItemPage({ params }: { params: Promise<{ id: str
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form || !validate()) return
+    if (!form) return
+    if (!validate()) {
+      setApiError('Please fix the highlighted fields below before saving.')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
     setShowConfirm(true)
   }
 

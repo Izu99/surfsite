@@ -57,7 +57,11 @@ export default function NewShopItemPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!validate()) return
+    if (!validate()) {
+      setApiError('Please fix the highlighted fields below before saving.')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
 
     setSubmitting(true)
     setApiError('')
