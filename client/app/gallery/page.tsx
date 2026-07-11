@@ -16,35 +16,30 @@ export const metadata: Metadata = {
   },
 }
 
-type Photo = { src: string; alt: string; tag: string; width: number; height: number }
+type Photo = { src: string; alt: string; tag: string; size: 'anchor' | 'wide' | 'tall' }
 
+// Bento sizes: 'anchor' is the big 2×3 hero cell (landscape), 'wide' is 2×2,
+// 'tall' is 1×2 — chosen per photo so each cell's shape stays close to the
+// image's real orientation and crops stay mild (extreme cell/image ratio
+// mismatch is what cut heads off before).
 const photos: Photo[] = [
-  { src: '/gallery-instructor-students-shoreline.jpeg', alt: 'Instructor guiding students along the shoreline', tag: 'Lessons', width: 960, height: 1280 },
-  { src: '/gallery-group-lesson.jpeg', alt: 'Group surf lesson at Hirikatiya Beach', tag: 'Lessons', width: 1280, height: 960 },
-  { src: '/gallery-instructor-portrait-bw.jpeg', alt: 'Portrait of a Noah Surf School instructor', tag: 'People', width: 869, height: 1280 },
-  { src: '/gallery-trio-longboard.jpeg', alt: 'Three surfers with a longboard', tag: 'Action', width: 960, height: 1280 },
-  { src: '/gallery-beach-friends.jpeg', alt: 'Friends relaxing on the beach', tag: 'Beach', width: 960, height: 1280 },
-  { src: '/gallery-student-portrait.jpeg', alt: 'Student smiling after a surf lesson', tag: 'People', width: 1280, height: 853 },
-  { src: '/gallery-instructor-with-kids.jpeg', alt: 'Instructor teaching kids to surf', tag: 'Lessons', width: 960, height: 1280 },
-  { src: '/gallery-sunset-soft-top-boards.jpeg', alt: 'Soft-top surfboards lined up at sunset', tag: 'Beach', width: 960, height: 1280 },
-  { src: '/gallery-instructor-young-surfer.jpeg', alt: 'Instructor coaching a young surfer', tag: 'Action', width: 960, height: 1280 },
-  { src: '/gallery-team-celebration.jpeg', alt: 'The Noah Surf School team celebrating', tag: 'Action', width: 960, height: 1280 },
-  { src: '/gallery-instructor-tee-bw.jpeg', alt: 'Instructor wearing a Noah Surf School tee', tag: 'People', width: 1280, height: 1244 },
+  { src: '/gallery-group-lesson.jpeg', alt: 'Group surf lesson at Hirikatiya Beach', tag: 'Lessons', size: 'anchor' },
+  { src: '/gallery-instructor-students-shoreline.jpeg', alt: 'Instructor guiding students along the shoreline', tag: 'Lessons', size: 'tall' },
+  { src: '/gallery-instructor-portrait-bw.jpeg', alt: 'Portrait of a Noah Surf School instructor', tag: 'People', size: 'tall' },
+  { src: '/gallery-trio-longboard.jpeg', alt: 'Three surfers with a longboard', tag: 'Action', size: 'tall' },
+  { src: '/gallery-beach-friends.jpeg', alt: 'Friends relaxing on the beach', tag: 'Beach', size: 'tall' },
+  { src: '/gallery-student-portrait.jpeg', alt: 'Student smiling after a surf lesson', tag: 'People', size: 'wide' },
+  { src: '/gallery-instructor-with-kids.jpeg', alt: 'Instructor teaching kids to surf', tag: 'Lessons', size: 'tall' },
+  { src: '/gallery-sunset-soft-top-boards.jpeg', alt: 'Soft-top surfboards lined up at sunset', tag: 'Beach', size: 'tall' },
+  { src: '/gallery-instructor-young-surfer.jpeg', alt: 'Instructor coaching a young surfer', tag: 'Action', size: 'tall' },
+  { src: '/gallery-team-celebration.jpeg', alt: 'The Noah Surf School team celebrating', tag: 'Action', size: 'tall' },
+  { src: '/gallery-instructor-tee-bw.jpeg', alt: 'Instructor wearing a Noah Surf School tee', tag: 'People', size: 'tall' },
 ]
 
-// Bento cell sizing: column span reflects orientation (landscape gets 2 cols),
-// row span is derived from each photo's real aspect ratio so cells never force
-// a crop that fights the image (that's what was cutting off heads before).
-const COL_BASIS = 220
-const GAP = 12
-const ROW_UNIT = 8
-
-function cellSpans(photo: Photo) {
-  const ratio = photo.width / photo.height
-  const colSpan = ratio > 1.2 ? 2 : 1
-  const cellWidth = COL_BASIS * colSpan + GAP * (colSpan - 1)
-  const rowSpan = Math.round(cellWidth / ratio / ROW_UNIT)
-  return { colSpan, rowSpan }
+const sizeClasses: Record<Photo['size'], string> = {
+  anchor: 'col-span-2 row-span-2 md:row-span-3',
+  wide: 'col-span-2 row-span-2',
+  tall: 'row-span-2',
 }
 
 const tagColors: Record<string, string> = {
@@ -78,32 +73,28 @@ export default function GalleryPage() {
       {/* ── Photo grid ── */}
       <section className="section-padding bg-[#f0e9dd]">
         <div className="container-site">
-          <div className="grid gap-3 md:gap-4 [grid-auto-flow:dense] [grid-auto-rows:8px] grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
-            {photos.map((photo) => {
-              const { colSpan, rowSpan } = cellSpans(photo)
-              return (
-                <div
-                  key={photo.src}
-                  className="group relative overflow-hidden rounded-2xl"
-                  style={{ gridColumn: `span ${colSpan}`, gridRow: `span ${rowSpan}` }}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                  <span className={cn('absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full', tagColors[photo.tag])}>
-                    {photo.tag}
-                  </span>
-                  <p className="absolute bottom-0 inset-x-0 p-4 text-white text-sm font-medium leading-snug translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    {photo.alt}
-                  </p>
-                </div>
-              )
-            })}
+          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 auto-rows-[130px] md:auto-rows-[150px] gap-3 md:gap-4 [grid-auto-flow:dense]">
+            {photos.map((photo) => (
+              <div
+                key={photo.src}
+                className={cn('group relative overflow-hidden rounded-2xl', sizeClasses[photo.size])}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover object-[50%_30%] transition-transform duration-500 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <span className={cn('absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full', tagColors[photo.tag])}>
+                  {photo.tag}
+                </span>
+                <p className="absolute bottom-0 inset-x-0 p-4 text-white text-sm font-medium leading-snug translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  {photo.alt}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
