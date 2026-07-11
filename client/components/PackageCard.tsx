@@ -78,9 +78,13 @@ export default function PackageCard({
           )}
 
           {pkg.level === 'Agency' ? (
-            <span className="self-start text-left text-sm font-semibold text-primary">
+            <Link
+              href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+              aria-label={`Contact us about ${pkg.name}`}
+              className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
+            >
               Contact Us
-            </span>
+            </Link>
           ) : readMoreHref ? (
             <Link
               href={readMoreHref}
