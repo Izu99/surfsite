@@ -54,26 +54,26 @@ function applyTranslation(code: string) {
   select.dispatchEvent(new Event('change'))
 }
 
+function loadTranslateScript() {
+  if (document.getElementById(SCRIPT_ID)) return
+
+  window.googleTranslateElementInit = () => {
+    new window.google!.translate.TranslateElement(
+      { pageLanguage: 'en', includedLanguages: INCLUDED_LANGUAGES, autoDisplay: false },
+      'google_translate_element'
+    )
+  }
+
+  const script = document.createElement('script')
+  script.id = SCRIPT_ID
+  script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+  script.async = true
+  document.body.appendChild(script)
+}
+
 export default function GoogleTranslate({ className }: { className?: string }) {
   const [open, setOpen] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (document.getElementById(SCRIPT_ID)) return
-
-    window.googleTranslateElementInit = () => {
-      new window.google!.translate.TranslateElement(
-        { pageLanguage: 'en', includedLanguages: INCLUDED_LANGUAGES, autoDisplay: false },
-        'google_translate_element'
-      )
-    }
-
-    const script = document.createElement('script')
-    script.id = SCRIPT_ID
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-    script.async = true
-    document.body.appendChild(script)
-  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -88,7 +88,10 @@ export default function GoogleTranslate({ className }: { className?: string }) {
     <div ref={wrapperRef} className={cn('relative', className)}>
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          loadTranslateScript()
+          setOpen((v) => !v)
+        }}
         aria-haspopup="listbox"
         aria-expanded={open}
         className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/85 transition-colors duration-200 hover:bg-white/15 cursor-pointer"

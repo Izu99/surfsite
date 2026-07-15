@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Star, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Review = {
@@ -26,8 +27,7 @@ function Avatar({ src, name }: { src?: string; name: string }) {
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={src}
       alt={name}
       width={32}
@@ -178,10 +178,11 @@ export default function ReviewsSlider({ reviews }: { reviews: Review[] }) {
                     aria-label={`Open photo ${imgIdx + 1} from ${review.name} full size`}
                     className="block h-20 w-20 shrink-0 rounded-lg overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={src}
                       alt={`Photo ${imgIdx + 1} shared by ${review.name}`}
+                      width={80}
+                      height={80}
                       loading="lazy"
                       className="block h-full w-full object-cover"
                       referrerPolicy="no-referrer"

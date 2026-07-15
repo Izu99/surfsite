@@ -143,7 +143,6 @@ export default function GallerySlideshow() {
                 i === current ? 'scale-[1.05] duration-[6000ms]' : 'scale-100 duration-500'
               }`}
               sizes="(max-width: 1024px) 100vw, 62vw"
-              priority={i === 0}
             />
           </div>
         ))}

@@ -12,6 +12,7 @@ import ConditionsBar from '@/components/ConditionsBar'
 import HirikatiayaExperience from '@/components/HirikatiayaExperience'
 import ReviewsSlider from '@/components/ReviewsSlider'
 import GallerySlideshow from '@/components/GallerySlideshow'
+import LazyVideoEmbed from '@/components/LazyVideoEmbed'
 import { jsonLdString } from '@/lib/json-ld'
 
 export const metadata: Metadata = {
@@ -241,12 +242,9 @@ export default function HomePage() {
             </div>
             {/* Right: video — autoplay/loop background, no user interaction */}
             <div className="relative w-full aspect-video overflow-hidden rounded-3xl shadow-2xl">
-              <iframe
+              <LazyVideoEmbed
                 src="https://www.youtube.com/embed/48oXIoQ1Nmw?autoplay=1&mute=1&loop=1&playlist=48oXIoQ1Nmw&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1"
                 title="Noah Surf School — Hirikatiya Beach, Sri Lanka"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                tabIndex={-1}
-                className="absolute inset-0 w-full h-full pointer-events-none"
               />
             </div>
           </div>

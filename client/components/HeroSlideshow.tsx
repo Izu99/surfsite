@@ -13,7 +13,7 @@ export default function HeroSlideshow() {
         fill
         className="object-cover object-center md:object-bottom"
         priority
-        sizes="(max-width: 768px) 200vw, 100vw"
+        sizes="100vw"
       />
 
       {/* Gradient overlay */}
