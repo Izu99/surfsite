@@ -104,8 +104,8 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          'md:hidden overflow-hidden transition-all duration-300 border-t border-white/10',
-          open ? 'max-h-96' : 'max-h-0'
+          'md:hidden transition-all duration-300 border-t border-white/10',
+          open ? 'max-h-[calc(100vh-72px)] overflow-y-auto' : 'max-h-0 overflow-hidden'
         )}
         style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
       >
