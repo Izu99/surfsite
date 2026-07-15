@@ -379,7 +379,7 @@ export default function HomePage() {
         {/* 7 ── Why Learn With Us ── */}
         <section className="section-padding relative overflow-hidden">
           <div className="absolute right-4 top-6 rotate-[9deg] sm:right-6 sm:top-8 sm:rotate-0 pointer-events-none select-none animate-[float_7s_ease-in-out_infinite]">
-            <Image src="/noah-drawing.png" alt="" width={160} height={160} className="w-32 sm:w-36 lg:w-40 h-auto opacity-85 drop-shadow-md" aria-hidden />
+            <Image src="/noah-drawing.webp" alt="" width={160} height={160} className="w-32 sm:w-36 lg:w-40 h-auto opacity-85 drop-shadow-md" aria-hidden />
           </div>
           <div className="container-site">
             <div className="mb-12">

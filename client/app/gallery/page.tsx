@@ -57,7 +57,7 @@ export default function GalleryPage() {
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
         <div className="absolute right-8 top-20 pointer-events-none opacity-60 select-none animate-[float_8s_ease-in-out_infinite]">
-          <Image src="/noah-drawing.png" alt="" width={110} height={110} className="rotate-[6deg] drop-shadow-md" aria-hidden />
+          <Image src="/noah-drawing.webp" alt="" width={110} height={110} className="rotate-[6deg] drop-shadow-md" aria-hidden />
         </div>
         <div className="container-site pb-16 md:pb-20">
           <p className="font-display text-2xl text-primary mb-2">Moments in the Water</p>

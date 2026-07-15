@@ -13,6 +13,7 @@ export default function HeroSlideshow() {
         fill
         className="object-cover object-center md:object-bottom"
         priority
+        quality={60}
         sizes="100vw"
       />
 

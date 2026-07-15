@@ -69,7 +69,7 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className="bg-[#fcfcfc] pt-[calc(72px+3rem)] pb-0 md:pt-[calc(72px+5rem)] relative overflow-hidden">
         <div className="absolute right-6 top-24 pointer-events-none opacity-60 select-none animate-[float_9s_ease-in-out_infinite]">
-          <Image src="/noah-drawing.png" alt="" width={120} height={120} className="drop-shadow-md" aria-hidden />
+          <Image src="/noah-drawing.webp" alt="" width={120} height={120} className="drop-shadow-md" aria-hidden />
         </div>
         <div className="container-site pb-16 md:pb-20">
           <p className="font-display text-2xl text-primary mb-2">Our Story</p>
