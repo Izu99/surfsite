@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     template: '%s | Noah Surf School',
   },
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/noah-black.png',
+    shortcut: '/noah-black.png',
+    apple: '/noah-black.png',
   },
   description:
     'Learn to surf with certified ISA instructors at Hirikatiya Beach, Sri Lanka. Group and private lessons, surf camps, board rentals. Open daily 6am–6pm.',
