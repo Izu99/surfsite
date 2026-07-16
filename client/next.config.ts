@@ -36,10 +36,10 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://static.cloudflareinsights.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://static.cloudflareinsights.com https://*.googletagmanager.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      `img-src 'self' data: blob: ${apiOrigin.origin} https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com https://*.googleusercontent.com`,
+      `img-src 'self' data: blob: ${apiOrigin.origin} https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com https://*.googleusercontent.com https://*.google-analytics.com https://*.googletagmanager.com`,
       `connect-src 'self' ${apiOrigin.origin} https:`,
       "frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube.com https://youtube.com https://translate.google.com",
       "frame-ancestors 'none'",
