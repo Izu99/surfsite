@@ -150,6 +150,7 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-LPDJZ6SEJH');
+            gtag('config', 'AW-18314583481');
           `}
         </Script>
       </head>
