@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Poppins, Caveat, Italianno } from 'next/font/google'
 import './globals.css'
 import SiteShell from '@/components/SiteShell'
@@ -137,6 +138,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${caveat.variable} ${italianno.variable} overflow-x-hidden`}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LPDJZ6SEJH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-LPDJZ6SEJH');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
         <script
           type="application/ld+json"
