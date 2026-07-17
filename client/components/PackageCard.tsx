@@ -113,33 +113,33 @@ export default function PackageCard({
             </button>
           )}
 
-          {pkg.price > 0 && (
-            <div className="space-y-3 mt-1">
-              <div className="border-t border-gray-100" />
+          <div className="space-y-3 mt-1">
+            <div className="border-t border-gray-100" />
 
+            {pkg.price > 0 && (
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl font-extrabold text-primary">Rs {pkg.price.toLocaleString()}</span>
                 {pkg.priceNote && <span className="text-xs text-gray-400">/ {pkg.priceNote}</span>}
               </div>
+            )}
 
-              <Link
-                href={`/contact?package=${encodeURIComponent(displayName)}`}
-                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+            <Link
+              href={`/contact?package=${encodeURIComponent(displayName)}`}
+              className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+            >
+              Book Now
+            </Link>
+
+            {showCollection && (
+              <button
+                type="button"
+                onClick={openShopModal}
+                className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
               >
-                Book Now
-              </Link>
-
-              {showCollection && (
-                <button
-                  type="button"
-                  onClick={openShopModal}
-                  className="block w-full text-center font-bold text-gray-900 hover:text-primary cursor-pointer"
-                >
-                  Noah Collection
-                </button>
-              )}
-            </div>
-          )}
+                Noah Collection
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -214,20 +214,18 @@ export default function PackageCard({
               )}
 
               {pkg.price > 0 && (
-                <>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-2xl font-extrabold text-primary">Rs {pkg.price.toLocaleString()}</span>
-                    {pkg.priceNote && <span className="text-xs text-gray-400">/ {pkg.priceNote}</span>}
-                  </div>
-
-                  <Link
-                    href={`/contact?package=${encodeURIComponent(displayName)}`}
-                    className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
-                  >
-                    Book Now
-                  </Link>
-                </>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-2xl font-extrabold text-primary">Rs {pkg.price.toLocaleString()}</span>
+                  {pkg.priceNote && <span className="text-xs text-gray-400">/ {pkg.priceNote}</span>}
+                </div>
               )}
+
+              <Link
+                href={`/contact?package=${encodeURIComponent(displayName)}`}
+                className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
+              >
+                Book Now
+              </Link>
             </div>
           </div>
         </div>
