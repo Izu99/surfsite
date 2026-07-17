@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { X, Check, Clock, Users, Gift } from 'lucide-react'
+import { X, Check, Clock, Users, Gift, ImageOff } from 'lucide-react'
 import { INCLUDED_IN_ALL } from '@/data/packages'
 import type { SurfPackage } from '@/lib/api'
-import { splitPackageName } from '@/lib/utils'
+import { cn, splitPackageName } from '@/lib/utils'
 import { useShopModal } from '@/components/ShopModalContext'
 
 export default function PackageCard({
@@ -18,7 +18,8 @@ export default function PackageCard({
   readMoreHref?: string
   showCollection?: boolean
 }) {
-  const { title, subtitle } = splitPackageName(pkg.name)
+  const displayName = pkg.name.trim() || 'Untitled Package'
+  const { title, subtitle } = splitPackageName(displayName)
   const [open, setOpen] = useState(false)
   const openShopModal = useShopModal()
   const includes = pkg.includes?.length ? pkg.includes : INCLUDED_IN_ALL
@@ -27,14 +28,22 @@ export default function PackageCard({
     <>
       <div className="flex flex-col w-full h-full rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300 bg-white transition-all duration-300">
         <div className="relative h-44 sm:h-52 overflow-hidden">
-          <Image
-            src={pkg.image}
-            alt={pkg.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, 320px"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+          {pkg.image ? (
+            <>
+              <Image
+                src={pkg.image}
+                alt={displayName}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 320px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+            </>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-primary-50">
+              <ImageOff className="h-8 w-8 text-primary/40" />
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col flex-1 p-6 space-y-4">
@@ -79,8 +88,8 @@ export default function PackageCard({
 
           {pkg.level === 'Agency' ? (
             <Link
-              href={`/contact?package=${encodeURIComponent(pkg.name)}`}
-              aria-label={`Contact us about ${pkg.name}`}
+              href={`/contact?package=${encodeURIComponent(displayName)}`}
+              aria-label={`Contact us about ${displayName}`}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
             >
               Contact Us
@@ -88,7 +97,7 @@ export default function PackageCard({
           ) : readMoreHref ? (
             <Link
               href={readMoreHref}
-              aria-label={`Read more about ${pkg.name}`}
+              aria-label={`Read more about ${displayName}`}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
             >
               Read More
@@ -97,7 +106,7 @@ export default function PackageCard({
             <button
               type="button"
               onClick={() => setOpen(true)}
-              aria-label={`Read more about ${pkg.name}`}
+              aria-label={`Read more about ${displayName}`}
               className="self-start text-left text-sm font-semibold text-primary underline underline-offset-2 hover:text-primary-dark cursor-pointer"
             >
               Read More
@@ -114,7 +123,7 @@ export default function PackageCard({
               </div>
 
               <Link
-                href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                href={`/contact?package=${encodeURIComponent(displayName)}`}
                 className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
               >
                 Book Now
@@ -144,18 +153,30 @@ export default function PackageCard({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-40 sm:h-48 shrink-0">
-              <Image
-                src={pkg.image}
-                alt={pkg.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 512px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+              {pkg.image ? (
+                <>
+                  <Image
+                    src={pkg.image}
+                    alt={displayName}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 512px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-transparent to-transparent" />
+                </>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-primary-50">
+                  <ImageOff className="h-8 w-8 text-primary/40" />
+                </div>
+              )}
               <div className="absolute bottom-4 left-5">
-                <p className="text-white text-lg font-bold">
+                <p className={cn('text-lg font-bold', pkg.image ? 'text-white' : 'text-gray-900')}>
                   {title}
-                  {subtitle && <span className="block font-display text-base text-white/80">{subtitle}</span>}
+                  {subtitle && (
+                    <span className={cn('block font-display text-base', pkg.image ? 'text-white/80' : 'text-gray-500')}>
+                      {subtitle}
+                    </span>
+                  )}
                 </p>
               </div>
               <button
@@ -200,7 +221,7 @@ export default function PackageCard({
                   </div>
 
                   <Link
-                    href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+                    href={`/contact?package=${encodeURIComponent(displayName)}`}
                     className="block text-center px-10 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-colors border-2 border-gray-700 text-gray-700 hover:border-primary hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark active:text-white"
                   >
                     Book Now

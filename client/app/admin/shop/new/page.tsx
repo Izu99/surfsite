@@ -46,11 +46,7 @@ export default function NewShopItemPage() {
 
   const validate = (): boolean => {
     const e: Partial<Record<keyof FormData, string>> = {}
-    if (!form.title.trim()) e.title = 'Title is required'
-    if (!form.description.trim()) e.description = 'Description is required'
-    if (!form.image.trim()) e.image = 'Image URL is required'
-    if (!form.alt.trim()) e.alt = 'Alt text is required'
-    if (!form.price.trim() || isNaN(Number(form.price))) e.price = 'Valid price is required'
+    if (form.price.trim() && isNaN(Number(form.price))) e.price = 'Price must be a number'
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -118,23 +114,23 @@ export default function NewShopItemPage() {
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Basic Info</h2>
 
-              <Field label="Title" error={errors.title}>
+              <Field label="Title" hint="optional">
                 <input
                   type="text"
                   placeholder="e.g. White Noah Surf Tee"
                   value={form.title}
                   onChange={(e) => set('title', e.target.value)}
-                  className={inputCls(!!errors.title)}
+                  className={inputCls(false)}
                 />
               </Field>
 
-              <Field label="Description" error={errors.description}>
+              <Field label="Description" hint="optional">
                 <textarea
                   rows={3}
                   placeholder="e.g. Soft cotton tee with the Noah Surf School print."
                   value={form.description}
                   onChange={(e) => set('description', e.target.value)}
-                  className={inputCls(!!errors.description)}
+                  className={inputCls(false)}
                 />
               </Field>
 
@@ -162,7 +158,7 @@ export default function NewShopItemPage() {
             {/* Pricing */}
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Pricing</h2>
-              <Field label="Price (Rs)" error={errors.price}>
+              <Field label="Price (Rs)" hint="optional — leave blank to hide pricing on the card" error={errors.price}>
                 <input
                   type="number"
                   min="0"
@@ -178,7 +174,7 @@ export default function NewShopItemPage() {
             {/* Image */}
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Image</h2>
-              <Field label="Image" hint="upload a file or paste a URL">
+              <Field label="Image" hint="optional — upload a file or paste a URL">
                 <ImageUploadField
                   value={form.image}
                   onChange={(url) => set('image', url)}
@@ -186,13 +182,13 @@ export default function NewShopItemPage() {
                   inputCls={inputCls}
                 />
               </Field>
-              <Field label="Alt Text" error={errors.alt} hint="for accessibility and SEO">
+              <Field label="Alt Text" hint="optional — for accessibility and SEO">
                 <input
                   type="text"
                   placeholder="e.g. White Noah Surf t-shirt, front and back"
                   value={form.alt}
                   onChange={(e) => set('alt', e.target.value)}
-                  className={inputCls(!!errors.alt)}
+                  className={inputCls(false)}
                 />
               </Field>
             </div>

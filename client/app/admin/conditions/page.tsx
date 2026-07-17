@@ -131,12 +131,6 @@ export default function AdminConditionsPage() {
   }
 
   const handleSave = async () => {
-    for (const { key, label } of FIELDS) {
-      if (!form[key].trim()) {
-        showToast(`${label} cannot be empty.`, 'error')
-        return
-      }
-    }
     setSaving(true)
     try {
       const payload = {

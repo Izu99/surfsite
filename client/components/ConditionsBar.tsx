@@ -39,7 +39,7 @@ export default function ConditionsBar() {
     { label: 'Water Temp',  value: data.waterTemp,   Icon: Thermometer },
     { label: 'Air Temp',    value: data.airTemp,     Icon: Sun         },
     { label: 'Conditions',  value: data.conditions,  Icon: CheckCircle },
-  ]
+  ].filter((item) => item.value.trim())
 
   return (
     <section className="bg-[#0d1b2a] border-b border-white/10 py-4">

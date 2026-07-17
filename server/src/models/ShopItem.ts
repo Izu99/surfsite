@@ -13,11 +13,11 @@ export interface IShopItem extends Document {
 
 const shopItemSchema = new Schema<IShopItem>(
   {
-    title: { type: String, required: true, trim: true, maxlength: 100 },
-    description: { type: String, required: true, trim: true, maxlength: 500 },
-    image: { type: String, required: true, trim: true },
-    alt: { type: String, required: true, trim: true },
-    price: { type: Number, required: true, min: 0 },
+    title: { type: String, default: '', trim: true, maxlength: 100 },
+    description: { type: String, default: '', trim: true, maxlength: 500 },
+    image: { type: String, default: '', trim: true },
+    alt: { type: String, default: '', trim: true },
+    price: { type: Number, default: 0, min: 0 },
     sizes: { type: [String], default: [] },
     published: { type: Boolean, default: false },
     order: { type: Number, default: 0 },

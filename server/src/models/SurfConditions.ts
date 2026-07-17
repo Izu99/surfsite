@@ -10,11 +10,11 @@ export interface ISurfConditions extends Document {
 
 const surfConditionsSchema = new Schema<ISurfConditions>(
   {
-    waveHeight:  { type: String, required: true, trim: true },
-    wind:        { type: String, required: true, trim: true },
-    waterTemp:   { type: String, required: true, trim: true },
-    airTemp:     { type: String, required: true, trim: true },
-    conditions:  { type: String, required: true, trim: true },
+    waveHeight:  { type: String, default: '', trim: true },
+    wind:        { type: String, default: '', trim: true },
+    waterTemp:   { type: String, default: '', trim: true },
+    airTemp:     { type: String, default: '', trim: true },
+    conditions:  { type: String, default: '', trim: true },
   },
   { timestamps: true },
 )

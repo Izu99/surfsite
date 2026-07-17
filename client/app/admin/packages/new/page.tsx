@@ -60,12 +60,7 @@ export default function NewPackagePage() {
 
   const validate = (): boolean => {
     const e: Partial<Record<keyof FormData, string>> = {}
-    if (!form.name.trim()) e.name = 'Name is required'
-    if (!form.format.trim()) e.format = 'Format is required'
-    if (!form.duration.trim()) e.duration = 'Duration is required'
-    if (!form.price.trim() || isNaN(Number(form.price))) e.price = 'Valid price is required'
-    if (!form.priceNote.trim()) e.priceNote = 'Price note is required'
-    if (!form.image.trim()) e.image = 'Image URL is required'
+    if (form.price.trim() && isNaN(Number(form.price))) e.price = 'Price must be a number'
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -139,13 +134,13 @@ export default function NewPackagePage() {
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6 space-y-5">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Basic Info</h2>
 
-              <Field label="Package Name" error={errors.name}>
+              <Field label="Package Name" hint="optional">
                 <input
                   type="text"
                   placeholder="e.g. Beginner Private"
                   value={form.name}
                   onChange={(e) => set('name', e.target.value)}
-                  className={inputCls(!!errors.name)}
+                  className={inputCls(false)}
                 />
               </Field>
 
@@ -160,25 +155,25 @@ export default function NewPackagePage() {
                   </select>
                 </Field>
 
-                <Field label="Format" error={errors.format}>
+                <Field label="Format" hint="optional">
                   <input
                     type="text"
                     placeholder="e.g. 1 on 1, Group, 2 on 1"
                     value={form.format}
                     onChange={(e) => set('format', e.target.value)}
-                    className={inputCls(!!errors.format)}
+                    className={inputCls(false)}
                   />
                 </Field>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Duration" error={errors.duration}>
+                <Field label="Duration" hint="optional">
                   <input
                     type="text"
                     placeholder="e.g. 90 mins"
                     value={form.duration}
                     onChange={(e) => set('duration', e.target.value)}
-                    className={inputCls(!!errors.duration)}
+                    className={inputCls(false)}
                   />
                 </Field>
 
@@ -229,7 +224,7 @@ export default function NewPackagePage() {
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest">Pricing</h2>
 
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Price (Rs)" error={errors.price}>
+                <Field label="Price (Rs)" hint="optional — leave blank to hide pricing on the card" error={errors.price}>
                   <input
                     type="number"
                     min="0"
@@ -241,13 +236,13 @@ export default function NewPackagePage() {
                   />
                 </Field>
 
-                <Field label="Price Note" error={errors.priceNote}>
+                <Field label="Price Note" hint="optional">
                   <input
                     type="text"
                     placeholder="e.g. per session, per person"
                     value={form.priceNote}
                     onChange={(e) => set('priceNote', e.target.value)}
-                    className={inputCls(!!errors.priceNote)}
+                    className={inputCls(false)}
                   />
                 </Field>
               </div>
@@ -256,7 +251,7 @@ export default function NewPackagePage() {
             {/* Cover Image */}
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-5">Cover Image</h2>
-              <Field label="Image" hint="upload a file or paste a URL (Unsplash recommended)">
+              <Field label="Image" hint="optional — upload a file or paste a URL (Unsplash recommended)">
                 <ImageUploadField
                   value={form.image}
                   onChange={(url) => set('image', url)}

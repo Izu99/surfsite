@@ -8,11 +8,11 @@ const router = Router()
 router.use(protect)
 
 const validation = [
-  body('waveHeight').trim().notEmpty().withMessage('Wave height is required'),
-  body('wind').trim().notEmpty().withMessage('Wind is required'),
-  body('waterTemp').trim().notEmpty().withMessage('Water temp is required'),
-  body('airTemp').trim().notEmpty().withMessage('Air temp is required'),
-  body('conditions').trim().notEmpty().withMessage('Conditions is required'),
+  body('waveHeight').optional({ checkFalsy: true }).trim(),
+  body('wind').optional({ checkFalsy: true }).trim(),
+  body('waterTemp').optional({ checkFalsy: true }).trim(),
+  body('airTemp').optional({ checkFalsy: true }).trim(),
+  body('conditions').optional({ checkFalsy: true }).trim(),
 ]
 
 router.get('/', getConditions)

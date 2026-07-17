@@ -209,10 +209,12 @@ export default function AdminPackagesPage() {
                 >
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-gray-900 text-sm truncate">
-                      {pkg.name}
+                      {pkg.name || <span className="text-gray-300 font-normal">Untitled Package</span>}
                     </p>
                     <p className="text-xs text-gray-400 mt-0.5 flex flex-wrap gap-x-1.5 items-center">
-                      <span>{pkg.duration} · {pkg.priceNote}</span>
+                      {(pkg.duration || pkg.priceNote) && (
+                        <span>{[pkg.duration, pkg.priceNote].filter(Boolean).join(' · ')}</span>
+                      )}
                       {pkg.featured && (
                         <span className="text-primary font-semibold">★ Featured</span>
                       )}
@@ -232,11 +234,11 @@ export default function AdminPackagesPage() {
                   </span>
 
                   <span className="hidden md:block text-sm font-bold text-gray-900">
-                    Rs {pkg.price.toLocaleString()}
+                    {pkg.price > 0 ? `Rs ${pkg.price.toLocaleString()}` : <span className="text-gray-300">—</span>}
                   </span>
 
                   <span className="hidden md:block text-xs text-gray-500 truncate">
-                    {pkg.format}
+                    {pkg.format || <span className="text-gray-300">—</span>}
                   </span>
 
                   <div className="hidden md:flex items-center">
@@ -328,7 +330,7 @@ export default function AdminPackagesPage() {
       {deleteTarget && (
         <ConfirmModal
           title="Delete Package"
-          message={`Are you sure you want to delete "${deleteTarget.name}"? This action cannot be undone.`}
+          message={`Are you sure you want to delete "${deleteTarget.name || 'this package'}"? This action cannot be undone.`}
           confirmLabel="Delete"
           danger
           onConfirm={handleDelete}

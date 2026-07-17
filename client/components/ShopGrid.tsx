@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ImageOff } from 'lucide-react'
 import { shopApi, type ShopItem } from '@/lib/api'
 
 const WHATSAPP_NUMBER = '94713207241'
@@ -20,7 +20,10 @@ export default function ShopGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((item) => {
-        const message = `Hi! I'd like to order the ${item.title} (Rs ${item.price.toLocaleString()}).`
+        const displayTitle = item.title.trim() || 'Untitled Item'
+        const message = item.price > 0
+          ? `Hi! I'd like to order the ${displayTitle} (Rs ${item.price.toLocaleString()}).`
+          : `Hi! I'd like to order the ${displayTitle}.`
         const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 
         return (
@@ -29,20 +32,28 @@ export default function ShopGrid() {
             className="flex flex-col w-full h-full rounded-2xl overflow-hidden border border-white/20 bg-white shadow-md"
           >
             <div className="relative h-56 overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+              {item.image ? (
+                <Image
+                  src={item.image}
+                  alt={item.alt || displayTitle}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-primary-50">
+                  <ImageOff className="h-8 w-8 text-primary/40" />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col flex-1 p-6 space-y-3">
-              <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed flex-1">
-                {item.description}
-              </p>
+              <h3 className="text-lg font-bold text-gray-900">{displayTitle}</h3>
+              {item.description && (
+                <p className="text-sm text-gray-500 leading-relaxed flex-1">
+                  {item.description}
+                </p>
+              )}
 
               {item.sizes && item.sizes.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
@@ -58,12 +69,14 @@ export default function ShopGrid() {
               )}
 
               <div className="border-t border-gray-100 pt-3">
-                <div className="flex items-start leading-none gap-0.5 mb-4">
-                  <span className="text-lg font-bold mt-1 text-primary">Rs</span>
-                  <span className="text-3xl font-extrabold text-primary">
-                    {item.price.toLocaleString()}
-                  </span>
-                </div>
+                {item.price > 0 && (
+                  <div className="flex items-start leading-none gap-0.5 mb-4">
+                    <span className="text-lg font-bold mt-1 text-primary">Rs</span>
+                    <span className="text-3xl font-extrabold text-primary">
+                      {item.price.toLocaleString()}
+                    </span>
+                  </div>
+                )}
 
                 <a
                   href={whatsappHref}

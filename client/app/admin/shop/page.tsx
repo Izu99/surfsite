@@ -207,7 +207,7 @@ export default function AdminShopPage() {
                 >
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-gray-900 text-sm truncate">
-                      {item.title}
+                      {item.title || <span className="text-gray-300 font-normal">Untitled Item</span>}
                     </p>
                     <p className="text-xs text-gray-400 mt-0.5 flex flex-wrap gap-x-1.5 items-center">
                       {item.sizes.length > 0 && <span>Sizes: {item.sizes.join(', ')}</span>}
@@ -223,7 +223,7 @@ export default function AdminShopPage() {
                   </div>
 
                   <span className="hidden md:block text-sm font-bold text-gray-900">
-                    Rs {item.price.toLocaleString()}
+                    {item.price > 0 ? `Rs ${item.price.toLocaleString()}` : <span className="text-gray-300">—</span>}
                   </span>
 
                   <div className="hidden md:flex items-center">
@@ -314,7 +314,7 @@ export default function AdminShopPage() {
       {deleteTarget && (
         <ConfirmModal
           title="Delete Shop Item"
-          message={`Are you sure you want to delete "${deleteTarget.title}"? This action cannot be undone.`}
+          message={`Are you sure you want to delete "${deleteTarget.title || 'this item'}"? This action cannot be undone.`}
           confirmLabel="Delete"
           danger
           onConfirm={handleDelete}

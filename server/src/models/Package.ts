@@ -22,12 +22,12 @@ export interface IPackage extends Document {
 
 const packageSchema = new Schema<IPackage>(
   {
-    name: { type: String, required: true, trim: true, maxlength: 100 },
-    level: { type: String, required: true, enum: LEVELS },
-    format: { type: String, required: true, trim: true },
-    duration: { type: String, required: true, trim: true },
-    price: { type: Number, required: true, min: 0 },
-    priceNote: { type: String, required: true, trim: true, default: 'per session' },
+    name: { type: String, default: '', trim: true, maxlength: 100 },
+    level: { type: String, enum: LEVELS },
+    format: { type: String, default: '', trim: true },
+    duration: { type: String, default: '', trim: true },
+    price: { type: Number, default: 0, min: 0 },
+    priceNote: { type: String, default: 'per session', trim: true },
     description: { type: String, default: '', trim: true },
     shortDescription: { type: String, default: '', trim: true },
     includes: { type: [String], default: [] },
@@ -35,7 +35,7 @@ const packageSchema = new Schema<IPackage>(
     featured: { type: Boolean, default: false },
     published: { type: Boolean, default: false },
     order: { type: Number, default: 0 },
-    image: { type: String, required: true, trim: true },
+    image: { type: String, default: '', trim: true },
   },
   { timestamps: true },
 )
