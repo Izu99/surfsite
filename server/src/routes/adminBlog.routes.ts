@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { protect } from '../middleware/auth'
+import { isAllowedImageUrl, IMAGE_URL_ERROR } from '../utils/imageUrl'
 import {
   listAll,
   create,
@@ -18,7 +19,12 @@ const blogValidation = [
   body('title').trim().notEmpty().withMessage('Title is required').isLength({ max: 200 }),
   body('description').trim().notEmpty().withMessage('Description is required').isLength({ max: 500 }),
   body('content').trim().notEmpty().withMessage('Content is required'),
-  body('image').trim().notEmpty().withMessage('Cover image URL is required').isURL({ protocols: ['http', 'https'], require_protocol: true }).withMessage('Image must be a valid HTTP(S) URL'),
+  body('image')
+    .trim()
+    .notEmpty()
+    .withMessage('Cover image URL is required')
+    .custom(isAllowedImageUrl)
+    .withMessage(IMAGE_URL_ERROR),
   body('category')
     .trim()
     .notEmpty()

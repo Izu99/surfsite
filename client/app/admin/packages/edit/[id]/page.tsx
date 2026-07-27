@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronLeft, Check, LayoutDashboard, AlertCircle } from 'lucide-react'
 import { adminPackageApi, type PackageInput } from '@/lib/api'
+import { isAllowedImageUrl, IMAGE_URL_ERROR } from '@/lib/image-url'
 import { cn } from '@/lib/utils'
 import ImageUploadField from '@/components/ImageUploadField'
 
@@ -120,6 +121,7 @@ export default function EditPackagePage({ params }: { params: Promise<{ id: stri
     if (!form) return false
     const e: Partial<Record<keyof FormData, string>> = {}
     if (form.price.trim() && isNaN(Number(form.price))) e.price = 'Price must be a number'
+    if (!isAllowedImageUrl(form.image)) e.image = IMAGE_URL_ERROR
     setErrors(e)
     return Object.keys(e).length === 0
   }

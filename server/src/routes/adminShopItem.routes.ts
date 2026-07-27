@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { protect } from '../middleware/auth'
+import { isAllowedImageUrl, IMAGE_URL_ERROR } from '../utils/imageUrl'
 import {
   listAll,
   create,
@@ -16,7 +17,11 @@ router.use(protect)
 const shopItemValidation = [
   body('title').optional({ checkFalsy: true }).trim().isLength({ max: 100 }),
   body('description').optional({ checkFalsy: true }).trim().isLength({ max: 500 }),
-  body('image').optional({ checkFalsy: true }).trim(),
+  body('image')
+    .optional({ checkFalsy: true })
+    .trim()
+    .custom(isAllowedImageUrl)
+    .withMessage(IMAGE_URL_ERROR),
   body('alt').optional({ checkFalsy: true }).trim(),
   body('price').optional({ checkFalsy: true }).isFloat({ min: 0 }).withMessage('Price must be a positive number'),
   body('sizes').optional().isArray(),

@@ -7,8 +7,10 @@ import { ChevronLeft, Plus, X, Check, LayoutDashboard, AlertCircle } from 'lucid
 import { adminBlogApi } from '@/lib/api'
 import { calcReadTime, toSlug } from '@/lib/blog-store'
 import { CATEGORIES } from '@/data/blogs'
+import { isAllowedImageUrl, IMAGE_URL_ERROR } from '@/lib/image-url'
 import { cn } from '@/lib/utils'
 import RichTextEditor from '@/components/RichTextEditor'
+import ImageUploadField from '@/components/ImageUploadField'
 
 type FormData = {
   title: string
@@ -69,6 +71,7 @@ export default function NewBlogPage() {
     if (!form.description.trim()) e.description = 'Description is required'
     if (!form.content.trim()) e.content = 'Content is required'
     if (!form.image.trim()) e.image = 'Cover image URL is required'
+    else if (!isAllowedImageUrl(form.image)) e.image = IMAGE_URL_ERROR
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -171,21 +174,14 @@ export default function NewBlogPage() {
             {/* Cover Image */}
             <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] p-6">
               <h2 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-5">Cover Image</h2>
-              <Field label="Image URL (Unsplash recommended)" error={errors.image}>
-                <input
-                  type="text"
-                  placeholder="https://images.unsplash.com/… or /local-image.webp"
+              <Field label="Image" hint="upload a file, drag one in, or paste a URL (Unsplash recommended)">
+                <ImageUploadField
                   value={form.image}
-                  onChange={(e) => set('image', e.target.value)}
-                  className={inputCls(!!errors.image)}
+                  onChange={(url) => set('image', url)}
+                  error={errors.image}
+                  inputCls={inputCls}
                 />
               </Field>
-              {form.image && (
-                <div className="mt-3 w-48 h-32 rounded-xl overflow-hidden bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={form.image} alt="Preview" className="w-full h-full object-cover" />
-                </div>
-              )}
             </div>
 
             {/* Content */}

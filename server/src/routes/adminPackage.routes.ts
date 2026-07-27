@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { protect } from '../middleware/auth'
+import { isAllowedImageUrl, IMAGE_URL_ERROR } from '../utils/imageUrl'
 import {
   listAll,
   create,
@@ -30,8 +31,8 @@ const packageValidation = [
   body('image')
     .optional({ checkFalsy: true })
     .trim()
-    .custom((value: string) => value.startsWith('/') || /^https?:\/\/\S+$/.test(value))
-    .withMessage('Image must be an uploaded file path or a valid http(s) URL'),
+    .custom(isAllowedImageUrl)
+    .withMessage(IMAGE_URL_ERROR),
 ]
 
 router.get('/', listAll)

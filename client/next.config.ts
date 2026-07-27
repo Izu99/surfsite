@@ -39,7 +39,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://static.cloudflareinsights.com https://*.googletagmanager.com https://*.googleadservices.com https://googleads.g.doubleclick.net https://tagmanager.google.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com https://www.googletagmanager.com https://tagmanager.google.com",
       "font-src 'self' data: https://fonts.gstatic.com",
-      `img-src 'self' data: blob: ${apiOrigin.origin} https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com https://*.googleusercontent.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://googleads.g.doubleclick.net`,
+      `img-src 'self' data: blob: ${apiOrigin.origin} https://images.unsplash.com https://plus.unsplash.com https://*.googleapis.com https://*.gstatic.com https://*.ggpht.com https://*.googleusercontent.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://googleads.g.doubleclick.net`,
       `connect-src 'self' ${apiOrigin.origin} https:`,
       "frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube.com https://youtube.com https://translate.google.com https://td.doubleclick.net",
       "frame-ancestors 'none'",
@@ -74,10 +74,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
       },
       {
         protocol: apiOrigin.protocol.replace(':', '') as 'http' | 'https',
